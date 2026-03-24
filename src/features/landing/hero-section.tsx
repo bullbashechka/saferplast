@@ -3,7 +3,7 @@ import Image from "next/image";
 import { firstScreenContent } from "@/features/landing/first-screen-content";
 
 export function HeroSection() {
-  const { headline, description, primaryCta, secondaryCta } = firstScreenContent;
+  const { headline, description, audienceLine, trustItems, primaryCta, secondaryCta } = firstScreenContent;
 
   return (
     <section className="flex flex-1 items-center py-[2.5rem] lg:py-[3.5rem]" aria-labelledby="hero-title">
@@ -19,6 +19,21 @@ export function HeroSection() {
           <p className="mt-[1.75rem] max-w-[39rem] text-[1rem] leading-[1.45] text-ink lg:mt-[2.25rem]">
             {description}
           </p>
+
+          <p className="mt-[1.5rem] max-w-[38rem] text-[1rem] leading-[1.4] text-secondary">
+            {audienceLine}
+          </p>
+
+          <ul className="mt-[1.75rem] flex flex-wrap gap-[0.75rem] lg:mt-[2rem]" aria-label="Преимущества SaFerplast">
+            {trustItems.map((item) => (
+              <li
+                key={item}
+                className="rounded-full border border-brand-100 bg-surface px-[1rem] py-[0.6875rem] text-[0.9375rem] font-medium leading-[1.2] text-brand-700"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
 
           <div className="mt-[2rem] flex flex-col items-start gap-[0.875rem] sm:flex-row sm:flex-wrap sm:items-center lg:mt-[2.5rem]">
             <a
