@@ -52,6 +52,7 @@ Refine the existing `Header + Hero` first screen so visitors immediately underst
 
 ### Design and UI rules
 - `docs/DESIGN_SYSTEM.md` - project color, typography, spacing, and component styling guidance
+- `https://www.figma.com/design/shs2jpWZgLlIqH32Lt1M8f/SaFerPlast?node-id=118-8` - approved Figma source for the first screen (`fileKey: shs2jpWZgLlIqH32Lt1M8f`, `nodeId: 118:8`)
 - `src/features/landing/first-screen.tsx` - first-screen composition root
 - `src/features/landing/site-header.tsx` - current header implementation
 - `src/features/landing/hero-section.tsx` - current hero implementation
@@ -90,6 +91,7 @@ Refine the existing `Header + Hero` first screen so visitors immediately underst
 ## Specific Ideas
 
 - The hero should be implemented strictly against the approved Figma file and MCP Figma context, not loosely approximated.
+- Approved first-screen Figma reference: `fileKey: shs2jpWZgLlIqH32Lt1M8f`, `nodeId: 118:8`.
 - The first screen should feel calm and readable rather than overloaded.
 - The fuller advantages block already exists in the design with the heading `Почему к нам обращаются` and should remain a separate section after the hero.
 - The contact zone reference provided by the user shows a phone number with WhatsApp and Telegram icons grouped beside it, and that grouping should inform the first-screen contact treatment.
