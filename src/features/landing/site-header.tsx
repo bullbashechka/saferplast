@@ -12,8 +12,8 @@ type SiteHeaderProps = {
 
 export function SiteHeader({ navigationLinks }: SiteHeaderProps) {
   return (
-    <header className="flex items-start justify-between px-[86px] pb-[28px] pt-3">
-      <Link aria-label="Saferplast" className="shrink-0" href="/">
+    <header className="relative h-[92px] w-full">
+      <Link aria-label="Saferplast" className="absolute left-[106px] top-0 block" href="/">
         <Image
           alt="Saferplast"
           className="block h-[92px] w-[179px] object-contain"
@@ -24,7 +24,7 @@ export function SiteHeader({ navigationLinks }: SiteHeaderProps) {
         />
       </Link>
 
-      <nav aria-label="Основная навигация" className="pt-[20px]">
+      <nav aria-label="Основная навигация" className="absolute left-[323px] top-[27px]">
         <ul className="flex items-center gap-6">
           {navigationLinks.map((link) => (
             <li key={link.href}>
@@ -39,16 +39,16 @@ export function SiteHeader({ navigationLinks }: SiteHeaderProps) {
         </ul>
       </nav>
 
-      <div className="flex items-center gap-5 pt-[22px]">
+      <div className="absolute left-[887px] top-[19px] flex items-center gap-5">
         <a
-          className="flex h-12 items-center gap-3 rounded-[15px] bg-surface px-[30px] text-[20px] font-medium leading-none text-black shadow-[0_8px_20px_rgba(0,75,98,0.06)]"
+          className="flex h-12 w-[237px] items-center gap-[14px] rounded-[15px] bg-surface/90 px-[30px] py-[14px] text-[20px] font-medium leading-none text-black backdrop-blur-[1.5px]"
           href="tel:+77079999999"
         >
           <Image alt="" aria-hidden="true" height={16} src="/icons/phone.svg" width={16} />
           <span>+77079999999</span>
         </a>
 
-        <div className="flex h-12 items-center gap-3 rounded-[15px] bg-muted px-[30px] text-[20px] font-medium leading-none text-black shadow-[0_8px_20px_rgba(36,36,36,0.04)]">
+        <div className="flex h-12 w-[221px] items-center gap-[14px] rounded-[15px] bg-muted/90 px-[30px] py-[14px] text-[20px] font-medium leading-none text-black backdrop-blur-[1.5px]">
           <Image alt="" aria-hidden="true" height={20} src="/icons/location.svg" width={16} />
           <span>г. Караганда</span>
         </div>
