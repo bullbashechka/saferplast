@@ -1,0 +1,1 @@
+- `npm.cmd run lint` currently fails on pre-existing `.codex/get-shit-done/bin/*.cjs` files due to `@typescript-eslint/no-require-imports` and a few unused-variable warnings. This is unrelated to Phase 01 Plan 02 header/icon work and was not modified by this plan.
