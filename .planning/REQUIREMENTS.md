@@ -80,38 +80,38 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CONT-01 | TBD | Pending |
-| CONT-02 | TBD | Pending |
-| CONT-03 | TBD | Pending |
-| CONT-04 | TBD | Pending |
-| CONT-05 | TBD | Pending |
-| TRST-01 | TBD | Pending |
-| TRST-02 | TBD | Pending |
-| TRST-03 | TBD | Pending |
-| TRST-04 | TBD | Pending |
-| TRST-05 | TBD | Pending |
-| LEAD-01 | TBD | Pending |
-| LEAD-02 | TBD | Pending |
-| LEAD-03 | TBD | Pending |
-| LEAD-04 | TBD | Pending |
-| LEAD-05 | TBD | Pending |
-| LEAD-06 | TBD | Pending |
-| LEAD-07 | TBD | Pending |
-| CALC-01 | TBD | Pending |
-| CALC-02 | TBD | Pending |
-| CALC-03 | TBD | Pending |
-| CALC-04 | TBD | Pending |
-| SITE-01 | TBD | Pending |
-| SITE-02 | TBD | Pending |
-| SITE-03 | TBD | Pending |
-| SITE-04 | TBD | Pending |
-| SITE-05 | TBD | Pending |
+| CONT-01 | Phase 1 | Pending |
+| CONT-02 | Phase 1 | Pending |
+| CONT-03 | Phase 2 | Pending |
+| CONT-04 | Phase 2 | Pending |
+| CONT-05 | Phase 1 | Pending |
+| TRST-01 | Phase 1 | Pending |
+| TRST-02 | Phase 2 | Pending |
+| TRST-03 | Phase 2 | Pending |
+| TRST-04 | Phase 2 | Pending |
+| TRST-05 | Phase 2 | Pending |
+| LEAD-01 | Phase 3 | Pending |
+| LEAD-02 | Phase 3 | Pending |
+| LEAD-03 | Phase 3 | Pending |
+| LEAD-04 | Phase 3 | Pending |
+| LEAD-05 | Phase 3 | Pending |
+| LEAD-06 | Phase 3 | Pending |
+| LEAD-07 | Phase 3 | Pending |
+| CALC-01 | Phase 4 | Pending |
+| CALC-02 | Phase 4 | Pending |
+| CALC-03 | Phase 4 | Pending |
+| CALC-04 | Phase 4 | Pending |
+| SITE-01 | Phase 2 | Pending |
+| SITE-02 | Phase 2 | Pending |
+| SITE-03 | Phase 1 | Pending |
+| SITE-04 | Phase 5 | Pending |
+| SITE-05 | Phase 5 | Pending |
 
 **Coverage:**
 - v1 requirements: 26 total
-- Mapped to phases: 0
-- Unmapped: 26 ⚠️
+- Mapped to phases: 26
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-24*
-*Last updated: 2026-03-24 after initial definition*
+*Last updated: 2026-03-24 after roadmap creation*
