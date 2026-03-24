@@ -1,0 +1,12 @@
+node_modules
+.next
+.out
+.open-next
+.cloudflare
+.vercel
+coverage
+*.log
+.env
+.env.local
+.env.production.local
+.DS_Store
