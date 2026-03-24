@@ -29,7 +29,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Visitor sees a clear primary CTA above the fold for consultation, measurement, or estimate request.
   3. Visitor can see that the company serves apartments, private houses, offices, and commercial spaces.
   4. Visitor can see the company differentiators and find visible contact/service-area relevance without scrolling through the full page.
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 01-01-PLAN.md - Define the first-screen content contract and real anchor map
+- [ ] 01-02-PLAN.md - Implement the header contact cluster and messenger links
+- [ ] 01-03-PLAN.md - Refine the hero offer, CTA hierarchy, trust, and audience cues
 **UI hint**: yes
 
 ### Phase 2: Responsive Landing and Proof Architecture
