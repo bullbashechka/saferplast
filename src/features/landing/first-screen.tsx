@@ -10,11 +10,9 @@ const navigationLinks = [
 
 export function FirstScreen() {
   return (
-    <section className="min-h-screen w-full bg-white" id="top">
-      <div className="relative mx-auto min-h-screen w-full max-w-[1440px] overflow-hidden">
-        <div className="absolute left-0 right-0 top-[15px] z-20">
-          <SiteHeader navigationLinks={navigationLinks} />
-        </div>
+    <section className="min-h-screen bg-white" id="top">
+      <div className="mx-auto flex min-h-screen max-w-[90rem] flex-col px-[2rem] pt-[0.9375rem] lg:px-[2.5rem]">
+        <SiteHeader navigationLinks={navigationLinks} />
         <HeroSection />
       </div>
     </section>
