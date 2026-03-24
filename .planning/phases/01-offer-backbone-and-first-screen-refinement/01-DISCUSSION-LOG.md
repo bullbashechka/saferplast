@@ -44,7 +44,7 @@
 | Full card grid in first screen | Move the `Почему к нам обращаются` block into phase 1 | |
 
 **User's choice:** Show compact trust/value тезисы in the first screen.
-**Notes:** The separate advantages section with cards already exists in design and stays below the hero. Selected short signals: `Собственное производство`, `Быстрый выезд и расчет`, `Гарантия 1 год`.
+**Notes:** The separate advantages section with cards already exists in design and stays below the hero. Short first-screen signals are finalized as `Собственное производство`, `Цены без посредников`, `Быстрый выезд и расчет`, `Гарантия 1 год` so the direct-pricing differentiator from phase requirements is preserved.
 
 ---
 
@@ -68,4 +68,3 @@
 ## Deferred Ideas
 
 - Full `Почему к нам обращаются` section with cards is deferred to the next landing section / later phase
-

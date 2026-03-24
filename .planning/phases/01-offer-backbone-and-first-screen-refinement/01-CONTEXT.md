@@ -25,7 +25,7 @@ Refine the existing `Header + Hero` first screen so visitors immediately underst
 
 ### First-screen trust signals
 - **D-07:** The first screen must show short trust/value тезисы in or near the hero, not a full card grid.
-- **D-08:** The short trust/value тезисы for the first screen are: `Собственное производство`, `Быстрый выезд и расчет`, `Гарантия 1 год`.
+- **D-08:** The short trust/value тезисы for the first screen are: `Собственное производство`, `Цены без посредников`, `Быстрый выезд и расчет`, `Гарантия 1 год`.
 - **D-09:** The separate section `Почему к нам обращаются` with multiple advantage cards is explicitly out of this phase and remains a later landing block.
 
 ### Contact presentation
