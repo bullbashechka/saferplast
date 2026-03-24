@@ -1,0 +1,117 @@
+# Requirements: SaFerplast
+
+**Defined:** 2026-03-24
+**Core Value:** Visitors can quickly understand the offer and safely send a request for consultation, measurement, or price estimation without friction.
+
+## v1 Requirements
+
+### Content Backbone
+
+- [ ] **CONT-01**: Visitor can understand within the first screen that SaFerplast manufactures, installs, and repairs PVC and aluminum windows, doors, and balconies
+- [ ] **CONT-02**: Visitor can see a clear primary CTA for consultation, measurement, or estimate request above the fold
+- [ ] **CONT-03**: Visitor can browse structured service and product categories for windows, doors, balconies, glazing units, hardware, sills, and slopes
+- [ ] **CONT-04**: Visitor can understand the difference between PVC and aluminum solutions and their use cases
+- [ ] **CONT-05**: Visitor can see that the company works with apartments, private houses, offices, and commercial spaces
+
+### Trust and Proof
+
+- [ ] **TRST-01**: Visitor can see the company differentiators, including own production, direct pricing, and speed of work
+- [ ] **TRST-02**: Visitor can see warranty or guarantee information for production and installation work
+- [ ] **TRST-03**: Visitor can view real trust proof such as project media, testimonials, or equivalent credibility content
+- [ ] **TRST-04**: Visitor can understand the service process from request to installation or repair completion
+- [ ] **TRST-05**: Visitor can find answers to common objections in an FAQ section
+
+### Lead Capture
+
+- [ ] **LEAD-01**: Visitor can call the business from the landing page via a visible phone action
+- [ ] **LEAD-02**: Visitor can submit a request from the first screen with full name, phone, and optional comment
+- [ ] **LEAD-03**: Visitor can submit a request from the end of the landing with the same canonical payload
+- [ ] **LEAD-04**: All landing forms submit through one validated server-side lead ingestion path
+- [ ] **LEAD-05**: Submitted leads are stored reliably even if messenger delivery fails
+- [ ] **LEAD-06**: Submitted leads are routed to WhatsApp-first operational handling with Telegram as fallback or secondary delivery
+- [ ] **LEAD-07**: Lead submission is protected against spam and invalid payloads
+
+### Calculator and Price Discovery
+
+- [ ] **CALC-01**: Visitor can request a simple approximate calculation for relevant products or services
+- [ ] **CALC-02**: The calculator explains that the result is an estimate, not a final contract price
+- [ ] **CALC-03**: The calculator captures the key factors that affect price without becoming a deep configurator
+- [ ] **CALC-04**: Visitor can hand calculator context into the lead flow without re-entering core request information
+
+### UX, SEO, and Delivery
+
+- [ ] **SITE-01**: Visitor can use the landing comfortably on desktop and mobile layouts
+- [ ] **SITE-02**: The landing exposes search-friendly metadata and structure for browser discoverability
+- [ ] **SITE-03**: Visitor can find contact details and service-area relevance on the page
+- [ ] **SITE-04**: The site can be deployed and validated on Cloudflare in a production-ready runtime
+- [ ] **SITE-05**: Core CTA and form interactions can be instrumented for launch analytics
+
+## v2 Requirements
+
+### Conversion Enhancements
+
+- **CVRT-01**: Visitor can send calculator results directly into a messenger conversation with richer context
+- **CVRT-02**: Visitor can use an urgent repair shortcut flow distinct from full replacement requests
+- **CVRT-03**: Visitor can choose preferred contact channel between callback, WhatsApp, and Telegram
+
+### Richer Persuasion
+
+- **RICH-01**: Visitor can browse a before-and-after gallery of completed work
+- **RICH-02**: Visitor can compare materials and system types through dedicated comparison tables
+- **RICH-03**: Visitor can view production or team credibility sections with authentic media
+
+### Growth Features
+
+- **GROW-01**: The site can expand into service pages and unique location pages without redesigning core content architecture
+- **GROW-02**: Pricing coefficients can be updated through a clear operational process without fragile code edits
+
+## Out of Scope
+
+| Feature | Reason |
+|---------|--------|
+| Full ecommerce checkout | Window and door work is custom-scoped after measurement |
+| Personal account or customer cabinet | Not needed for the first public lead-generation version |
+| CRM dashboard | Operational follow-up can stay outside the site for v1 |
+| Large blog or content hub | Does not help the initial launch path enough to justify scope |
+| Deep technical configurator or visualizer | High effort and likely to create false precision in v1 |
+| Email-based lead delivery | Client priority is WhatsApp and Telegram rather than email |
+
+## Traceability
+
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| CONT-01 | TBD | Pending |
+| CONT-02 | TBD | Pending |
+| CONT-03 | TBD | Pending |
+| CONT-04 | TBD | Pending |
+| CONT-05 | TBD | Pending |
+| TRST-01 | TBD | Pending |
+| TRST-02 | TBD | Pending |
+| TRST-03 | TBD | Pending |
+| TRST-04 | TBD | Pending |
+| TRST-05 | TBD | Pending |
+| LEAD-01 | TBD | Pending |
+| LEAD-02 | TBD | Pending |
+| LEAD-03 | TBD | Pending |
+| LEAD-04 | TBD | Pending |
+| LEAD-05 | TBD | Pending |
+| LEAD-06 | TBD | Pending |
+| LEAD-07 | TBD | Pending |
+| CALC-01 | TBD | Pending |
+| CALC-02 | TBD | Pending |
+| CALC-03 | TBD | Pending |
+| CALC-04 | TBD | Pending |
+| SITE-01 | TBD | Pending |
+| SITE-02 | TBD | Pending |
+| SITE-03 | TBD | Pending |
+| SITE-04 | TBD | Pending |
+| SITE-05 | TBD | Pending |
+
+**Coverage:**
+- v1 requirements: 26 total
+- Mapped to phases: 0
+- Unmapped: 26 ⚠️
+
+---
+*Requirements defined: 2026-03-24*
+*Last updated: 2026-03-24 after initial definition*
