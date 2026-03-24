@@ -31,7 +31,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. Visitor can see the company differentiators and find visible contact/service-area relevance without scrolling through the full page.
 **Plans**: 3 plans
 Plans:
-- [ ] 01-01-PLAN.md - Define the first-screen content contract and real anchor map
+- [x] 01-01-PLAN.md - Define the first-screen content contract and real anchor map
 - [ ] 01-02-PLAN.md - Implement the header contact cluster and messenger links
 - [ ] 01-03-PLAN.md - Refine the hero offer, CTA hierarchy, trust, and audience cues
 **UI hint**: yes

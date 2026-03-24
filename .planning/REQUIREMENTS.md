@@ -8,7 +8,7 @@
 ### Content Backbone
 
 - [ ] **CONT-01**: Visitor can understand within the first screen that SaFerplast manufactures, installs, and repairs PVC and aluminum windows, doors, and balconies
-- [ ] **CONT-02**: Visitor can see a clear primary CTA for consultation, measurement, or estimate request above the fold
+- [x] **CONT-02**: Visitor can see a clear primary CTA for consultation, measurement, or estimate request above the fold
 - [ ] **CONT-03**: Visitor can browse structured service and product categories for windows, doors, balconies, glazing units, hardware, sills, and slopes
 - [ ] **CONT-04**: Visitor can understand the difference between PVC and aluminum solutions and their use cases
 - [ ] **CONT-05**: Visitor can see that the company works with apartments, private houses, offices, and commercial spaces
@@ -42,7 +42,7 @@
 
 - [ ] **SITE-01**: Visitor can use the landing comfortably on desktop and mobile layouts
 - [ ] **SITE-02**: The landing exposes search-friendly metadata and structure for browser discoverability
-- [ ] **SITE-03**: Visitor can find contact details and service-area relevance on the page
+- [x] **SITE-03**: Visitor can find contact details and service-area relevance on the page
 - [ ] **SITE-04**: The site can be deployed and validated on Cloudflare in a production-ready runtime
 - [ ] **SITE-05**: Core CTA and form interactions can be instrumented for launch analytics
 
@@ -81,7 +81,7 @@
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | CONT-01 | Phase 1 | Pending |
-| CONT-02 | Phase 1 | Pending |
+| CONT-02 | Phase 1 | Complete |
 | CONT-03 | Phase 2 | Pending |
 | CONT-04 | Phase 2 | Pending |
 | CONT-05 | Phase 1 | Pending |
@@ -103,7 +103,7 @@
 | CALC-04 | Phase 4 | Pending |
 | SITE-01 | Phase 2 | Pending |
 | SITE-02 | Phase 2 | Pending |
-| SITE-03 | Phase 1 | Pending |
+| SITE-03 | Phase 1 | Complete |
 | SITE-04 | Phase 5 | Pending |
 | SITE-05 | Phase 5 | Pending |
 
