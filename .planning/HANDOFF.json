@@ -1,0 +1,110 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-03-24T13:04:02.157Z",
+  "phase": "01",
+  "phase_name": "offer-backbone-and-first-screen-refinement",
+  "phase_dir": ".planning/phases/01-offer-backbone-and-first-screen-refinement",
+  "plan": 2,
+  "task": 2,
+  "total_tasks": 2,
+  "status": "paused",
+  "completed_tasks": [
+    {
+      "id": "01-01",
+      "name": "Define the first-screen content contract and real anchor map",
+      "status": "done",
+      "commit": "e4400aa"
+    },
+    {
+      "id": "01-03",
+      "name": "Refine the hero offer, CTA hierarchy, trust, and audience cues",
+      "status": "done",
+      "commit": "71df0dd"
+    },
+    {
+      "id": "01-02.1",
+      "name": "Add header messenger icon assets",
+      "status": "done",
+      "commit": "92fe9da"
+    },
+    {
+      "id": "01-02.2",
+      "name": "Refine SiteHeader contact wiring and header layout",
+      "status": "in_progress",
+      "progress": "Uncommitted changes exist in src/features/landing/first-screen.tsx and src/features/landing/site-header.tsx; messenger icons already exist in public/icons."
+    }
+  ],
+  "remaining_tasks": [
+    {
+      "id": "01-02.2",
+      "name": "Finish and commit header contact wiring/layout task",
+      "status": "not_started"
+    },
+    {
+      "id": "01-02.summary",
+      "name": "Create 01-02 summary and mark plan complete",
+      "status": "not_started"
+    },
+    {
+      "id": "01-03.summary",
+      "name": "Create 01-03 summary and confirm plan completion state",
+      "status": "not_started"
+    },
+    {
+      "id": "phase.verify",
+      "name": "Run phase verification after Wave 2 is clean",
+      "status": "not_started"
+    }
+  ],
+  "blockers": [
+    {
+      "description": "Global npm.cmd run lint is blocked by pre-existing ESLint errors under .codex/get-shit-done/**/*.cjs, so execution used scoped lint for changed landing files.",
+      "type": "technical",
+      "workaround": "Use scoped lint on touched landing files during resume; avoid treating repo-wide lint as a phase-local regression until .codex lint debt is excluded or fixed."
+    },
+    {
+      "description": "Wave 2 executors were interrupted by user abort, leaving SiteHeader/FirstScreen changes unstaged and missing 01-02/01-03 summary files.",
+      "type": "technical",
+      "workaround": "Resume by inspecting git diff and git log for plan 01-02 and 01-03, finalize/commit remaining code, then write missing SUMMARY files."
+    }
+  ],
+  "human_actions_pending": [
+    {
+      "action": "Confirm final production phone number and WhatsApp/Telegram URLs before shipping beyond phase-local placeholders.",
+      "context": "first-screen-content.ts still contains provisional contact values inherited from planning assumptions.",
+      "blocking": false
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "First screen stays split into FirstScreen + SiteHeader + HeroSection with a local typed first-screen-content module.",
+      "rationale": "Matches existing architecture and avoids broad scope creep into shared broken site-config.",
+      "phase": "01"
+    },
+    {
+      "decision": "Primary CTA is 'Бесплатный замер', secondary CTA is 'Получить расчет'.",
+      "rationale": "Matches business conversion priority agreed during discuss-phase.",
+      "phase": "01"
+    },
+    {
+      "decision": "Short first-screen trust items include direct pricing and stay in hero; full advantages card section remains deferred.",
+      "rationale": "Satisfies TRST-01 without pulling Phase 2 sections into Phase 1.",
+      "phase": "01"
+    },
+    {
+      "decision": "Approved Figma source for Phase 1 is fileKey shs2jpWZgLlIqH32Lt1M8f, nodeId 118:8.",
+      "rationale": "Plans and execution must tie visual fidelity to a concrete design source.",
+      "phase": "01"
+    }
+  ],
+  "uncommitted_files": [
+    ".planning/config.json",
+    "src/features/landing/first-screen.tsx",
+    "src/features/landing/site-header.tsx",
+    "tsconfig.tsbuildinfo",
+    "docs/DESIGN_SYSTEM.md",
+    ".planning/phases/01-offer-backbone-and-first-screen-refinement/deferred-items.md"
+  ],
+  "next_action": "Resume with git diff on src/features/landing/first-screen.tsx and src/features/landing/site-header.tsx, finish/commit plan 01-02, then create missing 01-02 and 01-03 summary files before running phase verifier.",
+  "context_notes": "Wave 1 is complete and stable. Wave 2 partially executed before user aborted. Hero code appears materially updated in the working tree/history, and messenger icon assets already exist, but the header wiring task was left mid-flight with local modifications and no summary file. Auto-chain was disabled manually; no background executors remain running."
+}
