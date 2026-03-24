@@ -1,3 +1,8 @@
+﻿@import "@fontsource/montserrat/400.css";
+@import "@fontsource/montserrat/500.css";
+@import "@fontsource/montserrat/600.css";
+@import "@fontsource/sansation/400.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,15 +17,22 @@ html {
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background:
-    radial-gradient(circle at top left, rgba(29, 95, 211, 0.12), transparent 34%),
-    linear-gradient(180deg, #f8fbff 0%, #eef4fb 100%);
-  color: #101828;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  background: #f2f4f5;
+  color: #242424;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
 a {

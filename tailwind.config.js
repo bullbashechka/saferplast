@@ -1,10 +1,10 @@
-/** @type {import('tailwindcss').Config} */
+﻿/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./src/app/**/*.{ts,tsx}",
     "./src/components/**/*.{ts,tsx}",
     "./src/features/**/*.{ts,tsx}",
-    "./src/lib/**/*.{ts,tsx}"
+    "./src/lib/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
@@ -12,19 +12,27 @@ module.exports = {
         brand: {
           50: "#eef6ff",
           100: "#d9ebff",
-          500: "#1d5fd3",
-          700: "#1649a3",
-          900: "#102c5f"
+          500: "#004b62",
+          700: "#004b62",
+          900: "#00384a",
         },
-        accent: "#f59e0b",
-        ink: "#101828"
+        accent: "#d6e4e8",
+        ink: "#242424",
+        surface: "#fafeff",
+        muted: "#f2f4f5",
+        secondary: "#767676",
+      },
+      fontFamily: {
+        sans: ["Montserrat", "Arial", "Helvetica", "sans-serif"],
+        body: ["Montserrat", "Arial", "Helvetica", "sans-serif"],
+        display: ["Sansation", "Arial", "Helvetica", "sans-serif"],
       },
       boxShadow: {
-        soft: "0 20px 60px rgba(16, 24, 40, 0.12)"
+        soft: "0 20px 60px rgba(16, 24, 40, 0.12)",
       },
       maxWidth: {
-        content: "1200px"
-      }
+        content: "1200px",
+      },
     },
   },
   plugins: [],
