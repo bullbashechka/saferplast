@@ -41,14 +41,13 @@ export function AdvantagesSection() {
                 >
                   <Image
                     alt="Фирменный стиль SaFerplast"
-                    className="object-cover"
+                    className="rounded-[1.25rem] object-cover blur-[2.5px] opacity-[0.29]"
                     fill
                     sizes="(max-width: 1024px) 100vw, 285px"
-                    src="/images/herophotogirl.png"
+                    src="/images/cloud.png"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.12)_0%,rgba(0,0,0,0.28)_100%)]" />
                   <div className="absolute inset-0 flex items-center justify-center px-4">
-                    <Image alt="SaFerplast" height={92} src="/images/logo.png" width={179} />
+                    <Image alt="SaFerplast" height={300} src="/images/logoinadvantages.png" width={430} />
                   </div>
                 </article>
               );
