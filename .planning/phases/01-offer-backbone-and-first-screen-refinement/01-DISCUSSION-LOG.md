@@ -1,70 +1,67 @@
 # Phase 1: Offer Backbone and First-Screen Refinement - Discussion Log
 
 > **Audit trail only.** Do not use as input to planning, research, or execution agents.
-> Decisions are captured in CONTEXT.md; this log preserves the alternatives considered.
+> Decisions are captured in CONTEXT.md.
 
-**Date:** 2026-03-24
-**Phase:** 01-Offer Backbone and First-Screen Refinement
-**Areas discussed:** Оффер, CTA hierarchy, First-screen trust signals, Contact presentation
-
----
-
-## Оффер
-
-| Option | Description | Selected |
-|--------|-------------|----------|
-| Existing commercial hero copy | `Окна, двери и балконы из ПВХ и алюминия напрямую от производителя` + service/location support text | ✓ |
-| Stronger SEO rewrite | Alternative SEO-heavy hero rewrites with city/manufacturer emphasis | |
-| New premium/commercial rewrite | Heavier rewrite for a different tone | |
-
-**User's choice:** Keep the existing hero idea and formalize it as the first-screen offer.
-**Notes:** The supporting text was tightened to end with `предварительный расчет стоимости` for clarity.
+**Date:** 2026-03-25
+**Phase:** 01-offer-backbone-and-first-screen-refinement
+**Areas discussed:** Header source-of-truth, Hero content lock, Hero visual lock, Image handling
 
 ---
 
-## CTA hierarchy
+## Header source-of-truth
 
 | Option | Description | Selected |
 |--------|-------------|----------|
-| `Бесплатный замер` primary, `Получить расчет` secondary | Measurement request is the main conversion path | ✓ |
-| `Получить расчет` primary, `Бесплатный замер` secondary | Estimate-first conversion path | |
-| Equal CTA weight | Both actions treated as equal | |
+| Figma + header style spec as canonical | Use Figma intent and `docs/headerDemoStyles.md`; convert to valid Tailwind | ✓ |
+| Keep previous implementation choices | Preserve prior interpretation from earlier discuss session | |
 
-**User's choice:** `Бесплатный замер` is the primary CTA.
-**Notes:** The screen should bias toward a stronger real-world lead action, with estimate request secondary.
+**User's choice:** Follow Figma and `docs/headerDemoStyles.md` as the header source of truth.
+**Notes:** User explicitly reminded that this project is Figma-driven and asked to normalize style implementation into proper Tailwind.
 
 ---
 
-## First-screen trust signals
+## Hero content lock
 
 | Option | Description | Selected |
 |--------|-------------|----------|
-| Short trust/value тезисы in hero | Use a compact set of benefits in the first screen | ✓ |
-| No short trust signals in hero | Keep advantages only in the next section | |
-| Full card grid in first screen | Move the `Почему к нам обращаются` block into phase 1 | |
+| Lock exact headline/subheadline/button labels | Use provided copy verbatim in first-screen hero | ✓ |
+| Keep prior exploratory copy rules | Allow further interpretation from old context | |
 
-**User's choice:** Show compact trust/value тезисы in the first screen.
-**Notes:** The separate advantages section with cards already exists in design and stays below the hero. Short first-screen signals are finalized as `Собственное производство`, `Цены без посредников`, `Быстрый выезд и расчет`, `Гарантия 1 год` so the direct-pricing differentiator from phase requirements is preserved.
+**User's choice:** Lock the hero text to the provided headline/subheadline and two CTA labels.
+**Notes:** This replaces ambiguity from the previous context iteration.
 
 ---
 
-## Contact presentation
+## Hero visual lock
 
 | Option | Description | Selected |
 |--------|-------------|----------|
-| Phone + city only | Minimal contact presentation | |
-| Phone + city + WhatsApp | Phone-centered header with one messenger | |
-| Phone + city + WhatsApp + Telegram | Full contact visibility in the first screen | ✓ |
-| Messenger-only CTA treatment | Move messengers into hero CTA area | |
+| Use hero demo style spec as canonical | Apply `docs/heroDemoStyles.md` through Tailwind mapping | ✓ |
+| Keep previous trust-heavy hero interpretation | Preserve prior trust/audience-heavy visual approach | |
 
-**User's choice:** Show phone, city, WhatsApp, and Telegram in the first screen.
-**Notes:** The provided design reference groups phone with WhatsApp and Telegram icons in one contact zone. Messengers should be visible but visually secondary to the phone and to the primary CTA.
+**User's choice:** Use `docs/heroDemoStyles.md` as canonical visual guidance for hero.
+**Notes:** Core aim is better fidelity and reduced interpretation drift.
+
+---
+
+## Image handling
+
+| Option | Description | Selected |
+|--------|-------------|----------|
+| Keep current right-side photo for now | Do not change hero image asset in this correction step | ✓ |
+| Replace/rework image now | Modify photo and its asset behavior in this same pass | |
+
+**User's choice:** Keep current right-side photo unchanged for now.
+**Notes:** User flagged separate nuances around the photo, explicitly deferred.
 
 ## the agent's Discretion
 
-- Exact visual implementation of the short trust/value тезисы
-- Exact responsive stacking of the contact zone, as long as phone remains primary and messengers remain visible
+- Responsive interpolation of demo values into production Tailwind layout.
+- Accessibility/semantic details that do not change locked visuals and text.
 
 ## Deferred Ideas
 
-- Full `Почему к нам обращаются` section with cards is deferred to the next landing section / later phase
+- Photo rework/replacement and related image nuance handling.
+- Lower landing sections and non-first-screen scope.
+
