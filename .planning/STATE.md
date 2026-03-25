@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Ready to execute
-stopped_at: Completed 01-offer-backbone-and-first-screen-refinement-01-PLAN.md
-last_updated: "2026-03-25T09:27:33.298Z"
+stopped_at: Completed 01-offer-backbone-and-first-screen-refinement-02-PLAN.md
+last_updated: "2026-03-25T09:33:58.618Z"
 progress:
   total_phases: 5
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
+  completed_plans: 2
 ---
 
 # Project State
@@ -24,7 +24,7 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Phase: 01 (offer-backbone-and-first-screen-refinement) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 
 ## Performance Metrics
 
@@ -46,6 +46,7 @@ Plan: 2 of 3
 - Trend: Stable
 
 | Phase 01-offer-backbone-and-first-screen-refinement P01 | 37 | 2 tasks | 2 files |
+| Phase 01-offer-backbone-and-first-screen-refinement P02 | 2 min | 2 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -60,6 +61,8 @@ Recent decisions affecting current work:
 - [Phase 01-offer-backbone-and-first-screen-refinement]: Replace dead first-screen navigation targets with #calculator and #lead-form so header links stay usable during Phase 1.
 - [Phase 01-offer-backbone-and-first-screen-refinement]: Locked first-screen copy/CTA/nav targets in typed contract for phase-01 parallel styling work.
 - [Phase 01-offer-backbone-and-first-screen-refinement]: FirstScreen now passes header nav/contact props exclusively from firstScreenContent.
+- [Phase 01-offer-backbone-and-first-screen-refinement]: Mapped only geometry/typography/color tokens from headerDemoStyles to Tailwind utilities and excluded absolute-position coordinates.
+- [Phase 01-offer-backbone-and-first-screen-refinement]: Kept phone, city, WhatsApp, and Telegram values prop-driven from first-screen content while applying explicit chip geometry/color mapping.
 
 ### Pending Todos
 
@@ -72,6 +75,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T09:27:33.291Z
-Stopped at: Completed 01-offer-backbone-and-first-screen-refinement-01-PLAN.md
+Last session: 2026-03-25T09:33:58.611Z
+Stopped at: Completed 01-offer-backbone-and-first-screen-refinement-02-PLAN.md
 Resume file: None
