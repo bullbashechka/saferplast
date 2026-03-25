@@ -2,91 +2,100 @@
 phase: 01-offer-backbone-and-first-screen-refinement
 plan: "01"
 subsystem: ui
-tags: [nextjs, react, typescript, tailwind, landing, navigation]
+tags: [nextjs, react, typescript, landing, content-contract]
 requires: []
 provides:
-  - typed first-screen content contract for hero, CTA, trust, contact, and navigation data
-  - shared first-screen navigation wiring pointing only to live page anchors
-affects: [01-02, 01-03, landing, header, hero]
+  - Typed first-screen content contract with locked D-07/D-08/D-09 copy and CTA targets
+  - FirstScreen composition wired to SiteHeader through shared first-screen contract values
+affects: [01-02, 01-03, header, hero]
 tech-stack:
   added: []
-  patterns: [local typed feature content module, composition-root data handoff]
+  patterns: [centralized first-screen literals, composition-through-contract]
 key-files:
-  created: [src/features/landing/first-screen-content.ts]
-  modified: [src/features/landing/first-screen.tsx]
+  created: []
+  modified:
+    - src/features/landing/first-screen-content.ts
+    - src/features/landing/first-screen.tsx
 key-decisions:
-  - "Keep first-screen business copy in a local feature module instead of broadening scope into src/lib/site-config.ts."
-  - "Replace dead first-screen navigation targets with #calculator and #lead-form so header links remain usable during Phase 1."
+  - "Keep first-screen copy and CTA/nav wiring centralized in first-screen-content.ts for parallel header/hero work."
+  - "Preserve only in-scope first-screen links (#top, #calculator, #lead-form) and avoid deferred-section anchors."
 patterns-established:
-  - "FirstScreen owns landing-first-screen data handoff into child components."
-  - "Shared first-screen literals live in src/features/landing/first-screen-content.ts for downstream phase work."
-requirements-completed: [CONT-02, SITE-03]
-duration: 4 min
-completed: 2026-03-24
+  - "First-screen literals are sourced from one typed contract instead of inline component strings."
+requirements-completed: [CONT-01, CONT-02, SITE-03]
+duration: 37min
+completed: 2026-03-25
 ---
 
-# Phase 1 Plan 1: First-Screen Contract Summary
+# Phase 01 Plan 01: Offer Backbone and First-Screen Refinement Summary
 
-**Typed first-screen content with locked offer copy, real CTA anchors, and shared header navigation wiring for the landing entrypoint**
+**Locked first-screen Russian hero copy and CTA/nav targets in a typed contract, then wired FirstScreen header props exclusively through that shared contract.**
 
 ## Performance
 
-- **Duration:** 4 min
-- **Started:** 2026-03-24T12:52:10Z
-- **Completed:** 2026-03-24T12:56:07Z
+- **Duration:** 37 min
+- **Started:** 2026-03-25T10:18:00Z
+- **Completed:** 2026-03-25T10:55:00Z
 - **Tasks:** 2
 - **Files modified:** 2
 
 ## Accomplishments
-- Added a typed `firstScreenContent` contract covering headline, description, audience line, trust tuple, CTA hierarchy, contact fields, and navigation links.
-- Moved first-screen navigation ownership into the shared content module so future header and hero work can consume one approved data source.
-- Removed dead first-screen anchors from the composition entrypoint and kept navigation pointed at `#top`, `#calculator`, and `#lead-form`.
+- Locked D-07 headline and D-08 description exactly in `first-screen-content.ts`.
+- Kept D-09 CTA labels and href mappings fixed to `#lead-form` and `#calculator`.
+- Confirmed first-screen navigation scope excludes dead anchors (`#projects`, `#contacts`).
+- Refactored FirstScreen composition to source all header nav/contact props from one `firstScreenContent` destructuring.
 
 ## Task Commits
 
 Each task was committed atomically:
 
-1. **Task 1: Create the first-screen content contract** - `0ec4241` (feat)
-2. **Task 2: Rewire first-screen composition to the shared contract and remove dead anchors** - `cd5fcd8` (fix)
-
-**Plan metadata:** pending
+1. **Task 1: Lock first-screen content contract to decisions D-07/D-08/D-09 and contact/nav scope** - `002e728` (feat)
+2. **Task 2: Wire FirstScreen composition strictly through shared contract** - `787462a` (refactor)
 
 ## Files Created/Modified
-- `src/features/landing/first-screen-content.ts` - typed local content source for first-screen copy, contacts, CTAs, trust items, and navigation.
-- `src/features/landing/first-screen.tsx` - composition root now passes shared navigation links into `SiteHeader`.
+- `src/features/landing/first-screen-content.ts` - Locked hero text, CTA labels/hrefs, and nav targets under typed contract.
+- `src/features/landing/first-screen.tsx` - Composition-only wiring of SiteHeader props from the shared contract.
 
 ## Decisions Made
-- Kept first-screen content local to `src/features/landing` instead of expanding scope into the broken shared site config.
-- Treated `#lead-form` as the current contact/request destination and removed references to deferred sections.
+- Kept `first-screen-content.ts` as the single source of first-screen literals to prevent drift during upcoming parallel header/hero styling plans.
+- Used contract destructuring in `FirstScreen` for explicit one-way prop flow and no inline nav/contact literals.
 
 ## Deviations from Plan
 
-None - plan executed as specified for product code.
+### Auto-fixed Issues
+
+**1. [Rule 3 - Blocking] Worked around local PowerShell `npx` policy block for file-scoped lint check**
+- **Found during:** Task 2 verification
+- **Issue:** `npx eslint ...` was blocked by PowerShell script execution policy in this environment.
+- **Fix:** Switched to `npm.cmd exec eslint src/features/landing/first-screen.tsx` for equivalent verification.
+- **Files modified:** None
+- **Verification:** File-scoped eslint command exited successfully.
+- **Committed in:** `787462a` (Task 2 commit)
+
+---
+
+**Total deviations:** 1 auto-fixed (1 blocking)
+**Impact on plan:** No scope change; verification path adjusted to environment constraints only.
 
 ## Issues Encountered
-
-- `npm.cmd run lint` fails at repo scope because `.codex/get-shit-done/**/*.cjs` has pre-existing ESLint violations unrelated to this plan, primarily `@typescript-eslint/no-require-imports`. This was left untouched per scope boundaries.
-- Scoped verification with `npx.cmd eslint src/features/landing/first-screen.tsx src/features/landing/first-screen-content.ts` passed.
-
-## Known Stubs
-
-- `src/features/landing/first-screen-content.ts:44` - `telegramHref` is a provisional public endpoint and still needs client-confirmed contact details before the messenger links phase is finalized.
+- Repository-wide `npm.cmd run lint` currently fails due pre-existing `.codex/get-shit-done/**/*.cjs` lint violations unrelated to plan `01-01`. Logged in `.planning/phases/01-offer-backbone-and-first-screen-refinement/deferred-items.md`.
 
 ## User Setup Required
 
 None - no external service configuration required.
 
 ## Next Phase Readiness
+- Header and hero styling tasks can now consume a stable first-screen contract without re-deciding copy or link targets.
+- No dead first-screen anchors remain in the contract/composition files.
 
-- `FirstScreen` now exposes a stable content and navigation contract for the header contact-cluster work in `01-02`.
-- Exact messenger destination details should be confirmed when the visual messenger links are implemented.
+## Known Stubs
+
+None.
 
 ## Self-Check: PASSED
-
-- Verified summary file exists: `.planning/phases/01-offer-backbone-and-first-screen-refinement/01-01-SUMMARY.md`
-- Verified task commit exists: `0ec4241`
-- Verified task commit exists: `cd5fcd8`
+- Found summary file: `.planning/phases/01-offer-backbone-and-first-screen-refinement/01-01-SUMMARY.md`
+- Found task commit: `002e728`
+- Found task commit: `787462a`
 
 ---
 *Phase: 01-offer-backbone-and-first-screen-refinement*
-*Completed: 2026-03-24*
+*Completed: 2026-03-25*

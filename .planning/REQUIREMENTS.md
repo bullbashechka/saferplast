@@ -7,7 +7,7 @@
 
 ### Content Backbone
 
-- [ ] **CONT-01**: Visitor can understand within the first screen that SaFerplast manufactures, installs, and repairs PVC and aluminum windows, doors, and balconies
+- [x] **CONT-01**: Visitor can understand within the first screen that SaFerplast manufactures, installs, and repairs PVC and aluminum windows, doors, and balconies
 - [x] **CONT-02**: Visitor can see a clear primary CTA for consultation, measurement, or estimate request above the fold
 - [ ] **CONT-03**: Visitor can browse structured service and product categories for windows, doors, balconies, glazing units, hardware, sills, and slopes
 - [ ] **CONT-04**: Visitor can understand the difference between PVC and aluminum solutions and their use cases
@@ -80,7 +80,7 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CONT-01 | Phase 1 | Pending |
+| CONT-01 | Phase 1 | Complete |
 | CONT-02 | Phase 1 | Complete |
 | CONT-03 | Phase 2 | Pending |
 | CONT-04 | Phase 2 | Pending |

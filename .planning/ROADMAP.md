@@ -31,9 +31,9 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. Visitor can see the company differentiators and find visible contact/service-area relevance without scrolling through the full page.
 **Plans**: 3 plans
 Plans:
-- [x] 01-01-PLAN.md - Define the first-screen content contract and real anchor map
-- [ ] 01-02-PLAN.md - Implement the header contact cluster and messenger links
-- [ ] 01-03-PLAN.md - Refine the hero offer, CTA hierarchy, trust, and audience cues
+- [x] 01-01-PLAN.md - Lock first-screen content contract and composition wiring for Header + Hero
+- [ ] 01-02-PLAN.md - Map header demo styles to Tailwind and finalize contact/service-area cluster
+- [ ] 01-03-PLAN.md - Map hero demo styles to Tailwind with locked copy/CTA and unchanged right photo
 **UI hint**: yes
 
 ### Phase 2: Responsive Landing and Proof Architecture
@@ -91,7 +91,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Offer Backbone and First-Screen Refinement | 0/TBD | Not started | - |
+| 1. Offer Backbone and First-Screen Refinement | 3/3 | Reopened (executing fixes) | 2026-03-24 |
 | 2. Responsive Landing and Proof Architecture | 0/TBD | Not started | - |
 | 3. Canonical Lead Capture System | 0/TBD | Not started | - |
 | 4. Calculator and Qualification Handoff | 0/TBD | Not started | - |
