@@ -35,7 +35,7 @@ export function SiteHeader({
   ];
 
   return (
-    <header className="flex flex-wrap items-center justify-between gap-[1rem] py-[0.25rem] lg:flex-nowrap lg:gap-[2rem]">
+    <header className="flex h-[5.75rem] flex-wrap items-center justify-between gap-[1rem] py-[0.25rem] lg:flex-nowrap lg:gap-[1.5rem]">
       <Link aria-label="Saferplast" className="block w-full max-w-[11.1875rem] shrink-0" href="/">
         <Image
           alt="Saferplast"
