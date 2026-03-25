@@ -16,7 +16,7 @@ export function HeroSection() {
             {headline}
           </h1>
 
-          <p className="mt-[1.75rem] max-w-[39rem] text-[1rem] leading-[1.45] text-ink lg:mt-[2.25rem]">
+          <p className="mt-[1.75rem] max-w-[39rem] text-[1rem] leading-[1] text-ink lg:mt-[2.25rem]">
             {description}
           </p>
 
@@ -37,14 +37,14 @@ export function HeroSection() {
 
           <div className="mt-[2rem] flex flex-col items-start gap-[0.875rem] sm:flex-row sm:flex-wrap sm:items-center lg:mt-[2.5rem]">
             <a
-              className="inline-flex min-h-[4.25rem] items-center justify-center rounded-[0.9375rem] bg-brand-700 px-[2rem] py-[1.25rem] text-center text-[1.125rem] font-medium leading-[1.1] text-white transition-colors hover:bg-brand-900 sm:px-[2.5rem] lg:px-[3.0625rem] lg:text-[1.25rem]"
+              className="inline-flex min-h-[4.25rem] items-center justify-center rounded-[0.9375rem] bg-[#004B62] px-[3.0625rem] py-[1.5rem] text-center text-[1.25rem] font-medium leading-[1] text-white transition-colors hover:bg-[#00384a]"
               href={primaryCta.href}
             >
               {primaryCta.label}
             </a>
 
             <a
-              className="inline-flex min-h-[4.25rem] items-center justify-center rounded-[0.9375rem] border border-brand-500 bg-transparent px-[2rem] py-[1.25rem] text-center text-[1.125rem] font-medium leading-[1.1] text-brand-700 transition-colors hover:bg-brand-50 sm:px-[2.5rem] lg:px-[3.0625rem] lg:text-[1.25rem]"
+              className="inline-flex min-h-[4.25rem] items-center justify-center rounded-[0.9375rem] border border-[#004B62] bg-transparent px-[3.0625rem] py-[1.5rem] text-center text-[1.25rem] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-brand-50"
               href={secondaryCta.href}
             >
               {secondaryCta.label}
