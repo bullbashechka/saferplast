@@ -11,11 +11,11 @@
 - [x] **CONT-02**: Visitor can see a clear primary CTA for consultation, measurement, or estimate request above the fold
 - [ ] **CONT-03**: Visitor can browse structured service and product categories for windows, doors, balconies, glazing units, hardware, sills, and slopes
 - [ ] **CONT-04**: Visitor can understand the difference between PVC and aluminum solutions and their use cases
-- [ ] **CONT-05**: Visitor can see that the company works with apartments, private houses, offices, and commercial spaces
+- [x] **CONT-05**: Visitor can see that the company works with apartments, private houses, offices, and commercial spaces
 
 ### Trust and Proof
 
-- [ ] **TRST-01**: Visitor can see the company differentiators, including own production, direct pricing, and speed of work
+- [x] **TRST-01**: Visitor can see the company differentiators, including own production, direct pricing, and speed of work
 - [ ] **TRST-02**: Visitor can see warranty or guarantee information for production and installation work
 - [ ] **TRST-03**: Visitor can view real trust proof such as project media, testimonials, or equivalent credibility content
 - [ ] **TRST-04**: Visitor can understand the service process from request to installation or repair completion
@@ -84,8 +84,8 @@
 | CONT-02 | Phase 1 | Complete |
 | CONT-03 | Phase 2 | Pending |
 | CONT-04 | Phase 2 | Pending |
-| CONT-05 | Phase 1 | Pending |
-| TRST-01 | Phase 1 | Pending |
+| CONT-05 | Phase 1 | Complete |
+| TRST-01 | Phase 1 | Complete |
 | TRST-02 | Phase 2 | Pending |
 | TRST-03 | Phase 2 | Pending |
 | TRST-04 | Phase 2 | Pending |

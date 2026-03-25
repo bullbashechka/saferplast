@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 Plans:
 - [x] 01-01-PLAN.md - Lock first-screen content contract and composition wiring for Header + Hero
 - [x] 01-02-PLAN.md - Map header demo styles to Tailwind and finalize contact/service-area cluster
-- [ ] 01-03-PLAN.md - Map hero demo styles to Tailwind with locked copy/CTA and unchanged right photo
+- [x] 01-03-PLAN.md - Map hero demo styles to Tailwind with locked copy/CTA and unchanged right photo
 **UI hint**: yes
 
 ### Phase 2: Responsive Landing and Proof Architecture
