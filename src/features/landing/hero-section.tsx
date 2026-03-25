@@ -20,21 +20,6 @@ export function HeroSection() {
             {description}
           </p>
 
-          <p className="mt-[1.5rem] max-w-[38rem] text-[1rem] leading-[1.4] text-secondary">
-            {audienceLine}
-          </p>
-
-          <ul className="mt-[1.75rem] flex flex-wrap gap-[0.75rem] lg:mt-[2rem]" aria-label="ÐŸÑ€ÐµÐ¸Ð¼ÑƒÑ‰ÐµÑÑ‚Ð²Ð° SaFerplast">
-            {trustItems.map((item) => (
-              <li
-                key={item}
-                className="rounded-full border border-brand-100 bg-surface px-[1rem] py-[0.6875rem] text-[0.9375rem] font-medium leading-[1.2] text-brand-700"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-
           <div className="mt-[2rem] flex flex-col items-start gap-[0.875rem] sm:flex-row sm:flex-wrap sm:items-center lg:mt-[2.5rem]">
             <a
               className="inline-flex min-h-[4.25rem] items-center justify-center rounded-[0.9375rem] bg-[#004B62] px-[3.0625rem] py-[1.5rem] text-center text-[1.25rem] font-medium leading-[1] text-white transition-colors hover:bg-[#00384a]"
@@ -50,12 +35,27 @@ export function HeroSection() {
               {secondaryCta.label}
             </a>
           </div>
+
+          <p className="mt-[1.5rem] max-w-[38rem] text-[1rem] leading-[1.4] text-secondary">
+            {audienceLine}
+          </p>
+
+          <ul className="mt-[1.25rem] flex flex-wrap gap-[0.75rem]" aria-label="Ïðåèìóùåñòâà SaFerplast">
+            {trustItems.map((item) => (
+              <li
+                key={item}
+                className="rounded-full border border-brand-100 bg-surface px-[1rem] py-[0.6875rem] text-[0.9375rem] font-medium leading-[1.2] text-brand-700"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="flex justify-end lg:justify-start">
           <div className="w-full max-w-[36.75rem] overflow-hidden rounded-[1.875rem] bg-accent">
             <Image
-              alt="Ð”ÐµÐ²ÑƒÑˆÐºÐ° ÑÐ¸Ð´Ð¸Ñ‚ Ñƒ Ð±Ð¾Ð»ÑŒÑˆÐ¾Ð³Ð¾ Ð¾ÐºÐ½Ð°"
+              alt="Äåâóøêà ñèäèò ó áîëüøîãî îêíà"
               className="h-auto w-full object-cover"
               height={682}
               priority
