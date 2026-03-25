@@ -64,14 +64,14 @@ export function SiteHeader({
 
       <div className="flex flex-1 flex-wrap items-center justify-end gap-[0.75rem] sm:gap-[1rem]">
         <a
-          className="flex h-[3rem] items-center gap-[0.75rem] rounded-[0.9375rem] bg-surface/90 px-[1rem] text-[1rem] font-medium leading-[1] text-black transition-colors hover:bg-surface sm:px-[1.375rem] sm:text-[1.125rem] lg:px-[1.625rem] lg:text-[1.25rem]"
+          className="flex h-[3rem] items-center gap-[0.75rem] rounded-[0.9375rem] bg-[#FAFEFF] px-[1rem] text-[1rem] font-medium leading-[1] text-black transition-colors hover:bg-[#F5FCFF] sm:px-[1.375rem] sm:text-[1.125rem] lg:gap-[0.875rem] lg:px-[1.875rem] lg:text-[1.25rem]"
           href={phoneHref}
         >
           <Image alt="" aria-hidden="true" height={16} src="/icons/phone.svg" width={16} />
           <span>{phoneLabel}</span>
         </a>
 
-        <div className="flex h-[3rem] items-center gap-[0.75rem] rounded-[0.9375rem] bg-muted/90 px-[1rem] text-[0.9375rem] font-medium leading-[1] text-black sm:px-[1.375rem] sm:text-[1rem] lg:px-[1.625rem] lg:text-[1.125rem]">
+        <div className="flex h-[3rem] items-center gap-[0.75rem] rounded-[0.9375rem] bg-[#F2F4F5] px-[1rem] text-[0.9375rem] font-medium leading-[1] text-black sm:px-[1.375rem] sm:text-[1rem] lg:gap-[0.875rem] lg:px-[1.875rem] lg:text-[1.25rem]">
           <Image alt="" aria-hidden="true" height={20} src="/icons/location.svg" width={16} />
           <span>{cityLabel}</span>
         </div>
