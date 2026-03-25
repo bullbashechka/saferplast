@@ -8,20 +8,16 @@ export function FirstScreen() {
     navigationLinks,
     phoneHref,
     phoneLabel,
-    telegramHref,
-    whatsappHref,
   } = firstScreenContent;
 
   return (
     <section className="min-h-screen bg-white" id="top">
-      <div className="mx-auto flex min-h-screen max-w-[90rem] flex-col px-[2rem] pt-[0.9375rem] lg:px-[2.5rem]">
+      <div className="mx-auto flex min-h-screen w-full max-w-[90rem] flex-col px-4 pt-[0.9375rem] sm:px-6 lg:w-[90rem] lg:max-w-none lg:px-0">
         <SiteHeader
           cityLabel={cityLabel}
           navigationLinks={navigationLinks}
           phoneHref={phoneHref}
           phoneLabel={phoneLabel}
-          telegramHref={telegramHref}
-          whatsappHref={whatsappHref}
         />
         <HeroSection />
       </div>

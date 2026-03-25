@@ -1,12 +1,15 @@
-import Image from "next/image";
+ï»¿import Image from "next/image";
 
 import { firstScreenContent } from "@/features/landing/first-screen-content";
 
 export function HeroSection() {
-  const { headline, description, audienceLine, trustItems, primaryCta, secondaryCta } = firstScreenContent;
+  const { headline, description, audienceLine, primaryCta, secondaryCta } = firstScreenContent;
 
   return (
-    <section className="flex flex-1 items-center py-[2.5rem] lg:py-[3.5rem]" aria-labelledby="hero-title">
+    <section
+      aria-labelledby="hero-title"
+      className="flex flex-1 items-center py-[2.5rem] lg:py-[3.5rem] lg:pl-[7.5rem] lg:pr-[1.25rem]"
+    >
       <div className="grid w-full items-center gap-[2.5rem] lg:grid-cols-[minmax(0,1fr)_minmax(20rem,36.75rem)] lg:gap-[3rem]">
         <div className="max-w-[51.875rem]">
           <h1
@@ -39,23 +42,12 @@ export function HeroSection() {
           <p className="mt-[1.5rem] max-w-[38rem] text-[1rem] leading-[1.4] text-secondary">
             {audienceLine}
           </p>
-
-          <ul className="mt-[1.25rem] flex flex-wrap gap-[0.75rem]" aria-label="Ïðåèìóùåñòâà SaFerplast">
-            {trustItems.map((item) => (
-              <li
-                key={item}
-                className="rounded-full border border-brand-100 bg-surface px-[1rem] py-[0.6875rem] text-[0.9375rem] font-medium leading-[1.2] text-brand-700"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div className="flex justify-end lg:justify-start">
           <div className="w-full max-w-[36.75rem] overflow-hidden rounded-[1.875rem] bg-accent">
             <Image
-              alt="Äåâóøêà ñèäèò ó áîëüøîãî îêíà"
+              alt="Ð”ÐµÐ²ÑƒÑˆÐºÐ° ÑÐ¸Ð´Ð¸Ñ‚ Ñƒ Ð±Ð¾Ð»ÑŒÑˆÐ¾Ð³Ð¾ Ð¾ÐºÐ½Ð°"
               className="h-auto w-full object-cover"
               height={682}
               priority

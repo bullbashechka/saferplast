@@ -1,9 +1,11 @@
-export type AdvantagesCardVariant = "light" | "dark";
+﻿export type AdvantagesCardVariant = "light" | "dark";
+export type AdvantagesCardKind = "text" | "image";
 
 export type AdvantagesCard = {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   variant: AdvantagesCardVariant;
+  kind?: AdvantagesCardKind;
   href?: string;
 };
 
@@ -28,8 +30,7 @@ export const advantagesSectionContent: AdvantagesSectionContent = {
       variant: "light",
     },
     {
-      title: "SaFerplast",
-      description: "Собственный бренд и контроль качества на каждом этапе",
+      kind: "image",
       variant: "light",
     },
     {
@@ -39,7 +40,7 @@ export const advantagesSectionContent: AdvantagesSectionContent = {
     },
     {
       title: "Опыт работы - более X лет",
-      description: "Проверенные решения для квартир, домов и бизнеса",
+      description: "Несем ответственность за результат",
       variant: "light",
     },
     {

@@ -11,14 +11,6 @@ type SiteHeaderProps = {
   navigationLinks: NavigationLink[];
   phoneHref: string;
   phoneLabel: string;
-  telegramHref: string;
-  whatsappHref: string;
-};
-
-type MessengerLink = {
-  href: string;
-  iconSrc: string;
-  label: string;
 };
 
 export function SiteHeader({
@@ -26,16 +18,9 @@ export function SiteHeader({
   navigationLinks,
   phoneHref,
   phoneLabel,
-  telegramHref,
-  whatsappHref,
 }: SiteHeaderProps) {
-  const messengerLinks: MessengerLink[] = [
-    { href: whatsappHref, iconSrc: "/icons/whatsapp.svg", label: "WhatsApp" },
-    { href: telegramHref, iconSrc: "/icons/telegram.svg", label: "Telegram" },
-  ];
-
   return (
-    <header className="flex h-[5.75rem] flex-wrap items-center justify-between gap-[1rem] py-[0.25rem] lg:flex-nowrap lg:gap-[1.5rem]">
+    <header className="flex h-[5.75rem] flex-wrap items-center justify-between gap-[1rem] py-[0.25rem] lg:flex-nowrap lg:gap-[1.5rem] lg:px-[7.5rem]">
       <Link aria-label="Saferplast" className="block w-full max-w-[11.1875rem] shrink-0" href="/">
         <Image
           alt="Saferplast"
@@ -52,7 +37,7 @@ export function SiteHeader({
           {navigationLinks.map((link) => (
             <li key={link.href}>
               <a
-                className="text-[1rem] font-normal leading-[1] text-ink transition-colors hover:text-brand-700"
+                className="whitespace-nowrap text-[1rem] font-normal leading-[1] text-ink transition-colors hover:text-brand-700"
                 href={link.href}
               >
                 {link.label}
@@ -62,34 +47,20 @@ export function SiteHeader({
         </ul>
       </nav>
 
-      <div className="flex flex-1 flex-wrap items-center justify-end gap-[0.75rem] sm:gap-[1rem]">
+      <div className="flex flex-1 items-center justify-end gap-[0.75rem] sm:gap-[1rem] lg:flex-nowrap lg:gap-[1.25rem]">
         <a
-          className="flex h-[3rem] items-center gap-[0.75rem] rounded-[0.9375rem] bg-[#FAFEFF] px-[1rem] text-[1rem] font-medium leading-[1] text-black transition-colors hover:bg-[#F5FCFF] sm:px-[1.375rem] sm:text-[1.125rem] lg:gap-[0.875rem] lg:px-[1.875rem] lg:text-[1.25rem]"
+          className="flex h-[3rem] flex-nowrap items-center gap-[0.875rem] rounded-[0.9375rem] border border-[#E4EAED] bg-white px-[1rem] text-[1rem] font-medium leading-[1] text-black shadow-[0_2px_10px_rgba(0,0,0,0.03)] transition-colors hover:bg-[#F9FCFD] sm:px-[1.375rem] sm:text-[1.125rem] lg:px-[1.875rem] lg:text-[1.25rem]"
           href={phoneHref}
         >
           <Image alt="" aria-hidden="true" height={16} src="/icons/phone.svg" width={16} />
-          <span>{phoneLabel}</span>
+          <span className="whitespace-nowrap">{phoneLabel}</span>
         </a>
 
-        <div className="flex h-[3rem] items-center gap-[0.75rem] rounded-[0.9375rem] bg-[#F2F4F5] px-[1rem] text-[0.9375rem] font-medium leading-[1] text-black sm:px-[1.375rem] sm:text-[1rem] lg:gap-[0.875rem] lg:px-[1.875rem] lg:text-[1.25rem]">
+        <div className="flex h-[3rem] flex-nowrap items-center gap-[0.875rem] rounded-[0.9375rem] border border-[#E4EAED] bg-white px-[1rem] text-[0.9375rem] font-medium leading-[1] text-black shadow-[0_2px_10px_rgba(0,0,0,0.03)] sm:px-[1.375rem] sm:text-[1rem] lg:px-[1.875rem] lg:text-[1.25rem]">
           <Image alt="" aria-hidden="true" height={20} src="/icons/location.svg" width={16} />
-          <span>{cityLabel}</span>
+          <span className="whitespace-nowrap">{cityLabel}</span>
         </div>
 
-        <div className="flex items-center gap-[0.5rem] rounded-[0.9375rem] bg-surface/70 p-[0.375rem]">
-          {messengerLinks.map((link) => (
-            <a
-              key={link.label}
-              aria-label={link.label}
-              className="flex h-[2.25rem] w-[2.25rem] items-center justify-center rounded-[0.75rem] bg-white/95 transition-colors hover:bg-white"
-              href={link.href}
-              rel="noreferrer"
-              target="_blank"
-            >
-              <Image alt="" aria-hidden="true" height={16} src={link.iconSrc} width={16} />
-            </a>
-          ))}
-        </div>
       </div>
     </header>
   );
