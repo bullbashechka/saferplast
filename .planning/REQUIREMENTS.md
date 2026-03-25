@@ -9,17 +9,17 @@
 
 - [x] **CONT-01**: Visitor can understand within the first screen that SaFerplast manufactures, installs, and repairs PVC and aluminum windows, doors, and balconies
 - [x] **CONT-02**: Visitor can see a clear primary CTA for consultation, measurement, or estimate request above the fold
-- [ ] **CONT-03**: Visitor can browse structured service and product categories for windows, doors, balconies, glazing units, hardware, sills, and slopes
-- [ ] **CONT-04**: Visitor can understand the difference between PVC and aluminum solutions and their use cases
+- [x] **CONT-03**: Visitor can browse structured service and product categories for windows, doors, balconies, glazing units, hardware, sills, and slopes
+- [x] **CONT-04**: Visitor can understand the difference between PVC and aluminum solutions and their use cases
 - [x] **CONT-05**: Visitor can see that the company works with apartments, private houses, offices, and commercial spaces
 
 ### Trust and Proof
 
 - [x] **TRST-01**: Visitor can see the company differentiators, including own production, direct pricing, and speed of work
-- [ ] **TRST-02**: Visitor can see warranty or guarantee information for production and installation work
-- [ ] **TRST-03**: Visitor can view real trust proof such as project media, testimonials, or equivalent credibility content
-- [ ] **TRST-04**: Visitor can understand the service process from request to installation or repair completion
-- [ ] **TRST-05**: Visitor can find answers to common objections in an FAQ section
+- [x] **TRST-02**: Visitor can see warranty or guarantee information for production and installation work
+- [x] **TRST-03**: Visitor can view real trust proof such as project media, testimonials, or equivalent credibility content
+- [x] **TRST-04**: Visitor can understand the service process from request to installation or repair completion
+- [x] **TRST-05**: Visitor can find answers to common objections in an FAQ section
 
 ### Lead Capture
 
@@ -40,8 +40,8 @@
 
 ### UX, SEO, and Delivery
 
-- [ ] **SITE-01**: Visitor can use the landing comfortably on desktop and mobile layouts
-- [ ] **SITE-02**: The landing exposes search-friendly metadata and structure for browser discoverability
+- [x] **SITE-01**: Visitor can use the landing comfortably on desktop and mobile layouts
+- [x] **SITE-02**: The landing exposes search-friendly metadata and structure for browser discoverability
 - [x] **SITE-03**: Visitor can find contact details and service-area relevance on the page
 - [ ] **SITE-04**: The site can be deployed and validated on Cloudflare in a production-ready runtime
 - [ ] **SITE-05**: Core CTA and form interactions can be instrumented for launch analytics
@@ -82,14 +82,14 @@
 |-------------|-------|--------|
 | CONT-01 | Phase 1 | Complete |
 | CONT-02 | Phase 1 | Complete |
-| CONT-03 | Phase 2 | Pending |
-| CONT-04 | Phase 2 | Pending |
+| CONT-03 | Phase 2 | Complete |
+| CONT-04 | Phase 2 | Complete |
 | CONT-05 | Phase 1 | Complete |
 | TRST-01 | Phase 1 | Complete |
-| TRST-02 | Phase 2 | Pending |
-| TRST-03 | Phase 2 | Pending |
-| TRST-04 | Phase 2 | Pending |
-| TRST-05 | Phase 2 | Pending |
+| TRST-02 | Phase 2 | Complete |
+| TRST-03 | Phase 2 | Complete |
+| TRST-04 | Phase 2 | Complete |
+| TRST-05 | Phase 2 | Complete |
 | LEAD-01 | Phase 3 | Pending |
 | LEAD-02 | Phase 3 | Pending |
 | LEAD-03 | Phase 3 | Pending |
@@ -101,8 +101,8 @@
 | CALC-02 | Phase 4 | Pending |
 | CALC-03 | Phase 4 | Pending |
 | CALC-04 | Phase 4 | Pending |
-| SITE-01 | Phase 2 | Pending |
-| SITE-02 | Phase 2 | Pending |
+| SITE-01 | Phase 2 | Complete |
+| SITE-02 | Phase 2 | Complete |
 | SITE-03 | Phase 1 | Complete |
 | SITE-04 | Phase 5 | Pending |
 | SITE-05 | Phase 5 | Pending |
