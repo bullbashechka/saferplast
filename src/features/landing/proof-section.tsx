@@ -34,9 +34,11 @@ export function ProofSection() {
             <div className="absolute left-[40px] top-[45px] h-[269px] w-[calc(100%-115px)] rounded-[15px] bg-[rgba(250,254,255,0.94)] p-[15px] shadow-[0_12px_30px_rgba(0,75,98,0.12)] backdrop-blur-[2px]">
               <div className="flex h-full flex-col justify-between gap-[39px]">
                 <div>
-                  <p className="text-[1.25rem] font-medium leading-[1.1] text-[#004B62]">Опыт в сложных объектах</p>
-                  <p className="mt-3 max-w-[34rem] text-[0.9375rem] leading-[1.35] text-[#242424]">
-                    Проверяем размеры на месте, держим геометрию в сборке и доводим монтаж без лишних корректировок.
+                  <p
+                    className="max-w-[34rem] font-['Sansation'] text-[44px] font-normal leading-[1] tracking-[0] text-white"
+                    style={{ fontFamily: "Sansation" }}
+                  >
+                    Бесплатно подскажем, что вам выгоднее: ремонт, замена или новое изготовление
                   </p>
                 </div>
 
