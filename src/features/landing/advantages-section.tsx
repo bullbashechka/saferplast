@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 
 import { advantagesSectionContent } from "@/features/landing/advantages-section-content";
 
@@ -19,6 +19,7 @@ export function AdvantagesSection() {
         <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-10 lg:grid-cols-[17.8125rem_17.8125rem_17.6875rem_17.8125rem] lg:grid-rows-[13.125rem_13.125rem] lg:gap-5">
           {advantagesSectionContent.cards.map((card, index) => {
             const isImage = card.kind === "image";
+            const isGradient = card.variant === "gradient";
             const isDark = card.variant === "dark";
             const positionClassName =
               index === 0
@@ -55,7 +56,9 @@ export function AdvantagesSection() {
 
             const baseClassName = isDark
               ? "bg-[#004B62] text-white"
-              : "bg-[linear-gradient(241.21deg,rgba(255,252,252,1)_0%,rgba(0,75,98,0.3)_100%)] text-[#242424]";
+              : isGradient
+                ? "bg-[linear-gradient(241.21deg,rgba(255,252,252,0)_0%,rgba(0,75,98,0.3)_94.97%)] text-[#242424]"
+                : "bg-[linear-gradient(241.21deg,rgba(255,252,252,1)_0%,rgba(0,75,98,0.3)_100%)] text-[#242424]";
 
             const titleClassName = isDark ? "text-white" : "text-[#004B62]";
 

@@ -1,4 +1,4 @@
-﻿export type AdvantagesCardVariant = "light" | "dark";
+export type AdvantagesCardVariant = "light" | "gradient" | "dark";
 export type AdvantagesCardKind = "text" | "image";
 
 export type AdvantagesCard = {
@@ -22,12 +22,12 @@ export const advantagesSectionContent: AdvantagesSectionContent = {
     {
       title: "Собственное производство",
       description: "Без переплаты посредникам",
-      variant: "light",
+      variant: "gradient",
     },
     {
       title: "Гарантия 1 год",
       description: "Несем ответственность за результат",
-      variant: "light",
+      variant: "gradient",
     },
     {
       kind: "image",
@@ -36,12 +36,12 @@ export const advantagesSectionContent: AdvantagesSectionContent = {
     {
       title: "Быстрый выезд и расчет",
       description: "Не теряете время",
-      variant: "light",
+      variant: "gradient",
     },
     {
       title: "Опыт работы - более X лет",
       description: "Несем ответственность за результат",
-      variant: "light",
+      variant: "gradient",
     },
     {
       title: "Бесплатный замер",
