@@ -4,7 +4,7 @@ milestone: v1.0
 milestone_name: мильстоун
 status: Review-only (заморозка дизайна)
 stopped_at: Завершен SEO + stack snapshot для Header/Hero/Advantages
-last_updated: "2026-03-28T11:34:42.684Z"
+last_updated: "2026-03-28T11:38:44.766Z"
 progress:
   total_phases: 5
   completed_phases: 2
@@ -96,6 +96,7 @@ progress:
 | 260328-mw5 | update right proof block headline typography | 2026-03-28 | 32003b9 | [.planning/quick/260328-mw5-update-right-proof-block-headline-typogr](./quick/260328-mw5-update-right-proof-block-headline-typogr/) |
 | 260328-mxm | remove mini blocks from right proof card | 2026-03-28 | 75bf631 | [.planning/quick/260328-mxm-remove-mini-blocks-from-right-proof-card](./quick/260328-mxm-remove-mini-blocks-from-right-proof-card/) |
 | 260328-n0x | make right proof block look like apple liquid glass | 2026-03-28 | 994e976 | [.planning/quick/260328-n0x-make-right-proof-block-look-like-apple-l](./quick/260328-n0x-make-right-proof-block-look-like-apple-l/) |
+| 260328-n4a | make right proof block use figma liquid glass frame and consultation button | 2026-03-28 | 69674a4 | [.planning/quick/260328-n4a-make-right-proof-block-use-figma-liquid-](./quick/260328-n4a-make-right-proof-block-use-figma-liquid-/) |
 
 ## Непрерывность сессии
 
@@ -115,3 +116,4 @@ Resume file: None
 Последняя активность: 2026-03-28 - Completed quick task 260328-mw5: update right proof block headline typography
 Последняя активность: 2026-03-28 - Completed quick task 260328-mxm: remove mini blocks from right proof card
 Последняя активность: 2026-03-28 - Completed quick task 260328-n0x: make right proof block look like apple liquid glass
+Последняя активность: 2026-03-28 - Completed quick task 260328-n4a: make right proof block use figma liquid glass frame and consultation button
