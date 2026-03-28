@@ -31,8 +31,10 @@ export function ProofSection() {
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,hsla(0,0%,0%,0.37)_0%,hsla(0,0%,0%,0.37)_100%)]" />
 
-            <div className="absolute left-[40px] top-[45px] h-[269px] w-[calc(100%-115px)] rounded-[15px] bg-[rgba(250,254,255,0.94)] p-[15px] shadow-[0_12px_30px_rgba(0,75,98,0.12)] backdrop-blur-[2px]">
-              <div className="flex h-full flex-col">
+            <div className="absolute left-[40px] top-[45px] h-[269px] w-[calc(100%-115px)] overflow-hidden rounded-[15px] border border-white/25 bg-[rgba(255,255,255,0.12)] p-[15px] shadow-[0_16px_45px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.35)] backdrop-blur-[24px]">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(255,255,255,0.45)_0%,rgba(255,255,255,0.16)_18%,rgba(255,255,255,0.06)_34%,rgba(255,255,255,0)_62%)]" />
+              <div className="absolute inset-x-0 top-0 h-[42%] bg-[linear-gradient(180deg,rgba(255,255,255,0.26)_0%,rgba(255,255,255,0.05)_100%)]" />
+              <div className="relative z-10 flex h-full flex-col">
                 <div>
                   <p
                     className="max-w-[34rem] font-['Sansation'] text-[44px] font-normal leading-[1] tracking-[0] text-white"
