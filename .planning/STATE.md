@@ -4,7 +4,7 @@ milestone: v1.0
 milestone_name: мильстоун
 status: Review-only (заморозка дизайна)
 stopped_at: Завершен SEO + stack snapshot для Header/Hero/Advantages
-last_updated: "2026-03-28T11:04:12.856Z"
+last_updated: "2026-03-28T11:21:19.144Z"
 progress:
   total_phases: 5
   completed_phases: 2
@@ -91,6 +91,7 @@ progress:
 | 260328-m01 | update advantages gradient colors to hex alpha values | 2026-03-28 | 7827968 | [.planning/quick/260328-m01-update-advantages-gradient-colors-to-hex](./quick/260328-m01-update-advantages-gradient-colors-to-hex/) |
 | 260328-m80 | match figma gradient stops for advantages section | 2026-03-28 | 6e214c4 | [.planning/quick/260328-m80-match-figma-gradient-stops-for-advantage](./quick/260328-m80-match-figma-gradient-stops-for-advantage/) |
 | 260328-mbi | move lower-left gradient stop to 80 percent | 2026-03-28 | 71b359f | [.planning/quick/260328-mbi-move-lower-left-gradient-stop-to-80-perc](./quick/260328-mbi-move-lower-left-gradient-stop-to-80-perc/) |
+| 260328-mpr | add lower proof section with left photo and right composite card | 2026-03-28 | ec7dda5 | [.planning/quick/260328-mpr-add-lower-proof-section-with-left-photo-](./quick/260328-mpr-add-lower-proof-section-with-left-photo-/) |
 
 ## Непрерывность сессии
 
@@ -105,3 +106,4 @@ Resume file: None
 Последняя активность: 2026-03-28 - Completed quick task 260328-m01: update advantages gradient colors to hex alpha values
 Последняя активность: 2026-03-28 - Completed quick task 260328-m80: match figma gradient stops for advantages section
 Последняя активность: 2026-03-28 - Completed quick task 260328-mbi: move lower-left gradient stop to 80 percent
+Последняя активность: 2026-03-28 - Completed quick task 260328-mpr: add lower proof section with left photo and right composite card
