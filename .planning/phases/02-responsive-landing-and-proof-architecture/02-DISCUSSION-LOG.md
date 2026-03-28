@@ -1,31 +1,31 @@
-﻿# Phase 2: Responsive Landing and Proof Architecture - Discussion Log
+# Фаза 2: Адаптивный лендинг и архитектура доказательств - Журнал обсуждения
 
-> Audit trail only. Decisions are captured in CONTEXT.md.
+> Аудитный след только для истории. Решения фиксируются в CONTEXT.md.
 
-**Date:** 2026-03-25
-**Phase:** 02-responsive-landing-and-proof-architecture
-**Areas discussed:** Scope reduction, advantages block spec, SEO logic, mobile responsiveness
+**Дата:** 2026-03-25
+**Фаза:** 02-responsive-landing-and-proof-architecture
+**Обсуждаемые области:** Сужение scope, спецификация advantages block, SEO logic, mobile responsiveness
 
 ---
 
-## Scope reduction
+## Сужение scope
 
 | Option | Description | Selected |
 |--------|-------------|----------|
-| Keep full original Phase 2 scope | Build all planned landing sections | |
-| Narrow this pass to advantages block only | Build only `Почему к нам обращаются` now | ✓ |
+| Оставить полный исходный scope Фазы 2 | Построить все запланированные landing sections | |
+| Сузить этот проход только до блока преимуществ | Построить только `Почему к нам обращаются` сейчас | ✓ |
 
-**User's choice:** Phase 2 in this pass is only the advantages block.
+**Выбор пользователя:** В этом проходе Фаза 2 - только блок преимуществ.
 
-## SEO + adaptive pre-lock
+## Предварительная фиксация SEO + адаптации
 
 | Option | Description | Selected |
 |--------|-------------|----------|
-| Decide later during implementation | Keep SEO/mobile decisions flexible | |
-| Lock SEO semantics + mobile behavior in context now | Pre-bake rules for planning/execution | ✓ |
+| Решить позже во время реализации | Оставить SEO/mobile decisions гибкими | |
+| Зафиксировать SEO semantics + mobile behavior сейчас | Предварительно задать правила для planning/execution | ✓ |
 
-**User's choice:** Predefine SEO logic and mobile adaptation constraints now.
+**Выбор пользователя:** Сразу предопределить SEO logic и mobile adaptation constraints.
 
-## Deferred ideas
+## Отложенные идеи
 
-- Remaining original Phase 2 sections are deferred to a later follow-up pass.
+- Остальные исходные секции Фазы 2 отложены на более поздний follow-up pass.

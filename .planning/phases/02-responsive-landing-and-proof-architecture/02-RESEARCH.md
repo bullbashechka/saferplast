@@ -1,47 +1,47 @@
-﻿# Phase 2: Responsive Landing and Proof Architecture - Research
+# Фаза 2: Адаптивный лендинг и архитектура доказательств - Исследование
 
-**Researched:** 2026-03-25
-**Domain:** Advantages block implementation (`docs/preimushestva.md`) with SEO semantics and mobile-first adaptation
-**Confidence:** HIGH
+**Исследовано:** 2026-03-25
+**Область:** Реализация блока преимуществ (`docs/preimushestva.md`) с SEO semantics и mobile-first адаптацией
+**Уверенность:** ВЫСОКАЯ
 
-## Scope Reality
+## Реальность scope
 
-Phase 2 roadmap is broad, but current approved execution scope is intentionally narrowed to one section only: the advantages/proof block `Почему к нам обращаются`.
-Planning and execution must not expand to other Phase 2 sections in this pass.
+Roadmap Фазы 2 шире, но текущий утвержденный scope выполнения намеренно сужен до одной секции: блока преимуществ/доказательств `Почему к нам обращаются`.
+Планирование и реализация не должны расширяться на другие секции Фазы 2 в этом проходе.
 
-## Implementation Direction
+## Направление реализации
 
-1. Build a dedicated landing section component under `src/features/landing` for advantages.
-2. Render content as indexable semantic HTML: `<section>`, `<h2>`, six cards with `<h3>` + paragraph.
-3. Map style tokens from `docs/preimushestva.md` to Tailwind classes (no absolute coordinates).
-4. Keep one dark CTA card distinct and clickable (anchor to `#lead-form` or existing request section).
-5. Add responsive layout rules:
-   - Desktop: asymmetric card grid similar to design intent.
-   - Tablet: simplified 2-column layout.
-   - Mobile: strict 1-column flow, no horizontal overflow.
-6. Keep Russian copy UTF-8 clean, avoid mojibake regressions.
+1. Построить отдельный component для landing section под `src/features/landing` для advantages.
+2. Рендерить content как индексируемый semantic HTML: `<section>`, `<h2>`, шесть карточек с `<h3>` + paragraph.
+3. Маппить style tokens из `docs/preimushestva.md` в Tailwind classes (без absolute coordinates).
+4. Оставить одну dark CTA card заметной и кликабельной (anchor на `#lead-form` или существующую request section).
+5. Добавить responsive layout rules:
+   - Desktop: асимметричная card grid, похожая на intent дизайна.
+   - Tablet: упрощенный 2-column layout.
+   - Mobile: строгий 1-column flow, без horizontal overflow.
+6. Держать русский copy UTF-8 clean, избегать mojibake regressions.
 
-## SEO Strategy (for this scope)
+## SEO стратегия (для этого scope)
 
-- Use section heading hierarchy: one `h2` for section title, `h3` for each card title.
-- Keep all value propositions as real text in DOM (no text baked into images).
-- Preserve concise keyword cluster around: production, warranty, speed, experience, free measurement.
-- Do not overstuff repeated keywords.
+- Использовать heading hierarchy секции: один `h2` для title секции, `h3` для каждого card title.
+- Держать все value propositions как реальный text в DOM (не текст внутри изображений).
+- Сохранять краткий keyword cluster вокруг: производство, гарантия, скорость, опыт, бесплатный замер.
+- Не перегружать секцию повторяющимися keywords.
 
-## Mobile Strategy
+## Mobile стратегия
 
-- `px` spacing reduced on small screens, typography scales down while preserving hierarchy.
-- Cards stack into one column on `sm` and below.
-- Long headings wrap naturally; ensure no clipping/cropping.
-- Dark CTA card remains visually dominant and tap-friendly.
+- На маленьких экранах `px` spacing уменьшается, typography масштабируется вниз, но иерархия сохраняется.
+- Карточки складываются в одну колонку на `sm` и ниже.
+- Длинные заголовки должны переноситься естественно; избегать clipping/cropping.
+- Dark CTA card остается визуально доминирующей и удобной для нажатия.
 
-## Risks
+## Риски
 
-- Exact Figma absolute positions are not portable to responsive code; must translate into adaptive grid rules.
-- UTF-8 corruption risk in Russian literals; verify saved files and rendered output.
+- Точные абсолютные позиции из Figma плохо переносятся в responsive code; нужно переводить их в adaptive grid rules.
+- Риск повреждения UTF-8 в русских литералах; нужно проверять сохраненные файлы и рендер.
 
-## Validation Architecture
+## Архитектура валидации
 
-- Quick command: `npm.cmd run lint`
-- Full command: `npm.cmd run lint && npm.cmd run typecheck`
-- Manual checks: desktop/tablet/mobile visual pass of section hierarchy and card readability.
+- Быстрая команда: `npm.cmd run lint`
+- Полная команда: `npm.cmd run lint && npm.cmd run typecheck`
+- Ручные проверки: desktop/tablet/mobile visual pass по иерархии секции и читаемости карточек.

@@ -1,139 +1,139 @@
-# Phase 1: Offer Backbone and First-Screen Refinement - Research
+# Фаза 1: Основа предложения и доработка первого экрана - Исследование
 
-**Researched:** 2026-03-24
-**Domain:** Figma-driven Next.js landing first screen refinement
-**Confidence:** MEDIUM
+**Исследовано:** 2026-03-24
+**Область:** Доработка первого экрана landing на Next.js под Figma-дизайн
+**Уверенность:** СРЕДНЯЯ
 
 <user_constraints>
-## User Constraints (from CONTEXT.md)
+## Ограничения пользователя (из CONTEXT.md)
 
-### Locked Decisions
-### Offer and copy
-- **D-01:** The hero `h1` must be: `Окна, двери и балконы из ПВХ и алюминия напрямую от производителя`.
-- **D-02:** The hero supporting text must be: `Изготовление, монтаж и ремонт окон, дверей и балконов в Караганде. Бесплатный замер и предварительный расчет стоимости.`
-- **D-03:** The first screen must communicate the full business scope immediately: manufacturing, installation, and repair of PVC and aluminum window-related products.
+### Зафиксированные решения
+### Предложение и копирайт
+- **D-01:** Заголовок hero `h1` должен быть таким: `Окна, двери и балконы из ПВХ и алюминия напрямую от производителя`.
+- **D-02:** Поддерживающий текст hero должен быть таким: `Изготовление, монтаж и ремонт окон, дверей и балконов в Караганде. Бесплатный замер и предварительный расчет стоимости.`
+- **D-03:** Первый экран должен сразу показывать полный масштаб бизнеса: производство, монтаж и ремонт оконных изделий из ПВХ и алюминия.
 
-### CTA hierarchy
-- **D-04:** The primary CTA on the first screen is `Бесплатный замер`.
-- **D-05:** The secondary CTA on the first screen is `Получить расчет`.
-- **D-06:** The CTA hierarchy must make the measurement request feel like the main business conversion path, with estimate request visually secondary.
+### Иерархия CTA
+- **D-04:** Основной CTA на первом экране - `Бесплатный замер`.
+- **D-05:** Вторичный CTA на первом экране - `Получить расчет`.
+- **D-06:** Иерархия CTA должна делать запрос на замер главным путем конверсии, а запрос расчета - визуально вторичным.
 
-### First-screen trust signals
-- **D-07:** The first screen must show short trust/value тезисы in or near the hero, not a full card grid.
-- **D-08:** The short trust/value тезисы for the first screen are: `Собственное производство`, `Быстрый выезд и расчет`, `Гарантия 1 год`.
-- **D-09:** The separate section `Почему к нам обращаются` with multiple advantage cards is explicitly out of this phase and remains a later landing block.
+### Trust-сигналы первого экрана
+- **D-07:** На первом экране должны быть короткие тезисы о доверии/ценности внутри hero или рядом с ним, а не полноценная сетка карточек.
+- **D-08:** Короткие trust/value тезисы для первого экрана: `Собственное производство`, `Быстрый выезд и расчет`, `Гарантия 1 год`.
+- **D-09:** Отдельная секция `Почему к нам обращаются` с несколькими карточками преимуществ явно вне этой фазы и останется для более позднего блока лендинга.
 
-### Contact presentation
-- **D-10:** The first screen must visibly include phone, city, WhatsApp, and Telegram.
-- **D-11:** The phone remains the main textual contact in the contact zone.
-- **D-12:** WhatsApp and Telegram must be shown as separate icon links visually grouped with the phone rather than competing with the primary CTA.
+### Подача контактов
+- **D-10:** На первом экране должны быть видны телефон, город, WhatsApp и Telegram.
+- **D-11:** Телефон остается главным текстовым контактом в контактной зоне.
+- **D-12:** WhatsApp и Telegram должны показываться как отдельные ссылочные иконки, визуально сгруппированные с телефоном, а не конкурирующие с основным CTA.
 
-### Claude's Discretion
-- Exact visual treatment of the short trust/value тезисы within the hero flow
-- Exact spacing, sizing, and responsive behavior, as long as they follow Figma and the repository layout rules
-- Whether the city appears in the header contact group, hero support text, or both, as long as first-screen relevance is preserved
+### Дискреция Claude
+- Точная визуальная подача коротких trust/value тезисов внутри hero-flow
+- Точное расстояние, размеры и адаптивное поведение, если они соответствуют Figma и правилам layout репозитория
+- Появляется ли город в header contact group, в supporting text hero или в обоих местах, если сохраняется релевантность первого экрана
 
-### Deferred Ideas (OUT OF SCOPE)
-- Full multi-card advantages section `Почему к нам обращаются` - later landing section, not part of the first-screen refinement phase
-- FAQ, services, reviews, and other lower landing sections - Phase 2 work
-- Functional lead form behavior - Phase 3 work
-- Calculator behavior and handoff - Phase 4 work
+### Отложенные идеи (ВНЕ ОБЪЕМА)
+- Полноценная много-карточная секция преимуществ `Почему к нам обращаются` - более поздняя секция лендинга, не часть фазы доработки первого экрана
+- FAQ, услуги, отзывы и другие нижние секции лендинга - работа Фазы 2
+- Функциональное поведение lead form - работа Фазы 3
+- Поведение калькулятора и передача данных - работа Фазы 4
 </user_constraints>
 
 <phase_requirements>
-## Phase Requirements
+## Требования фазы
 
-| ID | Description | Research Support |
-|----|-------------|------------------|
-| CONT-01 | Visitor can understand within the first screen that SaFerplast manufactures, installs, and repairs PVC and aluminum windows, doors, and balconies | Use the locked `h1` + supporting text, keep hero copy explicit, and avoid hiding core offer in lower sections |
-| CONT-02 | Visitor can see a clear primary CTA for consultation, measurement, or estimate request above the fold | Make both CTAs real links/actions above the fold; primary CTA must visually dominate secondary |
-| CONT-05 | Visitor can see that the company works with apartments, private houses, offices, and commercial spaces | Add a concise audience line or chip group in hero support/trust area rather than a new lower-page section |
-| TRST-01 | Visitor can see the company differentiators, including own production, direct pricing, and speed of work | Use short trust bullets near the hero, not a full card grid; keep them scannable and adjacent to CTA block |
-| SITE-03 | Visitor can find contact details and service-area relevance on the page | Keep phone/city visible in the first screen, add WhatsApp/Telegram links, and remove or fix dead contact anchors |
+| ID | Описание | Поддержка исследования |
+|----|----------|------------------------|
+| CONT-01 | Посетитель в первом экране понимает, что SaFerplast производит, устанавливает и ремонтирует окна, двери и балконы из ПВХ и алюминия | Использовать зафиксированные `h1` + supporting text, делать copy героя явным и не прятать основное предложение в нижних секциях |
+| CONT-02 | Посетитель видит ясный основной CTA для консультации, замера или запроса расчета above the fold | Сделать оба CTA реальными ссылками/действиями above the fold; основной CTA должен визуально доминировать |
+| CONT-05 | Посетитель видит, что компания работает с квартирами, частными домами, офисами и коммерческими помещениями | Добавить краткую аудиторию-линейку или набор chips в hero support/trust area, а не отдельную нижнюю секцию |
+| TRST-01 | Посетитель видит отличия компании, включая собственное производство, прямое ценообразование и скорость работы | Использовать короткие trust bullets рядом с hero, а не целую сетку карточек; держать их читаемыми и близкими к CTA |
+| SITE-03 | Посетитель может найти контактные данные и релевантность по зоне обслуживания | Держать телефон/город видимыми на первом экране, добавить WhatsApp/Telegram и убрать или исправить мертвые contact anchors |
 </phase_requirements>
 
-## Summary
+## Краткое содержание
 
-This phase should be planned as a focused refinement of the existing `FirstScreen`, `SiteHeader`, and `HeroSection` rather than a redesign or a broader landing build-out. The repo already has the right technical stack for the work: Next.js App Router, React function components, Tailwind CSS, local font loading, and static assets for logo/hero imagery. The planning question is mostly structural and content-driven: how to make the first screen communicate offer, audience, trust, and action immediately while staying faithful to Figma and the repo's Tailwind-first layout rules.
+Эту фазу следует планировать как сфокусированную доработку существующего `FirstScreen`, `SiteHeader` и `HeroSection`, а не как редизайн или более широкий build-out лендинга. В репозитории уже есть нужный технический стек для работы: Next.js App Router, React function components, Tailwind CSS, локальная загрузка шрифтов и статические ассеты для логотипа и hero-изображения. Планировочный вопрос здесь в основном структурный и контентный: как сделать первый экран так, чтобы он сразу сообщал предложение, аудиторию, доверие и действие, оставаясь верным Figma и правилам Tailwind-first layout из репозитория.
 
-The most important planning constraint is scope discipline. Phase 1 should not introduce new libraries, new lower-page sections, or a content-model refactor across the whole app. It should fix the first screen's current gaps: inert CTA buttons, dead navigation anchors (`#projects`, `#contacts`), missing WhatsApp/Telegram assets/links, and incomplete trust/audience messaging. It should also avoid prematurely centralizing business copy into `src/lib/site-config.ts`, which currently contains wrong/corrupted data and is not a safe shared source yet.
+Самое важное ограничение - дисциплина по scope. Фаза 1 не должна вводить новые библиотеки, новые нижние секции или рефакторинг content-model по всему приложению. Нужно исправить текущие пробелы первого экрана: инертные CTA-кнопки, мертвые навигационные anchors (`#projects`, `#contacts`), отсутствующие WhatsApp/Telegram assets/links и неполные trust/audience-сообщения. Также не стоит преждевременно централизовать business copy в `src/lib/site-config.ts`, потому что сейчас там неверные/поврежденные данные и это небезопасный shared source.
 
-**Primary recommendation:** Plan Phase 1 as a pure landing-first-screen pass that keeps the existing component split, adds a small typed content source local to `src/features/landing/`, converts CTAs and contact items into real links, and implements the trust/audience signals inside the hero flow using Tailwind flex/grid patterns rather than new sections or absolute-positioned Figma translation.
+**Основная рекомендация:** планировать Фазу 1 как чистую first-screen-pass для лендинга, которая сохраняет текущий split компонентов, добавляет небольшой typed content source внутри `src/features/landing/`, превращает CTA и contact items в реальные ссылки и реализует trust/audience-сигналы внутри hero-flow с помощью Tailwind flex/grid, а не новых секций или абсолютного позиционирования.
 
-## Project Constraints (from CLAUDE.md)
+## Ограничения проекта (из CLAUDE.md)
 
-- Use the existing stack: Next.js, TypeScript, Tailwind CSS.
-- Figma is the source of truth; implementation should follow the approved layout closely.
-- Stay Tailwind-first with minimal global CSS.
-- Prefer flex/grid, rem-based spacing, and container/max-width patterns.
-- Keep Cloudflare compatibility intact.
-- Messaging must stay broad enough for apartments, private homes, offices, and commercial spaces.
-- Use TypeScript for all app code.
-- Keep components small, composable, and functional.
-- Keep application code under `src/` with feature code under `src/features`.
-- Use `kebab-case` filenames and PascalCase component names.
-- For now, validation is `npm run lint` and `npm run typecheck`.
-- On PowerShell systems with script restrictions, prefer `npm.cmd run <script>`.
+- Использовать существующий стек: Next.js, TypeScript, Tailwind CSS.
+- Figma - источник истины; реализация должна близко следовать утвержденному макету.
+- Оставаться Tailwind-first с минимальным глобальным CSS.
+- Предпочитать flex/grid, spacing в rem и container/max-width patterns.
+- Сохранять совместимость с Cloudflare.
+- Сообщения должны оставаться достаточно широкими для квартир, частных домов, офисов и коммерческих пространств.
+- Использовать TypeScript для всего app code.
+- Держать компоненты маленькими, компонуемыми и функциональными.
+- Держать application code под `src/` и feature code под `src/features`.
+- Использовать имена файлов в `kebab-case`, а компонентов - в PascalCase.
+- Пока что валидация - это `npm run lint` и `npm run typecheck`.
+- На PowerShell с ограничениями на script execution предпочитать `npm.cmd run <script>`.
 
-## Standard Stack
+## Стандартный стек
 
-### Core
-| Library | Version | Purpose | Why Standard |
-|---------|---------|---------|--------------|
-| Next.js | 15.5.14 | App Router page composition, `next/image`, `next/link` | Already installed, current repo standard, ideal for a static marketing first screen |
-| React | 19.2.4 | Function component composition | Already installed, no state-heavy UI needed for this phase |
-| Tailwind CSS | 3.4.19 | Layout, spacing, typography, responsive behavior | Matches repo conventions and existing tokens in `tailwind.config.js` |
-| TypeScript | 5.9.3 | Strict typing for content/config and props | Already enforced by repo and enough for this phase's static data flow |
+### Основной
+| Библиотека | Версия | Назначение | Почему это стандарт |
+|-----------|--------|------------|---------------------|
+| Next.js | 15.5.14 | Композиция страницы App Router, `next/image`, `next/link` | Уже установлен, стандарт репозитория, идеально для статического marketing first screen |
+| React | 19.2.4 | Композиция function components | Уже установлен, state-heavy UI для этой фазы не нужен |
+| Tailwind CSS | 3.4.19 | Layout, spacing, typography, responsive behavior | Соответствует правилам репозитория и существующим токенам в `tailwind.config.js` |
+| TypeScript | 5.9.3 | Строгая типизация content/config и props | Уже enforced в репозитории и достаточно для статического data flow этой фазы |
 
-### Supporting
-| Library | Version | Purpose | When to Use |
-|---------|---------|---------|-------------|
-| `@fontsource/montserrat` | 5.2.8 | Local body font delivery | Keep existing local font loading; do not reintroduce remote imports |
-| `@fontsource/sansation` | 5.2.2 | Local display font delivery | Keep existing display font pattern for hero headline |
-| `next/image` | bundled with Next.js 15.5.14 | Optimized logo and hero imagery | Use for all first-screen raster assets |
+### Поддерживающий
+| Библиотека | Версия | Назначение | Когда использовать |
+|-----------|--------|------------|------------------|
+| `@fontsource/montserrat` | 5.2.8 | Локальная доставка body font | Сохранять текущую локальную загрузку шрифта; не возвращать remote imports |
+| `@fontsource/sansation` | 5.2.2 | Локальная доставка display font | Сохранять текущий pattern display font для hero headline |
+| `next/image` | bundled with Next.js 15.5.14 | Оптимизированные logo и hero images | Использовать для всех first-screen raster assets |
 
-### Alternatives Considered
-| Instead of | Could Use | Tradeoff |
-|------------|-----------|----------|
-| Existing Tailwind + feature components | UI kit/component library | Adds dependency churn and design-system mismatch for a small Figma-locked phase |
-| Local typed landing content module | `src/lib/site-config.ts` refactor now | Broader cleanup than this phase needs; current file has bad data and encoding issues |
-| Existing static assets + custom messenger icons in `public/` | External icon library | Faster initially, but unnecessary for two icons and adds bundle/dependency noise |
+### Рассмотренные альтернативы
+| Вместо | Можно использовать | Компромисс |
+|-------|------------------|-----------|
+| Существующий Tailwind + feature components | UI kit/component library | Добавляет churn зависимостей и mismatch с дизайн-системой для маленькой Figma-locked фазы |
+| Локальный typed landing content module | Рефактор `src/lib/site-config.ts` прямо сейчас | Это шире, чем требует фаза; текущий файл содержит плохие данные и проблемы с кодировкой |
+| Существующие static assets + собственные messenger icons в `public/` | Внешняя icon library | Быстрее вначале, но лишнее для двух иконок и добавляет шум в bundle/dependencies |
 
-**Installation:**
+**Установка:**
 ```bash
 npm.cmd install
 ```
 
-**Version verification:** Verified on 2026-03-24 with local install checks plus npm registry lookups.
-- `next`: installed `15.5.14`; upstream latest `16.2.1`, published `2026-03-20`
-- `react`: installed `19.2.4`; upstream latest `19.2.4`, published `2026-01-26`
-- `tailwindcss`: installed `3.4.19`; upstream latest `4.2.2`, published `2026-03-18`
-- `typescript`: installed `5.9.3`; upstream latest `6.0.2`, published `2026-03-23`
+**Проверка версий:** подтверждено 2026-03-24 локальными проверками install и npm registry lookup.
+- `next`: установлен `15.5.14`; upstream latest `16.2.1`, опубликован `2026-03-20`
+- `react`: установлен `19.2.4`; upstream latest `19.2.4`, опубликован `2026-01-26`
+- `tailwindcss`: установлен `3.4.19`; upstream latest `4.2.2`, опубликован `2026-03-18`
+- `typescript`: установлен `5.9.3`; upstream latest `6.0.2`, опубликован `2026-03-23`
 
-**Planning implication:** do not turn this phase into an upgrade phase. Use the installed stack.
+**Планировочное следствие:** не превращать эту фазу в фазу апгрейда. Использовать установленный стек.
 
-## Architecture Patterns
+## Архитектурные паттерны
 
-### Recommended Project Structure
+### Рекомендуемая структура проекта
 ```text
 src/
 ├── app/
-│   ├── layout.tsx        # Root metadata and html/body shell
-│   └── page.tsx          # Landing page composition
+│   ├── layout.tsx        # Root metadata и html/body shell
+│   └── page.tsx          # Композиция landing page
 ├── features/
 │   └── landing/
-│       ├── first-screen.tsx          # Composition root for first screen
+│       ├── first-screen.tsx          # Composition root для первого экрана
 │       ├── hero-section.tsx          # Hero copy, CTAs, trust cues, image
 │       ├── site-header.tsx           # Logo, nav, contact cluster
-│       └── first-screen-content.ts   # New typed local content/config for this phase
+│       └── first-screen-content.ts   # Новый typed local content/config для этой фазы
 └── styles/
-    └── globals.css       # Fonts and minimal base rules only
+    └── globals.css       # Только шрифты и минимальные base rules
 ```
 
-### Pattern 1: Keep `FirstScreen` as a composition root
-**What:** Continue composing the header and hero in `first-screen.tsx`; do not collapse the whole first screen into one monolith.
-**When to use:** For Phase 1 changes spanning both header and hero but still belonging to one above-the-fold experience.
-**Example:**
+### Паттерн 1: Оставить `FirstScreen` как composition root
+**Что:** Продолжить собирать header и hero в `first-screen.tsx`; не превращать весь первый экран в монолит.
+**Когда использовать:** Для изменений Фазы 1, охватывающих и header, и hero, но все еще принадлежащих одному above-the-fold experience.
+**Пример:**
 ```tsx
 export function FirstScreen() {
   return (
@@ -144,12 +144,12 @@ export function FirstScreen() {
   );
 }
 ```
-Source: existing repo pattern in `src/features/landing/first-screen.tsx`
+Источник: существующий паттерн репозитория в `src/features/landing/first-screen.tsx`
 
-### Pattern 2: Use a local typed content object for first-screen business copy
-**What:** Put hero copy, trust bullets, audience line, city, phone, and messenger URLs into a small typed module under `src/features/landing/`.
-**When to use:** When multiple first-screen components need the same text, but broader app-wide config cleanup is out of scope.
-**Example:**
+### Паттерн 2: Использовать локальный typed content object для business copy первого экрана
+**Что:** Поместить hero copy, trust bullets, audience line, city, phone и messenger URLs в небольшой typed module внутри `src/features/landing/`.
+**Когда использовать:** Когда нескольким first-screen компонентам нужен один и тот же текст, но более широкий refactor site-wide config сейчас не нужен.
+**Пример:**
 ```ts
 export type FirstScreenContent = {
   headline: string;
@@ -162,12 +162,12 @@ export type FirstScreenContent = {
   telegramHref: string;
 };
 ```
-Source: repo architecture inference based on current static top-down data flow
+Источник: inference по текущему статическому top-down data flow
 
-### Pattern 3: Make the hero a semantic, responsive two-column layout
-**What:** On large screens, use a two-column grid for copy and imagery; on small screens, stack content vertically with copy and CTAs before the image.
-**When to use:** Always for the approved first-screen layout unless Figma explicitly dictates a different responsive order.
-**Example:**
+### Паттерн 3: Сделать hero семантическим, адаптивным двухколоночным layout
+**Что:** На больших экранах использовать двухколоночную сетку для текста и изображения; на маленьких экранах stack'ить контент вертикально, оставляя copy и CTAs выше изображения.
+**Когда использовать:** Всегда для утвержденного first-screen layout, если Figma явно не требует иной responsive order.
+**Пример:**
 ```html
 <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
   <div class="md:flex">
@@ -178,12 +178,12 @@ Source: repo architecture inference based on current static top-down data flow
   </div>
 </div>
 ```
-Source: https://v3.tailwindcss.com/docs/responsive-design
+Источник: https://v3.tailwindcss.com/docs/responsive-design
 
-### Pattern 4: Use real links for navigation and conversion actions
-**What:** Navigation items and CTAs must point somewhere meaningful now, not wait for later phases.
-**When to use:** For header nav links, phone/messenger actions, and hero CTAs.
-**Example:**
+### Паттерн 4: Использовать реальные ссылки для navigation и conversion actions
+**Что:** Навигационные элементы и CTAs должны сейчас вести в осмысленные места, а не ждать будущих фаз.
+**Когда использовать:** Для header nav links, phone/messenger actions и hero CTAs.
+**Пример:**
 ```tsx
 import Link from 'next/link'
 
@@ -191,14 +191,14 @@ export default function Page() {
   return <Link href="/dashboard">Dashboard</Link>
 }
 ```
-Source: https://github.com/vercel/next.js/blob/canary/docs/01-app/03-api-reference/02-components/link.mdx
+Источник: https://github.com/vercel/next.js/blob/canary/docs/01-app/03-api-reference/02-components/link.mdx
 
-**Phase-specific guidance:** for this repo, the primary CTA should likely point to `#lead-form` and the secondary CTA to `#calculator` unless the approved Figma explicitly defines another action path.
+**Специфическая рекомендация фазы:** для этого репозитория основной CTA, вероятно, должен вести на `#lead-form`, а secondary CTA - на `#calculator`, если утвержденная Figma явно не задает другой путь действия.
 
-### Pattern 5: Keep images in `next/image` with explicit sizing and useful alt text
-**What:** Continue using `next/image` for logo and hero imagery with width/height or `fill`, and with meaningful alt text unless decorative.
-**When to use:** For all above-the-fold raster assets.
-**Example:**
+### Паттерн 5: Сохранять images через `next/image` с явными размерами и полезным alt text
+**Что:** Продолжать использовать `next/image` для logo и hero imagery с width/height или `fill`, и с осмысленным alt text, если изображение не декоративное.
+**Когда использовать:** Для всех above-the-fold raster assets.
+**Пример:**
 ```tsx
 import Image from 'next/image'
 
@@ -213,62 +213,62 @@ export default function Page() {
   )
 }
 ```
-Source: https://nextjs.org/docs/pages/api-reference/components/image
+Источник: https://nextjs.org/docs/pages/api-reference/components/image
 
-### Anti-Patterns to Avoid
-- **Dead anchors:** `#projects` and `#contacts` do not exist in the current page. Phase 1 should remove or remap them.
-- **Inert CTA buttons:** current hero buttons are plain buttons with no action. That fails the intent of `CONT-02`.
-- **Figma-by-absolute-positioning:** do not translate desktop coordinates directly into absolute layouts for main structure.
-- **Premature shared config refactor:** do not make Phase 1 depend on fixing all site-wide business data in `src/lib/site-config.ts`.
-- **Trust-card creep:** do not pull the later `Почему к нам обращаются` card grid into the first screen.
+### Антипаттерны, которых нужно избегать
+- **Мертвые anchors:** `#projects` и `#contacts` не существуют на текущей странице. Фаза 1 должна убрать или переназначить их.
+- **Инертные CTA buttons:** текущие hero buttons - это просто buttons без действия. Это не соответствует `CONT-02`.
+- **Figma-by-absolute-positioning:** не переносить desktop coordinates напрямую в absolute layout для основной структуры.
+- **Преждевременный shared config refactor:** не делать Фазу 1 зависимой от исправления всех site-wide business data в `src/lib/site-config.ts`.
+- **Trust-card creep:** не тащить будущую `Почему к нам обращаются` card grid на первый экран.
 
-## Don't Hand-Roll
+## Не делать вручную
 
-| Problem | Don't Build | Use Instead | Why |
-|---------|-------------|-------------|-----|
-| Responsive hero layout | Absolute-positioned desktop recreation | Tailwind flex/grid with max-width containers | Easier to maintain, mobile-safe, aligned with repo rules |
-| Image delivery | Raw `<img>` with manual optimization | `next/image` | Built-in optimization, sizing, and accessibility expectations |
-| Icon delivery for two messenger buttons | Whole icon library | Two local SVG assets in `public/icons` | Smaller scope and bundle, easier brand control |
-| Shared business content | App-wide config rewrite in this phase | Local typed `first-screen-content.ts` | Keeps Phase 1 focused and avoids broken `site-config` dependency |
-| CTA behavior | Temporary no-op buttons | Real anchor/contact links | Prevents fake affordances and makes first screen actually usable |
+| Проблема | Не строить | Использовать вместо | Почему |
+|---------|------------|--------------------|-------|
+| Responsive hero layout | Абсолютно позиционированную desktop reconstruction | Tailwind flex/grid с max-width контейнерами | Проще поддерживать, безопаснее для mobile и соответствует правилам репозитория |
+| Доставку изображений | Голый `<img>` с ручной оптимизацией | `next/image` | Встроенная оптимизация, sizing и accessibility expectations |
+| Иконки для двух messenger buttons | Целую icon library | Два локальных SVG в `public/icons` | Меньше bundle и зависимостей, проще бренд-контроль |
+| Shared business content | Переписывать весь app-wide config в этой фазе | Локальный typed `first-screen-content.ts` | Держит Фазу 1 сфокусированной и избегает сломанного `site-config` dependency |
+| Поведение CTA | Временные no-op buttons | Реальные anchor/contact links | Убирает fake affordances и делает первый экран реально usable |
 
-**Key insight:** this phase is small enough that custom UI abstraction and dependency expansion will create more planning risk than value. Reuse the current feature module and add only the smallest missing pieces.
+**Ключевой вывод:** эта фаза достаточно мала, чтобы custom UI abstraction и расширение зависимостей принесли больше рисков, чем пользы. Используйте текущий feature module и добавляйте только самые маленькие недостающие части.
 
-## Common Pitfalls
+## Типичные ошибки
 
-### Pitfall 1: Treating the first screen as “visual only”
-**What goes wrong:** The UI looks closer to Figma but CTAs and nav items still do nothing.
-**Why it happens:** Teams defer interaction wiring because functional lead capture is scheduled later.
-**How to avoid:** Plan Phase 1 to convert CTAs and valid nav items into real anchors now.
-**Warning signs:** `button type="button"` with no handler; anchors pointing to missing IDs.
+### Ошибка 1: Считать первый экран «только визуальным»
+**Что идет не так:** UI выглядит ближе к Figma, но CTAs и nav items по-прежнему ничего не делают.
+**Почему так происходит:** Команды откладывают wiring взаимодействий, потому что функциональный lead capture запланирован позже.
+**Как избежать:** Планировать Фазу 1 так, чтобы CTAs и корректные nav items уже сейчас стали реальными anchors.
+**Сигналы риска:** `button type="button"` без handler; anchors, ведущие на несуществующие IDs.
 
-### Pitfall 2: Overloading the hero with too much persuasion content
-**What goes wrong:** The first screen becomes dense, hard to scan, and duplicates later sections.
-**Why it happens:** Trust and audience requirements get solved by piling on cards and paragraphs.
-**How to avoid:** Keep trust to short bullets/chips and audience fit to one concise supporting line.
-**Warning signs:** More than one trust row, multiple cards, or copy blocks competing with the `h1`.
+### Ошибка 2: Перегрузить hero слишком большим количеством persuasive content
+**Что идет не так:** Первый экран становится плотным, трудно сканируется и дублирует нижние секции.
+**Почему так происходит:** Trust и audience requirements решают, просто добавляя cards и paragraphs.
+**Как избежать:** Оставить trust в виде коротких bullets/chips, а audience fit - в одной компактной supporting line.
+**Сигналы риска:** Более одной строки trust, несколько карточек или текстовые блоки, конкурирующие с `h1`.
 
-### Pitfall 3: Recreating Figma in fixed desktop pixels
-**What goes wrong:** The desktop layout may match the mockup, but tablet/mobile breaks badly.
-**Why it happens:** Figma values are copied literally instead of adapted into responsive layout rules.
-**How to avoid:** Use rem-based spacing, width constraints, and breakpoint-driven stacking.
-**Warning signs:** Large fixed widths, absolute positioning, and no content reflow below `lg`.
+### Ошибка 3: Воссоздавать Figma в фиксированных desktop pixels
+**Что идет не так:** Desktop может совпасть с мокапом, но tablet/mobile ломаются.
+**Почему так происходит:** Значения Figma копируются буквально вместо адаптации в responsive layout rules.
+**Как избежать:** Использовать spacing на rem, width constraints и breakpoint-driven stacking.
+**Сигналы риска:** Большие fixed widths, absolute positioning и отсутствие reflow ниже `lg`.
 
-### Pitfall 4: Centralizing content into the wrong shared module
-**What goes wrong:** Planning picks `src/lib/site-config.ts`, then implementation trips over bad city/phone values and encoding issues.
-**Why it happens:** Shared config seems cleaner in theory.
-**How to avoid:** Keep first-screen content local for now; schedule shared business-data cleanup separately if needed.
-**Warning signs:** Phase plan contains unrelated config cleanup work.
+### Ошибка 4: Централизовать контент в неправильный shared module
+**Что идет не так:** Планирование выбирает `src/lib/site-config.ts`, затем implementation натыкается на плохие city/phone values и encoding issues.
+**Почему так происходит:** Shared config кажется более аккуратным в теории.
+**Как избежать:** Пока держать first-screen content локально; при необходимости позже отдельно планировать очистку shared business-data.
+**Сигналы риска:** В плане фазы появляется несвязанный config cleanup work.
 
-### Pitfall 5: Contact visibility without contact usability
-**What goes wrong:** Phone, city, WhatsApp, and Telegram are visible but not clickable or grouped clearly.
-**Why it happens:** Contact treatment is handled as decoration rather than action design.
-**How to avoid:** Make phone the dominant text action, messengers icon-only or icon-plus-label secondary actions, and city non-competitive.
-**Warning signs:** Messengers visually louder than CTA, or contact values rendered as plain text.
+### Ошибка 5: Видимость контактов без их usability
+**Что идет не так:** Телефон, город, WhatsApp и Telegram видны, но не кликабельны или сгруппированы неясно.
+**Почему так происходит:** Контакты рассматриваются как декор, а не как часть action design.
+**Как избежать:** Сделать phone главным текстовым действием, messengers - иконками или secondary icon-plus-label, а город - не конкурирующим элементом.
+**Сигналы риска:** Messengers визуально громче CTA или контактные значения рендерятся как plain text.
 
-## Code Examples
+## Примеры кода
 
-Verified patterns from official sources:
+Проверенные паттерны из официальных источников:
 
 ### Responsive Marketing Layout
 ```html
@@ -284,9 +284,9 @@ Verified patterns from official sources:
   </div>
 </div>
 ```
-Source: https://v3.tailwindcss.com/docs/responsive-design
+Источник: https://v3.tailwindcss.com/docs/responsive-design
 
-### Explicitly Sized Next Image
+### Явно заданный размер Next Image
 ```tsx
 import Image from 'next/image'
 
@@ -301,9 +301,9 @@ export default function Page() {
   )
 }
 ```
-Source: https://nextjs.org/docs/pages/api-reference/components/image
+Источник: https://nextjs.org/docs/pages/api-reference/components/image
 
-### Direct Next Link Usage
+### Прямое использование Next Link
 ```tsx
 import Link from 'next/link'
 
@@ -311,96 +311,96 @@ export default function Page() {
   return <Link href="/dashboard">Dashboard</Link>
 }
 ```
-Source: https://github.com/vercel/next.js/blob/canary/docs/01-app/03-api-reference/02-components/link.mdx
+Источник: https://github.com/vercel/next.js/blob/canary/docs/01-app/03-api-reference/02-components/link.mdx
 
-## State of the Art
+## Современное состояние
 
-| Old Approach | Current Approach | When Changed | Impact |
-|--------------|------------------|--------------|--------|
-| Nested `<a>` inside `<Link>` | Direct `<Link>` usage | Next.js 13+ | Simpler nav/link markup in App Router |
-| Raw `<img>` for hero/logo | `next/image` with explicit sizing/alt | Longstanding Next.js best practice, still current in 2026 docs | Better optimization and less layout shift |
-| Desktop-only Figma reconstruction | Responsive flex/grid containerization | Current Tailwind/marketing-page standard | Fewer mobile regressions and less rework |
-| Remote Google Font imports from design examples | Local `@fontsource` imports already in `globals.css` | Existing repo implementation | Avoids runtime font dependency drift |
+| Старый подход | Текущий подход | Когда изменилось | Влияние |
+|--------------|----------------|------------------|---------|
+| Вложенный `<a>` внутри `<Link>` | Прямое использование `<Link>` | Next.js 13+ | Проще nav/link markup в App Router |
+| Голый `<img>` для hero/logo | `next/image` с явным sizing/alt | Долгосрочная best practice Next.js, актуальна и в docs 2026 | Лучшая оптимизация и меньше layout shift |
+| Desktop-only Figma reconstruction | Responsive flex/grid containerization | Текущий Tailwind/marketing-page стандарт | Меньше mobile regressions и меньше переделок |
+| Remote Google Font imports из design examples | Локальные `@fontsource` imports уже в `globals.css` | Существующая реализация репозитория | Нет runtime font dependency drift |
 
-**Deprecated/outdated:**
-- Nested anchor usage inside `next/link`: do not use it for this phase.
-- Reintroducing `@import url(...)` Google Fonts from `docs/DESIGN_SYSTEM.md`: the repo already uses local font packages and should stay that way.
+**Устаревшее/неактуальное:**
+- Вложенные anchors внутри `next/link`: для этой фазы не использовать.
+- Возврат к `@import url(...)` Google Fonts из `docs/DESIGN_SYSTEM.md`: репозиторий уже использует локальные font packages и должен оставаться таким.
 
-## Open Questions
+## Открытые вопросы
 
-1. **What is the exact approved Figma file key and node ID for the first screen?**
-   - What we know: the phase context requires close Figma fidelity, and Figma auth is available in this environment.
-   - What's unclear: no Figma URL, file key, or node ID is recorded in the repo/context.
-   - Recommendation: planner should treat the approved Figma node as a required input before implementation starts.
+1. **Какой именно approved Figma file key и node ID у первого экрана?**
+   - Что известно: фаза требует близкой Figma fidelity, и Figma auth доступна в этой среде.
+   - Что неясно: в repo/context нет Figma URL, file key или node ID.
+   - Рекомендация: planner должен считать утвержденный Figma node обязательным входом до начала реализации.
 
-2. **What are the final phone number and messenger URLs for launch?**
-   - What we know: the first screen must show phone, city, WhatsApp, and Telegram.
-   - What's unclear: current `site-header.tsx` uses placeholder phone data, and `site-config.ts` is incorrect.
-   - Recommendation: planner should include a task to source and wire final contact values, with local typed content storage for this phase.
+2. **Какие финальные phone number и messenger URLs нужны к запуску?**
+   - Что известно: на первом экране должны быть phone, city, WhatsApp и Telegram.
+   - Что неясно: текущий `site-header.tsx` использует placeholder phone data, а `site-config.ts` неверен.
+   - Рекомендация: в план включить задачу на получение и wiring финальных contact values, с локальным typed content storage для этой фазы.
 
-3. **Should Phase 1 CTAs scroll to placeholders or use direct contact actions?**
-   - What we know: the page already has `#lead-form` and `#calculator` sections, even if their business logic is not complete yet.
-   - What's unclear: whether the approved Figma/user expects both CTAs to stay internal or one to map to phone/messenger.
-   - Recommendation: default to `#lead-form` primary and `#calculator` secondary unless the approved design specifies otherwise.
+3. **Должны ли CTA Фазы 1 скроллить к placeholder'ам или вести к прямым contact actions?**
+   - Что известно: на странице уже есть секции `#lead-form` и `#calculator`, даже если их бизнес-логика пока не завершена.
+   - Что неясно: ожидает ли утвержденная Figma/пользователь, что оба CTA останутся внутренними, или один должен вести к телефону/мессенджеру.
+   - Рекомендация: по умолчанию использовать `#lead-form` для primary и `#calculator` для secondary, если утвержденный дизайн не задает иное.
 
-## Environment Availability
+## Доступность окружения
 
-| Dependency | Required By | Available | Version | Fallback |
-|------------|------------|-----------|---------|----------|
+| Зависимость | Нужна для | Доступна | Версия | Фоллбек |
+|------------|----------|----------|--------|---------|
 | Node.js | Next.js build/dev/typecheck | ✓ | 24.14.0 | — |
-| npm via `npm.cmd` | Scripts, installs, lint, typecheck | ✓ | 11.9.0 | Use `npm.cmd`; plain `npm` is blocked by PowerShell policy |
-| Figma MCP auth | Figma-driven implementation verification | ✓ | authenticated | — |
-| `rg` | Fast code/file search during execution | ✗ | — | Use PowerShell `Get-ChildItem` + `Select-String` |
+| npm через `npm.cmd` | Scripts, installs, lint, typecheck | ✓ | 11.9.0 | Использовать `npm.cmd`; plain `npm` блокируется политикой PowerShell |
+| Figma MCP auth | Верочная реализация с Figma | ✓ | authenticated | — |
+| `rg` | Быстрый поиск по коду/файлам во время работы | ✗ | — | Использовать PowerShell `Get-ChildItem` + `Select-String` |
 
-**Missing dependencies with no fallback:**
-- None for planning. Implementation still needs the approved Figma file/node reference as an input artifact, not a tool install.
+**Отсутствующие зависимости без фоллбека:**
+- Нет, для планирования ничего критического.
 
-**Missing dependencies with fallback:**
-- `rg` is not installed; use PowerShell-native search commands.
+**Отсутствующие зависимости с фоллбеком:**
+- `rg` не установлен; используйте PowerShell-native search commands.
 
-## Validation Architecture
+## Архитектура валидации
 
 ### Test Framework
-| Property | Value |
-|----------|-------|
-| Framework | None yet — lint and typecheck only |
-| Config file | `eslint.config.mjs` and `tsconfig.json` |
-| Quick run command | `npm.cmd run lint` |
-| Full suite command | `npm.cmd run lint` then `npm.cmd run typecheck` |
+| Свойство | Значение |
+|----------|----------|
+| Framework | Пока нет - только lint и typecheck |
+| Config file | `eslint.config.mjs` и `tsconfig.json` |
+| Быстрая команда | `npm.cmd run lint` |
+| Полный suite | `npm.cmd run lint` затем `npm.cmd run typecheck` |
 
-### Phase Requirements → Test Map
+### Маппинг требований фазы в тесты
 | Req ID | Behavior | Test Type | Automated Command | File Exists? |
 |--------|----------|-----------|-------------------|-------------|
-| CONT-01 | Offer scope is explicit in first screen copy | manual smoke + static validation | `npm.cmd run lint` | ❌ Wave 0 |
-| CONT-02 | Primary CTA is clear and actionable above the fold | manual smoke + static validation | `npm.cmd run typecheck` | ❌ Wave 0 |
-| CONT-05 | Audience coverage is visible in first screen | manual smoke + static validation | `npm.cmd run lint` | ❌ Wave 0 |
-| TRST-01 | Trust differentiators are visible near the hero | manual smoke + static validation | `npm.cmd run lint` | ❌ Wave 0 |
+| CONT-01 | Scope предложения ясен в копирайте первого экрана | manual smoke + static validation | `npm.cmd run lint` | ❌ Wave 0 |
+| CONT-02 | Primary CTA ясен и actionable above the fold | manual smoke + static validation | `npm.cmd run typecheck` | ❌ Wave 0 |
+| CONT-05 | Audience coverage visible in first screen | manual smoke + static validation | `npm.cmd run lint` | ❌ Wave 0 |
+| TRST-01 | Trust differentiators visible near the hero | manual smoke + static validation | `npm.cmd run lint` | ❌ Wave 0 |
 | SITE-03 | Contact details and service-area relevance are visible and usable | manual smoke + static validation | `npm.cmd run typecheck` | ❌ Wave 0 |
 
-### Sampling Rate
-- **Per task commit:** `npm.cmd run lint`
-- **Per wave merge:** `npm.cmd run lint` then `npm.cmd run typecheck`
-- **Phase gate:** manual desktop/mobile visual review plus both commands green before `/gsd:verify-work`
+### Частота sampling
+- **На каждый task commit:** `npm.cmd run lint`
+- **На каждое wave merge:** `npm.cmd run lint` затем `npm.cmd run typecheck`
+- **Phase gate:** manual desktop/mobile visual review плюс обе команды должны быть green перед `/gsd:verify-work`
 
-### Wave 0 Gaps
-- [ ] No component or visual regression framework exists for `src/features/landing/site-header.tsx`
-- [ ] No component or visual regression framework exists for `src/features/landing/hero-section.tsx`
-- [ ] No documented viewport checklist exists for desktop/tablet/mobile first-screen verification
+### Wave 0 gaps
+- [ ] Нет component или visual regression framework для `src/features/landing/site-header.tsx`
+- [ ] Нет component или visual regression framework для `src/features/landing/hero-section.tsx`
+- [ ] Нет documented viewport checklist для desktop/tablet/mobile first-screen verification
 
-## Sources
+## Источники
 
-### Primary (HIGH confidence)
-- `/vercel/next.js` - Link usage and current `next/image` guidance
-- `/websites/v3_tailwindcss` - responsive marketing layout and breakpoint/container patterns
-- `/reactjs/react.dev` - current function-component composition guidance
-- https://nextjs.org/docs/app/getting-started - App Router current docs, last updated 2026-02-27
-- https://nextjs.org/docs/pages/api-reference/components/image - `Image` props and sizing guidance, last updated 2026-02-27
-- https://v3.tailwindcss.com/docs/responsive-design - responsive utility patterns
-- https://v3.tailwindcss.com/docs/theme - breakpoint definitions
-- npm registry verification via `npm.cmd view` on 2026-03-24 for `next`, `react`, `tailwindcss`, and `typescript`
+### Основные (HIGH confidence)
+- `/vercel/next.js` - использование Link и текущие рекомендации по `next/image`
+- `/websites/v3_tailwindcss` - responsive marketing layout и breakpoint/container patterns
+- `/reactjs/react.dev` - текущие рекомендации по function-component composition
+- https://nextjs.org/docs/app/getting-started - актуальная App Router документация, last updated 2026-02-27
+- https://nextjs.org/docs/pages/api-reference/components/image - `Image` props и sizing guidance, last updated 2026-02-27
+- https://v3.tailwindcss.com/docs/responsive-design - patterns responsive utilities
+- https://v3.tailwindcss.com/docs/theme - определения breakpoint
+- npm registry verification через `npm.cmd view` на 2026-03-24 для `next`, `react`, `tailwindcss`, `typescript`
 
-### Secondary (MEDIUM confidence)
-- Local repo sources:
+### Вторичные (MEDIUM confidence)
+- Локальные источники репозитория:
   - `src/features/landing/first-screen.tsx`
   - `src/features/landing/site-header.tsx`
   - `src/features/landing/hero-section.tsx`
@@ -410,15 +410,15 @@ Source: https://github.com/vercel/next.js/blob/canary/docs/01-app/03-api-referen
   - `.planning/codebase/CONVENTIONS.md`
   - `.planning/codebase/TESTING.md`
 
-### Tertiary (LOW confidence)
-- None
+### Третичные (LOW confidence)
+- Нет
 
-## Metadata
+## Метаданные
 
-**Confidence breakdown:**
-- Standard stack: HIGH - verified against installed packages and npm registry state on 2026-03-24
-- Architecture: MEDIUM - repo patterns are clear, but exact Figma node details are still missing
-- Pitfalls: HIGH - directly supported by current code inspection (dead anchors, inert CTAs, broken config, no messenger assets)
+**Разбивка confidence:**
+- Standard stack: HIGH - подтверждено установленными пакетами и npm registry state на 2026-03-24
+- Architecture: MEDIUM - паттерны репозитория ясны, но точные Figma node details все еще отсутствуют
+- Pitfalls: HIGH - напрямую подтверждены текущим code inspection (dead anchors, inert CTAs, broken config, no messenger assets)
 
-**Research date:** 2026-03-24
-**Valid until:** 2026-04-23
+**Дата исследования:** 2026-03-24
+**Актуально до:** 2026-04-23

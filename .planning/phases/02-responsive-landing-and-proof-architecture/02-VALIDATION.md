@@ -1,4 +1,4 @@
-﻿---
+---
 phase: 2
 slug: responsive-landing-and-proof-architecture
 status: draft
@@ -7,25 +7,25 @@ wave_0_complete: false
 created: 2026-03-25
 ---
 
-# Phase 2 - Validation Strategy
+# Фаза 2 - Стратегия валидации
 
 ## Test Infrastructure
 
-| Property | Value |
-|----------|-------|
+| Свойство | Значение |
+|----------|----------|
 | **Framework** | ESLint + TypeScript typecheck |
 | **Config file** | `eslint.config.mjs`, `tsconfig.json` |
 | **Quick run command** | `npm.cmd run lint` |
 | **Full suite command** | `npm.cmd run lint && npm.cmd run typecheck` |
-| **Estimated runtime** | ~25 seconds |
+| **Оценочное время** | ~25 секунд |
 
 ## Sampling Rate
 
-- After every task commit: `npm.cmd run lint`
-- After plan wave completion: `npm.cmd run lint && npm.cmd run typecheck`
-- Before `$gsd-verify-work`: full suite green + manual responsive check
+- После каждого task commit: `npm.cmd run lint`
+- После завершения plan wave: `npm.cmd run lint && npm.cmd run typecheck`
+- Перед `$gsd-verify-work`: полный suite green + manual responsive check
 
-## Per-Task Verification Map
+## Маппинг валидации по задачам
 
 | Task ID | Plan | Wave | Requirement | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|-----------|-------------------|-------------|--------|
@@ -33,24 +33,24 @@ created: 2026-03-25
 | 02-01-02 | 01 | 1 | SITE-02 | static + manual | `npm.cmd run typecheck` | ❌ W0 | ⬜ pending |
 | 02-01-03 | 01 | 1 | TRST-02, TRST-03, TRST-04, TRST-05 | static + manual | `npm.cmd run lint && npm.cmd run typecheck` | ❌ W0 | ⬜ pending |
 
-## Wave 0 Requirements
+## Требования Wave 0
 
-- [ ] No dedicated component/UI regression tests for the advantages section yet.
-- [ ] No documented viewport checklist file for this section yet.
+- [ ] Нет dedicated component/UI regression tests для блока преимуществ.
+- [ ] Нет documented viewport checklist file для этой секции.
 
-## Manual-Only Verifications
+## Проверки только вручную
 
 | Behavior | Requirement | Why Manual | Test Instructions |
 |----------|-------------|------------|-------------------|
-| Card grid remains readable on desktop/tablet/mobile | SITE-01 | Visual layout behavior | Check 360px, 768px, 1280px widths; confirm no overflow/clipping |
-| Section uses semantic heading structure (`h2` + `h3`) | SITE-02 | Requires rendered DOM review | Inspect rendered markup in browser devtools |
-| Dark CTA card remains distinct and actionable | TRST-02/03/04/05 | Visual and interaction hierarchy | Verify contrast and clickable target from card |
+| Сетка карточек читаема на desktop/tablet/mobile | SITE-01 | Это визуальное поведение layout | Проверить ширины 360px, 768px, 1280px; убедиться в отсутствии overflow/clipping |
+| Секция использует semantic heading structure (`h2` + `h3`) | SITE-02 | Требуется проверка rendered DOM | Осмотреть rendered markup в browser devtools |
+| Dark CTA card остается отличимой и actionable | TRST-02/03/04/05 | Это вопрос visual и interaction hierarchy | Проверить contrast и clickable target на карточке |
 
-## Validation Sign-Off
+## Подписание валидации
 
-- [ ] All tasks have automated verify or explicit Wave 0 gap
-- [ ] No 3 consecutive tasks without validation hooks
+- [ ] Все задачи имеют automated verify или явный Wave 0 gap
+- [ ] Нет 3 последовательных задач без validation hooks
 - [ ] Feedback latency < 30s
-- [ ] `nyquist_compliant: true` set after successful execution
+- [ ] В frontmatter после успешного исполнения установлен `nyquist_compliant: true`
 
 **Approval:** pending

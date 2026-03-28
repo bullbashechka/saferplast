@@ -1,4 +1,4 @@
-# Phase 02 - SEO and Stack Check (No UI Changes)
+# Фаза 02 - SEO and Stack Check (No UI Changes)
 
 **Date:** 2026-03-25  
 **Mode:** design freeze, review-only, no implementation changes
@@ -17,41 +17,40 @@
 
 ## SEO Snapshot
 
-### What is already good
+### Что уже хорошо
 
-- App-level metadata exists (`title`, `description`) in `layout.tsx`.
-- Language is explicitly set to Russian (`<html lang="ru">`).
-- First screen and advantages use semantic structure:
-  - `h1` in hero
+- App-level metadata существует (`title`, `description`) в `layout.tsx`.
+- Язык явно задан как русский (`<html lang="ru">`).
+- First screen и advantages используют semantic structure:
+  - `h1` в hero
   - `h2` section headings
   - `h3` card headings
   - `section` + `aria-labelledby` usage
-- Meaningful image `alt` text is present for content images.
+- Значимые image `alt` text присутствуют у контентных изображений.
 
-### Current SEO gaps (record only, no fixes applied)
+### Текущие SEO gaps (только запись, без фикса)
 
-- Metadata is minimal (no Open Graph, no Twitter card, no canonical).
-- No `robots` or `sitemap` route/file was found in `src/app`.
-- Navigation contains anchors `#projects` and `#contacts`, but no matching section IDs currently exist in rendered page flow.
-- One trust card still has placeholder text: `Опыт работы - более X лет`.
+- Metadata минимальна (нет Open Graph, Twitter card, canonical).
+- В `src/app` не найдено `robots` или `sitemap` route/file.
+- Навигация содержит anchors `#projects` и `#contacts`, но matching section IDs сейчас отсутствуют в rendered page flow.
+- Одна trust card все еще имеет placeholder text: `Опыт работы - более X лет`.
 
 ## Stack Compliance Snapshot
 
-### Matches declared stack
+### Соответствие заявленному стеку
 
 - Framework/runtime: Next.js 15 + React 19.
-- Language: TypeScript with strict typing flow in feature modules.
-- Styling: Tailwind CSS utility approach with arbitrary values where needed for Figma mapping.
-- Typography delivery: `@fontsource/montserrat` and `@fontsource/sansation`.
-- Routing/composition follows App Router entrypoints (`src/app/layout.tsx`, `src/app/page.tsx`).
+- Language: TypeScript со строгой типизацией в feature-модулях.
+- Styling: Tailwind CSS utility approach с arbitrary values там, где это нужно для Figma mapping.
+- Typography delivery: `@fontsource/montserrat` и `@fontsource/sansation`.
+- Routing/composition следуют App Router entrypoints (`src/app/layout.tsx`, `src/app/page.tsx`).
 
 ### Validation commands
 
 - `npm.cmd run typecheck` -> pass
-- `npm.cmd run lint` -> fail, but failures are in `.codex/get-shit-done/*.cjs` tooling scripts (not in landing feature implementation files)
+- `npm.cmd run lint` -> fail, но ошибки находятся в `.codex/get-shit-done/*.cjs` tooling scripts (не в landing feature implementation files)
 
 ## Decision Log
 
-- Design and layout are intentionally kept as-is per latest instruction.
-- This check is documentation-only and does not modify UI/code behavior.
-
+- Дизайн и layout намеренно оставлены как есть по последней инструкции.
+- Эта проверка - только документация и не изменяет UI/code behavior.

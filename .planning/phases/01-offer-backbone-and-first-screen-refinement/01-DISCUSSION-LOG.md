@@ -1,11 +1,11 @@
-# Phase 1: Offer Backbone and First-Screen Refinement - Discussion Log
+# Phase 1: Основа предложения и доработка первого экрана - Журнал обсуждения
 
-> **Audit trail only.** Do not use as input to planning, research, or execution agents.
-> Decisions are captured in CONTEXT.md.
+> **Audit trail only.** Не использовать как input для planning, research или execution agents.
+> Решения фиксируются в CONTEXT.md.
 
-**Date:** 2026-03-25
-**Phase:** 01-offer-backbone-and-first-screen-refinement
-**Areas discussed:** Header source-of-truth, Hero content lock, Hero visual lock, Image handling
+**Дата:** 2026-03-25
+**Фаза:** 01-offer-backbone-and-first-screen-refinement
+**Обсуждаемые области:** Header source-of-truth, Hero content lock, Hero visual lock, Image handling
 
 ---
 
@@ -13,11 +13,11 @@
 
 | Option | Description | Selected |
 |--------|-------------|----------|
-| Figma + header style spec as canonical | Use Figma intent and `docs/headerDemoStyles.md`; convert to valid Tailwind | ✓ |
-| Keep previous implementation choices | Preserve prior interpretation from earlier discuss session | |
+| Figma + header style spec as canonical | Использовать Figma intent и `docs/headerDemoStyles.md`; переводить в valid Tailwind | ✓ |
+| Keep previous implementation choices | Сохранить прежнюю интерпретацию из предыдущей discuss session | |
 
-**User's choice:** Follow Figma and `docs/headerDemoStyles.md` as the header source of truth.
-**Notes:** User explicitly reminded that this project is Figma-driven and asked to normalize style implementation into proper Tailwind.
+**Выбор пользователя:** Следовать Figma и `docs/headerDemoStyles.md` как source of truth для header.
+**Notes:** Пользователь явно напомнил, что проект Figma-driven, и попросил привести style implementation к корректному Tailwind.
 
 ---
 
@@ -25,11 +25,11 @@
 
 | Option | Description | Selected |
 |--------|-------------|----------|
-| Lock exact headline/subheadline/button labels | Use provided copy verbatim in first-screen hero | ✓ |
-| Keep prior exploratory copy rules | Allow further interpretation from old context | |
+| Lock exact headline/subheadline/button labels | Использовать предоставленный copy verbatim в hero | ✓ |
+| Keep prior exploratory copy rules | Оставить дальнейшую интерпретацию из старого контекста | |
 
-**User's choice:** Lock the hero text to the provided headline/subheadline and two CTA labels.
-**Notes:** This replaces ambiguity from the previous context iteration.
+**Выбор пользователя:** Зафиксировать hero text по предоставленным headline/subheadline и двум CTA labels.
+**Notes:** Это снимает неоднозначность из предыдущей итерации контекста.
 
 ---
 
@@ -37,11 +37,11 @@
 
 | Option | Description | Selected |
 |--------|-------------|----------|
-| Use hero demo style spec as canonical | Apply `docs/heroDemoStyles.md` through Tailwind mapping | ✓ |
-| Keep previous trust-heavy hero interpretation | Preserve prior trust/audience-heavy visual approach | |
+| Use hero demo style spec as canonical | Применять `docs/heroDemoStyles.md` через Tailwind mapping | ✓ |
+| Keep previous trust-heavy hero interpretation | Сохранить предыдущий trust/audience-heavy visual approach | |
 
-**User's choice:** Use `docs/heroDemoStyles.md` as canonical visual guidance for hero.
-**Notes:** Core aim is better fidelity and reduced interpretation drift.
+**Выбор пользователя:** Использовать `docs/heroDemoStyles.md` как канонический visual guidance для hero.
+**Notes:** Главная цель - лучшая fidelity и меньше drift интерпретации.
 
 ---
 
@@ -49,19 +49,18 @@
 
 | Option | Description | Selected |
 |--------|-------------|----------|
-| Keep current right-side photo for now | Do not change hero image asset in this correction step | ✓ |
-| Replace/rework image now | Modify photo and its asset behavior in this same pass | |
+| Keep current right-side photo for now | Не менять hero image asset в этом correction step | ✓ |
+| Replace/rework image now | Изменить photo и его asset behavior в этом же проходе | |
 
-**User's choice:** Keep current right-side photo unchanged for now.
-**Notes:** User flagged separate nuances around the photo, explicitly deferred.
+**Выбор пользователя:** Оставить текущую правую фотографию без изменений.
+**Notes:** Пользователь отметил отдельные нюансы вокруг photo и явно отложил их.
 
-## the agent's Discretion
+## Дискреция агента
 
-- Responsive interpolation of demo values into production Tailwind layout.
-- Accessibility/semantic details that do not change locked visuals and text.
+- Responsive interpolation demo values into production Tailwind layout.
+- Accessibility/semantic details, которые не меняют зафиксированные visual и content decisions.
 
-## Deferred Ideas
+## Отложенные идеи
 
-- Photo rework/replacement and related image nuance handling.
-- Lower landing sections and non-first-screen scope.
-
+- Переработка/замена фото и связанные image nuances.
+- Нижние секции лендинга и non-first-screen scope.

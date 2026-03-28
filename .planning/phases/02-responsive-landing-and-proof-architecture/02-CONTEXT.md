@@ -1,96 +1,95 @@
-# Phase 2: Responsive Landing and Proof Architecture - Context
+# Фаза 2: Адаптивный лендинг и архитектура доказательств - Контекст
 
-**Gathered:** 2026-03-25
-**Status:** Ready for planning
+**Собрано:** 2026-03-25
+**Статус:** Готово к планированию
 
 <domain>
-## Phase Boundary
+## Граница фазы
 
-In this iteration, Phase 2 is intentionally narrowed to a single section only: the advantages/proof block `Почему к нам обращаются`. No other landing sections are included in execution scope for this phase pass.
+В этой итерации Фаза 2 намеренно сужена до одной секции: блока преимуществ/доказательств `Почему к нам обращаются`. Другие landing-секции не входят в scope исполнения для этого прохода.
 
 </domain>
 
 <decisions>
-## Implementation Decisions
+## Решения по реализации
 
-### Scope lock
-- **D-01:** Phase 2 implementation scope is only the advantages block.
-- **D-02:** Service/category sections, PVC-vs-aluminum comparison, process, testimonials, and FAQ are deferred and not part of this phase execution.
+### Фиксация scope
+- **D-01:** Объем реализации Фазы 2 - только блок преимуществ.
+- **D-02:** Секции услуг/категорий, сравнение PVC vs aluminum, процесс, отзывы и FAQ отложены и не входят в выполнение этой фазы.
 
-### Section content and visual contract
-- **D-03:** Section headline: `Почему к нам обращаются`.
-- **D-04:** Section subheadline: `Понятные условия, собственное производство и готовое решение`.
-- **D-05:** The block contains 6 frames/cards with the structure and text defined in `docs/preimushestva.md`.
-- **D-06:** Style mapping must use Tailwind classes (not raw absolute-position CSS); demo coordinates are visual references only.
-- **D-07:** Cards use the agreed visual language: Sansation headings, Montserrat body text, radius `20px`, card padding `40px 30px`, light gradient cards + one dark CTA card.
+### Контент секции и визуальный контракт
+- **D-03:** Заголовок секции: `Почему к нам обращаются`.
+- **D-04:** Подзаголовок секции: `Понятные условия, собственное производство и готовое решение`.
+- **D-05:** Блок содержит 6 фреймов/карточек со структурой и текстом, определенными в `docs/preimushestva.md`.
+- **D-06:** Маппинг стилей должен использовать Tailwind classes (не raw absolute-position CSS); demo coordinates - это только визуальные ориентиры.
+- **D-07:** Карточки используют согласованный визуальный язык: Sansation для заголовков, Montserrat для body text, radius `20px`, padding карточек `40px 30px`, светлые gradient cards + одна dark CTA card.
 
-### SEO logic (pre-baked for this phase)
-- **D-08:** The advantages block must be rendered as semantic section content (`<section>` + heading hierarchy with `<h2>` for section title and `<h3>` for card titles).
-- **D-09:** Advantage texts must be plain, indexable HTML text (no image-only text content).
-- **D-10:** Keep one clear keyword cluster in this section around production, warranty, speed, and experience without stuffing.
+### SEO-логика (предварительно зафиксирована для этой фазы)
+- **D-08:** Блок преимуществ должен рендериться как semantic section content (`<section>` + иерархия заголовков с `<h2>` для title секции и `<h3>` для заголовков карточек).
+- **D-09:** Тексты преимуществ должны быть обычным, индексируемым HTML text (не текстом внутри изображений).
+- **D-10:** Сохранять один ясный keyword cluster вокруг производства, гарантии, скорости и опыта без keyword stuffing.
 
-### Mobile/adaptive rules (pre-baked for this phase)
-- **D-11:** Desktop/tablet/mobile layouts are required; no horizontal overflow is allowed.
-- **D-12:** On mobile, cards stack into a single-column flow; spacing and typography scale down while preserving readability and visual hierarchy.
-- **D-13:** The dark CTA card remains visually distinct on mobile and stays actionable without overlap/cropping.
+### Mobile/adaptive правила (предварительно зафиксированы для этой фазы)
+- **D-11:** Требуются desktop/tablet/mobile layouts; горизонтальный overflow запрещен.
+- **D-12:** На mobile карточки выстраиваются в single-column flow; spacing и typography уменьшаются, но читаемость и иерархия сохраняются.
+- **D-13:** Dark CTA card остается визуально отличимой на mobile и остается actionable без overlap/cropping.
 
-### the agent's Discretion
-- Fine-grained breakpoint values and exact Tailwind token choices, provided they keep fidelity to the approved block style and pass responsive readability checks.
+### Дискреция Claude
+- Точные breakpoint values и выбор Tailwind token'ов, если они сохраняют fidelity к утвержденному стилю блока и проходят responsive readability checks.
 
 </decisions>
 
 <canonical_refs>
-## Canonical References
+## Канонические ссылки
 
-**Downstream agents MUST read these before planning or implementing.**
+**Downstream agents MUST читать это перед планированием или реализацией.**
 
-### Phase and requirements
-- `.planning/ROADMAP.md` - Phase 2 goal and requirement mapping baseline
-- `.planning/REQUIREMENTS.md` - Phase 2 requirement IDs (`CONT-03`, `CONT-04`, `TRST-02`, `TRST-03`, `TRST-04`, `TRST-05`, `SITE-01`, `SITE-02`)
-- `.planning/PROJECT.md` - project-level constraints and product framing
+### Фаза и требования
+- `.planning/ROADMAP.md` - цель Фазы 2 и базовая матрица требований
+- `.planning/REQUIREMENTS.md` - идентификаторы требований Фазы 2 (`CONT-03`, `CONT-04`, `TRST-02`, `TRST-03`, `TRST-04`, `TRST-05`, `SITE-01`, `SITE-02`)
+- `.planning/PROJECT.md` - проектные и продуктовые ограничения
 
-### Design and content source for this narrowed phase
-- `docs/preimushestva.md` - source content/styles for the advantages block
-- `docs/DESIGN_SYSTEM.md` - typography/color and component-level style conventions
+### Дизайн и content source для суженной фазы
+- `docs/preimushestva.md` - source content/styles для блока преимуществ
+- `docs/DESIGN_SYSTEM.md` - typography/color и component-level style conventions
 
-### Existing implementation anchors
-- `src/app/page.tsx` - current landing section composition
-- `src/features/landing/*` - existing first-screen implementation patterns to stay consistent with
+### Существующие якоря реализации
+- `src/app/page.tsx` - текущая композиция landing sections
+- `src/features/landing/*` - существующие паттерны first-screen, которые нужно сохранить
 
 </canonical_refs>
 
 <code_context>
-## Existing Code Insights
+## Данные о существующем коде
 
-### Reusable Assets
-- Existing landing is composed in `src/app/page.tsx` with feature-based sections.
-- Tailwind + TypeScript patterns are established in `src/features/landing/*`.
+### Повторно используемые assets
+- Существующий landing собирается в `src/app/page.tsx` через feature-based sections.
+- Tailwind + TypeScript patterns уже установлены в `src/features/landing/*`.
 
-### Established Patterns
-- Tailwind-first implementation with semantic React components.
-- Avoid absolute-position page construction in production code.
+### Установленные паттерны
+- Tailwind-first implementation с semantic React components.
+- Избегать absolute-position page construction в production code.
 
-### Integration Points
-- New advantages section should be integrated into page composition under `src/features` and wired into `src/app/page.tsx`.
+### Интеграционные точки
+- Новый advantages section должен быть интегрирован в page composition под `src/features` и подключен к `src/app/page.tsx`.
 
 </code_context>
 
 <specifics>
-## Specific Ideas
+## Конкретные идеи
 
-- User explicitly constrained this phase to only the advantages block and asked to pre-think SEO and mobile behavior before implementation.
-- SEO and adaptive logic in this file are considered locked constraints for planning and execution.
+- Пользователь явно ограничил эту фазу только блоком преимуществ и попросил заранее продумать SEO и mobile behavior до реализации.
+- SEO и adaptive logic в этом файле считаются зафиксированными ограничениями для планирования и исполнения.
 
 </specifics>
 
 <deferred>
-## Deferred Ideas
+## Отложенные идеи
 
-- All other planned Phase 2 sections beyond the advantages block are deferred for a later follow-up phase/pass.
+- Все остальные запланированные секции Фазы 2, кроме блока преимуществ, отложены на более поздний follow-up phase/pass.
 
 </deferred>
 
 ---
-*Phase: 02-responsive-landing-and-proof-architecture*
-*Context gathered: 2026-03-25*
-
+*Фаза: 02-responsive-landing-and-proof-architecture*
+*Контекст собран: 2026-03-25*

@@ -6,21 +6,21 @@ started: 2026-03-25T09:50:00Z
 updated: 2026-03-25T09:50:00Z
 ---
 
-## Current Test
+## Текущий тест
 
 [testing complete]
 
-## Tests
+## Тесты
 
-### 1. First-screen comprehension at first glance
-expected: Without scrolling, a visitor can read the offer scope (manufacture/install/repair for PVC+aluminum windows/doors/balconies), see audience coverage, trust chips, and a clear primary action.
+### 1. Понимание первого экрана с первого взгляда
+expected: Без прокрутки посетитель может прочитать предложение (производство/монтаж/ремонт для PVC+aluminum окон/дверей/балконов), увидеть аудиторию, trust chips и понятное основное действие.
 result: pass
 
-### 2. CTA hierarchy and header visibility on desktop/mobile
-expected: Primary CTA appears visually dominant, secondary CTA remains visible, and header contact/service-area signals stay visible and usable on desktop and mobile.
+### 2. Иерархия CTA и видимость header на desktop/mobile
+expected: Primary CTA визуально доминирует, secondary CTA остается видимым, а контакты/сервисная зона в header остаются видимыми и usable на desktop и mobile.
 result: pass
 
-## Summary
+## Сводка
 
 total: 2
 passed: 2
@@ -32,4 +32,3 @@ blocked: 0
 ## Gaps
 
 none
-
