@@ -57,7 +57,7 @@ export function AdvantagesSection() {
             const baseClassName = isDark
               ? "bg-[#004B62] text-white"
               : isGradient
-                ? "bg-[linear-gradient(to_bottom_left,#FFFCFC00_0%,#004B624D_100%)] text-[#242424]"
+                ? "bg-[linear-gradient(to_bottom_left,#FFFCFC00_0%,#004B624D_80%)] text-[#242424]"
                 : "bg-[linear-gradient(241.21deg,rgba(255,252,252,1)_0%,rgba(0,75,98,0.3)_100%)] text-[#242424]";
 
             const titleClassName = isDark ? "text-white" : "text-[#004B62]";
