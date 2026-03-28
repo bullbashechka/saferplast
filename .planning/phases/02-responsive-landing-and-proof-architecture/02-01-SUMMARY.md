@@ -31,73 +31,73 @@ duration: 22min
 completed: 2026-03-25
 ---
 
-# Phase 2 Plan 1: Responsive Landing and Proof Architecture Summary
+# Фаза 2 План 1: Адаптивный лендинг и архитектура доказательств - Сводка
 
-**Advantages block shipped with typed Russian copy, semantic SEO-friendly markup, responsive Tailwind layout, and landing-page integration.**
+**Блок преимуществ shipped с typed Russian copy, semantic SEO-friendly markup, responsive Tailwind layout и landing-page integration.**
 
-## Performance
+## Производительность
 
-- **Duration:** 22 min
-- **Started:** 2026-03-25T10:49:21Z
-- **Completed:** 2026-03-25T11:11:21Z
-- **Tasks:** 3
-- **Files modified:** 3
+- **Длительность:** 22 мин
+- **Начало:** 2026-03-25T10:49:21Z
+- **Завершение:** 2026-03-25T11:11:21Z
+- **Задачи:** 3
+- **Изменено файлов:** 3
 
-## Accomplishments
-- Created a strict typed content contract for the advantages section with six cards and a dark CTA card.
-- Built a semantic and responsive `AdvantagesSection` component with heading hierarchy and adaptive card layout.
-- Integrated the section into `src/app/page.tsx` directly after the first-screen area.
+## Итоги
+- Создан strict typed content contract для advantages section с шестью карточками и dark CTA card.
+- Построен semantic и responsive `AdvantagesSection` с heading hierarchy и adaptive card layout.
+- Секция интегрирована в `src/app/page.tsx` сразу после first-screen area.
 
-## Task Commits
+## Коммиты задач
 
-Each task was committed atomically:
+Каждая задача была зафиксирована атомарно:
 
 1. **Task 1: Create typed content contract for the advantages block** - `ad46131` (feat)
 2. **Task 2: Build semantic and responsive Tailwind section component** - `88259e2` (feat)
 3. **Task 3: Integrate the section into landing composition and verify behavior** - `b42077d` (feat)
 
-## Files Created/Modified
-- `src/features/landing/advantages-section-content.ts` - Typed content model and Russian section/card copy.
-- `src/features/landing/advantages-section.tsx` - Semantic responsive section rendering and style mapping.
-- `src/app/page.tsx` - Home page composition update to include `AdvantagesSection`.
+## Файлы, которые были созданы/изменены
+- `src/features/landing/advantages-section-content.ts` - typed content model и Russian section/card copy.
+- `src/features/landing/advantages-section.tsx` - semantic responsive section rendering и style mapping.
+- `src/app/page.tsx` - home page composition update, чтобы включить `AdvantagesSection`.
 
-## Decisions Made
-- Used fixed-size tuple typing for cards to guarantee exactly six cards per approved narrowed scope.
-- Kept the CTA card interactive (`<a href="#lead-form">`) and rendered non-CTA cards as static semantic content.
+## Принятые решения
+- Использовать fixed-size tuple typing для карточек, чтобы гарантировать ровно шесть cards в рамках утвержденного narrowed scope.
+- Оставить CTA card интерактивной (`<a href="#lead-form">`), а остальные карточки - статическим semantic content.
 
-## Deviations from Plan
+## Отклонения от плана
 
-### Auto-fixed Issues
+### Авто-исправленные проблемы
 
 **1. [Rule 3 - Blocking] Global lint command fails due to out-of-scope pre-existing files**
-- **Found during:** Task 2 and Task 3 verification
-- **Issue:** `npm.cmd run lint` reports 98 existing errors under `.codex/get-shit-done/**/*.cjs`, unrelated to this plan.
-- **Fix:** Verified changed feature files directly and proceeded without modifying unrelated tooling sources.
-- **Files modified:** `.planning/phases/02-responsive-landing-and-proof-architecture/deferred-items.md`
-- **Verification:** `npm.cmd exec eslint src/features/landing/advantages-section.tsx` (pass), `npm.cmd run typecheck` (pass)
-- **Committed in:** Not part of task commits; documented for follow-up.
+- **Обнаружено на:** Task 2 и Task 3 verification
+- **Проблема:** `npm.cmd run lint` сообщает о 98 существующих ошибках в `.codex/get-shit-done/**/*.cjs`, не связанных с этим plan.
+- **Исправление:** Проверены измененные feature files напрямую, без модификации unrelated tooling sources.
+- **Измененные файлы:** `.planning/phases/02-responsive-landing-and-proof-architecture/deferred-items.md`
+- **Проверка:** `npm.cmd exec eslint src/features/landing/advantages-section.tsx` (pass), `npm.cmd run typecheck` (pass)
+- **Зафиксировано в:** Не входит в task commits; задокументировано для follow-up.
 
 ---
 
-**Total deviations:** 1 (blocking, out-of-scope)
-**Impact on plan:** No scope creep in implementation files. Global lint baseline remains unresolved outside this plan.
+**Всего отклонений:** 1 (blocking, out-of-scope)
+**Влияние на план:** Нет scope creep в implementation files. Global lint baseline остается нерешенным вне этого plan.
 
-## Issues Encountered
-- `npm.cmd run lint` currently scans `.codex/get-shit-done` and fails on existing CommonJS files. This prevented full-plan lint green despite local feature changes being lint-clean.
+## Проблемы, с которыми столкнулись
+- `npm.cmd run lint` сейчас сканирует `.codex/get-shit-done` и падает на existing CommonJS files. Это помешало получить full-plan lint green, несмотря на то, что local feature changes lint-clean.
 
-## User Setup Required
-None - no external service configuration required.
+## Требуемые действия от пользователя
+Нет - external service configuration не требуется.
 
-## Next Phase Readiness
-- Advantages section is ready as a reusable pattern for remaining Phase 2 content sections.
-- Follow-up phase should decide whether to scope/ignore `.codex` paths in ESLint or fix those tooling files.
+## Готовность к следующей фазе
+- Блок преимуществ готов как reusable pattern для остальных Phase 2 content sections.
+- Follow-up phase должен решить, нужно ли scope/ignore `.codex` paths в ESLint или исправлять эти tooling files.
 
-## Known Stubs
-- `src/features/landing/advantages-section-content.ts`: card title `���� ������ - ����� X ���` contains placeholder `X`, intentionally preserved from design/source content for future business copy finalization.
+## Известные заглушки
+- `src/features/landing/advantages-section-content.ts`: card title `���� ������ - ����� X ���` содержит placeholder `X`, намеренно сохраненный из design/source content для будущего finalization business copy.
 
 ---
-*Phase: 02-responsive-landing-and-proof-architecture*
-*Completed: 2026-03-25*
+*Фаза: 02-responsive-landing-and-proof-architecture*
+*Завершено: 2026-03-25*
 
 ## Self-Check: PASSED
-- Found summary file and all task commit hashes.
+- Найдены summary file и все task commit hashes.

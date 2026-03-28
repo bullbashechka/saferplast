@@ -28,56 +28,55 @@ duration: 4min
 completed: 2026-03-25
 ---
 
-# Phase 01 Plan 03: Offer Backbone and First Screen Refinement Summary
+# Фаза 01 План 03: Основа предложения и доработка первого экрана - Сводка
 
-**Hero now matches the demo sizing intent with exact CTA geometry and preserves locked offer, audience, and trust messaging in a first-screen-only layout.**
+**Hero теперь соответствует demo style intent по sizing, сохраняет locked offer, audience и trust messaging в first-screen-only layout.**
 
-## Performance
+## Производительность
 
-- **Duration:** 4 min
-- **Started:** 2026-03-25T09:30:22Z
-- **Completed:** 2026-03-25T09:34:06Z
-- **Tasks:** 2
-- **Files modified:** 1
+- **Длительность:** 4 мин
+- **Начало:** 2026-03-25T09:30:22Z
+- **Завершение:** 2026-03-25T09:34:06Z
+- **Задачи:** 2
+- **Изменено файлов:** 1
 
-## Accomplishments
-- Mapped headline/body/CTA dimensions from `docs/heroDemoStyles.md` to concrete Tailwind classes in `hero-section.tsx`.
-- Kept hero content bound to `firstScreenContent` contract for locked headline/subheadline/action labels.
-- Preserved `/images/herophotogirl.png` right-side desktop image layout while keeping trust chips and audience line inside hero flow.
+## Итоги
+- Headline/body/CTA dimensions из `docs/heroDemoStyles.md` были замапплены на concrete Tailwind classes в `hero-section.tsx`.
+- Hero content остался привязанным к `firstScreenContent` contract для locked headline/subheadline/action labels.
+- `/images/herophotogirl.png` на правой стороне desktop layout сохранена, при этом trust chips и audience line остались в hero flow.
 
-## Task Commits
+## Коммиты задач
 
-Each task was committed atomically:
+Каждая задача была зафиксирована атомарно:
 
 1. **Task 1: Map locked headline/subheadline/CTA geometry to Tailwind values** - `fea611d` (feat)
 2. **Task 2: Preserve image scope and add trust/audience cues inside hero flow only** - `7bcb794` (feat)
 
-## Files Created/Modified
-- `src/features/landing/hero-section.tsx` - Hero style/value mapping, CTA geometry, and in-flow audience/trust placement.
+## Файлы, которые были созданы/изменены
+- `src/features/landing/hero-section.tsx` - Hero style/value mapping, CTA geometry и in-flow audience/trust placement.
 - `.planning/phases/01-offer-backbone-and-first-screen-refinement/01-03-SUMMARY.md` - Plan execution record.
 
-## Decisions Made
-- Used `bg-[#004B62]` and `border-[#004B62]` to match locked demo values exactly rather than token indirection for CTA visual parity.
-- Kept trust/audience cues in hero instead of creating separate sections to enforce first-screen-only scope.
+## Принятые решения
+- Использованы `bg-[#004B62]` и `border-[#004B62]` для exact demo value mapping вместо token indirection ради visual parity.
+- Trust/audience cues остались в hero, а не были вынесены в отдельные секции, чтобы enforce first-screen-only scope.
 
-## Deviations from Plan
+## Отклонения от плана
 
-None - plan executed as written for scope and implementation.  
-Note: repo-wide `npm.cmd run lint` currently fails on pre-existing `.codex/get-shit-done/**/*.cjs` issues unrelated to this plan; `hero-section.tsx` linted clean via file-scoped ESLint.
+Нет - plan был выполнен в точности по scope и implementation.  
+Примечание: repo-wide `npm.cmd run lint` сейчас падает на pre-existing `.codex/get-shit-done/**/*.cjs` issues, не связанных с этим plan; `hero-section.tsx` прошел file-scoped ESLint.
 
-## Issues Encountered
-- `npx` is blocked by local PowerShell execution policy; used `node_modules\\.bin\\eslint.cmd` for scoped lint verification.
+## Проблемы, с которыми столкнулись
+- `npx` blocked local PowerShell execution policy; для scoped lint verification использован `node_modules\\.bin\\eslint.cmd`.
 
-## User Setup Required
-None - no external service configuration required.
+## Требуемые действия от пользователя
+Нет - external service configuration не требуется.
 
-## Next Phase Readiness
-- Hero now satisfies the phase�s first-screen offer/trust/audience requirements and is ready for downstream first-screen validation.
+## Готовность к следующей фазе
+- Hero теперь удовлетворяет first-screen offer/trust/audience требованиям фазы и готов к downstream first-screen validation.
 
 ---
-*Phase: 01-offer-backbone-and-first-screen-refinement*
-*Completed: 2026-03-25*
-
+*Фаза: 01-offer-backbone-and-first-screen-refinement*
+*Завершено: 2026-03-25*
 
 ## Self-Check: PASSED
 - FOUND: .planning/phases/01-offer-backbone-and-first-screen-refinement/01-03-SUMMARY.md
