@@ -4,7 +4,7 @@ milestone: v1.0
 milestone_name: мильстоун
 status: Review-only (заморозка дизайна)
 stopped_at: Завершен SEO + stack snapshot для Header/Hero/Advantages
-last_updated: "2026-03-28T11:00:00.547Z"
+last_updated: "2026-03-28T11:04:12.856Z"
 progress:
   total_phases: 5
   completed_phases: 2
@@ -90,6 +90,7 @@ progress:
 | 260328-lxh | replace remaining page background with rgba(250, 254, 255, 1) | 2026-03-28 | c8e2534 | [.planning/quick/260328-lxh-replace-remaining-page-background-with-r](./quick/260328-lxh-replace-remaining-page-background-with-r/) |
 | 260328-m01 | update advantages gradient colors to hex alpha values | 2026-03-28 | 7827968 | [.planning/quick/260328-m01-update-advantages-gradient-colors-to-hex](./quick/260328-m01-update-advantages-gradient-colors-to-hex/) |
 | 260328-m80 | match figma gradient stops for advantages section | 2026-03-28 | 6e214c4 | [.planning/quick/260328-m80-match-figma-gradient-stops-for-advantage](./quick/260328-m80-match-figma-gradient-stops-for-advantage/) |
+| 260328-mbi | move lower-left gradient stop to 80 percent | 2026-03-28 | 71b359f | [.planning/quick/260328-mbi-move-lower-left-gradient-stop-to-80-perc](./quick/260328-mbi-move-lower-left-gradient-stop-to-80-perc/) |
 
 ## Непрерывность сессии
 
@@ -103,3 +104,4 @@ Resume file: None
 Последняя активность: 2026-03-28 - Completed quick task 260328-lxh: replace remaining page background with rgba(250, 254, 255, 1)
 Последняя активность: 2026-03-28 - Completed quick task 260328-m01: update advantages gradient colors to hex alpha values
 Последняя активность: 2026-03-28 - Completed quick task 260328-m80: match figma gradient stops for advantages section
+Последняя активность: 2026-03-28 - Completed quick task 260328-mbi: move lower-left gradient stop to 80 percent
