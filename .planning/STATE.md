@@ -4,7 +4,7 @@ milestone: v1.0
 milestone_name: мильстоун
 status: Review-only (заморозка дизайна)
 stopped_at: Завершен SEO + stack snapshot для Header/Hero/Advantages
-last_updated: "2026-03-28T10:20:06.344Z"
+last_updated: "2026-03-28T10:32:18.509Z"
 progress:
   total_phases: 5
   completed_phases: 2
@@ -85,6 +85,7 @@ progress:
 |---|-------------|------|--------|-----------|
 | 260328-jll | в src\features\landing\advantages-section.tsx где блок с текстом "Собственное производство", "Быстрый выезд и расчет", "Гарантия 1 год", "Опыт работы - более X лет" нужно сделать градиент background: linear-gradient(241.21deg, rgba(255, 252, 252, 0) 0%, rgba(0, 75, 98, 0.3) 94.97%); | 2026-03-28 | b0d39d5 | [.planning/quick/260328-jll-src-features-landing-advantages-section-](./quick/260328-jll-src-features-landing-advantages-section-/) |
 | 260328-lar | градиент в блока в src\features\landing\advantages-section.tsx должен быть не горизонтальным а по диагонали, от нижнего левого края до верхнего правого края | 2026-03-28 | 56d21cc | [.planning/quick/260328-lar-src-features-landing-advantages-section-](./quick/260328-lar-src-features-landing-advantages-section-/) |
+| 260328-lkx | поменяй углы градиента, тот что снизу слева должен быть сверху справа | 2026-03-28 | f15db7e | [.planning/quick/260328-lkx/](./quick/260328-lkx/) |
 
 ## Непрерывность сессии
 
@@ -93,3 +94,4 @@ progress:
 Resume file: None
 Последняя активность: 2026-03-28 - Completed quick task 260328-jll: в src\features\landing\advantages-section.tsx где блок с текстом "Собственное производство", "Быстрый выезд и расчет", "Гарантия 1 год", "Опыт работы - более X лет" нужно сделать градиент background: linear-gradient(241.21deg, rgba(255, 252, 252, 0) 0%, rgba(0, 75, 98, 0.3) 94.97%);
 Последняя активность: 2026-03-28 - Completed quick task 260328-lar: градиент в блока в src\features\landing\advantages-section.tsx должен быть не горизонтальным а по диагонали, от нижнего левого края до верхнего правого края
+Последняя активность: 2026-03-28 - Completed quick task 260328-lkx: поменяй углы градиента, тот что снизу слева должен быть сверху справа
