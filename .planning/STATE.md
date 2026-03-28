@@ -4,7 +4,7 @@ milestone: v1.0
 milestone_name: мильстоун
 status: Review-only (заморозка дизайна)
 stopped_at: Завершен SEO + stack snapshot для Header/Hero/Advantages
-last_updated: "2026-03-28T10:44:37.426Z"
+last_updated: "2026-03-28T10:47:23.120Z"
 progress:
   total_phases: 5
   completed_phases: 2
@@ -87,6 +87,7 @@ progress:
 | 260328-lar | градиент в блока в src\features\landing\advantages-section.tsx должен быть не горизонтальным а по диагонали, от нижнего левого края до верхнего правого края | 2026-03-28 | 56d21cc | [.planning/quick/260328-lar-src-features-landing-advantages-section-](./quick/260328-lar-src-features-landing-advantages-section-/) |
 | 260328-lkx | поменяй углы градиента, тот что снизу слева должен быть сверху справа | 2026-03-28 | f15db7e | [.planning/quick/260328-lkx/](./quick/260328-lkx/) |
 | 260328-lv6 | main screen background should be rgba(250, 254, 255, 1) | 2026-03-28 | 0543c3b | [.planning/quick/260328-lv6-main-screen-background-should-be-rgba-25](./quick/260328-lv6-main-screen-background-should-be-rgba-25/) |
+| 260328-lxh | replace remaining page background with rgba(250, 254, 255, 1) | 2026-03-28 | c8e2534 | [.planning/quick/260328-lxh-replace-remaining-page-background-with-r](./quick/260328-lxh-replace-remaining-page-background-with-r/) |
 
 ## Непрерывность сессии
 
@@ -97,3 +98,4 @@ Resume file: None
 Последняя активность: 2026-03-28 - Completed quick task 260328-lar: градиент в блока в src\features\landing\advantages-section.tsx должен быть не горизонтальным а по диагонали, от нижнего левого края до верхнего правого края
 Последняя активность: 2026-03-28 - Completed quick task 260328-lkx: поменяй углы градиента, тот что снизу слева должен быть сверху справа
 Последняя активность: 2026-03-28 - Completed quick task 260328-lv6: main screen background should be rgba(250, 254, 255, 1)
+Последняя активность: 2026-03-28 - Completed quick task 260328-lxh: replace remaining page background with rgba(250, 254, 255, 1)
