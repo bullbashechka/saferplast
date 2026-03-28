@@ -15,6 +15,19 @@ Run `npm install` before first use. On PowerShell systems with script restrictio
 ## Coding Style & Naming Conventions
 Use TypeScript for all new app code. Prefer functional React components and keep components small and composable. Use Tailwind utility classes instead of custom component CSS; `src/styles/globals.css` should stay limited to font imports and minimal global base rules. Use `kebab-case` for feature files like `first-screen.tsx`, `PascalCase` for component names, and descriptive prop/type names. Follow the existing ESLint setup in `eslint.config.mjs`.
 
+## Debugging & System Changes
+- Do not fix symptoms before identifying the root cause.
+- Fix at the source of truth, not where the symptom appears.
+- Avoid child-layer compensation such as fallbacks, patches, duplicated logic, or branching.
+- Always do ultra-deep end-to-end system research before fixing: top-down (`route -> page -> container -> orchestration -> state`) and bottom-up (`function -> hook -> service -> API -> DB`).
+- Diagnose by layers: data/contracts, business logic, async/timing, UI state, integration, architecture.
+- If a bug appears in a child, inspect the parent or owner layer first.
+- When changing a mechanic, align all directly coupled layers: contracts, handlers, queries, cache, serializers, loading and error states.
+- Be skeptical of one-file fixes; justify why other layers are unaffected.
+- For frontend issues, inspect the full flow: route -> layout -> page -> hooks -> API -> backend.
+- Prefer systemic fixes, but keep changes proportional.
+- If re-architecture is required, define scope, risks, compatibility, and rollout order.
+
 ## Testing Guidelines
 There is no dedicated test runner configured yet. For now, every change must pass `npm run lint` and `npm run typecheck`. When tests are introduced, place them near the related feature or component and use clear names such as `hero-section.test.tsx`.
 
