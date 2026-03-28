@@ -32,7 +32,7 @@ export function ProofSection() {
             <div className="absolute inset-0 bg-[linear-gradient(180deg,hsla(0,0%,0%,0.37)_0%,hsla(0,0%,0%,0.37)_100%)]" />
 
             <div className="absolute left-[40px] top-[45px] h-[269px] w-[calc(100%-115px)] rounded-[15px] bg-[rgba(250,254,255,0.94)] p-[15px] shadow-[0_12px_30px_rgba(0,75,98,0.12)] backdrop-blur-[2px]">
-              <div className="flex h-full flex-col justify-between gap-[39px]">
+              <div className="flex h-full flex-col">
                 <div>
                   <p
                     className="max-w-[34rem] font-['Sansation'] text-[44px] font-normal leading-[1] tracking-[0] text-white"
@@ -40,21 +40,6 @@ export function ProofSection() {
                   >
                     Бесплатно подскажем, что вам выгоднее: ремонт, замена или новое изготовление
                   </p>
-                </div>
-
-                <div className="grid gap-3 sm:grid-cols-3">
-                  <div className="rounded-[12px] border border-[#D9E5EA] bg-white px-4 py-3">
-                    <p className="text-[0.875rem] font-medium uppercase tracking-[0.08em] text-[#004B62]">Замер</p>
-                    <p className="mt-2 text-[0.9375rem] leading-[1.25] text-[#242424]">Точный выезд на объект</p>
-                  </div>
-                  <div className="rounded-[12px] border border-[#D9E5EA] bg-white px-4 py-3">
-                    <p className="text-[0.875rem] font-medium uppercase tracking-[0.08em] text-[#004B62]">Монтаж</p>
-                    <p className="mt-2 text-[0.9375rem] leading-[1.25] text-[#242424]">Аккуратная установка</p>
-                  </div>
-                  <div className="rounded-[12px] border border-[#D9E5EA] bg-white px-4 py-3">
-                    <p className="text-[0.875rem] font-medium uppercase tracking-[0.08em] text-[#004B62]">Контроль</p>
-                    <p className="mt-2 text-[0.9375rem] leading-[1.25] text-[#242424]">Финальная проверка</p>
-                  </div>
                 </div>
               </div>
             </div>
