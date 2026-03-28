@@ -4,7 +4,7 @@ milestone: v1.0
 milestone_name: мильстоун
 status: Review-only (заморозка дизайна)
 stopped_at: Завершен SEO + stack snapshot для Header/Hero/Advantages
-last_updated: "2026-03-28T11:28:59.446Z"
+last_updated: "2026-03-28T11:30:44.692Z"
 progress:
   total_phases: 5
   completed_phases: 2
@@ -94,6 +94,7 @@ progress:
 | 260328-mpr | add lower proof section with left photo and right composite card | 2026-03-28 | ec7dda5 | [.planning/quick/260328-mpr-add-lower-proof-section-with-left-photo-](./quick/260328-mpr-add-lower-proof-section-with-left-photo-/) |
 | 260328-ms9 | add black overlay gradient to right proof photo | 2026-03-28 | 74047d4 | [.planning/quick/260328-ms9-add-black-overlay-gradient-to-right-proo](./quick/260328-ms9-add-black-overlay-gradient-to-right-proo/) |
 | 260328-mw5 | update right proof block headline typography | 2026-03-28 | 32003b9 | [.planning/quick/260328-mw5-update-right-proof-block-headline-typogr](./quick/260328-mw5-update-right-proof-block-headline-typogr/) |
+| 260328-mxm | remove mini blocks from right proof card | 2026-03-28 | 75bf631 | [.planning/quick/260328-mxm-remove-mini-blocks-from-right-proof-card](./quick/260328-mxm-remove-mini-blocks-from-right-proof-card/) |
 
 ## Непрерывность сессии
 
@@ -111,3 +112,4 @@ Resume file: None
 Последняя активность: 2026-03-28 - Completed quick task 260328-mpr: add lower proof section with left photo and right composite card
 Последняя активность: 2026-03-28 - Completed quick task 260328-ms9: add black overlay gradient to right proof photo
 Последняя активность: 2026-03-28 - Completed quick task 260328-mw5: update right proof block headline typography
+Последняя активность: 2026-03-28 - Completed quick task 260328-mxm: remove mini blocks from right proof card
