@@ -1,117 +1,117 @@
-# Requirements: SaFerplast
+# Требования: SaFerplast
 
-**Defined:** 2026-03-24
-**Core Value:** Visitors can quickly understand the offer and safely send a request for consultation, measurement, or price estimation without friction.
+**Определено:** 2026-03-24
+**Основная ценность:** Посетитель быстро понимает предложение и безопасно отправляет заявку на консультацию, замер или расчет стоимости без лишних шагов.
 
-## v1 Requirements
+## Требования v1
 
-### Content Backbone
+### Контентный каркас
 
-- [x] **CONT-01**: Visitor can understand within the first screen that SaFerplast manufactures, installs, and repairs PVC and aluminum windows, doors, and balconies
-- [x] **CONT-02**: Visitor can see a clear primary CTA for consultation, measurement, or estimate request above the fold
-- [x] **CONT-03**: Visitor can browse structured service and product categories for windows, doors, balconies, glazing units, hardware, sills, and slopes
-- [x] **CONT-04**: Visitor can understand the difference between PVC and aluminum solutions and their use cases
-- [x] **CONT-05**: Visitor can see that the company works with apartments, private houses, offices, and commercial spaces
+- [x] **CONT-01**: Посетитель за первый экран понимает, что SaFerplast производит, устанавливает и ремонтирует окна, двери и балконы из ПВХ и алюминия
+- [x] **CONT-02**: Посетитель видит понятный primary CTA для консультации, замера или запроса расчета above the fold
+- [x] **CONT-03**: Посетитель может просматривать структурированные категории услуг и продуктов для окон, дверей, балконов, стеклопакетов, фурнитуры, подоконников и откосов
+- [x] **CONT-04**: Посетитель понимает разницу между решениями из ПВХ и алюминия и сценарии их применения
+- [x] **CONT-05**: Посетитель видит, что компания работает с квартирами, частными домами, офисами и коммерческими помещениями
 
-### Trust and Proof
+### Доверие и доказательства
 
-- [x] **TRST-01**: Visitor can see the company differentiators, including own production, direct pricing, and speed of work
-- [x] **TRST-02**: Visitor can see warranty or guarantee information for production and installation work
-- [x] **TRST-03**: Visitor can view real trust proof such as project media, testimonials, or equivalent credibility content
-- [x] **TRST-04**: Visitor can understand the service process from request to installation or repair completion
-- [x] **TRST-05**: Visitor can find answers to common objections in an FAQ section
+- [x] **TRST-01**: Посетитель видит отличия компании, включая собственное производство, прямое ценообразование и скорость работ
+- [x] **TRST-02**: Посетитель видит информацию о гарантии на производство и монтаж
+- [x] **TRST-03**: Посетитель может посмотреть реальные proof-материалы, например фото проектов, отзывы или эквивалентный контент доверия
+- [x] **TRST-04**: Посетитель понимает процесс оказания услуги от заявки до завершения монтажа или ремонта
+- [x] **TRST-05**: Посетитель может найти ответы на частые возражения в разделе FAQ
 
-### Lead Capture
+### Сбор лидов
 
-- [ ] **LEAD-01**: Visitor can call the business from the landing page via a visible phone action
-- [ ] **LEAD-02**: Visitor can submit a request from the first screen with full name, phone, and optional comment
-- [ ] **LEAD-03**: Visitor can submit a request from the end of the landing with the same canonical payload
-- [ ] **LEAD-04**: All landing forms submit through one validated server-side lead ingestion path
-- [ ] **LEAD-05**: Submitted leads are stored reliably even if messenger delivery fails
-- [ ] **LEAD-06**: Submitted leads are routed to WhatsApp-first operational handling with Telegram as fallback or secondary delivery
-- [ ] **LEAD-07**: Lead submission is protected against spam and invalid payloads
+- [ ] **LEAD-01**: Посетитель может позвонить в компанию с лендинга через видимое телефонное действие
+- [ ] **LEAD-02**: Посетитель может отправить заявку с первого экрана, указав имя, телефон и необязательный комментарий
+- [ ] **LEAD-03**: Посетитель может отправить заявку из нижней части лендинга с тем же каноническим payload
+- [ ] **LEAD-04**: Все формы лендинга отправляются через один валидированный server-side lead-ingestion path
+- [ ] **LEAD-05**: Отправленные лиды надежно сохраняются, даже если доставка в мессенджер не удалась
+- [ ] **LEAD-06**: Отправленные лиды маршрутизируются в WhatsApp-first operational handling с Telegram как fallback или secondary delivery
+- [ ] **LEAD-07**: Отправка лида защищена от спама и некорректных payload
 
-### Calculator and Price Discovery
+### Калькулятор и ценовое понимание
 
-- [ ] **CALC-01**: Visitor can request a simple approximate calculation for relevant products or services
-- [ ] **CALC-02**: The calculator explains that the result is an estimate, not a final contract price
-- [ ] **CALC-03**: The calculator captures the key factors that affect price without becoming a deep configurator
-- [ ] **CALC-04**: Visitor can hand calculator context into the lead flow without re-entering core request information
+- [ ] **CALC-01**: Посетитель может запросить простую примерную калькуляцию для релевантных продуктов или услуг
+- [ ] **CALC-02**: Калькулятор объясняет, что результат - это estimate, а не финальная договорная цена
+- [ ] **CALC-03**: Калькулятор собирает ключевые факторы, влияющие на цену, не превращаясь в глубокий конфигуратор
+- [ ] **CALC-04**: Посетитель может передать контекст калькулятора в lead-flow без повторного ввода основных данных
 
-### UX, SEO, and Delivery
+### UX, SEO и доставка
 
-- [x] **SITE-01**: Visitor can use the landing comfortably on desktop and mobile layouts
-- [x] **SITE-02**: The landing exposes search-friendly metadata and structure for browser discoverability
-- [x] **SITE-03**: Visitor can find contact details and service-area relevance on the page
-- [ ] **SITE-04**: The site can be deployed and validated on Cloudflare in a production-ready runtime
-- [ ] **SITE-05**: Core CTA and form interactions can be instrumented for launch analytics
+- [x] **SITE-01**: Посетитель может комфортно пользоваться лендингом на desktop и mobile
+- [x] **SITE-02**: Лендинг содержит поисково-видимую metadata и структуру для обнаружения в браузерах
+- [x] **SITE-03**: Посетитель может найти контактные данные и релевантность по зоне обслуживания на странице
+- [ ] **SITE-04**: Сайт можно развернуть и проверить в production-ready runtime на Cloudflare
+- [ ] **SITE-05**: Ключевые CTA и взаимодействия с формами можно инструментировать для аналитики запуска
 
-## v2 Requirements
+## Требования v2
 
-### Conversion Enhancements
+### Конверсионные улучшения
 
-- **CVRT-01**: Visitor can send calculator results directly into a messenger conversation with richer context
-- **CVRT-02**: Visitor can use an urgent repair shortcut flow distinct from full replacement requests
-- **CVRT-03**: Visitor can choose preferred contact channel between callback, WhatsApp, and Telegram
+- **CVRT-01**: Посетитель может отправлять результат калькулятора прямо в мессенджер с более богатым контекстом
+- **CVRT-02**: Посетитель может использовать отдельный быстрый сценарий срочного ремонта, отличный от запроса на полную замену
+- **CVRT-03**: Посетитель может выбирать предпочтительный канал связи между звонком, WhatsApp и Telegram
 
-### Richer Persuasion
+### Больше доверия
 
-- **RICH-01**: Visitor can browse a before-and-after gallery of completed work
-- **RICH-02**: Visitor can compare materials and system types through dedicated comparison tables
-- **RICH-03**: Visitor can view production or team credibility sections with authentic media
+- **RICH-01**: Посетитель может просматривать галерею до/после выполненных работ
+- **RICH-02**: Посетитель может сравнивать материалы и типы систем через отдельные таблицы сравнения
+- **RICH-03**: Посетитель может видеть секции о производстве или команде с подлинными медиа
 
-### Growth Features
+### Рост
 
-- **GROW-01**: The site can expand into service pages and unique location pages without redesigning core content architecture
-- **GROW-02**: Pricing coefficients can be updated through a clear operational process without fragile code edits
+- **GROW-01**: Сайт может масштабироваться в сервисные страницы и уникальные страницы локаций без редизайна базовой контентной архитектуры
+- **GROW-02**: Коэффициенты ценообразования можно обновлять через понятный операционный процесс без хрупких правок кода
 
-## Out of Scope
+## Вне объема
 
-| Feature | Reason |
-|---------|--------|
-| Full ecommerce checkout | Window and door work is custom-scoped after measurement |
-| Personal account or customer cabinet | Not needed for the first public lead-generation version |
-| CRM dashboard | Operational follow-up can stay outside the site for v1 |
-| Large blog or content hub | Does not help the initial launch path enough to justify scope |
-| Deep technical configurator or visualizer | High effort and likely to create false precision in v1 |
-| Email-based lead delivery | Client priority is WhatsApp and Telegram rather than email |
+| Функция | Причина |
+|--------|---------|
+| Полноценный ecommerce checkout | Работы по окнам и дверям рассчитываются индивидуально после замера |
+| Личный кабинет клиента | Не нужен для первой публичной версии с лидогенерацией |
+| CRM-панель | Операционное сопровождение может оставаться вне сайта для v1 |
+| Большой блог или контент-хаб | Не дает достаточно ценности для первого запуска |
+| Глубокий технический конфигуратор или визуализатор | Высокая стоимость и риск создать ложную точность в v1 |
+| Email-канал для лидов | Приоритет клиента - WhatsApp и Telegram, а не email |
 
-## Traceability
+## Трассировка
 
-| Requirement | Phase | Status |
-|-------------|-------|--------|
-| CONT-01 | Phase 1 | Complete |
-| CONT-02 | Phase 1 | Complete |
-| CONT-03 | Phase 2 | Complete |
-| CONT-04 | Phase 2 | Complete |
-| CONT-05 | Phase 1 | Complete |
-| TRST-01 | Phase 1 | Complete |
-| TRST-02 | Phase 2 | Complete |
-| TRST-03 | Phase 2 | Complete |
-| TRST-04 | Phase 2 | Complete |
-| TRST-05 | Phase 2 | Complete |
-| LEAD-01 | Phase 3 | Pending |
-| LEAD-02 | Phase 3 | Pending |
-| LEAD-03 | Phase 3 | Pending |
-| LEAD-04 | Phase 3 | Pending |
-| LEAD-05 | Phase 3 | Pending |
-| LEAD-06 | Phase 3 | Pending |
-| LEAD-07 | Phase 3 | Pending |
-| CALC-01 | Phase 4 | Pending |
-| CALC-02 | Phase 4 | Pending |
-| CALC-03 | Phase 4 | Pending |
-| CALC-04 | Phase 4 | Pending |
-| SITE-01 | Phase 2 | Complete |
-| SITE-02 | Phase 2 | Complete |
-| SITE-03 | Phase 1 | Complete |
-| SITE-04 | Phase 5 | Pending |
-| SITE-05 | Phase 5 | Pending |
+| Требование | Фаза | Статус |
+|------------|------|--------|
+| CONT-01 | Фаза 1 | Завершено |
+| CONT-02 | Фаза 1 | Завершено |
+| CONT-03 | Фаза 2 | Завершено |
+| CONT-04 | Фаза 2 | Завершено |
+| CONT-05 | Фаза 1 | Завершено |
+| TRST-01 | Фаза 1 | Завершено |
+| TRST-02 | Фаза 2 | Завершено |
+| TRST-03 | Фаза 2 | Завершено |
+| TRST-04 | Фаза 2 | Завершено |
+| TRST-05 | Фаза 2 | Завершено |
+| LEAD-01 | Фаза 3 | В ожидании |
+| LEAD-02 | Фаза 3 | В ожидании |
+| LEAD-03 | Фаза 3 | В ожидании |
+| LEAD-04 | Фаза 3 | В ожидании |
+| LEAD-05 | Фаза 3 | В ожидании |
+| LEAD-06 | Фаза 3 | В ожидании |
+| LEAD-07 | Фаза 3 | В ожидании |
+| CALC-01 | Фаза 4 | В ожидании |
+| CALC-02 | Фаза 4 | В ожидании |
+| CALC-03 | Фаза 4 | В ожидании |
+| CALC-04 | Фаза 4 | В ожидании |
+| SITE-01 | Фаза 2 | Завершено |
+| SITE-02 | Фаза 2 | Завершено |
+| SITE-03 | Фаза 1 | Завершено |
+| SITE-04 | Фаза 5 | В ожидании |
+| SITE-05 | Фаза 5 | В ожидании |
 
-**Coverage:**
-- v1 requirements: 26 total
-- Mapped to phases: 26
-- Unmapped: 0
+**Покрытие:**
+- Требований v1: 26 всего
+- Привязано к фазам: 26
+- Без привязки: 0
 
 ---
-*Requirements defined: 2026-03-24*
-*Last updated: 2026-03-24 after roadmap creation*
+*Требования определены: 2026-03-24*
+*Последнее обновление: 2026-03-24 после создания дорожной карты*

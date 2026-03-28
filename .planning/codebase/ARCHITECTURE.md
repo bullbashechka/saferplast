@@ -1,37 +1,37 @@
-﻿# ARCHITECTURE
+# АРХИТЕКТУРА
 
-## Application Shape
-- This is a small single-page marketing application built with the App Router.
-- `src/app/page.tsx` composes the current page from feature sections.
-- The page is rendered as a linear stack: first screen, calculator section, and lead form section.
+## Форма приложения
+- Это небольшое одностраничное маркетинговое приложение на App Router.
+- `src/app/page.tsx` собирает текущую страницу из feature-секций.
+- Страница рендерится как линейная последовательность: first screen, calculator section и lead form section.
 
-## Layering Model
+## Модель слоев
 - Route layer: `src/app/*`
 - Feature layer: `src/features/*`
 - Shared UI layer: `src/components/*`
 - Shared support layer: `src/lib/*`, `src/types/*`, `src/styles/*`
 - Static assets: `public/*`
 
-## Current Data Flow
-- Data flow is almost entirely static and top-down.
-- `FirstScreen` defines `navigationLinks` inline and passes them to `SiteHeader`.
-- No server actions, API routes, hooks, or context providers are used.
-- There is no fetched data path, mutation path, or derived state pipeline yet.
+## Текущий поток данных
+- Поток данных почти полностью статический и идет сверху вниз.
+- `FirstScreen` определяет `navigationLinks` inline и передает их в `SiteHeader`.
+- Пока не используются server actions, API routes, hooks или context providers.
+- Нет пути к fetched data, mutation path или derived state pipeline.
 
-## Entry Points
+## Точки входа
 - Root document: `src/app/layout.tsx`
 - Home route: `src/app/page.tsx`
-- Main UI sections:
+- Основные UI-секции:
   - `src/features/landing/first-screen.tsx`
   - `src/features/calculator/calculator-section.tsx`
   - `src/features/lead-form/lead-form-section.tsx`
 
-## Architectural Strengths
-- Feature folders already separate landing, calculator, and lead capture concerns.
-- App Router setup is minimal and easy to extend.
-- Shared styling tokens are centralized in `tailwind.config.js`.
+## Сильные стороны архитектуры
+- Feature-папки уже отделяют landing, calculator и lead capture.
+- Настройка App Router минимальна и легко расширяется.
+- Общие стилистические токены централизованы в `tailwind.config.js`.
 
-## Architectural Limitations
-- Business data is duplicated between UI and `src/lib/site-config.ts`.
-- Empty folders such as `src/components/ui` and `src/hooks` indicate intended structure but no real abstractions yet.
-- There is no domain model for calculator inputs, pricing rules, or lead submission states.
+## Ограничения архитектуры
+- Бизнес-данные дублируются между UI и `src/lib/site-config.ts`.
+- Пустые папки вроде `src/components/ui` и `src/hooks` показывают задуманную структуру, но реальных абстракций пока нет.
+- Нет доменной модели для calculator inputs, pricing rules или lead submission states.

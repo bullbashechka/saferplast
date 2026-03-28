@@ -1,32 +1,32 @@
-﻿# CONVENTIONS
+# КОНВЕНЦИИ
 
-## Language and Typing
-- Use TypeScript for all application code.
-- `strict` mode is enabled, so new code should stay fully typed.
-- Path imports should use the `@/` alias where practical.
+## Язык и типизация
+- Для всего application code использовать TypeScript.
+- Включен `strict` mode, поэтому новый код должен быть полностью типизирован.
+- Для путей по возможности использовать alias `@/`.
 
-## Component Style
-- Components are function components.
-- Props are explicitly typed with local `type` aliases.
-- Current code favors named exports over default exports inside feature modules.
+## Стиль компонентов
+- Компоненты - function components.
+- Props типизируются явно через локальные `type` aliases.
+- Текущий код внутри feature-модулей предпочитает named exports вместо default exports.
 
-## Styling Rules in Practice
-- The user explicitly requested Tailwind-first styling.
-- Layout should use `flex` and `grid`, not coordinate-driven absolute positioning for main structure.
-- Recent direction prefers `rem` for typography, spacing, and radii.
-- Widths should prefer `%`, `vw`, `vh`, and `max-width` over rigid fixed widths.
-- `line-height` should be unitless.
+## Практика стилизации
+- Пользователь явно попросил Tailwind-first styling.
+- Layout должен использовать `flex` и `grid`, а не coordinate-driven absolute positioning для основной структуры.
+- Последнее направление предпочитает `rem` для typography, spacing и radii.
+- Для ширин лучше использовать `%`, `vw`, `vh` и `max-width`, а не жесткие fixed widths.
+- `line-height` должен быть unitless.
 
-## File and Naming Rules
-- Kebab-case for filenames such as `hero-section.tsx`.
-- PascalCase for component names.
-- Semantic HTML is expected for landing sections: `header`, `nav`, `section`, `h1`, `p`, `a`, `button`.
+## Правила по файлам и именованию
+- Kebab-case для имен файлов, например `hero-section.tsx`.
+- PascalCase для имен компонентов.
+- Ожидается semantic HTML для landing-секций: `header`, `nav`, `section`, `h1`, `p`, `a`, `button`.
 
-## Shared Styling Sources
-- Design tokens live in `tailwind.config.js`.
-- Global CSS should stay minimal and is currently limited to fonts and base element rules in `src/styles/globals.css`.
-- Typography is backed by local font packages, not remote Google imports at runtime.
+## Общие источники стилей
+- Design tokens находятся в `tailwind.config.js`.
+- Global CSS должен оставаться минимальным и сейчас ограничен импортами шрифтов и базовыми правилами элементов в `src/styles/globals.css`.
+- Typography опирается на локальные font packages, а не на удаленные Google imports во время runtime.
 
-## Error Handling and Validation
-- There is no dedicated runtime error handling strategy yet.
-- There are no schema validators, form validators, or API error contracts in the current codebase.
+## Обработка ошибок и валидация
+- Пока нет отдельной стратегии runtime error handling.
+- В текущем кодовой базе нет schema validators, form validators или API error contracts.

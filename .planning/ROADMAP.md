@@ -1,100 +1,100 @@
-# Roadmap: SaFerplast
+# Дорожная карта: SaFerplast
 
-## Overview
+## Обзор
 
-This roadmap takes the existing Next.js landing scaffold to a production-ready, conversion-first launch. The sequence follows business risk: refine the offer and above-the-fold conversion path first, complete the responsive landing and SEO structure second, centralize lead handling before wiring more entry points, add the calculator only after it can hand off into the canonical lead path, and finish with analytics plus Cloudflare runtime validation.
+Эта дорожная карта ведет существующий каркас лендинга на Next.js к production-ready запуску с упором на конверсию. Последовательность выстроена по бизнес-риску: сначала уточняется предложение и путь конверсии above-the-fold, затем завершается адаптивный лендинг и SEO-структура, после этого централизуется обработка лидов до подключения дополнительных точек входа, калькулятор добавляется только после того, как он сможет передавать заявку в канонический lead-flow, и финал включает аналитику плюс проверку в runtime Cloudflare.
 
-## Phases
+## Фазы
 
-**Phase Numbering:**
-- Integer phases (1, 2, 3): Planned milestone work
-- Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
+**Нумерация фаз:**
+- Целые фазы (1, 2, 3): запланированные работы мильстоуна
+- Десятичные фазы (2.1, 2.2): срочные вставки (помечаются как INSERTED)
 
-Decimal phases appear between their surrounding integers in numeric order.
+Десятичные фазы располагаются между соседними целыми фазами в числовом порядке.
 
-- [ ] **Phase 1: Offer Backbone and First-Screen Refinement** - Align the existing Figma-driven hero flow with the real offer, audience, and primary conversion path.
-- [ ] **Phase 2: Responsive Landing and Proof Architecture** - Complete the rest of the landing with responsive sections, trust content, and search-visible structure.
-- [ ] **Phase 3: Canonical Lead Capture System** - Ship one secure lead pipeline for phone and form requests without fragmenting handling.
-- [ ] **Phase 4: Calculator and Qualification Handoff** - Add an honest estimate flow that feeds directly into the lead path.
-- [ ] **Phase 5: Launch Analytics and Cloudflare Validation** - Instrument the funnel and validate the production runtime before launch.
+- [ ] **Фаза 1: Основа предложения и доработка первого экрана** - привести существующий hero-flow из Figma к реальному предложению, аудитории и основному пути конверсии.
+- [ ] **Фаза 2: Адаптивный лендинг и архитектура доказательств** - завершить остальной лендинг адаптивными секциями, trust-контентом и поисково-видимой структурой.
+- [ ] **Фаза 3: Каноническая система сбора лидов** - запустить один безопасный поток заявок для звонков и форм без распыления логики обработки.
+- [ ] **Фаза 4: Калькулятор и передача квалификации** - добавить честный поток примерной оценки, который сразу передает данные в lead-path.
+- [ ] **Фаза 5: Аналитика запуска и проверка Cloudflare** - внедрить измерение воронки и проверить production-runtime перед запуском.
 
-## Phase Details
+## Детали фаз
 
-### Phase 1: Offer Backbone and First-Screen Refinement
-**Goal**: Visitors immediately understand what SaFerplast offers, who it serves, why it is credible, and what action to take from the refined first screen.
-**Depends on**: Nothing (first phase)
-**Requirements**: CONT-01, CONT-02, CONT-05, TRST-01, SITE-03
-**Success Criteria** (what must be TRUE):
-  1. Visitor can tell from the first screen that SaFerplast manufactures, installs, and repairs PVC and aluminum windows, doors, and balconies.
-  2. Visitor sees a clear primary CTA above the fold for consultation, measurement, or estimate request.
-  3. Visitor can see that the company serves apartments, private houses, offices, and commercial spaces.
-  4. Visitor can see the company differentiators and find visible contact/service-area relevance without scrolling through the full page.
-**Plans**: 3 plans
-Plans:
-- [x] 01-01-PLAN.md - Lock first-screen content contract and composition wiring for Header + Hero
-- [x] 01-02-PLAN.md - Map header demo styles to Tailwind and finalize contact/service-area cluster
-- [x] 01-03-PLAN.md - Map hero demo styles to Tailwind with locked copy/CTA and unchanged right photo
-**UI hint**: yes
+### Фаза 1: Основа предложения и доработка первого экрана
+**Цель**: Посетитель сразу понимает, что предлагает SaFerplast, кому это подходит, почему это заслуживает доверия и какое действие нужно совершить с доработанного первого экрана.
+**Зависит от**: Ничего (первая фаза)
+**Требования**: CONT-01, CONT-02, CONT-05, TRST-01, SITE-03
+**Критерии успеха**:
+  1. Посетитель по первому экрану понимает, что SaFerplast производит, устанавливает и ремонтирует окна, двери и балконы из ПВХ и алюминия.
+  2. Посетитель видит понятный primary CTA above the fold для консультации, замера или запроса сметы.
+  3. Посетитель понимает, что компания работает с квартирами, частными домами, офисами и коммерческими помещениями.
+  4. Посетитель видит отличия компании и находит контакт/географическую релевантность без прокрутки всей страницы.
+**Планов**: 3 плана
+Планы:
+- [x] 01-01-PLAN.md - Зафиксировать content contract первого экрана и wiring композиции для Header + Hero
+- [x] 01-02-PLAN.md - Перенести demo-стили header в Tailwind и завершить контактно-сервисный кластер
+- [x] 01-03-PLAN.md - Перенести demo-стили hero в Tailwind с зафиксированным копирайтом/CTA и без изменения правого фото
+**UI hint**: да
 
-### Phase 2: Responsive Landing and Proof Architecture
-**Goal**: Visitors can browse a complete, responsive landing that explains the offer in depth, answers objections, and exposes search-friendly structure.
-**Depends on**: Phase 1
-**Requirements**: CONT-03, CONT-04, TRST-02, TRST-03, TRST-04, TRST-05, SITE-01, SITE-02
-**Success Criteria** (what must be TRUE):
-  1. Visitor can browse clearly structured service and product sections for windows, doors, balconies, glazing units, hardware, sills, and slopes.
-  2. Visitor can understand the difference between PVC and aluminum solutions and when each is appropriate.
-  3. Visitor can review warranty/guarantee details, real proof content, and the end-to-end service process before submitting a request.
-  4. Visitor can find answers to common objections in an FAQ and use the page comfortably on desktop and mobile.
-  5. Search engines can detect meaningful page metadata and structure for the landing.
-**Plans**: 1 plan
-Plans:
-- [x] 02-01-PLAN.md - Implement advantages block with semantic responsive Tailwind architecture
-**UI hint**: yes
+### Фаза 2: Адаптивный лендинг и архитектура доказательств
+**Цель**: Посетитель может просматривать полный адаптивный лендинг, который подробно объясняет предложение, снимает возражения и дает поисково-видимую структуру.
+**Зависит от**: Фаза 1
+**Требования**: CONT-03, CONT-04, TRST-02, TRST-03, TRST-04, TRST-05, SITE-01, SITE-02
+**Критерии успеха**:
+  1. Посетитель может просматривать ясно структурированные секции услуг и продуктов для окон, дверей, балконов, стеклопакетов, фурнитуры, подоконников и откосов.
+  2. Посетитель понимает разницу между решениями из ПВХ и алюминия и знает, когда что уместно.
+  3. Посетитель может изучить гарантийные детали, реальные proof-материалы и end-to-end процесс обслуживания до отправки заявки.
+  4. Посетитель может найти ответы на типовые возражения в FAQ и комфортно использовать страницу на desktop и mobile.
+  5. Поисковые системы могут распознать осмысленные metadata и структуру страницы.
+**Планов**: 1 план
+Планы:
+- [x] 02-01-PLAN.md - Реализовать блок преимуществ с семантической адаптивной Tailwind-архитектурой
+**UI hint**: да
 
-### Phase 3: Canonical Lead Capture System
-**Goal**: Visitors can contact SaFerplast through one reliable, secure lead flow that persists requests and routes them to operations.
-**Depends on**: Phase 2
-**Requirements**: LEAD-01, LEAD-02, LEAD-03, LEAD-04, LEAD-05, LEAD-06, LEAD-07
-**Success Criteria** (what must be TRUE):
-  1. Visitor can start contact from a visible phone action anywhere the landing expects it.
-  2. Visitor can submit the hero request form with full name, phone, and optional comment.
-  3. Visitor can submit the end-of-page request form with the same canonical payload and receive a consistent success or error experience.
-  4. Submitted leads are validated, protected against spam, stored reliably, and still retained if messenger delivery has an issue.
-  5. Operational handling receives the submitted lead through the WhatsApp-first, Telegram-secondary routing path defined for launch.
-**Plans**: TBD
-**UI hint**: yes
+### Фаза 3: Каноническая система сбора лидов
+**Цель**: Посетитель может связаться с SaFerplast через один надежный и безопасный поток лидов, который сохраняет заявки и передает их в операционную обработку.
+**Зависит от**: Фаза 2
+**Требования**: LEAD-01, LEAD-02, LEAD-03, LEAD-04, LEAD-05, LEAD-06, LEAD-07
+**Критерии успеха**:
+  1. Посетитель может начать контакт с видимого телефонного действия в любом месте, где лендинг ожидает этот сценарий.
+  2. Посетитель может отправить форму первого экрана с полным именем, телефоном и необязательным комментарием.
+  3. Посетитель может отправить форму внизу страницы с тем же каноническим payload и получить одинаковый success/error-experience.
+  4. Отправленные лиды валидируются, защищаются от спама, надежно сохраняются и не теряются, если есть проблема с доставкой в мессенджер.
+  5. Операционная обработка получает заявку по запусковому маршруту WhatsApp-first, Telegram-secondary.
+**Планов**: TBD
+**UI hint**: да
 
-### Phase 4: Calculator and Qualification Handoff
-**Goal**: Visitors can get a simple approximate estimate and pass that context into the existing lead flow without duplicate effort.
-**Depends on**: Phase 3
-**Requirements**: CALC-01, CALC-02, CALC-03, CALC-04
-**Success Criteria** (what must be TRUE):
-  1. Visitor can use a lightweight calculator to request an approximate estimate for relevant products or services.
-  2. Visitor can see which key inputs affect the estimate without being forced through a deep configurator.
-  3. Visitor can clearly see that the result is an estimate rather than a final contract price.
-  4. Visitor can hand calculator context into the lead flow without re-entering the core request details.
-**Plans**: TBD
-**UI hint**: yes
+### Фаза 4: Калькулятор и передача квалификации
+**Цель**: Посетитель может получить простую примерную оценку и передать этот контекст в существующий lead-flow без повторного ввода данных.
+**Зависит от**: Фаза 3
+**Требования**: CALC-01, CALC-02, CALC-03, CALC-04
+**Критерии успеха**:
+  1. Посетитель может использовать легкий калькулятор, чтобы запросить примерную оценку для релевантных продуктов или услуг.
+  2. Посетитель видит, какие ключевые входные данные влияют на расчет, не проходя через глубокий конфигуратор.
+  3. Посетитель ясно понимает, что результат - это estimate, а не окончательная контрактная цена.
+  4. Посетитель может передать контекст калькулятора в lead-flow без повторного ввода основных данных.
+**Планов**: TBD
+**UI hint**: да
 
-### Phase 5: Launch Analytics and Cloudflare Validation
-**Goal**: The landing is measurable and validated in the real Cloudflare runtime before public launch.
-**Depends on**: Phase 4
-**Requirements**: SITE-04, SITE-05
-**Success Criteria** (what must be TRUE):
-  1. Core CTA clicks, form submissions, and calculator handoff interactions can be tracked for launch analysis.
-  2. The site can be deployed successfully to the Cloudflare target runtime and validated there rather than only in local development.
-  3. Launch verification confirms the production path is ready for public traffic with the current landing feature set.
-**Plans**: TBD
+### Фаза 5: Аналитика запуска и проверка Cloudflare
+**Цель**: Лендинг измерим и проверен в реальном runtime Cloudflare до публичного запуска.
+**Зависит от**: Фаза 4
+**Требования**: SITE-04, SITE-05
+**Критерии успеха**:
+  1. Клики по CTA, отправка форм и переход калькулятора в lead-flow могут отслеживаться для анализа запуска.
+  2. Сайт успешно разворачивается и проверяется в целевом runtime Cloudflare, а не только в локальной разработке.
+  3. Проверка запуска подтверждает готовность production-пути к публичному трафику с текущим набором landing-функций.
+**Планов**: TBD
 
-## Progress
+## Прогресс
 
-**Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
+**Порядок выполнения:**
+Фазы выполняются по порядку: 1 -> 2 -> 3 -> 4 -> 5
 
-| Phase | Plans Complete | Status | Completed |
-|-------|----------------|--------|-----------|
-| 1. Offer Backbone and First-Screen Refinement | 3/3 | Reopened (executing fixes) | 2026-03-24 |
-| 2. Responsive Landing and Proof Architecture | 1/1 | Complete | 2026-03-25 |
-| 3. Canonical Lead Capture System | 0/TBD | Not started | - |
-| 4. Calculator and Qualification Handoff | 0/TBD | Not started | - |
-| 5. Launch Analytics and Cloudflare Validation | 0/TBD | Not started | - |
+| Фаза | Планов завершено | Статус | Завершено |
+|------|------------------|--------|-----------|
+| 1. Основа предложения и доработка первого экрана | 3/3 | Открыта повторно (выполняются исправления) | 2026-03-24 |
+| 2. Адаптивный лендинг и архитектура доказательств | 1/1 | Завершена | 2026-03-25 |
+| 3. Каноническая система сбора лидов | 0/TBD | Не начата | - |
+| 4. Калькулятор и передача квалификации | 0/TBD | Не начата | - |
+| 5. Аналитика запуска и проверка Cloudflare | 0/TBD | Не начата | - |

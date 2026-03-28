@@ -1,33 +1,33 @@
-﻿# INTEGRATIONS
+# ИНТЕГРАЦИИ
 
-## Current External Integrations
-- There are no live API integrations in application code yet.
-- No database client is configured.
-- No authentication provider is configured.
-- No analytics, error reporting, payment, CRM, or email SDK is present.
+## Текущие внешние интеграции
+- В application code пока нет живых API-интеграций.
+- Не настроен клиент базы данных.
+- Не настроен провайдер аутентификации.
+- Нет analytics, error reporting, payment, CRM или email SDK.
 
-## Infrastructure References
-- `wrangler.jsonc` indicates a planned Cloudflare target.
-- `README.md` explicitly mentions future Cloudflare deployment work.
-- `.env.example` currently defines:
+## Ссылки на инфраструктуру
+- `wrangler.jsonc` указывает на запланированный target Cloudflare.
+- `README.md` явно упоминает будущую Cloudflare deployment work.
+- `.env.example` сейчас определяет:
   - `NEXT_PUBLIC_SITE_URL`
   - `NEXT_PUBLIC_CONTACT_PHONE`
 
-## Asset Integration
-- Static assets are served from `public/`.
-- Header icons live in `public/icons/location.svg` and `public/icons/phone.svg`.
-- Brand and hero images live in `public/images/logo.png` and `public/images/herophotogirl.png`.
+## Интеграция ассетов
+- Статические ассеты обслуживаются из `public/`.
+- Иконки header лежат в `public/icons/location.svg` и `public/icons/phone.svg`.
+- Brand и hero images лежат в `public/images/logo.png` и `public/images/herophotogirl.png`.
 
-## Design Inputs
-- `docs/DESIGN_SYSTEM.md` acts as the current design reference.
-- The landing page implementation uses this file for colors, typography, spacing, and blur tokens.
+## Источники дизайна
+- `docs/DESIGN_SYSTEM.md` выступает текущим design reference.
+- Реализация лендинга использует этот файл для цветов, типографики, spacing и blur tokens.
 
-## Planned but Not Implemented
-- Lead capture is implied by `src/features/lead-form/lead-form-section.tsx`, but there is no submission backend.
-- Pricing logic is implied by `src/features/calculator/calculator-section.tsx`, but there is no calculation engine yet.
-- `src/lib/site-config.ts` suggests a future source of centralized business metadata, but it is not connected to UI or env vars.
+## Запланировано, но не реализовано
+- Lead capture подразумевается в `src/features/lead-form/lead-form-section.tsx`, но backend для отправки пока отсутствует.
+- Pricing logic подразумевается в `src/features/calculator/calculator-section.tsx`, но engine расчета пока нет.
+- `src/lib/site-config.ts` намекает на будущий централизованный источник business metadata, но он пока не связан с UI или env vars.
 
-## Integration Risks
-- Environment variables are defined but unused, which creates drift between config and runtime behavior.
-- Cloudflare deployment intent is present, but no adapter or worker runtime constraints are documented.
-- Contact and city data are hardcoded in UI components instead of flowing from a shared config source.
+## Риски интеграции
+- Environment variables заданы, но не используются, из-за чего возникает расхождение между config и runtime behavior.
+- Cloudflare deployment intent есть, но adapter или worker runtime constraints пока не задокументированы.
+- Contact и city data захардкожены в UI-компонентах вместо того, чтобы приходить из shared config source.

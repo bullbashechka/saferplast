@@ -1,34 +1,34 @@
-﻿# STACK
+# СТЕК
 
-## Runtime and Language
-- Primary runtime: Node.js for local development and build execution.
-- Application framework: `Next.js 15` with App Router.
-- UI library: `React 19`.
-- Language: `TypeScript` with `strict` mode enabled in `tsconfig.json`.
-- Styling system: `Tailwind CSS 3` with a custom token extension in `tailwind.config.js`.
+## Runtime и язык
+- Основной runtime: Node.js для локальной разработки и сборки.
+- Фреймворк приложения: `Next.js 15` с App Router.
+- UI-библиотека: `React 19`.
+- Язык: `TypeScript` со `strict` mode в `tsconfig.json`.
+- Система стилизации: `Tailwind CSS 3` с кастомным token extension в `tailwind.config.js`.
 
-## Core Dependencies
-- `next`, `react`, `react-dom` power the application shell and routing.
-- `@fontsource/montserrat` and `@fontsource/sansation` are used for local typography delivery.
-- No state-management library, form library, API client, or CMS SDK is present yet.
+## Основные зависимости
+- `next`, `react`, `react-dom` обеспечивают shell приложения и routing.
+- `@fontsource/montserrat` и `@fontsource/sansation` используются для локальной доставки типографики.
+- Пока нет state-management library, form library, API client или CMS SDK.
 
-## Tooling
-- Type checking: `tsc --noEmit` via `npm run typecheck`.
-- Linting: `eslint .` via `npm run lint`.
-- ESLint config is flat-config based and lives in `eslint.config.mjs`.
-- PostCSS config is defined in `postcss.config.mjs`.
+## Инструменты
+- Проверка типов: `tsc --noEmit` через `npm run typecheck`.
+- Линтинг: `eslint .` через `npm run lint`.
+- ESLint-конфигурация использует flat-config и находится в `eslint.config.mjs`.
+- PostCSS-конфигурация задана в `postcss.config.mjs`.
 
-## Build and Routing Configuration
-- `next.config.ts` enables `reactStrictMode`, `typedRoutes`, and sets `outputFileTracingRoot`.
-- Path alias `@/*` maps to `./src/*` in `tsconfig.json`.
-- App entry points are `src/app/layout.tsx` and `src/app/page.tsx`.
+## Сборка и routing
+- `next.config.ts` включает `reactStrictMode`, `typedRoutes` и задает `outputFileTracingRoot`.
+- Path alias `@/*` маппится на `./src/*` в `tsconfig.json`.
+- Точки входа приложения: `src/app/layout.tsx` и `src/app/page.tsx`.
 
-## Styling Tokens
-- Brand color token family lives in `tailwind.config.js` under `brand`.
-- Text and surface tokens include `ink`, `surface`, `muted`, and `secondary`.
-- Font tokens include `font-body` and `font-display`.
+## Токены стилизации
+- Семейство brand color tokens находится в `tailwind.config.js` под `brand`.
+- Токены текста и поверхностей включают `ink`, `surface`, `muted` и `secondary`.
+- Font tokens включают `font-body` и `font-display`.
 
-## Deployment State
-- `wrangler.jsonc` exists, so Cloudflare deployment is intended.
-- Cloudflare integration is scaffolded only; no adapter-specific build chain is wired yet.
-- There is no CI configuration or deployment pipeline checked into the repo yet.
+## Состояние поставки
+- `wrangler.jsonc` существует, значит deployment на Cloudflare запланирован.
+- Cloudflare integration пока только scaffolded; build chain под конкретный adapter не подключен.
+- Пока нет CI-конфигурации или deployment pipeline в репозитории.

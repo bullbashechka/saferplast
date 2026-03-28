@@ -1,85 +1,85 @@
 # SaFerplast
 
-## What This Is
+## Что это
 
-SaFerplast is a scalable marketing landing page for a company that manufactures, installs, and repairs PVC and aluminum windows, doors, balconies, and related components. The site is aimed at customers across apartments, private homes, offices, and commercial spaces, and its job is to turn traffic into qualified leads through clear service presentation, fast contact actions, and a simple price calculator.
+SaFerplast - это масштабируемая маркетинговая посадочная страница для компании, которая производит, устанавливает и ремонтирует окна, двери, балконы из ПВХ и алюминия, а также связанные с ними компоненты. Сайт рассчитан на клиентов из квартир, частных домов, офисов и коммерческих помещений и должен превращать трафик в квалифицированные лиды через понятную подачу услуг, быстрые контакты и простой калькулятор цены.
 
-## Core Value
+## Основная ценность
 
-Visitors can quickly understand the offer and safely send a request for consultation, measurement, or price estimation without friction.
+Посетитель быстро понимает предложение и может без лишних шагов отправить заявку на консультацию, замер или расчет стоимости.
 
-## Requirements
+## Требования
 
-### Validated
+### Подтверждено
 
-- ✓ Single-page Next.js landing shell exists — existing
-- ✓ First-screen feature structure exists with header and hero sections — existing
-- ✓ Local typography and Tailwind token foundation are configured — existing
+- ✓ Есть одностраничный каркас на Next.js - уже существует
+- ✓ Есть feature-структура для первого экрана с header и hero - уже существует
+- ✓ Настроены локальная типографика и базовые Tailwind-токены
 
-### Active
+### Активно
 
-- [ ] Pixel-accurate landing implementation from the approved Figma design
-- [ ] Responsive layout that works well across desktop and mobile
-- [ ] Secure lead forms that deliver requests to WhatsApp first and Telegram second
-- [ ] Approximate price calculator for windows and related services
-- [ ] Service presentation for manufacturing, installation, and repair of windows, doors, balconies, glazing units, sills, slopes, and hardware
-- [ ] First-screen CTA flow with consultation, measurement, and promotional discount messaging
-- [ ] Search-visible production deployment on Cloudflare
+- [ ] Реализовать посадочную страницу с пиксельной точностью по утвержденному макету Figma
+- [ ] Сделать адаптивный макет, хорошо работающий на desktop и mobile
+- [ ] Внедрить безопасные формы лидов с приоритетом WhatsApp и резервом Telegram
+- [ ] Добавить примерный калькулятор цены для окон и связанных услуг
+- [ ] Показать услуги по производству, монтажу и ремонту окон, дверей, балконов, стеклопакетов, подоконников, откосов и фурнитуры
+- [ ] Реализовать CTA-поток первого экрана с консультацией, замером и сообщением о скидке
+- [ ] Подготовить сайт к поисковой видимости и production-развертыванию на Cloudflare
 
-### Out of Scope
+### Вне объема
 
-- CRM or admin dashboard — not needed for the first public landing version
-- Online payment or checkout — pricing is partly custom and finalized after calculation
-- Personal accounts — unnecessary for a lead-generation landing
-- Blog or long-form content system — not core to launch
-- Email delivery workflows — lead routing priority is WhatsApp and Telegram
+- CRM или админ-панель - не нужны для первой публичной версии лендинга
+- Онлайн-оплата или checkout - стоимость частично рассчитывается индивидуально и уточняется после калькуляции
+- Личные кабинеты - не нужны для лидогенерирующего лендинга
+- Блог или длинный контентный раздел - не является приоритетом запуска
+- Email-воркфлоу для доставки лидов - приоритет маршрутизации у WhatsApp и Telegram
 
-## Context
+## Контекст
 
-- The project already has a working `Next.js 15 + TypeScript + Tailwind CSS` codebase with a feature-based structure under `src/`.
-- The visual design is already completed in Figma, and MCP Figma is connected for implementation guidance.
-- The current hero block exists in code but does not yet match the Figma file closely enough.
-- The business offer covers manufacturing, installation, and repair of PVC and aluminum windows, doors, and balconies for all property types.
-- Key business differentiators are in-house production, lower pricing versus intermediaries, and speed of work.
-- Lead capture is the primary business goal; collecting client details for a customer base is mandatory before launch.
-- Promotional ideas already mentioned by the client include free consultation, free measurement, and a conditional discount up to 15% for immediate requests.
+- В проекте уже есть рабочий стек `Next.js 15 + TypeScript + Tailwind CSS` со feature-структурой в `src/`.
+- Визуальный дизайн уже готов в Figma, а MCP Figma подключен для подсказок по реализации.
+- Текущий блок hero уже есть в коде, но пока не совпадает с Figma достаточно точно.
+- Предложение бизнеса охватывает производство, монтаж и ремонт окон, дверей и балконов из ПВХ и алюминия для всех типов объектов.
+- Ключевые отличия бизнеса - собственное производство, более низкие цены по сравнению с посредниками и скорость работы.
+- Основная бизнес-цель - сбор лидов; получение контактов клиента до запуска обязательно.
+- Среди уже озвученных идей по промо - бесплатная консультация, бесплатный замер и условная скидка до 15% для быстрых обращений.
 
-## Constraints
+## Ограничения
 
-- **Tech stack**: Next.js, TypeScript, Tailwind CSS — chosen and already in use
-- **Design source**: Figma is the source of truth — implementation should follow the approved layout closely
-- **Styling approach**: Tailwind-first with minimal global CSS — repository convention
-- **Layout approach**: Prefer flex/grid, rem-based spacing, and container/max-width patterns — explicit project rule
-- **Deployment**: Cloudflare target — hosting path should remain compatible with that platform
-- **Security**: Lead submission must be safe — forms will handle personal data
-- **Audience**: All property types — messaging must stay broad enough for residential and commercial use
+- **Техстек**: Next.js, TypeScript, Tailwind CSS - выбран и уже используется
+- **Источник дизайна**: Figma - единственный источник истины для визуальной части
+- **Подход к стилям**: Tailwind-first с минимальным глобальным CSS - правило репозитория
+- **Подход к сетке**: flex/grid, отступы в rem, container/max-width-паттерны - явное правило проекта
+- **Развертывание**: Cloudflare - путь хостинга должен оставаться совместимым с этой платформой
+- **Безопасность**: отправка лидов должна быть безопасной - формы будут обрабатывать персональные данные
+- **Аудитория**: все типы объектов - сообщения должны подходить и для жилья, и для коммерции
 
-## Key Decisions
+## Ключевые решения
 
-| Decision | Rationale | Outcome |
-|----------|-----------|---------|
-| Build the product as a landing page first | Fastest path to launch and lead capture | — Pending |
-| Use Next.js + TypeScript + Tailwind | Stack already selected and scaffolded | — Pending |
-| Use Figma as the visual source of truth | Full design is already approved and available | — Pending |
-| Prioritize lead capture over content depth | The site exists to generate consultations and requests | — Pending |
-| Route leads to WhatsApp first, Telegram second | Client preference for incoming requests | — Pending |
+| Решение | Обоснование | Результат |
+|----------|-------------|-----------|
+| Строить продукт как лендинг | Самый быстрый путь к запуску и сбору лидов | - Ожидает |
+| Использовать Next.js + TypeScript + Tailwind | Стек уже выбран и заготовлен | - Ожидает |
+| Использовать Figma как источник истины | Полный дизайн уже утвержден и доступен | - Ожидает |
+| Приоритизировать лидогенерацию над глубиной контента | Сайт нужен для заявок и консультаций | - Ожидает |
+| Маршрутизировать лиды сначала в WhatsApp, затем в Telegram | Предпочтительный канал входящих обращений | - Ожидает |
 
-## Evolution
+## Эволюция
 
-This document evolves at phase transitions and milestone boundaries.
+Этот документ обновляется на переходах фаз и границах мильстоуна.
 
-**After each phase transition** (via `$gsd-transition`):
-1. Requirements invalidated? → Move to Out of Scope with reason
-2. Requirements validated? → Move to Validated with phase reference
-3. New requirements emerged? → Add to Active
-4. Decisions to log? → Add to Key Decisions
-5. "What This Is" still accurate? → Update if drifted
+**После каждого перехода фазы** (через `$gsd-transition`):
+1. Требование стало неактуальным? -> перенести в Out of Scope с причиной
+2. Требование подтверждено? -> перенести в Validated с привязкой к фазе
+3. Появились новые требования? -> добавить в Active
+4. Нужно зафиксировать решения? -> добавить в Key Decisions
+5. Описание проекта все еще актуально? -> обновить при дрейфе
 
-**After each milestone** (via `$gsd-complete-milestone`):
-1. Full review of all sections
-2. Core Value check — still the right priority?
-3. Audit Out of Scope — reasons still valid?
-4. Update Context with current state
+**После каждого мильстоуна** (через `$gsd-complete-milestone`):
+1. Полный пересмотр всех разделов
+2. Проверка Core Value - это по-прежнему главный приоритет?
+3. Аудит Out of Scope - причины все еще верны?
+4. Обновление Context с текущим состоянием
 
 ---
-*Last updated: 2026-03-24 after initialization*
+*Последнее обновление: 2026-03-24 после инициализации*
