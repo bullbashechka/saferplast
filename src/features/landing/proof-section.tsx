@@ -29,7 +29,7 @@ export function ProofSection() {
               sizes="(max-width: 1024px) 100vw, 793px"
               src={rightProofImageSrc}
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(0,75,98,0.18)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,hsla(0,0%,0%,0.37)_0%,hsla(0,0%,0%,0.37)_100%)]" />
 
             <div className="absolute left-[40px] top-[45px] h-[269px] w-[calc(100%-115px)] rounded-[15px] bg-[rgba(250,254,255,0.94)] p-[15px] shadow-[0_12px_30px_rgba(0,75,98,0.12)] backdrop-blur-[2px]">
               <div className="flex h-full flex-col justify-between gap-[39px]">
