@@ -41,7 +41,15 @@ export function CalculatorCards({ onOpenModal }: CalculatorCardsProps) {
               onClick={() => setActiveCategory((current) => (current === card.key ? null : card.key))}
               type="button"
             >
-              <Image alt={card.title} className="object-cover" fill priority={index === 0} sizes="(min-width: 1024px) 286px, 145px" src={cardImagePaths[index]} />
+              <Image
+                alt={card.title}
+                className="object-cover"
+                fill
+                priority={index === 0}
+                sizes="(min-width: 1024px) 286px, 145px"
+                src={cardImagePaths[index]}
+                style={{ opacity: index === 0 ? 0.71 : 0.4 }}
+              />
               <div className="absolute inset-0 bg-[linear-gradient(122.07deg,#FAFEFF_22.68%,rgba(255,255,255,0)_95.9%)]" />
               <div className="relative z-10 flex h-full flex-col justify-between">
                 <span className="font-display text-[1rem] font-normal leading-[1] text-[#004B62] lg:text-[1.5rem]">{card.title}</span>

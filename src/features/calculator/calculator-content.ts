@@ -32,16 +32,13 @@ export const calculatorSectionContent: CalculatorSectionContent = {
     },
   },
   cards: [
-    { key: "окно", title: "окно" },
-    { key: "дверь", title: "дверь" },
-    { key: "балкон", title: "балкон" },
-    { key: "подоконник", title: "подоконник" },
+    { key: "окно", title: "Окно" },
+    { key: "дверь", title: "Дверь" },
+    { key: "балкон", title: "Балкон" },
+    { key: "подоконник", title: "Подоконник" },
   ],
   cta: {
     label: "Рассчитать",
     iconPath: "/images/svg-on-button-рассчитать.svg",
   },
 };
-
-export const calculatorEstimateDisclaimer =
-  "Результат носит ориентировочный характер. Точная стоимость рассчитывается после замера на объекте.";
