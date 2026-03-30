@@ -1,0 +1,65 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-03-30T13:11:54.103Z",
+  "phase": "04",
+  "phase_name": "solution-matching-for-client-task",
+  "phase_dir": ".planning/phases/04-solution-matching-for-client-task",
+  "plan": 2,
+  "task": 2,
+  "total_tasks": 2,
+  "status": "paused",
+  "completed_tasks": [
+    {
+      "id": 1,
+      "name": "Define strict section and card contracts for locked 3+2 structure",
+      "status": "done",
+      "commit": "d20cd8c"
+    },
+    {
+      "id": 2,
+      "name": "Build and wire solution matching section after calculator",
+      "status": "done",
+      "commit": "552ea9b"
+    }
+  ],
+  "remaining_tasks": [
+    {
+      "id": 3,
+      "name": "Manual UAT for phase 04 (layout + CTA anchor checks)",
+      "status": "not_started"
+    },
+    {
+      "id": 4,
+      "name": "Record UAT result and close or re-open phase 04",
+      "status": "not_started"
+    }
+  ],
+  "blockers": [],
+  "human_actions_pending": [
+    {
+      "action": "Open app and verify section placement and 3+2 card layout across breakpoints",
+      "context": "04-VERIFICATION.md status is human_needed",
+      "blocking": true
+    },
+    {
+      "action": "Click all 5 'Узнать подробнее' links and confirm navigation to #lead-form",
+      "context": "Anchor behavior requires browser interaction",
+      "blocking": true
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Keep stable baseline at commit 01b2f7b before next design pass",
+      "rationale": "Multiple exploratory style tweaks were intentionally discarded on user request",
+      "phase": "04"
+    },
+    {
+      "decision": "Treat phase 04 implementation as code-complete but verification-incomplete",
+      "rationale": "Automated verification passed code truths while explicitly requiring manual checks",
+      "phase": "04"
+    }
+  ],
+  "uncommitted_files": [],
+  "next_action": "Run manual UAT from .planning/phases/04-solution-matching-for-client-task/04-HUMAN-UAT.md and mark pass/fail.",
+  "context_notes": "Work paused on a clean tree at 01b2f7b. Main open item is human verification, not coding."
+}
