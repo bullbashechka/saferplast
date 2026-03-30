@@ -9,8 +9,8 @@ export default function HomePage() {
     <main className="min-h-screen bg-[rgba(250,254,255,1)] text-slate-900">
       <FirstScreen />
       <AdvantagesSection />
-      <ProofSection />
       <CalculatorSection />
+      <ProofSection />
       <LeadFormSection />
     </main>
   );
