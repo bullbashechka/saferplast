@@ -31,11 +31,10 @@ function SolutionCard({ card, isBottomLeft }: { card: SolutionMatchingCard; isBo
 
       <div className="relative z-10 flex h-full flex-col justify-between">
         <div
-          className="rounded-[10px] p-[10px]"
+          className="liquid-glass-strong rounded-[10px] p-[10px]"
           style={{
             borderRadius: card.textBlockGeometry.borderRadius,
             padding: card.textBlockGeometry.padding,
-            background: "background" in card.textBlockGeometry ? card.textBlockGeometry.background : undefined,
           }}
         >
           <h3
