@@ -42,3 +42,6 @@ export const calculatorSectionContent: CalculatorSectionContent = {
     iconPath: "/images/svg-on-button-рассчитать.svg",
   },
 };
+
+export const calculatorEstimateDisclaimer =
+  "Результат носит ориентировочный характер. Точная стоимость рассчитывается после замера на объекте.";
