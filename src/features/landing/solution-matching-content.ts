@@ -43,7 +43,7 @@ export const solutionMatchingContent = {
         row: "top",
         title: "Нужен балкон под ключ",
         subtitle: "Остекление и оформление под вашу задачу",
-        imageSrc: "/images/balcony.png",
+        imageSrc: "/images/mother.jpg",
         ctaLabel: "Узнать подробнее",
         ctaHref: "#lead-form",
         geometry: {
@@ -99,7 +99,7 @@ export const solutionMatchingContent = {
         row: "bottom",
         title: "Нужно решение для офиса или коммерции",
         subtitle: "Практичные ПВХ и алюминиевые конструкции",
-        imageSrc: "/images/office.jpg",
+        imageSrc: "/images/table.jpg",
         ctaLabel: "Узнать подробнее",
         ctaHref: "#lead-form",
         geometry: {
@@ -126,7 +126,7 @@ export const solutionMatchingContent = {
         row: "bottom",
         title: "Ремонт или обустройство нового объекта",
         subtitle: "Установим окна, двери, откосы, подоконники, монтаж",
-        imageSrc: "/images/windowsill.png",
+        imageSrc: "/images/office.jpg",
         ctaLabel: "Узнать подробнее",
         ctaHref: "#lead-form",
         geometry: {
