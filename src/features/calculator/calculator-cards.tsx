@@ -23,7 +23,12 @@ export function CalculatorCards({ onOpenModal }: CalculatorCardsProps) {
         const isActive = activeCategory === card.key;
 
         return (
-          <article key={card.key} className="relative h-[8.625rem] w-[9.0625rem] lg:h-[13.125rem] lg:w-[17.8125rem]">
+          <article
+            key={card.key}
+            className="relative h-[8.625rem] w-[9.0625rem] lg:h-[13.125rem] lg:w-[17.8125rem]"
+            onMouseEnter={() => setActiveCategory(card.key)}
+            onMouseLeave={() => setActiveCategory((current) => (current === card.key ? null : current))}
+          >
             <button
               aria-label={`${card.title} - ${calculatorSectionContent.cta.label}`}
               className={[
@@ -34,8 +39,6 @@ export function CalculatorCards({ onOpenModal }: CalculatorCardsProps) {
               ].join(" ")}
               onBlur={() => setActiveCategory((current) => (current === card.key ? null : current))}
               onClick={() => setActiveCategory((current) => (current === card.key ? null : card.key))}
-              onMouseEnter={() => setActiveCategory(card.key)}
-              onMouseLeave={() => setActiveCategory((current) => (current === card.key ? null : current))}
               type="button"
             >
               <Image alt={card.title} className="object-cover" fill priority={index === 0} sizes="(min-width: 1024px) 286px, 145px" src={cardImagePaths[index]} />
