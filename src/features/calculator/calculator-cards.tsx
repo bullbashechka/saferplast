@@ -54,7 +54,12 @@ export function CalculatorCards({ onOpenModal }: CalculatorCardsProps) {
               {index > 0 ? (
                 <span
                   aria-hidden
-                  className="absolute left-0 top-0 z-[3] h-6 w-6 rounded-br-[0.875rem] bg-[#FAFEFF] lg:h-8 lg:w-8"
+                  className={[
+                    "absolute left-0 top-0 z-[3] bg-[#FAFEFF]",
+                    index === 2
+                      ? "h-9 w-9 rounded-br-[1rem] lg:h-12 lg:w-12 lg:rounded-br-[1.25rem]"
+                      : "h-6 w-6 rounded-br-[0.875rem] lg:h-8 lg:w-8",
+                  ].join(" ")}
                 />
               ) : null}
               <div className="relative z-10 flex h-full flex-col justify-between">
