@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import { CalculatorCards } from "@/features/calculator/calculator-cards";
-import { calculatorEstimateDisclaimer, calculatorSectionContent } from "@/features/calculator/calculator-content";
+import { calculatorSectionContent } from "@/features/calculator/calculator-content";
 import { CalculatorEntryModal } from "@/features/calculator/calculator-entry-modal";
 import type { CalculatorCategoryKey } from "@/features/calculator/calculator-types";
 
@@ -28,9 +28,6 @@ export function CalculatorSection() {
         </h2>
         <p className="mx-auto mt-4 max-w-[46rem] text-center font-body text-[1rem] font-normal leading-[1] text-[#242424]">
           {calculatorSectionContent.copy.subtitle}
-        </p>
-        <p className="mx-auto mt-3 max-w-[46rem] text-center font-body text-[0.875rem] font-normal leading-[1.25] text-[#3b3b3b]">
-          {calculatorEstimateDisclaimer}
         </p>
         <CalculatorCards onOpenModal={handleOpenModal} />
       </div>
