@@ -38,6 +38,7 @@ export type SolutionMatchingTopTextBlockGeometry = {
   height: "123px";
   borderRadius: "10px";
   padding: "10px";
+  background: "hsla(0, 0%, 100%, 0.75)";
 };
 
 export type SolutionMatchingBottomTextBlockGeometry = {

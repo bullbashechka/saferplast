@@ -30,6 +30,7 @@ export const solutionMatchingContent = {
           height: "123px",
           borderRadius: "10px",
           padding: "10px",
+          background: "hsla(0, 0%, 100%, 0.75)",
         },
         typography: {
           titleColor: "hsla(194, 100%, 19%, 1)",
@@ -56,6 +57,7 @@ export const solutionMatchingContent = {
           height: "123px",
           borderRadius: "10px",
           padding: "10px",
+          background: "hsla(0, 0%, 100%, 0.75)",
         },
         typography: {
           titleColor: "hsla(194, 100%, 19%, 1)",
@@ -82,6 +84,7 @@ export const solutionMatchingContent = {
           height: "123px",
           borderRadius: "10px",
           padding: "10px",
+          background: "hsla(0, 0%, 100%, 0.75)",
         },
         typography: {
           titleColor: "hsla(194, 100%, 19%, 1)",
