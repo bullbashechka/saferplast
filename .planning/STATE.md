@@ -1,12 +1,11 @@
-﻿---
+---
 gsd_state_version: 1.0
 milestone: v1.0
-milestone_name: мильстоун
+milestone_name: milestone
 status: Review-only (заморозка дизайна)
-stopped_at: Завершен SEO + stack snapshot для Header/Hero/Advantages
-last_updated: "2026-03-28T11:47:58.245Z"
+last_updated: "2026-03-30T06:46:36.272Z"
 progress:
-  total_phases: 5
+  total_phases: 3
   completed_phases: 2
   total_plans: 4
   completed_plans: 4
@@ -19,12 +18,12 @@ progress:
 См.: .planning/PROJECT.md (обновлено 2026-03-24)
 
 **Основная ценность:** Посетитель быстро понимает предложение и может без лишних шагов отправить заявку на консультацию, замер или расчет стоимости.
-**Текущий фокус:** Фаза 02 - responsive-landing-and-proof-architecture (checkpoint только для ревью)
+**Текущий фокус:** Фаза 03 - calculator-approximate-estimate (подготовка discuss/plan)
 
 ## Текущее положение
 
-Фаза: 2
-План: Review-only checkpoint (без изменений в реализации)
+Фаза: 3
+План: Discuss-phase для блока калькулятора
 
 ## Метрики прогресса
 
@@ -104,7 +103,7 @@ progress:
 
 Последняя сессия: 2026-03-30T00:00:00.000Z
 Остановились на: session resumed, awaiting next action selection
-Resume file: .planning/phases/02-responsive-landing-and-proof-architecture/.continue-here.md
+Resume file: .planning/phases/03-canonical-lead-capture-system/03-CONTEXT.md
 Последняя активность: 2026-03-28 - Completed quick task 260328-jll: в src\features\landing\advantages-section.tsx где блок с текстом "Собственное производство", "Быстрый выезд и расчет", "Гарантия 1 год", "Опыт работы - более X лет" нужно сделать градиент background: linear-gradient(241.21deg, rgba(255, 252, 252, 0) 0%, rgba(0, 75, 98, 0.3) 94.97%);
 Последняя активность: 2026-03-28 - Completed quick task 260328-lar: градиент в блока в src\features\landing\advantages-section.tsx должен быть не горизонтальным а по диагонали, от нижнего левого края до верхнего правого края
 Последняя активность: 2026-03-28 - Completed quick task 260328-lkx: поменяй углы градиента, тот что снизу слева должен быть сверху справа
