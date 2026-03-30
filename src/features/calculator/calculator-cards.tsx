@@ -46,7 +46,17 @@ export function CalculatorCards({ onOpenModal }: CalculatorCardsProps) {
               <div className="relative z-10 flex h-full flex-col justify-between">
                 <span className="font-display text-[1rem] font-normal leading-[1] text-[#004B62] lg:text-[1.5rem]">{card.title}</span>
                 <span className="flex justify-end">
-                  <Image alt="" aria-hidden className="h-3 w-3 lg:h-4 lg:w-4" height={16} src="/icons/arrow.svg" width={16} />
+                  <Image
+                    alt=""
+                    aria-hidden
+                    className={[
+                      "h-3 w-3 transition-opacity duration-200 lg:h-4 lg:w-4",
+                      isActive ? "opacity-0" : "opacity-100",
+                    ].join(" ")}
+                    height={16}
+                    src="/icons/arrow.svg"
+                    width={16}
+                  />
                 </span>
               </div>
             </button>
