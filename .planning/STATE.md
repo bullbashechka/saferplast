@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Executing Phase 03
-last_updated: "2026-03-30T07:30:52.337Z"
+last_updated: "2026-03-30T07:38:12.559Z"
 progress:
   total_phases: 3
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 6
-  completed_plans: 5
+  completed_plans: 6
 ---
 
 # Состояние проекта
@@ -18,12 +18,12 @@ progress:
 См.: .planning/PROJECT.md (обновлено 2026-03-24)
 
 **Основная ценность:** Посетитель быстро понимает предложение и может без лишних шагов отправить заявку на консультацию, замер или расчет стоимости.
-**Текущий фокус:** Фаза 03 - calculator-approximate-estimate (подготовка discuss/plan)
+**Текущий фокус:** Фаза 03 - calculator-approximate-estimate (03-02 выполнен, готово к следующей фазе)
 
 ## Текущее положение
 
 Фаза: 3
-План: Discuss-phase для блока калькулятора
+План: 03-02-PLAN.md завершен
 
 ## Метрики прогресса
 
@@ -48,6 +48,7 @@ progress:
 | Phase 01-offer-backbone-and-first-screen-refinement P02 | 2 min | 2 tasks | 1 files |
 | Phase 01-offer-backbone-and-first-screen-refinement P03 | 4min | 2 tasks | 1 files |
 | Phase 02-responsive-landing-and-proof-architecture P01 | 22min | 3 tasks | 3 files |
+| Phase 03-canonical-lead-capture-system P02 | 4min | 2 tasks | 4 files |
 
 ## Накопленный контекст
 
@@ -68,6 +69,8 @@ progress:
 - [Phase 01-offer-backbone-and-first-screen-refinement]: Сохранить audience и trust cues внутри hero flow без создания нижних секций.
 - [Phase 02-responsive-landing-and-proof-architecture]: Использовать typed tuple cards (6 фиксированных элементов), чтобы зафиксировать scope секции и surface копирайта.
 - [Phase 02-responsive-landing-and-proof-architecture]: Рендерить CTA-card как anchor, а остальные cards оставить semantic articles.
+- [Phase 03-canonical-lead-capture-system]: Реализованы интерактивные карточки калькулятора (desktop hover + mobile tap) с единым CTA-триггером.
+- [Phase 03-canonical-lead-capture-system]: Добавлен lightweight modal entrypoint с явным disclaimer об ориентировочной оценке.
 
 ### Pending Todos
 
