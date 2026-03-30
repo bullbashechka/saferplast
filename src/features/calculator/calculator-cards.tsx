@@ -50,13 +50,13 @@ export function CalculatorCards({ onOpenModal }: CalculatorCardsProps) {
                 src={cardImagePaths[index]}
                 style={{ opacity: index === 0 ? 0.71 : 0.4 }}
               />
+              <div className="absolute inset-0 bg-[linear-gradient(to_bottom_right,#FAFEFF_22.68%,rgba(255,255,255,0)_95.9%)]" />
               {index > 0 ? (
                 <span
                   aria-hidden
-                  className="absolute left-0 top-0 z-[2] h-3 w-3 rounded-br-[0.5rem] bg-[#FAFEFF] lg:h-4 lg:w-4"
+                  className="absolute left-0 top-0 z-[3] h-6 w-6 rounded-br-[0.875rem] bg-[#FAFEFF] lg:h-8 lg:w-8"
                 />
               ) : null}
-              <div className="absolute inset-0 bg-[linear-gradient(to_bottom_right,#FAFEFF_22.68%,rgba(255,255,255,0)_95.9%)]" />
               <div className="relative z-10 flex h-full flex-col justify-between">
                 <span className="font-display text-[1rem] font-normal leading-[1] text-[#004B62] lg:text-[1.5rem]">{card.title}</span>
                 <span className="flex justify-end">
