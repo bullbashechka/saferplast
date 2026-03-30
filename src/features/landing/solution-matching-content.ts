@@ -1,0 +1,150 @@
+import type { SolutionMatchingContent } from "@/features/landing/solution-matching-types";
+
+export const solutionMatchingContent = {
+  section: {
+    heading: "Подберем решение под вашу задачу",
+    subtitle: "Не нужно во всем разбираться самим. Мы подскажем, что подойдет именно в вашей ситуации",
+    typography: {
+      headingClassName: "font-['Sansation'] font-normal text-[44px] leading-[1] tracking-[0]",
+      subtitleClassName: "font-body font-normal text-[16px] leading-[1] tracking-[0] text-center",
+    },
+  },
+  rows: {
+    topCards: [
+      {
+        id: "cold-noise",
+        row: "top",
+        title: "Дует, шумно, холодно",
+        subtitle: "Замена окон, стеклопакетов или регулировка",
+        imageSrc: "/images/frozen-first-card.jpg",
+        ctaLabel: "Узнать подробнее",
+        ctaHref: "#lead-form",
+        geometry: {
+          width: "387px",
+          height: "368px",
+          borderRadius: "20px",
+          padding: "40px 30px",
+        },
+        textBlockGeometry: {
+          width: "365px",
+          height: "123px",
+          borderRadius: "10px",
+          padding: "10px",
+        },
+        typography: {
+          titleColor: "hsla(194, 100%, 19%, 1)",
+          subtitleColor: "hsla(0, 0%, 14%, 1)",
+          ctaClassName: "font-body text-[16px] font-bold leading-[1] underline",
+        },
+      },
+      {
+        id: "balcony-turnkey",
+        row: "top",
+        title: "Нужен балкон под ключ",
+        subtitle: "Остекление и оформление под вашу задачу",
+        imageSrc: "/images/balcony.png",
+        ctaLabel: "Узнать подробнее",
+        ctaHref: "#lead-form",
+        geometry: {
+          width: "387px",
+          height: "368px",
+          borderRadius: "20px",
+          padding: "40px 30px",
+        },
+        textBlockGeometry: {
+          width: "365px",
+          height: "123px",
+          borderRadius: "10px",
+          padding: "10px",
+        },
+        typography: {
+          titleColor: "hsla(194, 100%, 19%, 1)",
+          subtitleColor: "hsla(0, 0%, 14%, 1)",
+          ctaClassName: "font-body text-[16px] font-bold leading-[1] underline",
+        },
+      },
+      {
+        id: "broken-window-door",
+        row: "top",
+        title: "Окно или дверь сломались -",
+        subtitle: "Замена окон, стеклопакетов или регулировка",
+        imageSrc: "/images/broken-window.png",
+        ctaLabel: "Узнать подробнее",
+        ctaHref: "#lead-form",
+        geometry: {
+          width: "387px",
+          height: "368px",
+          borderRadius: "20px",
+          padding: "40px 30px",
+        },
+        textBlockGeometry: {
+          width: "365px",
+          height: "123px",
+          borderRadius: "10px",
+          padding: "10px",
+        },
+        typography: {
+          titleColor: "hsla(194, 100%, 19%, 1)",
+          subtitleColor: "hsla(0, 0%, 14%, 1)",
+          ctaClassName: "font-body text-[16px] font-bold leading-[1] underline",
+        },
+      },
+    ],
+    bottomCards: [
+      {
+        id: "office-commercial",
+        row: "bottom",
+        title: "Нужно решение для офиса или коммерции",
+        subtitle: "Практичные ПВХ и алюминиевые конструкции",
+        imageSrc: "/images/office.jpg",
+        ctaLabel: "Узнать подробнее",
+        ctaHref: "#lead-form",
+        geometry: {
+          width: "590px",
+          height: "290px",
+          borderRadius: "20px",
+          padding: "40px 30px",
+        },
+        textBlockGeometry: {
+          width: "567px",
+          height: "106px",
+          borderRadius: "10px",
+          padding: "10px",
+          background: "hsla(0, 0%, 100%, 0.75)",
+        },
+        typography: {
+          titleColor: "hsla(194, 100%, 19%, 1)",
+          subtitleColor: "hsla(0, 0%, 14%, 1)",
+          ctaClassName: "font-body text-[16px] font-bold leading-[1] underline",
+        },
+      },
+      {
+        id: "new-object",
+        row: "bottom",
+        title: "Ремонт или обустройство нового объекта",
+        subtitle: "Установим окна, двери, откосы, подоконники, монтаж",
+        imageSrc: "/images/windowsill.png",
+        ctaLabel: "Узнать подробнее",
+        ctaHref: "#lead-form",
+        geometry: {
+          width: "590px",
+          height: "290px",
+          borderRadius: "20px",
+          padding: "40px 30px",
+        },
+        textBlockGeometry: {
+          width: "567px",
+          height: "106px",
+          borderRadius: "10px",
+          padding: "10px",
+          background: "hsla(0, 0%, 100%, 0.75)",
+        },
+        typography: {
+          titleColor: "hsla(194, 100%, 19%, 1)",
+          subtitleColor: "hsla(0, 0%, 14%, 1)",
+          ctaClassName: "font-body text-[16px] font-bold leading-[1] underline",
+        },
+      },
+    ],
+  },
+} satisfies SolutionMatchingContent;
