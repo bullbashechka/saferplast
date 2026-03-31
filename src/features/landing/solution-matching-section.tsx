@@ -11,13 +11,7 @@ const BOTTOM_LEFT_OVERLAY_CLASS =
 
 function SolutionCard({ card, isBottomLeft }: { card: SolutionMatchingCard; isBottomLeft: boolean }) {
   return (
-    <article
-      className={`relative overflow-hidden rounded-[20px] bg-[#d9e5ea] ${card.row === "top" ? "h-[368px]" : "h-[290px]"}`}
-      style={{
-        borderRadius: card.geometry.borderRadius,
-        padding: "12px",
-      }}
-    >
+    <article className={`relative overflow-hidden rounded-[20px] bg-[#d9e5ea] p-[12px] ${card.row === "top" ? "h-[368px]" : "h-[290px]"}`}>
       <Image
         alt={card.title}
         className="rounded-[20px] object-cover"
@@ -32,14 +26,9 @@ function SolutionCard({ card, isBottomLeft }: { card: SolutionMatchingCard; isBo
         }`}
       />
 
-      <div className="relative z-10 flex h-full flex-col justify-between">
+      <div className="relative z-10 flex h-full flex-col">
         <div
-          className="liquid-glass-strong rounded-[10px] p-[10px]"
-          style={{
-            height: card.textBlockGeometry.height,
-            borderRadius: card.textBlockGeometry.borderRadius,
-            padding: card.textBlockGeometry.padding,
-          }}
+          className={`liquid-glass-strong rounded-[10px] p-[10px] ${card.row === "top" ? "h-[123px]" : "h-[106px]"}`}
         >
           <div
             className={
@@ -49,18 +38,22 @@ function SolutionCard({ card, isBottomLeft }: { card: SolutionMatchingCard; isBo
             }
           >
             <h3
-              className="font-['Sansation'] text-[30px] font-normal leading-[1] tracking-[0]"
-              style={{ color: card.typography.titleColor }}
+              className="font-['Sansation'] text-[30px] font-normal leading-[1] tracking-[0] text-[hsla(194,100%,19%,1)]"
             >
               {card.title}
             </h3>
           </div>
-          <p className="mt-3 font-body text-[16px] font-normal leading-[1] tracking-[0]" style={{ color: card.typography.subtitleColor }}>
+          <p className="mt-3 font-body text-[16px] font-normal leading-[1] tracking-[0] text-[hsla(0,0%,14%,1)]">
             {card.subtitle}
           </p>
         </div>
 
-        <a className={`${card.typography.ctaClassName} text-[#004B62]`} href={card.ctaHref}>
+        <a
+          className={`${card.typography.ctaClassName} ${
+            card.row === "top" ? "absolute bottom-[38px] left-[30px] right-[197px]" : "mt-auto"
+          } whitespace-nowrap text-[#004B62]`}
+          href={card.ctaHref}
+        >
           {card.ctaLabel}
         </a>
       </div>
