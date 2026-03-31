@@ -28,7 +28,6 @@ export function TestimonialsSection() {
             <h2
               id="testimonials-title"
               className="text-center font-display text-[2rem] font-normal leading-[1] text-[#004B62] sm:text-[2.25rem] lg:text-[44px]"
-              style={{ fontFamily: "Sansation" }}
             >
               {testimonialsContent.title}
             </h2>

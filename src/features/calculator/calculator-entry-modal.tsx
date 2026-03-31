@@ -41,7 +41,7 @@ export function CalculatorEntryModal({ category, isOpen, onClose }: CalculatorEn
             onClick={onClose}
             type="button"
           >
-            ✕
+            &times;
           </button>
         </div>
 
@@ -49,7 +49,7 @@ export function CalculatorEntryModal({ category, isOpen, onClose }: CalculatorEn
           Категория выбрана: <span className="font-semibold text-[#004B62]">{context.category}</span>
         </p>
         <p className="mt-3 font-body text-[0.95rem] leading-[1.35] text-[#3b3b3b]">
-          Результат будет ориентировочным estimate и может измениться после замера на объекте.
+          Результат будет ориентировочным и может измениться после замера на объекте.
         </p>
 
         <div className="mt-5 rounded-[0.875rem] bg-[#f4f9fb] p-4">
@@ -69,4 +69,3 @@ export function CalculatorEntryModal({ category, isOpen, onClose }: CalculatorEn
     </div>
   );
 }
-

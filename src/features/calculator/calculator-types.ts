@@ -23,7 +23,7 @@ export type CalculatorCardContent = {
 
 export type CalculatorCtaMeta = {
   label: "Рассчитать";
-  iconPath: "/images/svg-on-button-рассчитать.svg";
+  iconPath: "/icons/svg-on-button-рассчитать.svg";
 };
 
 export type CalculatorContextDraft = {

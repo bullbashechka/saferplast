@@ -37,7 +37,7 @@ export function SiteHeader({
           {navigationLinks.map((link) => (
             <li key={link.href}>
               <a
-                className="whitespace-nowrap text-[1rem] font-normal leading-[1] text-ink transition-colors hover:text-brand-700"
+                className="whitespace-nowrap font-body text-[1rem] font-normal leading-[1] tracking-[0] text-ink transition-colors hover:text-brand-700"
                 href={link.href}
               >
                 {link.label}
@@ -49,14 +49,14 @@ export function SiteHeader({
 
       <div className="flex flex-1 items-center justify-end gap-[0.75rem] sm:gap-[1rem] lg:flex-nowrap lg:gap-[1.25rem]">
         <a
-          className="flex h-[3rem] flex-nowrap items-center gap-[0.875rem] rounded-[0.9375rem] border border-[#E4EAED] bg-white px-[1rem] text-[1rem] font-medium leading-[1] text-black shadow-[0_2px_10px_rgba(0,0,0,0.03)] transition-colors hover:bg-[#F9FCFD] sm:px-[1.375rem] sm:text-[1.125rem] lg:px-[1.875rem] lg:text-[1.25rem]"
+          className="flex h-[3rem] flex-nowrap items-center gap-[0.875rem] rounded-[0.9375rem] border border-[#E4EAED] bg-white px-[1rem] font-body text-[1rem] font-medium leading-[1] tracking-[0] text-black shadow-[0_2px_10px_rgba(0,0,0,0.03)] transition-colors hover:bg-[#F9FCFD] sm:px-[1.375rem] sm:text-[1.125rem] lg:px-[1.875rem] lg:text-[1.25rem]"
           href={phoneHref}
         >
           <Image alt="" aria-hidden="true" height={16} src="/icons/phone.svg" width={16} />
           <span className="whitespace-nowrap">{phoneLabel}</span>
         </a>
 
-        <div className="flex h-[3rem] flex-nowrap items-center gap-[0.875rem] rounded-[0.9375rem] border border-[#E4EAED] bg-white px-[1rem] text-[0.9375rem] font-medium leading-[1] text-black shadow-[0_2px_10px_rgba(0,0,0,0.03)] sm:px-[1.375rem] sm:text-[1rem] lg:px-[1.875rem] lg:text-[1.25rem]">
+        <div className="flex h-[3rem] flex-nowrap items-center gap-[0.875rem] rounded-[0.9375rem] border border-[#E4EAED] bg-white px-[1rem] font-body text-[0.9375rem] font-medium leading-[1] tracking-[0] text-black shadow-[0_2px_10px_rgba(0,0,0,0.03)] sm:px-[1.375rem] sm:text-[1rem] lg:px-[1.875rem] lg:text-[1.25rem]">
           <Image alt="" aria-hidden="true" height={20} src="/icons/location.svg" width={16} />
           <span className="whitespace-nowrap">{cityLabel}</span>
         </div>

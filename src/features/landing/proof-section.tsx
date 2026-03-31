@@ -13,7 +13,7 @@ export function ProofSection() {
         <div className="mt-8 grid gap-5 lg:grid-cols-[387px_793px]">
           <article className="relative h-[360px] overflow-hidden rounded-[20px] bg-[#d9e5ea]">
             <Image
-              alt="Сотрудник SaFerplast на производстве"
+              alt="Сотрудник Saferplast на производстве"
               className="object-cover"
               fill
               sizes="(max-width: 1024px) 100vw, 387px"
@@ -33,10 +33,7 @@ export function ProofSection() {
 
             <div className="liquid-glass-strong liquid-glass-soft absolute left-[40px] top-[45px] flex h-[269px] w-[678px] flex-col items-start gap-[39px] rounded-[15px] p-[15px]">
               <div className="relative z-10 flex h-full w-full flex-col items-start gap-[39px]">
-                <p
-                  className="max-w-[648px] font-['Sansation'] text-[44px] font-normal leading-[1] tracking-[0] text-white"
-                  style={{ fontFamily: "Sansation" }}
-                >
+                <p className="max-w-[648px] font-display text-[44px] font-normal leading-[1] tracking-[0] text-white">
                   Бесплатно подскажем, что вам выгоднее: ремонт, замена или новое изготовление
                 </p>
 

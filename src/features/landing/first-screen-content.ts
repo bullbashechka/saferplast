@@ -1,4 +1,4 @@
-﻿export type NavigationLink = {
+export type NavigationLink = {
   href: string;
   label: string;
 };
@@ -35,7 +35,7 @@ export const firstScreenContent: FirstScreenContent = {
   },
   secondaryCta: {
     label: "Получить расчет",
-    href: "#calculator",
+    href: "#lead-form",
   },
   phoneHref: "tel:+77079999999",
   phoneLabel: "+77079999999",
@@ -44,9 +44,8 @@ export const firstScreenContent: FirstScreenContent = {
   telegramHref: "https://t.me/saferplast",
   navigationLinks: [
     { href: "#top", label: "главная" },
-    { href: "#calculator", label: "рассчитать стоимость" },
+    { href: "#lead-form", label: "рассчитать стоимость" },
     { href: "#projects", label: "наши работы" },
     { href: "#contacts", label: "контакты" },
   ],
 };
-

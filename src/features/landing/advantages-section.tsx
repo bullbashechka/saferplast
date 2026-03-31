@@ -41,14 +41,14 @@ export function AdvantagesSection() {
                   className={`${positionClassName} relative min-h-[17rem] overflow-hidden rounded-[1.25rem] bg-[#d9e5ea] sm:min-h-[22rem] lg:min-h-[27.5rem]`}
                 >
                   <Image
-                    alt="Фирменный стиль SaFerplast"
+                    alt="Фирменный стиль Saferplast"
                     className="rounded-[1.25rem] object-cover blur-[2.5px] opacity-[0.29]"
                     fill
                     sizes="(max-width: 1024px) 100vw, 285px"
                     src="/images/webp/cloud.webp"
                   />
                   <div className="absolute inset-0 flex items-center justify-center px-4">
-                    <Image alt="SaFerplast" height={300} src="/images/webp/logoinadvantages.webp" width={430} />
+                    <Image alt="Saferplast" height={300} src="/images/webp/logoinadvantages.webp" width={430} />
                   </div>
                 </article>
               );
@@ -68,7 +68,7 @@ export function AdvantagesSection() {
                   {card.title}
                 </h3>
                 <p className="mt-8 max-w-[33.125rem] text-[1rem] leading-[1.2]">{card.description}</p>
-                {isDark ? <span className="absolute right-6 top-10 text-[1.375rem] leading-none">→</span> : null}
+                {isDark ? <span className="absolute right-6 top-10 text-[1.375rem] leading-none">&rarr;</span> : null}
               </>
             );
 

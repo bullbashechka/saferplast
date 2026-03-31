@@ -17,7 +17,7 @@ export type AdvantagesSectionContent = {
 
 export const advantagesSectionContent: AdvantagesSectionContent = {
   title: "Почему к нам обращаются",
-  subtitle: "Понятные условия, собственное производство и готовое решение",
+  subtitle: "Понятные условия, собственное производство и готовое решение под вашу задачу",
   cards: [
     {
       title: "Собственное производство",
@@ -39,13 +39,13 @@ export const advantagesSectionContent: AdvantagesSectionContent = {
       variant: "gradient",
     },
     {
-      title: "Опыт работы - более X лет",
-      description: "Несем ответственность за результат",
+      title: "Опыт работы более 10 лет",
+      description: "Работаем аккуратно, в срок и без лишних обещаний",
       variant: "gradient",
     },
     {
       title: "Бесплатный замер",
-      description: "Запишем на замер в удобное для вас время",
+      description: "Запишем на выезд мастера в удобное для вас время",
       variant: "dark",
       href: "#lead-form",
     },

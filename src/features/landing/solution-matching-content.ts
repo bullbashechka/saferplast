@@ -5,7 +5,7 @@ export const solutionMatchingContent = {
     heading: "Подберем решение под вашу задачу",
     subtitle: "Не нужно во всем разбираться самим. Мы подскажем, что подойдет именно в вашей ситуации",
     typography: {
-      headingClassName: "font-['Sansation'] font-normal text-[44px] leading-[1] tracking-[0]",
+      headingClassName: "font-display font-normal text-[44px] leading-[1] tracking-[0]",
       subtitleClassName: "font-body font-normal text-[16px] leading-[1] tracking-[0] text-center",
     },
   },
@@ -68,7 +68,7 @@ export const solutionMatchingContent = {
       {
         id: "broken-window-door",
         row: "top",
-        title: "Окно или дверь сломались -",
+        title: "Окно или дверь сломались",
         subtitle: "Замена окон, стеклопакетов или регулировка",
         imageSrc: "/images/webp/broken-window.webp",
         ctaLabel: "Узнать подробнее",
@@ -125,7 +125,7 @@ export const solutionMatchingContent = {
         id: "new-object",
         row: "bottom",
         title: "Ремонт или обустройство нового объекта",
-        subtitle: "Установим окна, двери, откосы, подоконники, монтаж",
+        subtitle: "Установим окна, двери, откосы, подоконники и выполним монтаж",
         imageSrc: "/images/webp/office.webp",
         ctaLabel: "Узнать подробнее",
         ctaHref: "#lead-form",

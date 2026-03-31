@@ -9,7 +9,7 @@ export type SolutionMatchingCtaLabel = "Узнать подробнее";
 export type SolutionMatchingCtaHref = "#lead-form";
 
 export type SolutionMatchingSectionTypography = {
-  headingClassName: "font-['Sansation'] font-normal text-[44px] leading-[1] tracking-[0]";
+  headingClassName: "font-display font-normal text-[44px] leading-[1] tracking-[0]";
   subtitleClassName: "font-body font-normal text-[16px] leading-[1] tracking-[0] text-center";
 };
 

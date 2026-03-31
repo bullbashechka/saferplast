@@ -39,6 +39,6 @@ export const calculatorSectionContent: CalculatorSectionContent = {
   ],
   cta: {
     label: "Рассчитать",
-    iconPath: "/images/svg-on-button-рассчитать.svg",
+    iconPath: "/icons/svg-on-button-рассчитать.svg",
   },
 };

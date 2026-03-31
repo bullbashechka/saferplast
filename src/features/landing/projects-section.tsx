@@ -41,10 +41,7 @@ export function ProjectsSection() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[387px_387px_387px] lg:gap-x-5 lg:gap-y-0">
           <div className="flex flex-col gap-8 lg:gap-9">
             <div className="lg:h-[87px]">
-              <h2
-                className="font-display text-[2rem] font-normal leading-[1] text-[#004B62] sm:text-[2.25rem] lg:text-[44px]"
-                style={{ fontFamily: "Sansation" }}
-              >
+              <h2 className="font-display text-[2rem] font-normal leading-[1] text-[#004B62] sm:text-[2.25rem] lg:text-[44px]">
                 {title}
               </h2>
               <p className="mt-4 max-w-[20rem] text-[1rem] font-normal leading-[1.2] text-[#000000] lg:w-[279px]">

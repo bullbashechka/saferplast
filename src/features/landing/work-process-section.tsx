@@ -27,10 +27,7 @@ function WorkProcessCard({
           <div className="relative z-10 flex items-start gap-4">
             <div className="relative left-[5px] h-[55.00013px] w-[57px] shrink-0">
               <Image alt="" aria-hidden="true" fill src="/icons/square.svg" />
-              <span
-                className="absolute inset-0 flex items-center justify-center font-display text-[45px] font-normal leading-[1] text-[#004B62]"
-                style={{ fontFamily: "Sansation" }}
-              >
+              <span className="absolute inset-0 flex items-center justify-center font-display text-[45px] font-normal leading-[1] text-[#004B62]">
                 {step}
               </span>
             </div>
