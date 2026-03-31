@@ -1,4 +1,5 @@
 import { AdvantagesSection } from "@/features/landing/advantages-section";
+import { FaqSection } from "@/features/landing/faq-section";
 import { FirstScreen } from "@/features/landing/first-screen";
 import { ProofSection } from "@/features/landing/proof-section";
 import { ProjectsSection } from "@/features/landing/projects-section";
@@ -17,6 +18,7 @@ export default function HomePage() {
       <WorkProcessSection />
       <ProjectsSection />
       <TestimonialsSection />
+      <FaqSection />
       <LeadFormSection />
     </main>
   );
