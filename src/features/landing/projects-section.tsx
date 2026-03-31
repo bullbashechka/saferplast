@@ -37,7 +37,7 @@ export function ProjectsSection() {
       aria-label="Наши работы"
       className="bg-[rgba(250,254,255,1)] px-6 py-16 lg:px-8 lg:py-20"
     >
-      <div className="mx-auto w-full max-w-content">
+      <div className="mx-auto w-full max-w-content lg:max-w-[1201px]">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[387px_387px_387px] lg:gap-x-5 lg:gap-y-0">
           <div className="flex flex-col gap-8 lg:gap-9">
             <div className="lg:h-[87px]">
@@ -88,7 +88,7 @@ export function ProjectsSection() {
             />
 
             <a
-              className="inline-flex min-h-[74px] w-full items-center justify-center rounded-[15px] border border-[#004B62] px-[2.75rem] py-[1.35rem] text-center text-[1.125rem] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#004B62] hover:text-white lg:min-h-[74px] lg:px-[66px] lg:py-[27px] lg:text-[20px]"
+              className="inline-flex h-[74px] w-full items-center justify-center whitespace-nowrap rounded-[15px] border border-[#004B62] px-[2.75rem] text-center text-[1.125rem] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#004B62] hover:text-white lg:px-[66px] lg:text-[20px]"
               href={ctaHref}
             >
               {ctaLabel}
