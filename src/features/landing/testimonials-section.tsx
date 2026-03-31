@@ -13,6 +13,7 @@ import { testimonialsContent } from "@/features/landing/testimonials-content";
 export function TestimonialsSection() {
   return (
     <section
+      id="testimonials"
       aria-labelledby="testimonials-title"
       className="bg-[rgba(250,254,255,1)] px-6 py-16 lg:px-8 lg:py-20"
     >

@@ -127,6 +127,7 @@ export function SolutionMatchingSection() {
 
   return (
     <section
+      id="solution-matching"
       aria-labelledby="solution-matching-title"
       className="bg-[rgba(250,254,255,1)] px-6 py-16 lg:px-8 lg:py-20"
     >
