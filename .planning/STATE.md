@@ -101,7 +101,7 @@ progress:
 | 260328-nbz | lower liquid glass opacity by about 10 percent | 2026-03-28 | e3bf63d | [.planning/quick/260328-nbz-lower-liquid-glass-opacity-by-about-10-p](./quick/260328-nbz-lower-liquid-glass-opacity-by-about-10-p/) |
 | 260328-n0x | make right proof block look like apple liquid glass | 2026-03-28 | 994e976 | [.planning/quick/260328-n0x-make-right-proof-block-look-like-apple-l](./quick/260328-n0x-make-right-proof-block-look-like-apple-l/) |
 | 260328-n4a | make right proof block use figma liquid glass frame and consultation button | 2026-03-28 | 69674a4 | [.planning/quick/260328-n4a-make-right-proof-block-use-figma-liquid-](./quick/260328-n4a-make-right-proof-block-use-figma-liquid-/) |
-| 260331-dua | проверь компоненту src/features/landing/solution-matching-section.tsx на использование запрещенных стилей | 2026-03-31 | 78b1a24 | [.planning/quick/260331-dua-src-features-landing-solution-matching-s](./quick/260331-dua-src-features-landing-solution-matching-s/) |
+| 260331-dua | проверь компоненту src/features/landing/solution-matching-section.tsx на использование запрещенных стилей | 2026-03-31 | 95a2cd8 | [.planning/quick/260331-dua-src-features-landing-solution-matching-s](./quick/260331-dua-src-features-landing-solution-matching-s/) |
 
 ## РќРµРїСЂРµСЂС‹РІРЅРѕСЃС‚СЊ СЃРµСЃСЃРёРё
 
