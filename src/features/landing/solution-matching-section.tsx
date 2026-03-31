@@ -12,37 +12,49 @@ const BOTTOM_LEFT_OVERLAY_CLASS =
 function SolutionCard({ card, isBottomLeft }: { card: SolutionMatchingCard; isBottomLeft: boolean }) {
   return (
     <article
-      className={`relative overflow-hidden rounded-[20px] bg-[#d9e5ea] p-[30px] pt-[40px] ${
-        card.row === "top" ? "h-[368px]" : "h-[290px]"
-      }`}
+      className={`relative overflow-hidden rounded-[20px] bg-[#d9e5ea] ${card.row === "top" ? "h-[368px]" : "h-[290px]"}`}
       style={{
         borderRadius: card.geometry.borderRadius,
+        padding: "12px",
       }}
     >
       <Image
         alt={card.title}
-        className="object-cover"
+        className="rounded-[20px] object-cover"
         fill
         sizes={card.row === "top" ? "(max-width: 1024px) 100vw, 387px" : "(max-width: 1024px) 100vw, 590px"}
         src={card.imageSrc}
       />
 
-      <div className={`absolute inset-0 ${card.row === "top" ? TOP_OVERLAY_CLASS : isBottomLeft ? BOTTOM_LEFT_OVERLAY_CLASS : TOP_OVERLAY_CLASS}`} />
+      <div
+        className={`absolute inset-0 rounded-[20px] ${
+          card.row === "top" ? TOP_OVERLAY_CLASS : isBottomLeft ? BOTTOM_LEFT_OVERLAY_CLASS : TOP_OVERLAY_CLASS
+        }`}
+      />
 
       <div className="relative z-10 flex h-full flex-col justify-between">
         <div
           className="liquid-glass-strong rounded-[10px] p-[10px]"
           style={{
+            height: card.textBlockGeometry.height,
             borderRadius: card.textBlockGeometry.borderRadius,
             padding: card.textBlockGeometry.padding,
           }}
         >
-          <h3
-            className="font-['Sansation'] text-[30px] font-normal leading-[1] tracking-[0]"
-            style={{ color: card.typography.titleColor }}
+          <div
+            className={
+              card.row === "top"
+                ? `flex min-h-[60px] ${card.id === "cold-noise" ? "items-start" : "items-end"}`
+                : undefined
+            }
           >
-            {card.title}
-          </h3>
+            <h3
+              className="font-['Sansation'] text-[30px] font-normal leading-[1] tracking-[0]"
+              style={{ color: card.typography.titleColor }}
+            >
+              {card.title}
+            </h3>
+          </div>
           <p className="mt-3 font-body text-[16px] font-normal leading-[1] tracking-[0]" style={{ color: card.typography.subtitleColor }}>
             {card.subtitle}
           </p>
