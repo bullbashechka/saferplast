@@ -51,7 +51,7 @@ export function HeroSection() {
               className="h-auto w-full object-cover"
               height={682}
               priority
-              src="/images/herophotogirl.png"
+              src="/images/webp/herophotogirl.webp"
               width={588}
             />
           </div>

@@ -45,10 +45,10 @@ export function AdvantagesSection() {
                     className="rounded-[1.25rem] object-cover blur-[2.5px] opacity-[0.29]"
                     fill
                     sizes="(max-width: 1024px) 100vw, 285px"
-                    src="/images/cloud.png"
+                    src="/images/webp/cloud.webp"
                   />
                   <div className="absolute inset-0 flex items-center justify-center px-4">
-                    <Image alt="SaFerplast" height={300} src="/images/logoinadvantages.png" width={430} />
+                    <Image alt="SaFerplast" height={300} src="/images/webp/logoinadvantages.webp" width={430} />
                   </div>
                 </article>
               );

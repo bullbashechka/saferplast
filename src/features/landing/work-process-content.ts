@@ -19,19 +19,19 @@ export const workProcessContent: WorkProcessContent = {
       id: "consultation",
       step: "1",
       titleLines: ["Консультация", "Бесплатный замер"],
-      imageSrc: "/images/manlookingtape.jpg",
+      imageSrc: "/images/webp/manlookingtape.webp",
     },
     {
       id: "calculation",
       step: "2",
       titleLines: ["Расчет и подбор", "решения"],
-      imageSrc: "/images/calculator.jpg",
+      imageSrc: "/images/webp/calculator.webp",
     },
     {
       id: "installation",
       step: "3",
       titleLines: ["Монтаж / ремонт", "Сдача работы"],
-      imageSrc: "/images/mother.jpg",
+      imageSrc: "/images/webp/mother.webp",
     },
   ],
 };

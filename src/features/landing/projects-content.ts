@@ -25,22 +25,22 @@ export const projectsContent: ProjectsContent = {
   images: {
     left: {
       alt: "Установленное белое окно с широким подоконником",
-      src: "/images/windowwork.jpg",
+      src: "/images/webp/windowwork.webp",
       objectPositionClassName: "object-center",
     },
     middleTop: {
       alt: "Балконный блок с окном и дверью после монтажа",
-      src: "/images/balconywork.jpg",
+      src: "/images/webp/balconywork.webp",
       objectPositionClassName: "object-center",
     },
     middleBottom: {
       alt: "Фурнитура и ручка пластикового окна крупным планом",
-      src: "/images/ruchwork.jpg",
+      src: "/images/webp/ruchwork.webp",
       objectPositionClassName: "object-center",
     },
     right: {
       alt: "Темная стеклянная дверь в облицованном помещении",
-      src: "/images/doorwork.jpg",
+      src: "/images/webp/doorwork.webp",
       objectPositionClassName: "object-top",
     },
   },

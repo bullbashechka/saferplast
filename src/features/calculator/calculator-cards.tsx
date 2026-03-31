@@ -10,7 +10,7 @@ type CalculatorCardsProps = {
   onOpenModal: (category: CalculatorCategoryKey) => void;
 };
 
-const cardImagePaths = ["/images/window.jpg", "/images/door.png", "/images/balcony.png", "/images/windowsill.png"] as const;
+const cardImagePaths = ["/images/webp/window.webp", "/images/webp/door.webp", "/images/webp/balcony.webp", "/images/webp/windowsill.webp"] as const;
 
 const desktopButtonColor = "hsla(194, 100%, 19%, 1)";
 

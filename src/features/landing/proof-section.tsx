@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const rightProofImageSrc = encodeURI("/images/glass-broken-from- house-by-accident- man-checking- repair.jpg");
+const rightProofImageSrc = encodeURI("/images/webp/glass-broken-from- house-by-accident- man-checking- repair.webp");
 
 export function ProofSection() {
   return (
@@ -17,7 +17,7 @@ export function ProofSection() {
               className="object-cover"
               fill
               sizes="(max-width: 1024px) 100vw, 387px"
-              src="/images/male-worker-factory.jpg"
+              src="/images/webp/male-worker-factory.webp"
             />
           </article>
 

@@ -81,7 +81,7 @@ function SolutionCard({
             aria-hidden="true"
             className="block"
             height={292}
-            src="/images/freezing-wooman.png"
+            src="/images/webp/freezing-wooman.webp"
             width={184}
           />
         </div>

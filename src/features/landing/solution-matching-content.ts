@@ -16,7 +16,7 @@ export const solutionMatchingContent = {
         row: "top",
         title: "Дует, шумно, холодно",
         subtitle: "Замена окон, стеклопакетов или регулировка",
-        imageSrc: "/images/frozen-first-card.jpg",
+        imageSrc: "/images/webp/frozen-first-card.webp",
         ctaLabel: "Узнать подробнее",
         ctaHref: "#lead-form",
         geometry: {
@@ -43,7 +43,7 @@ export const solutionMatchingContent = {
         row: "top",
         title: "Нужен балкон под ключ",
         subtitle: "Остекление и оформление под вашу задачу",
-        imageSrc: "/images/mother.jpg",
+        imageSrc: "/images/webp/mother.webp",
         ctaLabel: "Узнать подробнее",
         ctaHref: "#lead-form",
         geometry: {
@@ -70,7 +70,7 @@ export const solutionMatchingContent = {
         row: "top",
         title: "Окно или дверь сломались -",
         subtitle: "Замена окон, стеклопакетов или регулировка",
-        imageSrc: "/images/broken-window.png",
+        imageSrc: "/images/webp/broken-window.webp",
         ctaLabel: "Узнать подробнее",
         ctaHref: "#lead-form",
         geometry: {
@@ -99,7 +99,7 @@ export const solutionMatchingContent = {
         row: "bottom",
         title: "Нужно решение для офиса или коммерции",
         subtitle: "Практичные ПВХ и алюминиевые конструкции",
-        imageSrc: "/images/table.jpg",
+        imageSrc: "/images/webp/table.webp",
         ctaLabel: "Узнать подробнее",
         ctaHref: "#lead-form",
         geometry: {
@@ -126,7 +126,7 @@ export const solutionMatchingContent = {
         row: "bottom",
         title: "Ремонт или обустройство нового объекта",
         subtitle: "Установим окна, двери, откосы, подоконники, монтаж",
-        imageSrc: "/images/office.jpg",
+        imageSrc: "/images/webp/office.webp",
         ctaLabel: "Узнать подробнее",
         ctaHref: "#lead-form",
         geometry: {

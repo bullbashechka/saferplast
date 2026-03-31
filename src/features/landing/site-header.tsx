@@ -27,7 +27,7 @@ export function SiteHeader({
           className="h-auto w-full object-contain"
           height={92}
           priority
-          src="/images/logo.png"
+          src="/images/webp/logo.webp"
           width={179}
         />
       </Link>
