@@ -3,6 +3,7 @@ import { FirstScreen } from "@/features/landing/first-screen";
 import { ProofSection } from "@/features/landing/proof-section";
 import { ProjectsSection } from "@/features/landing/projects-section";
 import { SolutionMatchingSection } from "@/features/landing/solution-matching-section";
+import { TestimonialsSection } from "@/features/landing/testimonials-section";
 import { WorkProcessSection } from "@/features/landing/work-process-section";
 import { LeadFormSection } from "@/features/lead-form/lead-form-section";
 
@@ -15,6 +16,7 @@ export default function HomePage() {
       <SolutionMatchingSection />
       <WorkProcessSection />
       <ProjectsSection />
+      <TestimonialsSection />
       <LeadFormSection />
     </main>
   );
