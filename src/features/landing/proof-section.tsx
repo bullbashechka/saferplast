@@ -31,7 +31,7 @@ export function ProofSection() {
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,hsla(0,0%,0%,0.37)_0%,hsla(0,0%,0%,0.37)_100%)]" />
 
-            <div className="liquid-glass-strong absolute left-[40px] top-[45px] flex h-[269px] w-[678px] flex-col items-start gap-[39px] p-[15px]">
+            <div className="liquid-glass-strong liquid-glass-soft absolute left-[40px] top-[45px] flex h-[269px] w-[678px] flex-col items-start gap-[39px] rounded-[15px] p-[15px]">
               <div className="relative z-10 flex h-full w-full flex-col items-start gap-[39px]">
                 <p
                   className="max-w-[648px] font-['Sansation'] text-[44px] font-normal leading-[1] tracking-[0] text-white"

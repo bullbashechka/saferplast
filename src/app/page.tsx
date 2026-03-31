@@ -1,4 +1,3 @@
-import { CalculatorSection } from "@/features/calculator/calculator-section";
 import { AdvantagesSection } from "@/features/landing/advantages-section";
 import { FirstScreen } from "@/features/landing/first-screen";
 import { ProofSection } from "@/features/landing/proof-section";
@@ -11,7 +10,6 @@ export default function HomePage() {
       <FirstScreen />
       <AdvantagesSection />
       <ProofSection />
-      <CalculatorSection />
       <SolutionMatchingSection />
       <LeadFormSection />
     </main>

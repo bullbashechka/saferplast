@@ -1,2 +1,0 @@
-- `npm.cmd run lint` сейчас падает на pre-existing `.codex/get-shit-done/bin/*.cjs` files из-за `@typescript-eslint/no-require-imports` и нескольких unused-variable warnings. Это вне scope Фазы 01-01 и не было затронуто текущими landing changes.
-- 2026-03-25: Global lint по-прежнему падает на pre-existing `.codex/get-shit-done/**/*.cjs` (@typescript-eslint/no-require-imports); вне scope plan 01-01.
