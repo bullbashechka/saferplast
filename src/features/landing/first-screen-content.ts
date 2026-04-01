@@ -3,11 +3,6 @@ export type NavigationLink = {
   label: string;
 };
 
-export type HeaderNavigationColumns = {
-  left: NavigationLink[];
-  right: NavigationLink[];
-};
-
 export type FirstScreenContent = {
   headline: string;
   description: string;
@@ -20,8 +15,7 @@ export type FirstScreenContent = {
   cityLabel: string;
   whatsappHref: string;
   telegramHref: string;
-  headerNavigationColumns: HeaderNavigationColumns;
-  headerMobileNavigationLinks: NavigationLink[];
+  headerNavigationLinks: NavigationLink[];
 };
 
 export const firstScreenContent: FirstScreenContent = {
@@ -48,22 +42,10 @@ export const firstScreenContent: FirstScreenContent = {
   cityLabel: "г. Караганда",
   whatsappHref: "https://wa.me/77079999999",
   telegramHref: "https://t.me/saferplast",
-  headerNavigationColumns: {
-    left: [
-      { href: "#top", label: "главная" },
-      { href: "#projects", label: "наши работы" },
-    ],
-    right: [
-      { href: "#solution-matching", label: "подобрать решение" },
-      { href: "#testimonials", label: "отзывы" },
-      { href: "#contacts", label: "контакты" },
-    ],
-  },
-  headerMobileNavigationLinks: [
-    { href: "#top", label: "главная" },
-    { href: "#contacts", label: "контакты" },
-    { href: "#projects", label: "наши работы" },
-    { href: "#solution-matching", label: "подобрать решение" },
-    { href: "#testimonials", label: "отзывы" },
+  headerNavigationLinks: [
+    { href: "#solution-matching", label: "Подобрать решение" },
+    { href: "#projects", label: "Наши работы" },
+    { href: "#testimonials", label: "Отзывы" },
+    { href: "#contacts", label: "Контакты" },
   ],
 };

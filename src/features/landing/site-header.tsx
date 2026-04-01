@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -9,39 +9,29 @@ type NavigationLink = {
   label: string;
 };
 
-type HeaderNavigationColumns = {
-  left: NavigationLink[];
-  right: NavigationLink[];
-};
-
 type SiteHeaderProps = {
   cityLabel: string;
-  desktopNavigationColumns: HeaderNavigationColumns;
-  mobileNavigationLinks: NavigationLink[];
+  navigationLinks: NavigationLink[];
   phoneHref: string;
   phoneLabel: string;
 };
 
 export function SiteHeader({
   cityLabel,
-  desktopNavigationColumns,
-  mobileNavigationLinks,
+  navigationLinks,
   phoneHref,
   phoneLabel,
 }: SiteHeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const desktopNavigationLinks = [
-    desktopNavigationColumns.left[0],
-    desktopNavigationColumns.right[0],
-    desktopNavigationColumns.left[1],
-    desktopNavigationColumns.right[1],
-    desktopNavigationColumns.right[2],
-  ].filter((link): link is NavigationLink => Boolean(link));
 
   return (
-    <header className="relative py-[0.25rem] lg:grid lg:h-[5.75rem] lg:grid-cols-[minmax(11rem,12rem)_minmax(26rem,1fr)_auto] lg:items-center lg:gap-[1.5rem] lg:pl-[6.25rem] lg:pr-[7.5rem]">
-      <div className="flex items-center justify-between gap-3">
-        <Link aria-label="Saferplast" className="block w-full max-w-[11.1875rem] shrink-0 lg:h-[5.75rem] lg:w-[11.1875rem]" href="/">
+    <header className="relative py-[0.25rem] lg:flex lg:min-h-[5.75rem] lg:items-center lg:gap-[2rem] lg:px-[3rem] xl:px-[3.75rem]">
+      <div className="flex items-center justify-between gap-3 lg:shrink-0">
+        <Link
+          aria-label="Saferplast"
+          className="block w-full max-w-[11.1875rem] shrink-0 lg:h-[5.75rem] lg:w-[11.1875rem]"
+          href="/"
+        >
           <Image
             alt="Saferplast"
             className="h-auto w-full object-contain lg:h-[5.75rem] lg:w-[11.1875rem]"
@@ -64,35 +54,67 @@ export function SiteHeader({
         </button>
       </div>
 
-      <nav aria-label="Основная навигация" className="hidden justify-center lg:flex">
-        <ul className="grid w-[19.8125rem] grid-cols-2 gap-x-6 gap-y-6">
-          {desktopNavigationLinks.map((link) => (
-            <li key={link.href} className={link.label === "контакты" ? "col-start-2" : undefined}>
-              <a
-                className="whitespace-nowrap font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
-                href={link.href}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <div className="hidden min-w-0 flex-1 items-center justify-between gap-[2rem] lg:flex">
+        <nav aria-label="Основная навигация" className="min-w-0 flex-1">
+          <ul className="flex items-center justify-center gap-[2.875rem]">
+            {navigationLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  className="whitespace-nowrap font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
+                  href={link.href}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-      <div className="mt-3 flex items-center justify-end gap-[0.625rem] sm:gap-[0.875rem] lg:mt-0 lg:gap-[1.25rem]">
+        <div className="flex shrink-0 items-center justify-end gap-[1.25rem]">
+          <a
+            className="liquid-glass-strong liquid-glass-soft flex h-12 w-12 shrink-0 items-center justify-center rounded-[15px] p-[15px] lg:h-[3rem] lg:w-[14.8125rem] lg:flex-nowrap lg:justify-start lg:gap-[0.875rem] lg:px-[1.875rem] lg:py-[0.875rem]"
+            href={phoneHref}
+          >
+            <Image
+              alt=""
+              aria-hidden="true"
+              className="relative z-10"
+              height={16}
+              src="/icons/phone.svg"
+              width={16}
+            />
+            <span className="relative z-10 hidden whitespace-nowrap font-body text-[1.25rem] font-medium leading-[1] tracking-[0] lg:inline">
+              {phoneLabel}
+            </span>
+          </a>
+
+          <div className="liquid-glass-strong liquid-glass-soft flex h-12 min-w-0 items-center gap-2 rounded-[15px] p-[15px] lg:h-[3rem] lg:w-[14.8125rem] lg:gap-[0.875rem] lg:px-[1.875rem] lg:py-[0.875rem]">
+            <Image
+              alt=""
+              aria-hidden="true"
+              className="relative z-10"
+              height={16}
+              src="/icons/location.svg"
+              width={16}
+            />
+            <span className="relative z-10 truncate whitespace-nowrap font-body text-[0.9375rem] font-medium leading-[1] tracking-[0] sm:text-[1rem] lg:text-[1.25rem]">
+              {cityLabel}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-3 flex items-center justify-end gap-[0.625rem] sm:gap-[0.875rem] lg:hidden">
         <a
-          className="flex h-[3rem] w-[3rem] shrink-0 items-center justify-center rounded-[0.9375rem] bg-[rgba(250,254,255,0.36)] transition-colors hover:bg-[rgba(250,254,255,0.8)] lg:w-auto lg:flex-nowrap lg:justify-start lg:gap-[0.875rem] lg:px-[1.875rem]"
+          className="liquid-glass-strong liquid-glass-soft flex h-12 w-12 shrink-0 items-center justify-center rounded-[15px] p-[15px]"
           href={phoneHref}
         >
-          <Image alt="" aria-hidden="true" height={16} src="/icons/phone.svg" width={16} />
-          <span className="hidden whitespace-nowrap font-body text-[1.25rem] font-medium leading-[1] tracking-[0] text-[#242424] lg:inline">
-            {phoneLabel}
-          </span>
+          <Image alt="" aria-hidden="true" className="relative z-10" height={16} src="/icons/phone.svg" width={16} />
         </a>
 
-        <div className="flex h-[3rem] min-w-0 items-center gap-[0.875rem] rounded-[0.9375rem] bg-[rgba(242,244,245,0.4)] px-3 sm:px-4 lg:px-[1.875rem]">
-          <Image alt="" aria-hidden="true" height={20} src="/icons/location.svg" width={16} />
-          <span className="truncate whitespace-nowrap font-body text-[0.9375rem] font-medium leading-[1] tracking-[0] text-[#242424] sm:text-[1rem] lg:text-[1.25rem]">
+        <div className="liquid-glass-strong liquid-glass-soft flex h-12 min-w-0 items-center gap-2 rounded-[15px] p-[15px]">
+          <Image alt="" aria-hidden="true" className="relative z-10" height={16} src="/icons/location.svg" width={16} />
+          <span className="relative z-10 truncate whitespace-nowrap font-body text-[0.9375rem] font-medium leading-[1] tracking-[0] sm:text-[1rem]">
             {cityLabel}
           </span>
         </div>
@@ -105,7 +127,7 @@ export function SiteHeader({
           id="mobile-header-navigation"
         >
           <ul className="grid gap-3">
-            {mobileNavigationLinks.map((link) => (
+            {navigationLinks.map((link) => (
               <li key={link.href}>
                 <a
                   className="block whitespace-nowrap font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
