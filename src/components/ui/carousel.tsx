@@ -83,7 +83,7 @@ function CarouselContent({ className, ...props }: React.ComponentProps<"div">) {
 
   return (
     <div className="cursor-grab overflow-hidden active:cursor-grabbing" ref={carouselRef}>
-      <div className={cn("-ml-5 flex", className)} {...props} />
+      <div className={cn("flex gap-5", className)} {...props} />
     </div>
   );
 }
@@ -92,7 +92,7 @@ function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       aria-roledescription="slide"
-      className={cn("min-w-0 shrink-0 grow-0 basis-full pl-5", className)}
+      className={cn("min-w-0 shrink-0 grow-0 basis-full", className)}
       {...props}
     />
   );
