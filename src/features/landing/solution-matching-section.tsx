@@ -122,29 +122,74 @@ function SolutionCard({
   );
 }
 
+function MobileSolutionCard({ card }: { card: SolutionMatchingCard }) {
+  return (
+    <article className="relative mx-auto flex h-[96px] w-[300px] gap-[12px] rounded-[10px] bg-[hsla(190,5%,95%,1)] p-[5px]">
+      <div className="relative h-[86px] w-[80px] shrink-0 overflow-hidden rounded-[5px]">
+        <Image
+          alt={card.title}
+          className={`object-cover ${card.id === "cold-noise" ? "opacity-[0.53]" : ""}`}
+          fill
+          sizes="80px"
+          src={card.imageSrc}
+        />
+      </div>
+
+      {card.id === "cold-noise" ? (
+        <div className="pointer-events-none absolute left-[15px] top-[-10px] z-10 h-[100px] w-[63px]">
+          <Image
+            alt=""
+            aria-hidden="true"
+            className="object-contain"
+            fill
+            sizes="63px"
+            src="/images/webp/freezing-wooman.webp"
+          />
+        </div>
+      ) : null}
+
+      <div className="flex min-w-0 flex-1 flex-col justify-center gap-[6px]">
+        <h3 className="font-['Sansation'] text-[18px] font-normal leading-[1] tracking-[0] text-[#004B62]">
+          {card.title}
+        </h3>
+        <p className="font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[#242424]">
+          {card.subtitle}
+        </p>
+      </div>
+    </article>
+  );
+}
+
 export function SolutionMatchingSection() {
   const { section, rows } = solutionMatchingContent;
+  const mobileCards = [...rows.topCards, ...rows.bottomCards];
 
   return (
     <section
       id="solution-matching"
       aria-labelledby="solution-matching-title"
-      className="bg-[rgba(250,254,255,1)] px-6 py-16 lg:px-8 lg:py-20"
+      className="mt-[20px] bg-[rgba(250,254,255,1)] px-[10px] pb-16 pt-0 lg:mt-0 lg:px-8 lg:py-20"
     >
-      <div className="mx-auto w-full max-w-content">
+      <div className="mx-auto w-full max-w-[300px] lg:max-w-content">
         <h2
           id="solution-matching-title"
-          className={`${section.typography.headingClassName} text-center text-[hsla(194,100%,19%,1)]`}
+          className="font-['Sansation'] text-center text-[20px] font-normal leading-[1] tracking-[0] text-[hsla(194,100%,19%,1)] lg:font-display lg:text-[44px]"
         >
           {section.heading}
         </h2>
         <p
-          className={`${section.typography.subtitleClassName} mx-auto mt-4 max-w-[51rem] text-[hsla(0,0%,14%,1)]`}
+          className="mx-auto mt-[10px] max-w-[300px] text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[hsla(0,0%,14%,1)] lg:mt-4 lg:max-w-[51rem] lg:font-body lg:text-[16px]"
         >
           {section.subtitle}
         </p>
 
-        <div className="mt-8 space-y-5">
+        <div className="mt-[20px] space-y-[10px] lg:hidden">
+          {mobileCards.map((card) => (
+            <MobileSolutionCard card={card} key={card.id} />
+          ))}
+        </div>
+
+        <div className="hidden lg:mt-8 lg:block lg:space-y-5">
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
             {rows.topCards.map((card) => (
               <SolutionCard card={card} isBottomLeft={false} key={card.id} />

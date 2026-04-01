@@ -78,7 +78,7 @@ export type SolutionMatchingRows = {
 
 export type SolutionMatchingSection = {
   heading: "Подберем решение под вашу задачу";
-  subtitle: "Не нужно во всем разбираться самим. Мы подскажем, что подойдет именно в вашей ситуации";
+  subtitle: "Не нужно во всем разбираться самим. Мы подскажем, что подойдет в вашей ситуации";
   typography: SolutionMatchingSectionTypography;
 };
 
