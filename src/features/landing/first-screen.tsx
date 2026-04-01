@@ -5,7 +5,8 @@ import { SiteHeader } from "@/features/landing/site-header";
 export function FirstScreen() {
   const {
     cityLabel,
-    navigationLinks,
+    headerMobileNavigationLinks,
+    headerNavigationColumns,
     phoneHref,
     phoneLabel,
   } = firstScreenContent;
@@ -15,7 +16,8 @@ export function FirstScreen() {
       <div className="mx-auto flex min-h-screen w-full max-w-[90rem] flex-col px-4 pt-[0.9375rem] sm:px-6 lg:w-[90rem] lg:max-w-none lg:px-0">
         <SiteHeader
           cityLabel={cityLabel}
-          navigationLinks={navigationLinks}
+          desktopNavigationColumns={headerNavigationColumns}
+          mobileNavigationLinks={headerMobileNavigationLinks}
           phoneHref={phoneHref}
           phoneLabel={phoneLabel}
         />

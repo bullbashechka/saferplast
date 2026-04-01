@@ -1,4 +1,7 @@
-﻿import Image from "next/image";
+﻿"use client";
+
+import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 type NavigationLink = {
@@ -6,62 +9,124 @@ type NavigationLink = {
   label: string;
 };
 
+type HeaderNavigationColumns = {
+  left: NavigationLink[];
+  right: NavigationLink[];
+};
+
 type SiteHeaderProps = {
   cityLabel: string;
-  navigationLinks: NavigationLink[];
+  desktopNavigationColumns: HeaderNavigationColumns;
+  mobileNavigationLinks: NavigationLink[];
   phoneHref: string;
   phoneLabel: string;
 };
 
 export function SiteHeader({
   cityLabel,
-  navigationLinks,
+  desktopNavigationColumns,
+  mobileNavigationLinks,
   phoneHref,
   phoneLabel,
 }: SiteHeaderProps) {
-  return (
-    <header className="flex h-[5.75rem] flex-wrap items-center justify-between gap-[1rem] py-[0.25rem] lg:flex-nowrap lg:gap-[1.5rem] lg:px-[7.5rem]">
-      <Link aria-label="Saferplast" className="block w-full max-w-[11.1875rem] shrink-0" href="/">
-        <Image
-          alt="Saferplast"
-          className="h-auto w-full object-contain"
-          height={92}
-          priority
-          src="/images/webp/logo.webp"
-          width={179}
-        />
-      </Link>
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-      <nav aria-label="Основная навигация" className="hidden flex-1 justify-center lg:flex">
-        <ul className="flex items-center gap-[1.5rem]">
-          {navigationLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                className="whitespace-nowrap font-body text-[1rem] font-normal leading-[1] tracking-[0] text-ink transition-colors hover:text-brand-700"
-                href={link.href}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+  return (
+    <header className="relative py-[0.25rem] lg:grid lg:h-[5.75rem] lg:grid-cols-[minmax(11rem,12rem)_minmax(26rem,1fr)_auto] lg:items-center lg:gap-[1.5rem] lg:px-[7.5rem]">
+      <div className="flex items-center justify-between gap-3">
+        <Link aria-label="Saferplast" className="block w-full max-w-[11.1875rem] shrink-0" href="/">
+          <Image
+            alt="Saferplast"
+            className="h-auto w-full object-contain"
+            height={92}
+            priority
+            src="/images/webp/logo.webp"
+            width={179}
+          />
+        </Link>
+
+        <button
+          aria-controls="mobile-header-navigation"
+          aria-expanded={isMobileMenuOpen}
+          aria-label="Открыть меню"
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[0.9375rem] bg-[rgba(250,254,255,0.36)] transition-colors hover:bg-[rgba(250,254,255,0.8)] lg:hidden"
+          onClick={() => setIsMobileMenuOpen((value) => !value)}
+          type="button"
+        >
+          <Image alt="" aria-hidden="true" height={22} src="/icons/gurger.svg" width={22} />
+        </button>
+      </div>
+
+      <nav aria-label="Основная навигация" className="hidden justify-center lg:flex">
+        <div className="grid grid-cols-2 gap-x-[3rem]">
+          <ul className="grid content-start gap-4">
+            {desktopNavigationColumns.left.map((link) => (
+              <li key={link.href}>
+                <a
+                  className="whitespace-nowrap font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
+                  href={link.href}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <ul className="grid content-start gap-4">
+            {desktopNavigationColumns.right.map((link) => (
+              <li key={link.href}>
+                <a
+                  className="whitespace-nowrap font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
+                  href={link.href}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </nav>
 
-      <div className="flex flex-1 items-center justify-end gap-[0.75rem] sm:gap-[1rem] lg:flex-nowrap lg:gap-[1.25rem]">
+      <div className="mt-3 flex items-center justify-end gap-[0.625rem] sm:gap-[0.875rem] lg:mt-0 lg:gap-[1.25rem]">
         <a
-          className="flex h-[3rem] flex-nowrap items-center gap-[0.875rem] rounded-[0.9375rem] border border-[#E4EAED] bg-white px-[1rem] font-body text-[1rem] font-medium leading-[1] tracking-[0] text-black shadow-[0_2px_10px_rgba(0,0,0,0.03)] transition-colors hover:bg-[#F9FCFD] sm:px-[1.375rem] sm:text-[1.125rem] lg:px-[1.875rem] lg:text-[1.25rem]"
+          className="flex h-[3rem] w-[3rem] shrink-0 items-center justify-center rounded-[0.9375rem] bg-[rgba(250,254,255,0.36)] transition-colors hover:bg-[rgba(250,254,255,0.8)] lg:w-auto lg:flex-nowrap lg:justify-start lg:gap-[0.875rem] lg:px-[1.875rem]"
           href={phoneHref}
         >
           <Image alt="" aria-hidden="true" height={16} src="/icons/phone.svg" width={16} />
-          <span className="whitespace-nowrap">{phoneLabel}</span>
+          <span className="hidden whitespace-nowrap font-body text-[1.25rem] font-medium leading-[1] tracking-[0] text-[#242424] lg:inline">
+            {phoneLabel}
+          </span>
         </a>
 
-        <div className="flex h-[3rem] flex-nowrap items-center gap-[0.875rem] rounded-[0.9375rem] border border-[#E4EAED] bg-white px-[1rem] font-body text-[0.9375rem] font-medium leading-[1] tracking-[0] text-black shadow-[0_2px_10px_rgba(0,0,0,0.03)] sm:px-[1.375rem] sm:text-[1rem] lg:px-[1.875rem] lg:text-[1.25rem]">
+        <div className="flex h-[3rem] min-w-0 items-center gap-[0.875rem] rounded-[0.9375rem] bg-[rgba(242,244,245,0.4)] px-3 sm:px-4 lg:px-[1.875rem]">
           <Image alt="" aria-hidden="true" height={20} src="/icons/location.svg" width={16} />
-          <span className="whitespace-nowrap">{cityLabel}</span>
+          <span className="truncate whitespace-nowrap font-body text-[0.9375rem] font-medium leading-[1] tracking-[0] text-[#242424] sm:text-[1rem] lg:text-[1.25rem]">
+            {cityLabel}
+          </span>
         </div>
-
       </div>
+
+      {isMobileMenuOpen ? (
+        <nav
+          aria-label="Мобильная навигация"
+          className="absolute left-0 right-0 top-full z-20 mt-2 rounded-[1rem] border border-[#D9E5EA] bg-white p-4 shadow-[0_10px_24px_rgba(0,0,0,0.08)] lg:hidden"
+          id="mobile-header-navigation"
+        >
+          <ul className="grid gap-3">
+            {mobileNavigationLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  className="block font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ) : null}
     </header>
   );
 }
