@@ -27,7 +27,7 @@ export function SiteFooter() {
               alt="Saferplast"
               className="h-[185px] w-[263px] max-w-full object-contain"
               height={185}
-              src="/images/original/logo.png"
+              src="/images/original/logo.PNG"
               width={263}
             />
           </a>

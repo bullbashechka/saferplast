@@ -1,59 +1,150 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 
-import { firstScreenContent } from "@/features/landing/first-screen-content";
+import type { FirstScreenContent } from "@/features/landing/first-screen-content";
+import { DesktopHeaderBrandNav, DesktopHeaderContactActions } from "@/features/landing/site-header";
 
-export function HeroSection() {
-  const { headline, description, audienceLine, primaryCta, secondaryCta } = firstScreenContent;
+type HeroSectionProps = Pick<
+  FirstScreenContent,
+  "cityLabel" | "headerNavigationLinks" | "headline" | "phoneHref" | "phoneLabel" | "serviceCard" | "supportCard"
+>;
 
+type SupportCardProps = FirstScreenContent["supportCard"];
+type ServiceCardProps = FirstScreenContent["serviceCard"];
+
+function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
   return (
-    <section
-      aria-labelledby="hero-title"
-      className="flex flex-1 items-center py-[2.5rem] lg:py-[3.5rem] lg:pl-[7.5rem] lg:pr-[1.25rem]"
-    >
-      <div className="grid w-full items-center gap-[2.5rem] lg:grid-cols-[minmax(0,1fr)_minmax(20rem,36.75rem)] lg:gap-[3rem]">
-        <div className="max-w-[51.875rem]">
-          <h1
-            id="hero-title"
-            className="max-w-[51.875rem] font-display text-[2.75rem] font-normal leading-[1] text-brand-700 sm:text-[3.125rem] lg:text-[3.4375rem]"
-          >
-            {headline}
-          </h1>
-
-          <p className="mt-[1.75rem] max-w-[39rem] text-[1rem] leading-[1] text-ink lg:mt-[2.25rem]">
-            {description}
-          </p>
-
-          <div className="mt-[2rem] flex flex-col items-start gap-[0.875rem] sm:flex-row sm:flex-wrap sm:items-center lg:mt-[2.5rem]">
-            <a
-              className="inline-flex min-h-[4.25rem] items-center justify-center rounded-[0.9375rem] bg-[#004B62] px-[3.0625rem] py-[1.5rem] text-center text-[1.25rem] font-medium leading-[1] text-white transition-colors hover:bg-[#00384a]"
-              href={primaryCta.href}
-            >
-              {primaryCta.label}
-            </a>
-
-            <a
-              className="inline-flex min-h-[4.25rem] items-center justify-center rounded-[0.9375rem] border border-[#004B62] bg-transparent px-[3.0625rem] py-[1.5rem] text-center text-[1.25rem] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-brand-50"
-              href={secondaryCta.href}
-            >
-              {secondaryCta.label}
-            </a>
-          </div>
-
-          <p className="mt-[1.5rem] max-w-[38rem] text-[1rem] leading-[1.4] text-secondary">
-            {audienceLine}
-          </p>
+    <article className="liquid-glass-strong liquid-glass-soft flex w-full flex-col rounded-[1.25rem] border border-white/35 p-[0.625rem] text-[#242424] xl:min-h-[11.1875rem] xl:w-[17.8125rem]">
+      <div className="flex flex-1 flex-col gap-4">
+        <div className="w-fit rounded-t-[0.625rem] rounded-br-[0.625rem] bg-white/55 px-4 py-[0.625rem]">
+          <p className="text-[0.875rem] leading-[1]">{availabilityLabel}</p>
         </div>
 
-        <div className="flex justify-end lg:justify-start">
-          <div className="w-full max-w-[36.75rem] overflow-hidden rounded-[1.875rem] bg-accent">
+        <div className="flex items-center gap-3">
+          <div className="relative h-[1.6875rem] w-[2.6875rem] shrink-0">
             <Image
-              alt="Девушка сидит у большого окна"
-              className="h-auto w-full object-cover"
-              height={682}
-              priority
-              src="/images/webp/herophotogirl.webp"
-              width={588}
+              alt=""
+              aria-hidden="true"
+              className="absolute left-0 top-0 h-[1.6875rem] w-[1.6875rem]"
+              height={27}
+              src="/icons/moregray.svg"
+              width={27}
             />
+            <Image
+              alt=""
+              aria-hidden="true"
+              className="absolute left-4 top-0 z-10 h-[1.6875rem] w-[1.6875rem]"
+              height={27}
+              src="/icons/gray.svg"
+              width={27}
+            />
+          </div>
+
+          <p className="text-[0.875rem] leading-[1] text-[#242424]">{namesLabel}</p>
+        </div>
+
+        <a
+          className="mt-auto inline-flex min-h-[4.25rem] w-full items-center justify-center rounded-[0.625rem] bg-white px-6 py-4 text-center text-[1.25rem] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#eef6ff]"
+          href={cta.href}
+        >
+          {cta.label}
+        </a>
+      </div>
+    </article>
+  );
+}
+
+function ServiceCard({ cta, description }: ServiceCardProps) {
+  return (
+    <article className="flex w-full flex-col gap-[1.625rem] rounded-[1.25rem] bg-white p-[0.625rem] text-[#242424] shadow-[0_16px_40px_rgba(0,0,0,0.08)] xl:min-h-[11.125rem] xl:w-[19.0625rem]">
+      <p className="text-[1rem] leading-[1]">{description}</p>
+      <a
+        className="mt-auto inline-flex min-h-[4.25rem] w-full items-center justify-center rounded-[0.625rem] bg-[#004B62] px-6 py-4 text-center text-[1.25rem] font-medium leading-[1] text-white transition-colors hover:bg-[#00384a]"
+        href={cta.href}
+      >
+        {cta.label}
+      </a>
+    </article>
+  );
+}
+
+export function HeroSection({
+  cityLabel,
+  headerNavigationLinks,
+  headline,
+  phoneHref,
+  phoneLabel,
+  serviceCard,
+  supportCard,
+}: HeroSectionProps) {
+  return (
+    <section aria-label="Первый экран" className="mt-3 xl:mt-0">
+      <div className="xl:hidden">
+        <div className="relative overflow-hidden rounded-[1.875rem] bg-[#d9e5ea]">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/original/fontheroleftside.png')" }}
+          />
+          <div className="relative z-10 px-5 pb-6 pt-8 sm:px-8 sm:pb-8 sm:pt-10">
+            <h1
+              className="max-w-[34rem] font-display text-[2.25rem] font-normal leading-[1] text-[#004B62] sm:text-[2.75rem]"
+            >
+              {headline}
+            </h1>
+
+            <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-5">
+              <SupportCard {...supportCard} />
+              <ServiceCard {...serviceCard} />
+            </div>
+          </div>
+        </div>
+
+        <div className="relative mt-[0.625rem] aspect-[588/759] overflow-hidden rounded-[1.875rem] bg-[#d9e5ea]">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/original/fontherorightside.png')" }}
+          />
+        </div>
+      </div>
+
+      <div className="hidden xl:grid xl:grid-cols-[811fr_588fr]">
+        <div className="relative aspect-[811/759] overflow-hidden rounded-[1.875rem] bg-[#d9e5ea]">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/original/fontheroleftside.png')" }}
+          />
+
+          <div className="relative z-10 flex h-full flex-col">
+            <div className="px-[clamp(1.5rem,3.6vw,3.25rem)] pt-[clamp(1rem,1.8vw,1.625rem)]">
+              <DesktopHeaderBrandNav navigationLinks={headerNavigationLinks} />
+            </div>
+
+            <div className="flex flex-1 flex-col px-[clamp(1.5rem,7vw,6.125rem)] pb-[clamp(1.25rem,2vw,1.8125rem)] pt-[clamp(2.5rem,9vw,7.5rem)]">
+              <h1
+                className="max-w-[34rem] font-display text-[clamp(2.5rem,3.5vw,3rem)] font-normal leading-[1] text-[#004B62]"
+              >
+                {headline}
+              </h1>
+
+              <div className="mt-auto flex flex-wrap items-end gap-x-[1.3125rem] gap-y-4">
+                <SupportCard {...supportCard} />
+                <ServiceCard {...serviceCard} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative aspect-[588/759] overflow-hidden rounded-[1.875rem] bg-[#d9e5ea]">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/original/fontherorightside.png')" }}
+          />
+
+          <div className="relative z-10 flex h-full flex-col px-[clamp(1rem,2vw,2rem)] pt-[clamp(1rem,1.8vw,1.625rem)]">
+            <DesktopHeaderContactActions cityLabel={cityLabel} phoneHref={phoneHref} phoneLabel={phoneLabel} />
           </div>
         </div>
       </div>

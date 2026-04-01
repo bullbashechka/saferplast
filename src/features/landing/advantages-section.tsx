@@ -48,7 +48,7 @@ export function AdvantagesSection() {
                     src="/images/webp/cloud.webp"
                   />
                   <div className="absolute inset-0 flex items-center justify-center px-4">
-                    <Image alt="Saferplast" height={300} src="/images/original/logo.png" width={430} />
+                    <Image alt="Saferplast" height={300} src="/images/original/logo.PNG" width={430} />
                   </div>
                 </article>
               );

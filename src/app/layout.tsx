@@ -6,9 +6,9 @@ export const metadata: Metadata = {
   title: "Saferplast",
   description: "Пластиковые окна с формой заявки и калькулятором стоимости.",
   icons: {
-    icon: "/images/original/logo.png",
-    shortcut: "/images/original/logo.png",
-    apple: "/images/original/logo.png",
+    icon: "/images/original/logo.PNG",
+    shortcut: "/images/original/logo.PNG",
+    apple: "/images/original/logo.PNG",
   },
 };
 
