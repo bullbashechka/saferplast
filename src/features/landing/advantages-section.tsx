@@ -36,7 +36,7 @@ function getCardClassNames(card: AdvantagesCard) {
 
 function MobileAdvantagesCard({ card }: { card: AdvantagesCard }) {
   const { baseClassName, isDark, titleClassName } = getCardClassNames(card);
-  const mobileCardClassName = `relative flex h-[5.5rem] w-full max-w-[18.75rem] flex-col justify-center rounded-[1.25rem] px-4 py-3 ${baseClassName}`;
+  const mobileCardClassName = `relative flex h-[5.5rem] w-full max-w-[18.75rem] flex-col justify-center rounded-[10px] px-[10px] py-3 ${baseClassName}`;
   const titleSpacingClassName = isDark ? "mt-3" : "mt-2.5";
 
   if (card.href) {
@@ -122,9 +122,9 @@ export function AdvantagesSection() {
   return (
     <section
       aria-label={advantagesSectionContent.title}
-      className="relative z-10 -mt-[5.3125rem] rounded-t-[1.875rem] bg-[rgba(250,254,255,1)] pb-12 pt-8 lg:pb-20 lg:pt-12 xl:mt-0 xl:rounded-t-none"
+      className="relative z-10 -mt-[5.3125rem] rounded-t-[1.875rem] bg-[rgba(250,254,255,1)] pb-0 pt-8 lg:pb-20 lg:pt-12 xl:mt-0 xl:rounded-t-none"
     >
-      <div className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:w-[90rem] lg:max-w-none lg:px-[7.5rem]">
+      <div className="mx-auto max-w-[90rem] px-[10px] sm:px-6 lg:w-[90rem] lg:max-w-none lg:px-[7.5rem]">
         <div className="mx-auto flex max-w-[18.75rem] flex-col items-center lg:hidden">
           <h2 className="text-center font-display text-[1.25rem] font-normal leading-[1] text-[#004B62]">
             {advantagesSectionContent.title}

@@ -12,14 +12,21 @@ type SupportCardProps = FirstScreenContent["supportCard"];
 type ServiceCardProps = FirstScreenContent["serviceCard"];
 
 function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
+  const mobileAvailabilityLabel = availabilityLabel.replace(" ежедневно", "");
+
   return (
-    <article className="flex w-full flex-col rounded-[1.25rem] border border-[#004B62] bg-[#004B62] p-[0.625rem] text-white shadow-[0_16px_40px_rgba(0,75,98,0.18)] xl:min-h-[11.1875rem] xl:w-[17.8125rem]">
-      <div className="flex flex-1 flex-col gap-4">
-        <div className="w-fit rounded-t-[0.625rem] rounded-br-[0.625rem] bg-white/55 px-4 py-[0.625rem]">
-          <p className="text-[0.875rem] leading-[1]">{availabilityLabel}</p>
+    <article className="mx-auto flex h-[8.75rem] w-full max-w-[18.8125rem] flex-col rounded-[1.25rem] border border-[#004B62] bg-[#004B62] p-[0.625rem] text-white shadow-[0_16px_40px_rgba(0,75,98,0.18)] xl:mx-0 xl:h-auto xl:max-w-none xl:min-h-[11.1875rem] xl:w-[17.8125rem]">
+      <div className="flex flex-1 flex-col justify-between gap-2 xl:gap-4">
+        <div className="w-fit rounded-t-[0.625rem] rounded-br-[0.625rem] bg-white px-3 py-2 xl:px-4 xl:py-[0.625rem]">
+          <p className="text-[0.75rem] leading-[1] text-[#242424] xl:text-[0.875rem]">
+            <span className="xl:hidden">{mobileAvailabilityLabel}</span>
+            <span className="hidden xl:inline">{availabilityLabel}</span>
+            <br className="xl:hidden" />
+            ежедневно
+          </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 xl:gap-3">
           <div className="relative h-[1.6875rem] w-[2.6875rem] shrink-0">
             <Image
               alt=""
@@ -39,11 +46,11 @@ function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
             />
           </div>
 
-          <p className="text-[0.875rem] leading-[1] text-white">{namesLabel}</p>
+          <p className="text-[0.75rem] leading-[1] text-white xl:text-[0.875rem]">{namesLabel}</p>
         </div>
 
         <a
-          className="mt-auto inline-flex min-h-[4.25rem] w-full items-center justify-center rounded-[0.625rem] bg-white px-6 py-4 text-center text-[1.25rem] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#eef6ff]"
+          className="inline-flex h-[2.375rem] w-full items-center justify-center rounded-[0.625rem] bg-white px-[3.3125rem] py-3 text-center text-[0.875rem] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#eef6ff] xl:mt-auto xl:min-h-[4.25rem] xl:px-6 xl:py-4 xl:text-[1.25rem]"
           href={cta.href}
         >
           {cta.label}
@@ -55,10 +62,10 @@ function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
 
 function ServiceCard({ cta, description }: ServiceCardProps) {
   return (
-    <article className="flex w-full flex-col gap-[1.625rem] rounded-[1.25rem] bg-white p-[0.625rem] text-[#242424] shadow-[0_16px_40px_rgba(0,0,0,0.08)] xl:min-h-[11.125rem] xl:w-[19.0625rem]">
-      <p className="text-[1rem] leading-[1]">{description}</p>
+    <article className="mx-auto flex h-[6.3125rem] w-full max-w-[19.0625rem] flex-col gap-[0.4375rem] rounded-[1.25rem] bg-white p-[0.625rem] text-[#242424] shadow-[0_16px_40px_rgba(0,0,0,0.08)] xl:mx-0 xl:h-auto xl:max-w-none xl:min-h-[11.1875rem] xl:w-[17.8125rem] xl:justify-between xl:gap-[1.625rem]">
+      <p className="w-full font-body text-[0.75rem] font-normal leading-[1] tracking-[0] xl:text-[1rem]">{description}</p>
       <a
-        className="mt-auto inline-flex min-h-[4.25rem] w-full items-center justify-center rounded-[0.625rem] bg-[#004B62] px-6 py-4 text-center text-[1.25rem] font-medium leading-[1] text-white transition-colors hover:bg-[#00384a]"
+        className="inline-flex h-[2.375rem] w-full items-center justify-center rounded-[0.625rem] bg-[#004B62] px-[4.4375rem] py-3 text-center font-body text-[0.875rem] font-medium leading-[1] text-white whitespace-nowrap transition-colors hover:bg-[#00384a] xl:mt-auto xl:min-h-[4.25rem] xl:px-6 xl:py-4 xl:text-[1.25rem]"
         href={cta.href}
       >
         {cta.label}
@@ -76,6 +83,8 @@ export function HeroSection({
   serviceCard,
   supportCard,
 }: HeroSectionProps) {
+  const mobileHeadlineLines = ["Окна, двери и балконы", "из ПВХ и алюминия", "напрямую от производителя"];
+
   return (
     <section aria-label="Первый экран" className="mt-0 xl:mt-0">
       <div className="xl:hidden">
@@ -96,10 +105,17 @@ export function HeroSection({
             <h1
               className="mx-auto mt-8 w-[18.625rem] max-w-full text-center font-display text-[1.3125rem] font-normal leading-[1] text-[#004B62] sm:mt-10 sm:w-full sm:max-w-[34rem] sm:text-[2.75rem]"
             >
-              {headline}
+              <span className="sm:hidden">
+                {mobileHeadlineLines.map((line) => (
+                  <span className="block" key={line}>
+                    {line}
+                  </span>
+                ))}
+              </span>
+              <span className="hidden sm:inline">{headline}</span>
             </h1>
 
-            <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-5">
+            <div className="mt-8 grid justify-items-center gap-4 sm:mt-10 sm:gap-5">
               <SupportCard {...supportCard} />
               <ServiceCard {...serviceCard} />
             </div>
