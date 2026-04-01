@@ -139,6 +139,13 @@
 
 :root {
   color-scheme: light;
+  --glass-stroke: rgb(255 255 255 / 0.26);
+  --glass-bg-top: hsl(192 100% 99% / 0.36);
+  --glass-bg-bottom: hsl(192 100% 99% / 0.2);
+  --glass-blur: 14px;
+  --glass-sat: 130%;
+  --glass-highlight: rgb(255 255 255 / 0.2);
+  --glass-shadow: rgb(0 0 0 / 0.12);
 }
 
 html {
