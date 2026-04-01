@@ -5,17 +5,34 @@ import { useState } from "react";
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
+import type { DecorativeLabel } from "@/features/lead-form/lead-form-content";
 import { leadFormContent } from "@/features/lead-form/lead-form-content";
 
-function DecorativeColumn({ items }: Readonly<{ items: readonly string[] }>) {
+function DecorativeColumn({
+  items,
+  side,
+}: Readonly<{
+  items: readonly DecorativeLabel[];
+  side: "left" | "right";
+}>) {
   return (
-    <div className="grid gap-4">
-      {items.map((item, index) => (
+    <div className="hidden w-full xl:grid xl:gap-[80px]">
+      {items.map((item) => (
         <div
-          key={`${item}-${index}`}
-          className="flex min-h-[44px] items-center rounded-[11px] border border-[#004B62] px-[21px] py-3 text-[1rem] font-normal leading-[1] text-[#004B62] shadow-[0_0_19.9px_rgba(0,75,98,0.41)]"
+          key={item.label}
+          className={`flex min-h-[44px] w-fit items-center whitespace-nowrap rounded-[11px] border border-[#004B62] px-[21px] py-3 text-[1rem] font-normal leading-[1] text-[#004B62] shadow-[0_0_19.9px_rgba(0,75,98,0.41)] ${
+            side === "right" ? "bg-[hsla(190,32%,93%,1)]" : ""
+          } ${
+            side === "left"
+              ? item.offset === "outer"
+                ? "justify-self-start"
+                : "justify-self-end"
+              : item.offset === "outer"
+                ? "justify-self-end"
+                : "justify-self-start"
+          }`}
         >
-          {item}
+          {item.label}
         </div>
       ))}
     </div>
@@ -29,8 +46,8 @@ export function LeadFormSection() {
   const remainingTaskSymbols = taskMaxLength - taskValue.length;
 
   return (
-    <section id="lead-form" className="bg-[rgba(250,254,255,1)] px-6 py-16 lg:px-8 lg:py-20">
-      <div className="mx-auto w-full max-w-content">
+    <section id="lead-form" className="bg-[rgba(250,254,255,1)] py-16 lg:py-20">
+      <div className="mx-auto w-full max-w-[90rem] px-4 sm:px-6 lg:w-[90rem] lg:max-w-none lg:px-0">
         <h2 className="mx-auto max-w-[61rem] text-center font-display text-[2rem] font-normal leading-[1] text-[#004B62] sm:text-[2.25rem] lg:text-[44px]">
           {title}
         </h2>
@@ -38,8 +55,8 @@ export function LeadFormSection() {
           {subtitle}
         </p>
 
-        <div className="mt-10 grid items-start gap-6 xl:grid-cols-[271px_minmax(320px,387px)_271px] xl:justify-center xl:gap-[28px]">
-          <DecorativeColumn items={decorativeLabels.left} />
+        <div className="mt-10 grid items-start gap-6 xl:ml-[7.5rem] xl:mr-[1.25rem] xl:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] xl:gap-[3rem]">
+          <DecorativeColumn items={decorativeLabels.left} side="left" />
 
           <div className="mx-auto w-full max-w-[387px]">
             <div className="rounded-[20px] bg-[#004B62] p-6 shadow-[0_0_16.3px_rgba(0,75,98,0.62)] sm:p-8 lg:p-10">
@@ -111,7 +128,7 @@ export function LeadFormSection() {
             </div>
           </div>
 
-          <DecorativeColumn items={decorativeLabels.right} />
+          <DecorativeColumn items={decorativeLabels.right} side="right" />
         </div>
       </div>
     </section>
