@@ -1,16 +1,45 @@
 import Image from "next/image";
 
 const rightProofImageSrc = encodeURI("/images/webp/glass-broken-from- house-by-accident- man-checking- repair.webp");
+const proofSectionCtaCopy = "Бесплатно подскажем, что вам выгоднее: ремонт, замена или новое изготовление";
 
 export function ProofSection() {
   return (
-    <section aria-labelledby="proof-title" className="bg-[rgba(250,254,255,1)] py-10 lg:py-14">
-      <div className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-[7.5rem]">
+    <section aria-labelledby="proof-title" className="mt-[50px] bg-[rgba(250,254,255,1)] pb-10 lg:mt-[77px] lg:pb-14">
+      <div className="mx-auto max-w-[90rem] px-[10px] sm:px-6 lg:px-[7.5rem]">
         <h2 id="proof-title" className="sr-only">
           Опыт, аккуратность и контроль
         </h2>
 
-        <div className="mt-8 grid gap-5 lg:grid-cols-[387px_793px]">
+        <div className="mx-auto w-fit lg:hidden">
+          <article className="relative h-[369px] w-[300px] overflow-hidden rounded-[20px] bg-[#d9e5ea]">
+            <Image
+              alt="Сотрудник Saferplast на производстве"
+              className="object-cover"
+              fill
+              sizes="300px"
+              src="/images/webp/male-worker-factory.webp"
+            />
+            <div className="absolute inset-0 bg-[hsla(0,0%,0%,0.2)]" />
+
+            <div className="liquid-glass-strong liquid-glass-soft absolute left-[10px] top-[200px] flex h-[159px] w-[280px] flex-col items-start rounded-[10px] p-[15px]">
+              <div className="relative z-10 flex h-full w-full flex-col justify-between">
+                <p className="mx-auto h-20 w-[250px] max-w-full font-display text-[20px] font-normal leading-[1] tracking-[0] text-white">
+                  {proofSectionCtaCopy}
+                </p>
+
+                <a
+                  className="mx-auto inline-flex h-[38px] w-[258px] shrink-0 items-center justify-center gap-[14px] rounded-[10px] bg-[#004B62] px-[39px] py-3 text-center font-body text-[14px] font-medium leading-[1] text-white transition-colors hover:bg-[#00384a]"
+                  href="#lead-form"
+                >
+                  Получить консультацию
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div className="hidden lg:grid lg:grid-cols-[387px_793px] lg:gap-5">
           <article className="relative h-[360px] overflow-hidden rounded-[20px] bg-[#d9e5ea]">
             <Image
               alt="Сотрудник Saferplast на производстве"
@@ -34,7 +63,7 @@ export function ProofSection() {
             <div className="liquid-glass-strong liquid-glass-soft absolute left-[40px] top-[45px] flex h-[269px] w-[678px] flex-col items-start gap-[39px] rounded-[15px] p-[15px]">
               <div className="relative z-10 flex h-full w-full flex-col items-start gap-[39px]">
                 <p className="max-w-[648px] font-display text-[44px] font-normal leading-[1] tracking-[0] text-white">
-                  Бесплатно подскажем, что вам выгоднее: ремонт, замена или новое изготовление
+                  {proofSectionCtaCopy}
                 </p>
 
                 <a

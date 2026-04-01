@@ -12,12 +12,14 @@ export type AdvantagesCard = {
 export type AdvantagesSectionContent = {
   title: string;
   subtitle: string;
+  mobileSubtitleLines: [string, string];
   cards: [AdvantagesCard, AdvantagesCard, AdvantagesCard, AdvantagesCard, AdvantagesCard, AdvantagesCard];
 };
 
 export const advantagesSectionContent: AdvantagesSectionContent = {
   title: "Почему к нам обращаются",
   subtitle: "Понятные условия, собственное производство и готовое решение под вашу задачу",
+  mobileSubtitleLines: ["Понятные условия, собственное", "производство и готовое решение"],
   cards: [
     {
       title: "Собственное производство",
