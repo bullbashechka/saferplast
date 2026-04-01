@@ -123,10 +123,10 @@ export function SiteHeader({ cityLabel, navigationLinks, phoneHref }: SiteHeader
   return (
     <header className="relative py-1">
       <div className="flex items-center justify-between gap-3">
-        <Link aria-label="Saferplast" className="block w-full max-w-[11.1875rem] shrink-0" href="/">
+        <Link aria-label="Saferplast" className="block h-[2.8125rem] w-[5.5rem] shrink-0" href="/">
           <Image
             alt="Saferplast"
-            className="h-auto w-full object-contain"
+            className="h-[2.8125rem] w-[5.5rem] object-contain"
             height={92}
             priority
             src="/images/original/logo.PNG"
@@ -146,7 +146,7 @@ export function SiteHeader({ cityLabel, navigationLinks, phoneHref }: SiteHeader
         </button>
       </div>
 
-      <div className="mt-3 flex items-center justify-end gap-[0.625rem] sm:gap-[0.875rem]">
+      <div className="mt-3 flex w-full items-center justify-start gap-[0.625rem] sm:gap-[0.875rem]">
         <a
           aria-label="Позвонить"
           className="liquid-glass-strong liquid-glass-soft flex h-12 w-12 shrink-0 items-center justify-center rounded-[15px] p-[15px]"
