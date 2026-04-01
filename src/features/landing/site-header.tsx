@@ -30,17 +30,24 @@ export function SiteHeader({
   phoneLabel,
 }: SiteHeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const desktopNavigationLinks = [
+    desktopNavigationColumns.left[0],
+    desktopNavigationColumns.right[0],
+    desktopNavigationColumns.left[1],
+    desktopNavigationColumns.right[1],
+    desktopNavigationColumns.right[2],
+  ].filter((link): link is NavigationLink => Boolean(link));
 
   return (
-    <header className="relative py-[0.25rem] lg:grid lg:h-[5.75rem] lg:grid-cols-[minmax(11rem,12rem)_minmax(26rem,1fr)_auto] lg:items-center lg:gap-[1.5rem] lg:px-[7.5rem]">
+    <header className="relative py-[0.25rem] lg:grid lg:h-[5.75rem] lg:grid-cols-[minmax(11rem,12rem)_minmax(26rem,1fr)_auto] lg:items-center lg:gap-[1.5rem] lg:pl-[6.25rem] lg:pr-[7.5rem]">
       <div className="flex items-center justify-between gap-3">
-        <Link aria-label="Saferplast" className="block w-full max-w-[11.1875rem] shrink-0" href="/">
+        <Link aria-label="Saferplast" className="block w-full max-w-[11.1875rem] shrink-0 lg:h-[5.75rem] lg:w-[11.1875rem]" href="/">
           <Image
             alt="Saferplast"
-            className="h-auto w-full object-contain"
+            className="h-auto w-full object-contain lg:h-[5.75rem] lg:w-[11.1875rem]"
             height={92}
             priority
-            src="/images/webp/logo.webp"
+            src="/images/original/logo.png"
             width={179}
           />
         </Link>
@@ -58,33 +65,18 @@ export function SiteHeader({
       </div>
 
       <nav aria-label="Основная навигация" className="hidden justify-center lg:flex">
-        <div className="grid grid-cols-2 gap-x-[3rem]">
-          <ul className="grid content-start gap-4">
-            {desktopNavigationColumns.left.map((link) => (
-              <li key={link.href}>
-                <a
-                  className="whitespace-nowrap font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
-                  href={link.href}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          <ul className="grid content-start gap-4">
-            {desktopNavigationColumns.right.map((link) => (
-              <li key={link.href}>
-                <a
-                  className="whitespace-nowrap font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
-                  href={link.href}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="grid w-[19.8125rem] grid-cols-2 gap-x-6 gap-y-6">
+          {desktopNavigationLinks.map((link) => (
+            <li key={link.href} className={link.label === "контакты" ? "col-start-2" : undefined}>
+              <a
+                className="whitespace-nowrap font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
+                href={link.href}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </nav>
 
       <div className="mt-3 flex items-center justify-end gap-[0.625rem] sm:gap-[0.875rem] lg:mt-0 lg:gap-[1.25rem]">
@@ -116,7 +108,7 @@ export function SiteHeader({
             {mobileNavigationLinks.map((link) => (
               <li key={link.href}>
                 <a
-                  className="block font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
+                  className="block whitespace-nowrap font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >

@@ -54,16 +54,16 @@ export const firstScreenContent: FirstScreenContent = {
       { href: "#projects", label: "наши работы" },
     ],
     right: [
-      { href: "#testimonials", label: "отзывы" },
       { href: "#solution-matching", label: "подобрать решение" },
+      { href: "#testimonials", label: "отзывы" },
       { href: "#contacts", label: "контакты" },
     ],
   },
   headerMobileNavigationLinks: [
     { href: "#top", label: "главная" },
-    { href: "#projects", label: "наши работы" },
-    { href: "#testimonials", label: "отзывы" },
-    { href: "#solution-matching", label: "подобрать решение" },
     { href: "#contacts", label: "контакты" },
+    { href: "#projects", label: "наши работы" },
+    { href: "#solution-matching", label: "подобрать решение" },
+    { href: "#testimonials", label: "отзывы" },
   ],
 };

@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 
 import { siteFooterContent } from "@/features/landing/site-footer-content";
 
@@ -27,12 +27,12 @@ export function SiteFooter() {
               alt="Saferplast"
               className="h-[185px] w-[263px] max-w-full object-contain"
               height={185}
-              src="/images/webp/logo.webp"
+              src="/images/original/logo.png"
               width={263}
             />
           </a>
 
-          <nav aria-label="Навигация в подвале" className="lg:self-center lg:justify-self-center">
+          <nav aria-label="РќР°РІРёРіР°С†РёСЏ РІ РїРѕРґРІР°Р»Рµ" className="lg:self-center lg:justify-self-center">
             <ul className="grid gap-4 sm:grid-cols-2 sm:gap-x-8">
               {navigationLinks.map((link) => (
                 <li key={link.href}>
