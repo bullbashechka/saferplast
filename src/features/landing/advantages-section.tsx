@@ -4,7 +4,10 @@ import { advantagesSectionContent } from "@/features/landing/advantages-section-
 
 export function AdvantagesSection() {
   return (
-    <section aria-labelledby="advantages-title" className="bg-[rgba(250,254,255,1)] pb-12 pt-8 lg:pb-20 lg:pt-12">
+    <section
+      aria-labelledby="advantages-title"
+      className="relative z-10 -mt-[5.3125rem] rounded-t-[1.875rem] bg-[rgba(250,254,255,1)] pb-12 pt-8 lg:pb-20 lg:pt-12 xl:mt-0 xl:rounded-t-none"
+    >
       <div className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:w-[90rem] lg:max-w-none lg:px-[7.5rem]">
         <h2
           id="advantages-title"

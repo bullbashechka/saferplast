@@ -55,8 +55,8 @@ export const firstScreenContent: FirstScreenContent = {
   whatsappHref: "https://wa.me/77079999999",
   telegramHref: "https://t.me/saferplast",
   headerNavigationLinks: [
-    { href: "#solution-matching", label: "Подобрать решение" },
     { href: "#projects", label: "Наши работы" },
+    { href: "#solution-matching", label: "Подобрать решение" },
     { href: "#testimonials", label: "Отзывы" },
     { href: "#contacts", label: "Контакты" },
   ],

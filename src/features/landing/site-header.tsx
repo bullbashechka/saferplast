@@ -56,7 +56,7 @@ function DesktopHeaderActionButton({
 
 export function DesktopHeaderBrandNav({ navigationLinks }: DesktopHeaderBrandNavProps) {
   return (
-    <div className="flex min-w-0 items-center justify-between gap-5">
+    <div className="flex min-w-0 items-start gap-[clamp(1.5rem,3vw,3rem)]">
       <Link aria-label="Saferplast" className="block w-[10.5rem] shrink-0 2xl:w-[11.1875rem]" href="/">
         <Image
           alt="Saferplast"
@@ -68,12 +68,12 @@ export function DesktopHeaderBrandNav({ navigationLinks }: DesktopHeaderBrandNav
         />
       </Link>
 
-      <nav aria-label="Основная навигация" className="min-w-0 flex-1">
-        <ul className="flex items-center justify-end gap-[clamp(0.875rem,1.8vw,2.25rem)]">
+      <nav aria-label="Основная навигация" className="ml-auto w-[19.8125rem] shrink-0 pt-[0.75rem]">
+        <ul className="grid h-[3.5rem] w-[19.8125rem] grid-cols-2 grid-rows-2 gap-x-6 gap-y-6">
           {navigationLinks.map((link) => (
             <li key={link.href}>
               <a
-                className="whitespace-nowrap font-body text-[clamp(0.8125rem,0.95vw,1rem)] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
+                className="block whitespace-nowrap font-body text-[clamp(0.8125rem,0.95vw,1rem)] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
                 href={link.href}
               >
                 {link.label}
