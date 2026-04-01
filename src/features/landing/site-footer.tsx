@@ -20,7 +20,7 @@ export function SiteFooter() {
       aria-labelledby="footer-contacts-title"
       className="bg-[rgba(250,254,255,1)] px-6 pb-10 pt-14 lg:px-8 lg:pb-12 lg:pt-20"
     >
-      <div className="mx-auto w-full max-w-content">
+      <div className="mx-auto w-full max-w-content lg:max-w-[1201px]">
         <div className="grid gap-10 lg:grid-cols-[263px_minmax(12rem,14rem)_minmax(0,1fr)] lg:gap-8">
           <a aria-label="Saferplast" className="block w-[263px] max-w-full" href="#top">
             <Image
