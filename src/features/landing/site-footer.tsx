@@ -32,12 +32,12 @@ export function SiteFooter() {
             />
           </a>
 
-          <nav aria-label="Навигация в подвале" className="lg:justify-self-center">
-            <ul className="grid gap-4">
+          <nav aria-label="Навигация в подвале" className="lg:self-center lg:justify-self-center">
+            <ul className="grid gap-4 sm:grid-cols-2 sm:gap-x-8">
               {navigationLinks.map((link) => (
                 <li key={link.href}>
                   <a
-                    className="font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
+                    className="whitespace-nowrap font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
                     href={link.href}
                   >
                     {link.label}

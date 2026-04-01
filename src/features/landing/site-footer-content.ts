@@ -23,10 +23,10 @@ export const siteFooterContent: SiteFooterContent = {
   contactsDescription: "Срочный заказ? Позвоните или напишите нам. Мы на связи с 09:00 до 18:00",
   navigationLinks: [
     { href: "#top", label: "главная" },
-    { href: "#lead-form", label: "рассчитать стоимость" },
     { href: "#projects", label: "наши работы" },
     { href: "#testimonials", label: "отзывы" },
     { href: "#solution-matching", label: "подобрать решение" },
+    { href: "#contacts", label: "контакты" },
   ],
   phoneHref,
   phoneLabel,

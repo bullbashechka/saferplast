@@ -42,7 +42,7 @@ function DecorativeColumn({
   side: "left" | "right";
 }>) {
   return (
-    <div className="hidden w-full xl:grid xl:gap-[80px]">
+    <div className="hidden w-full lg:grid lg:gap-[80px]">
       {items.map((item) => (
         <div
           key={item.label}
@@ -82,7 +82,7 @@ export function LeadFormSection() {
           {subtitle}
         </p>
 
-        <div className="mt-10 grid items-start gap-6 xl:ml-[7.5rem] xl:mr-[1.25rem] xl:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] xl:gap-[3rem]">
+        <div className="mt-10 grid items-start gap-6 lg:ml-[7.5rem] lg:mr-[1.25rem] lg:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] lg:gap-[3rem]">
           <DecorativeColumn items={decorativeLabels.left} side="left" />
 
           <div className="mx-auto w-full max-w-[387px]">
