@@ -124,7 +124,7 @@ function SolutionCard({
 
 function MobileSolutionCard({ card }: { card: SolutionMatchingCard }) {
   return (
-    <article className="relative mx-auto flex h-[96px] w-[300px] gap-[12px] rounded-[10px] bg-[hsla(190,5%,95%,1)] p-[5px]">
+    <article className="relative mx-auto flex h-[96px] w-[300px] gap-[12px] rounded-[10px] bg-[#E6F0F2] p-[5px]">
       <div className="relative h-[86px] w-[80px] shrink-0 overflow-hidden rounded-[5px]">
         <Image
           alt={card.title}
