@@ -149,15 +149,15 @@ export function SiteHeader({ cityLabel, navigationLinks, phoneHref }: SiteHeader
       <div className="mt-3 flex w-full items-center justify-start gap-[0.625rem] sm:gap-[0.875rem]">
         <a
           aria-label="Позвонить"
-          className="liquid-glass-strong liquid-glass-soft flex h-12 w-12 shrink-0 items-center justify-center rounded-[15px] p-[15px]"
+          className="liquid-glass-strong liquid-glass-soft flex h-[2.125rem] w-[2.125rem] shrink-0 items-center justify-center rounded-[15px] p-[0.5625rem] sm:h-12 sm:w-12 sm:p-[15px]"
           href={phoneHref}
         >
-          <Image alt="" aria-hidden="true" className="relative z-10" height={16} src="/icons/phone.svg" width={16} />
+          <Image alt="" aria-hidden="true" className="relative z-10" height={14} src="/icons/phone.svg" width={14} />
         </a>
 
-        <div className="liquid-glass-strong liquid-glass-soft flex h-12 min-w-0 items-center gap-2 rounded-[15px] p-[15px]">
-          <Image alt="" aria-hidden="true" className="relative z-10" height={16} src="/icons/location.svg" width={16} />
-          <span className="relative z-10 truncate whitespace-nowrap font-body text-[0.9375rem] font-medium leading-[1] tracking-[0] sm:text-[1rem]">
+        <div className="liquid-glass-strong liquid-glass-soft flex h-[2.125rem] w-[7.5rem] shrink-0 items-center gap-1.5 rounded-[15px] px-[0.5625rem] py-[0.5625rem] sm:h-12 sm:w-auto sm:min-w-0 sm:gap-2 sm:p-[15px]">
+          <Image alt="" aria-hidden="true" className="relative z-10 shrink-0" height={14} src="/icons/location.svg" width={14} />
+          <span className="relative z-10 truncate whitespace-nowrap font-body text-[0.75rem] font-medium leading-[1] tracking-[0] sm:text-[1rem]">
             {cityLabel}
           </span>
         </div>

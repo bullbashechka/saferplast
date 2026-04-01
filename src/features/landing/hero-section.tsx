@@ -85,7 +85,7 @@ export function HeroSection({
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: "url('/images/original/fontheroleftside.png')" }}
           />
-          <div className="relative z-10 px-4 pb-6 pt-4 sm:px-6 sm:pb-8 lg:px-8">
+          <div className="relative z-10 px-[0.6875rem] pb-6 pt-4 sm:px-6 sm:pb-8 lg:px-8">
             <SiteHeader
               cityLabel={cityLabel}
               navigationLinks={headerNavigationLinks}
@@ -94,7 +94,7 @@ export function HeroSection({
             />
 
             <h1
-              className="mt-8 max-w-[34rem] font-display text-[2.25rem] font-normal leading-[1] text-[#004B62] sm:mt-10 sm:text-[2.75rem]"
+              className="mx-auto mt-8 w-[18.625rem] max-w-full text-center font-display text-[1.3125rem] font-normal leading-[1] text-[#004B62] sm:mt-10 sm:w-full sm:max-w-[34rem] sm:text-[2.75rem]"
             >
               {headline}
             </h1>
