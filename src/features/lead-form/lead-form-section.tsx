@@ -8,6 +8,32 @@ import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import type { DecorativeLabel } from "@/features/lead-form/lead-form-content";
 import { leadFormContent } from "@/features/lead-form/lead-form-content";
 
+const PHONE_PREFIX = "+7";
+
+function formatPhoneValue(rawValue: string) {
+  const digits = rawValue.replace(/\D/g, "");
+  const normalizedDigits = digits.startsWith("7") && digits.length > 1 ? digits.slice(1) : digits;
+  const limitedDigits = normalizedDigits.slice(0, 10);
+
+  if (!limitedDigits) {
+    return "";
+  }
+
+  if (limitedDigits.length <= 3) {
+    return `${PHONE_PREFIX}-${limitedDigits}`;
+  }
+
+  if (limitedDigits.length <= 6) {
+    return `${PHONE_PREFIX}-${limitedDigits.slice(0, 3)}-${limitedDigits.slice(3)}`;
+  }
+
+  if (limitedDigits.length <= 8) {
+    return `${PHONE_PREFIX}-${limitedDigits.slice(0, 3)}-${limitedDigits.slice(3, 6)}-${limitedDigits.slice(6)}`;
+  }
+
+  return `${PHONE_PREFIX}-${limitedDigits.slice(0, 3)}-${limitedDigits.slice(3, 6)}-${limitedDigits.slice(6, 8)}-${limitedDigits.slice(8)}`;
+}
+
 function DecorativeColumn({
   items,
   side,
@@ -43,6 +69,7 @@ export function LeadFormSection() {
   const { consents, decorativeLabels, fields, messengersLabel, submitLabel, subtitle, taskMaxLength, title } =
     leadFormContent;
   const [taskValue, setTaskValue] = useState("");
+  const [phoneValue, setPhoneValue] = useState("");
   const remainingTaskSymbols = taskMaxLength - taskValue.length;
 
   return (
@@ -70,8 +97,21 @@ export function LeadFormSection() {
                 <input
                   className="h-[52px] rounded-[10px] bg-white px-[22px] py-[18px] font-body text-[1rem] font-normal leading-[1] text-[#242424] outline-none placeholder:text-[#6a6a6a]"
                   name="phone"
+                  inputMode="numeric"
+                  onBlur={() => {
+                    if (phoneValue === PHONE_PREFIX) {
+                      setPhoneValue("");
+                    }
+                  }}
+                  onChange={(event) => setPhoneValue(formatPhoneValue(event.target.value))}
+                  onFocus={() => {
+                    if (!phoneValue) {
+                      setPhoneValue(PHONE_PREFIX);
+                    }
+                  }}
                   placeholder={fields.phone}
                   type="tel"
+                  value={phoneValue}
                 />
                 <div className="grid gap-2">
                   <textarea

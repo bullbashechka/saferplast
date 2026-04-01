@@ -26,7 +26,7 @@ export const leadFormContent = {
   },
   fields: {
     name: "Имя",
-    phone: "Телефон",
+    phone: "Номер телефона",
     task: "Кратко опишите вашу задачу",
   },
   taskMaxLength: 300,
