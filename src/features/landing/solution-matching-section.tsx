@@ -168,7 +168,7 @@ export function SolutionMatchingSection() {
     <section
       id="solution-matching"
       aria-labelledby="solution-matching-title"
-      className="mt-[20px] bg-[rgba(250,254,255,1)] px-[10px] pb-16 pt-0 lg:mt-0 lg:px-8 lg:py-20"
+      className="mt-[20px] bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-0 lg:mt-0 lg:px-8 lg:py-20"
     >
       <div className="mx-auto w-full max-w-[300px] lg:max-w-content">
         <h2
@@ -188,6 +188,13 @@ export function SolutionMatchingSection() {
             <MobileSolutionCard card={card} key={card.id} />
           ))}
         </div>
+
+        <a
+          className="mx-auto mt-[26px] flex h-[38px] w-[215px] items-center justify-center gap-[14px] rounded-[10px] bg-[#004B62] px-[39px] py-[12px] text-center font-['Montserrat'] text-[14px] font-medium leading-[1] tracking-[0] text-white transition-colors hover:bg-[#00384a] lg:hidden"
+          href="#lead-form"
+        >
+          Узнать подробнее
+        </a>
 
         <div className="hidden lg:mt-8 lg:block lg:space-y-5">
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
