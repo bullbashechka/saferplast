@@ -15,10 +15,10 @@ function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
   const mobileAvailabilityLabel = availabilityLabel.replace(" ежедневно", "");
 
   return (
-    <article className="mx-auto flex h-[8.75rem] w-full max-w-[18.8125rem] flex-col rounded-[1.25rem] border border-[#004B62] bg-[#004B62] p-[0.625rem] text-white shadow-[0_16px_40px_rgba(0,75,98,0.18)] md:mx-0 md:h-auto md:max-w-none md:min-h-[9.5rem] md:w-[15rem] md:p-4 lg:min-h-[10rem] lg:w-[16rem] xl:min-h-[11.1875rem] xl:w-[17.8125rem]">
+    <article className="mx-auto flex h-[8.75rem] w-full max-w-[18.8125rem] flex-col rounded-[1.25rem] border border-[#004B62] bg-[#004B62] p-[0.625rem] text-white shadow-[0_16px_40px_rgba(0,75,98,0.18)] md:mx-0 md:h-auto md:max-w-none md:min-h-[8.5rem] md:w-[13rem] md:p-3 lg:min-h-[10rem] lg:w-[16rem] xl:min-h-[11.1875rem] xl:w-[17.8125rem]">
       <div className="flex flex-1 flex-col justify-between gap-2 md:gap-3 xl:gap-4">
-        <div className="w-fit rounded-t-[0.625rem] rounded-br-[0.625rem] bg-white px-3 py-2 md:px-4 md:py-[0.625rem]">
-          <p className="text-[0.75rem] leading-[1] text-[#242424] md:text-[0.875rem]">
+        <div className="w-fit rounded-t-[0.625rem] rounded-br-[0.625rem] bg-white px-3 py-2 md:px-3 md:py-2 lg:px-4 lg:py-[0.625rem]">
+          <p className="text-[0.75rem] leading-[1] text-[#242424] md:text-[0.8125rem] lg:text-[0.875rem]">
             <span className="md:hidden">{mobileAvailabilityLabel}</span>
             <span className="hidden md:inline">{availabilityLabel}</span>
             <br className="md:hidden" />
@@ -46,11 +46,11 @@ function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
             />
           </div>
 
-          <p className="text-[0.75rem] leading-[1] text-white md:text-[0.875rem]">{namesLabel}</p>
+          <p className="text-[0.75rem] leading-[1] text-white md:text-[0.8125rem] lg:text-[0.875rem]">{namesLabel}</p>
         </div>
 
         <a
-          className="inline-flex h-[2.375rem] w-full items-center justify-center rounded-[0.625rem] bg-white px-[3.3125rem] py-3 text-center text-[0.875rem] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#eef6ff] md:mt-auto md:min-h-[3.5rem] md:px-6 md:py-4 md:text-[1rem] xl:min-h-[4.25rem] xl:text-[1.25rem]"
+          className="inline-flex h-[2.375rem] w-full items-center justify-center rounded-[0.625rem] bg-white px-[3.3125rem] py-3 text-center text-[0.875rem] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#eef6ff] md:mt-auto md:min-h-[3rem] md:px-4 md:py-3 md:text-[0.9375rem] lg:min-h-[3.5rem] lg:px-6 lg:py-4 lg:text-[1rem] xl:min-h-[4.25rem] xl:text-[1.25rem]"
           href={cta.href}
         >
           {cta.label}
@@ -62,10 +62,10 @@ function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
 
 function ServiceCard({ cta, description }: ServiceCardProps) {
   return (
-    <article className="mx-auto flex h-[6.3125rem] w-full max-w-[19.0625rem] flex-col gap-[0.4375rem] rounded-[1.25rem] bg-white p-[0.625rem] text-[#242424] shadow-[0_16px_40px_rgba(0,0,0,0.08)] md:mx-0 md:h-auto md:max-w-none md:min-h-[9.5rem] md:w-[15rem] md:justify-between md:gap-4 md:p-4 lg:min-h-[10rem] lg:w-[16rem] xl:min-h-[11.1875rem] xl:w-[17.8125rem] xl:gap-[1.625rem]">
-      <p className="w-full font-body text-[0.75rem] font-normal leading-[1] tracking-[0] md:text-[0.875rem] xl:text-[1rem]">{description}</p>
+    <article className="mx-auto flex h-[6.3125rem] w-full max-w-[19.0625rem] flex-col gap-[0.4375rem] rounded-[1.25rem] bg-white p-[0.625rem] text-[#242424] shadow-[0_16px_40px_rgba(0,0,0,0.08)] md:mx-0 md:h-auto md:max-w-none md:min-h-[8.5rem] md:w-[13rem] md:justify-between md:gap-3 md:p-3 lg:min-h-[10rem] lg:w-[16rem] lg:gap-4 lg:p-4 xl:min-h-[11.1875rem] xl:w-[17.8125rem] xl:gap-[1.625rem]">
+      <p className="w-full font-body text-[0.75rem] font-normal leading-[1] tracking-[0] md:text-[0.8125rem] lg:text-[0.875rem] xl:text-[1rem]">{description}</p>
       <a
-        className="inline-flex h-[2.375rem] w-full items-center justify-center rounded-[0.625rem] bg-[#004B62] px-[4.4375rem] py-3 text-center font-body text-[0.875rem] font-medium leading-[1] text-white whitespace-nowrap transition-colors hover:bg-[#00384a] md:mt-auto md:min-h-[3.5rem] md:px-6 md:py-4 md:text-[1rem] xl:min-h-[4.25rem] xl:text-[1.25rem]"
+        className="inline-flex h-[2.375rem] w-full items-center justify-center rounded-[0.625rem] bg-[#004B62] px-[4.4375rem] py-3 text-center font-body text-[0.875rem] font-medium leading-[1] text-white whitespace-nowrap transition-colors hover:bg-[#00384a] md:mt-auto md:min-h-[3rem] md:px-4 md:py-3 md:text-[0.9375rem] lg:min-h-[3.5rem] lg:px-6 lg:py-4 lg:text-[1rem] xl:min-h-[4.25rem] xl:text-[1.25rem]"
         href={cta.href}
       >
         {cta.label}
@@ -129,31 +129,25 @@ export function HeroSection({
         </div>
       </div>
 
-      <div className="hidden md:block">
-        <div className="relative overflow-hidden rounded-[1.875rem] bg-[#d9e5ea] xl:hidden">
+      <div className="hidden md:grid md:grid-cols-[1.1fr_0.9fr] xl:grid-cols-[811fr_588fr]">
+        <div className="relative min-h-[37rem] overflow-hidden rounded-[1.875rem] bg-[#d9e5ea] xl:aspect-[811/759] xl:min-h-0">
           <div
             aria-hidden="true"
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: "url('/images/original/fontheroleftside.png')" }}
           />
 
-          <div className="relative z-10 flex min-h-[42rem] flex-col px-5 pb-6 pt-5 lg:min-h-[46rem] lg:px-8 lg:pb-8 lg:pt-6">
-            <div className="flex items-start justify-between gap-4">
+          <div className="relative z-10 flex h-full flex-col">
+            <div className="px-5 pt-5 lg:px-6 lg:pt-6 xl:px-[clamp(1.5rem,3.6vw,3.25rem)] xl:pt-[clamp(1rem,1.8vw,1.625rem)]">
               <DesktopHeaderBrandNav navigationLinks={headerNavigationLinks} />
-              <DesktopHeaderContactActions
-                cityLabel={cityLabel}
-                className="max-w-[23rem] shrink-0"
-                phoneHref={phoneHref}
-                phoneLabel={phoneLabel}
-              />
             </div>
 
-            <div className="mt-12 flex flex-1 flex-col justify-between lg:mt-16">
-              <h1 className="max-w-[34rem] font-display text-[2.5rem] font-normal leading-[1] text-[#004B62] lg:text-[3rem]">
+            <div className="flex flex-1 flex-col px-5 pb-5 pt-9 lg:px-8 lg:pb-8 lg:pt-16 xl:px-[clamp(1.5rem,7vw,6.125rem)] xl:pb-[clamp(1.25rem,2vw,1.8125rem)] xl:pt-[clamp(2.5rem,9vw,7.5rem)]">
+              <h1 className="max-w-[28rem] font-display text-[2rem] font-normal leading-[1] text-[#004B62] lg:max-w-[34rem] lg:text-[3rem] xl:text-[clamp(2.5rem,3.5vw,3rem)]">
                 {headline}
               </h1>
 
-              <div className="mt-10 flex flex-wrap items-end gap-5">
+              <div className="mt-auto flex flex-wrap items-end gap-3 lg:gap-4 xl:gap-x-[1.3125rem] xl:gap-y-4">
                 <SupportCard {...supportCard} />
                 <ServiceCard {...serviceCard} />
               </div>
@@ -161,42 +155,15 @@ export function HeroSection({
           </div>
         </div>
 
-        <div className="hidden xl:grid xl:grid-cols-[811fr_588fr]">
-          <div className="relative aspect-[811/759] overflow-hidden rounded-[1.875rem] bg-[#d9e5ea]">
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url('/images/original/fontheroleftside.png')" }}
-            />
+        <div className="relative min-h-[37rem] overflow-hidden rounded-[1.875rem] bg-[#d9e5ea] xl:aspect-[588/759] xl:min-h-0">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/original/fontherorightside.png')" }}
+          />
 
-            <div className="relative z-10 flex h-full flex-col">
-              <div className="px-[clamp(1.5rem,3.6vw,3.25rem)] pt-[clamp(1rem,1.8vw,1.625rem)]">
-                <DesktopHeaderBrandNav navigationLinks={headerNavigationLinks} />
-              </div>
-
-              <div className="flex flex-1 flex-col px-[clamp(1.5rem,7vw,6.125rem)] pb-[clamp(1.25rem,2vw,1.8125rem)] pt-[clamp(2.5rem,9vw,7.5rem)]">
-                <h1 className="max-w-[34rem] font-display text-[clamp(2.5rem,3.5vw,3rem)] font-normal leading-[1] text-[#004B62]">
-                  {headline}
-                </h1>
-
-                <div className="mt-auto flex flex-wrap items-end gap-x-[1.3125rem] gap-y-4">
-                  <SupportCard {...supportCard} />
-                  <ServiceCard {...serviceCard} />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative aspect-[588/759] overflow-hidden rounded-[1.875rem] bg-[#d9e5ea]">
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url('/images/original/fontherorightside.png')" }}
-            />
-
-            <div className="relative z-10 flex h-full flex-col px-[clamp(1rem,2vw,2rem)] pt-[clamp(1rem,1.8vw,1.625rem)]">
-              <DesktopHeaderContactActions cityLabel={cityLabel} phoneHref={phoneHref} phoneLabel={phoneLabel} />
-            </div>
+          <div className="relative z-10 flex h-full flex-col px-4 pt-5 lg:px-6 lg:pt-6 xl:px-[clamp(1rem,2vw,2rem)] xl:pt-[clamp(1rem,1.8vw,1.625rem)]">
+            <DesktopHeaderContactActions cityLabel={cityLabel} phoneHref={phoneHref} phoneLabel={phoneLabel} />
           </div>
         </div>
       </div>

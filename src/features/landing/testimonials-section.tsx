@@ -188,7 +188,7 @@ export function TestimonialsSection() {
                 {testimonialsContent.items.map((testimonial) => (
                   <CarouselItem
                     key={`${testimonial.name}-${testimonial.service}`}
-                    className="select-none md:basis-[calc(50%-10px)] md:pl-0 xl:basis-[387px]"
+                    className="select-none md:basis-[320px] md:pl-0 xl:basis-[387px]"
                   >
                     <div className="h-full">
                       <DesktopTestimonialCard onOpen={setSelectedTestimonial} testimonial={testimonial} />

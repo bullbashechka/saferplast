@@ -46,11 +46,11 @@ function DecorativeColumn({
   side: "left" | "right";
 }>) {
   return (
-    <div className="hidden w-full lg:grid lg:gap-[80px]">
+    <div className="hidden w-full md:grid md:gap-8 lg:gap-[80px]">
       {items.map((item) => (
         <div
           key={item.label}
-          className={`flex min-h-[44px] w-fit items-center whitespace-nowrap rounded-[11px] border border-[#004B62] px-[21px] py-3 text-[1rem] font-normal leading-[1] text-[#004B62] shadow-[0_0_19.9px_rgba(0,75,98,0.41)] ${
+          className={`flex min-h-[38px] w-fit items-center whitespace-nowrap rounded-[11px] border border-[#004B62] px-4 py-2 text-[0.8125rem] font-normal leading-[1] text-[#004B62] shadow-[0_0_19.9px_rgba(0,75,98,0.41)] lg:min-h-[44px] lg:px-[21px] lg:py-3 lg:text-[1rem] ${
             side === "right" ? "bg-[hsla(190,32%,93%,1)]" : ""
           } ${
             side === "left"
@@ -139,14 +139,14 @@ export function LeadFormSection() {
           {subtitle}
         </p>
 
-        <div className="mt-[20px] grid items-start gap-[15px] md:mt-10 lg:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] lg:gap-[3rem] xl:ml-[7.5rem] xl:mr-[1.25rem]">
+        <div className="mt-[20px] grid items-start gap-[15px] md:mt-10 md:grid-cols-[minmax(0,1fr)_minmax(290px,340px)_minmax(0,1fr)] md:gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] lg:gap-[3rem] xl:ml-[7.5rem] xl:mr-[1.25rem]">
           <DecorativeColumn items={decorativeLabels.left} side="left" />
 
-          <div className="mx-auto w-full max-w-[300px] lg:max-w-[387px]">
-            <div className="min-h-[337px] rounded-[20px] bg-[#004B62] p-[15px] shadow-[0_0_16.3px_rgba(0,75,98,0.62)] lg:p-10">
-              <form className="grid gap-[10px] lg:gap-[26px]" onSubmit={handleSubmit}>
+          <div className="mx-auto w-full max-w-[300px] md:max-w-[340px] lg:max-w-[387px]">
+            <div className="min-h-[337px] rounded-[20px] bg-[#004B62] p-[15px] shadow-[0_0_16.3px_rgba(0,75,98,0.62)] md:p-6 lg:p-10">
+              <form className="grid gap-[10px] md:gap-4 lg:gap-[26px]" onSubmit={handleSubmit}>
                 <input
-                  className="h-[42px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1] text-[#242424] outline-none placeholder:text-[#6a6a6a] lg:h-[52px] lg:px-[22px] lg:py-[18px] lg:text-[1rem]"
+                  className="h-[42px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1] text-[#242424] outline-none placeholder:text-[#6a6a6a] md:h-[46px] md:px-4 md:py-3 md:text-[0.875rem] lg:h-[52px] lg:px-[22px] lg:py-[18px] lg:text-[1rem]"
                   name="name"
                   onChange={(event) => setNameValue(event.target.value)}
                   placeholder={fields.name}
@@ -155,7 +155,7 @@ export function LeadFormSection() {
                   value={nameValue}
                 />
                 <input
-                  className="h-[42px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1] text-[#242424] outline-none placeholder:text-[#6a6a6a] lg:h-[52px] lg:px-[22px] lg:py-[18px] lg:text-[1rem]"
+                  className="h-[42px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1] text-[#242424] outline-none placeholder:text-[#6a6a6a] md:h-[46px] md:px-4 md:py-3 md:text-[0.875rem] lg:h-[52px] lg:px-[22px] lg:py-[18px] lg:text-[1rem]"
                   name="phone"
                   inputMode="numeric"
                   onBlur={() => {
@@ -174,9 +174,9 @@ export function LeadFormSection() {
                   type="tel"
                   value={phoneValue}
                 />
-                <div className="grid gap-[4px] lg:gap-2">
+                <div className="grid gap-[4px] md:gap-1.5 lg:gap-2">
                   <textarea
-                    className="min-h-[58px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1.15] text-[#242424] outline-none placeholder:text-[#6a6a6a] lg:min-h-[52px] lg:px-[22px] lg:py-[18px] lg:text-[1rem] lg:leading-[1.2]"
+                    className="min-h-[58px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1.15] text-[#242424] outline-none placeholder:text-[#6a6a6a] md:min-h-[78px] md:px-4 md:py-3 md:text-[0.875rem] lg:min-h-[52px] lg:px-[22px] lg:py-[18px] lg:text-[1rem] lg:leading-[1.2]"
                     maxLength={taskMaxLength}
                     name="task"
                     onChange={(event) => setTaskValue(event.target.value)}
@@ -184,12 +184,12 @@ export function LeadFormSection() {
                     rows={2}
                     value={taskValue}
                   />
-                  <p className="text-right font-body text-[10px] font-normal leading-[1] text-white/85 lg:text-[0.75rem] lg:leading-[1.2]">
+                  <p className="text-right font-body text-[10px] font-normal leading-[1] text-white/85 md:text-[0.6875rem] lg:text-[0.75rem] lg:leading-[1.2]">
                     {remainingTaskSymbols}
                   </p>
                 </div>
 
-                <FieldGroup className="gap-[8px] lg:gap-3">
+                <FieldGroup className="gap-[8px] md:gap-2 lg:gap-3">
                   {consents.map((consent, index) => (
                     <Field key={`${consent}-${index}`} orientation="horizontal">
                       <Checkbox
@@ -200,7 +200,7 @@ export function LeadFormSection() {
                         required
                       />
                       <FieldLabel
-                        className="text-[10px] leading-[1.15] text-white lg:text-[14px] lg:leading-[1.2]"
+                        className="text-[10px] leading-[1.15] text-white md:text-[0.75rem] lg:text-[14px] lg:leading-[1.2]"
                         htmlFor={`lead-consent-${index}`}
                       >
                         {consent}
@@ -210,7 +210,7 @@ export function LeadFormSection() {
                 </FieldGroup>
 
                 <button
-                  className="flex h-[42px] items-center justify-center gap-[10px] rounded-[10px] bg-[#1E1E1E] px-[20px] py-[12px] font-body text-[14px] font-medium leading-[1] text-white transition-colors hover:bg-[#111111] disabled:cursor-not-allowed disabled:opacity-70 lg:h-[54px] lg:gap-5 lg:rounded-[15px] lg:px-[62px] lg:py-[17px] lg:text-[20px]"
+                  className="flex h-[42px] items-center justify-center gap-[10px] rounded-[10px] bg-[#1E1E1E] px-[20px] py-[12px] font-body text-[14px] font-medium leading-[1] text-white transition-colors hover:bg-[#111111] disabled:cursor-not-allowed disabled:opacity-70 md:h-[48px] md:px-6 md:text-[1rem] lg:h-[54px] lg:gap-5 lg:rounded-[15px] lg:px-[62px] lg:py-[17px] lg:text-[20px]"
                   disabled={isSubmitting}
                   type="submit"
                 >

@@ -51,7 +51,7 @@ function SolutionCard({
 
   return (
     <article
-      className={`relative overflow-hidden rounded-[20px] bg-[#d9e5ea] p-[12px] ${card.row === "top" ? "h-[368px]" : "h-[290px]"}`}
+      className={`relative overflow-hidden rounded-[20px] bg-[#d9e5ea] p-[10px] lg:p-[12px] ${card.row === "top" ? "h-[300px] lg:h-[368px]" : "h-[240px] lg:h-[290px]"}`}
     >
       <Image
         alt={card.title}
@@ -79,7 +79,7 @@ function SolutionCard({
           <Image
             alt=""
             aria-hidden="true"
-            className="block"
+            className="block h-auto w-[8rem] lg:w-auto"
             height={292}
             src="/images/webp/freezing-wooman.webp"
             style={{ height: "auto" }}
@@ -90,20 +90,20 @@ function SolutionCard({
 
       <div className="relative z-10 flex h-full flex-col">
         <div
-          className={`liquid-glass-strong rounded-[10px] p-[10px] ${card.row === "top" ? "h-[123px]" : "h-[106px]"}`}
+          className={`liquid-glass-strong rounded-[10px] p-[8px] lg:p-[10px] ${card.row === "top" ? "h-[100px] lg:h-[123px]" : "h-[92px] lg:h-[106px]"}`}
         >
           <div
             className={
               card.row === "top"
-                ? `flex min-h-[60px] ${card.id === "cold-noise" ? "items-start" : "items-end"}`
+              ? `flex min-h-[48px] lg:min-h-[60px] ${card.id === "cold-noise" ? "items-start" : "items-end"}`
                 : undefined
             }
           >
-            <h3 className="font-['Sansation'] text-[30px] font-normal leading-[1] tracking-[0] text-[hsla(194,100%,19%,1)]">
+            <h3 className="font-['Sansation'] text-[1.375rem] font-normal leading-[1] tracking-[0] text-[hsla(194,100%,19%,1)] lg:text-[30px]">
               {card.title}
             </h3>
           </div>
-          <p className="mt-3 font-body text-[16px] font-normal leading-[1] tracking-[0] text-[hsla(0,0%,14%,1)]">
+          <p className="mt-2 font-body text-[0.8125rem] font-normal leading-[1] tracking-[0] text-[hsla(0,0%,14%,1)] lg:mt-3 lg:text-[16px]">
             {card.subtitle}
           </p>
         </div>
@@ -111,8 +111,8 @@ function SolutionCard({
         <a
           className={`${card.typography.ctaClassName} ${
             card.row === "top"
-              ? "absolute bottom-[28px] left-[20px] right-[20px] lg:bottom-[38px] lg:left-[30px] xl:right-[197px]"
-              : "absolute bottom-[24px] left-[20px] right-[20px] lg:bottom-[32px] lg:left-[30px] xl:right-[400px]"
+              ? "absolute bottom-4 left-4 right-4 lg:bottom-[38px] lg:left-[30px] xl:right-[197px]"
+              : "absolute bottom-4 left-4 right-4 lg:bottom-[32px] lg:left-[30px] xl:right-[400px]"
           } text-[#004B62]`}
           href={card.ctaHref}
         >
@@ -174,12 +174,12 @@ export function SolutionMatchingSection() {
       <div className="mx-auto w-full max-w-[300px] md:max-w-content">
         <h2
           id="solution-matching-title"
-          className="font-['Sansation'] text-center text-[20px] font-normal leading-[1] tracking-[0] text-[hsla(194,100%,19%,1)] md:font-display md:text-[44px]"
+          className="font-['Sansation'] text-center text-[20px] font-normal leading-[1] tracking-[0] text-[hsla(194,100%,19%,1)] md:font-display md:text-[2rem] lg:text-[44px]"
         >
           {section.heading}
         </h2>
         <p
-          className="mx-auto mt-[10px] max-w-[300px] text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[hsla(0,0%,14%,1)] md:mt-4 md:max-w-[51rem] md:font-body md:text-[16px]"
+          className="mx-auto mt-[10px] max-w-[300px] text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[hsla(0,0%,14%,1)] md:mt-4 md:max-w-[44rem] md:font-body md:text-[0.875rem] lg:max-w-[51rem] lg:text-[16px]"
         >
           {section.subtitle}
         </p>
@@ -197,14 +197,14 @@ export function SolutionMatchingSection() {
           Узнать подробнее
         </a>
 
-        <div className="hidden md:mt-8 md:block md:space-y-5">
-          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="hidden md:mt-8 md:block md:space-y-4 lg:space-y-5">
+          <div className="grid md:grid-cols-3 md:gap-3 lg:gap-4 xl:gap-5">
             {rows.topCards.map((card) => (
               <SolutionCard card={card} isBottomLeft={false} key={card.id} />
             ))}
           </div>
 
-          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+          <div className="grid md:grid-cols-2 md:gap-3 lg:gap-4 xl:gap-5">
             {rows.bottomCards.map((card, index) => (
               <SolutionCard
                 card={card}
