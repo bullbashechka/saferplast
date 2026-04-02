@@ -111,7 +111,7 @@ export function ProjectsSection() {
     <section
       id="projects"
       aria-label="Наши работы"
-      className="bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-[60px] lg:px-8 lg:py-20"
+      className="bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-[60px] lg:mt-[120px] lg:px-8 lg:pb-20 lg:pt-0"
     >
       <div className="mx-auto w-full max-w-[300px] lg:max-w-[1201px]">
         <div className="lg:hidden">

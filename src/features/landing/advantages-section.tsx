@@ -122,7 +122,7 @@ export function AdvantagesSection() {
   return (
     <section
       aria-label={advantagesSectionContent.title}
-      className="relative z-10 -mt-[5.3125rem] rounded-t-[1.875rem] bg-[rgba(250,254,255,1)] pb-0 pt-8 lg:pb-20 lg:pt-12 xl:mt-0 xl:rounded-t-none"
+      className="relative z-10 -mt-[5.3125rem] rounded-t-[1.875rem] bg-[rgba(250,254,255,1)] pb-0 pt-8 lg:mt-[120px] lg:pb-20 lg:pt-0 xl:rounded-t-none"
     >
       <div className="mx-auto max-w-[90rem] px-[10px] sm:px-6 lg:w-[90rem] lg:max-w-none lg:px-[7.5rem]">
         <div className="mx-auto flex max-w-[18.75rem] flex-col items-center lg:hidden">

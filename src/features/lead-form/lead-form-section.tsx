@@ -7,8 +7,12 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import type { DecorativeLabel } from "@/features/lead-form/lead-form-content";
 import { leadFormContent } from "@/features/lead-form/lead-form-content";
+import type { LeadFormPayload } from "@/features/lead-form/lead-form-types";
 
 const PHONE_PREFIX = "+7";
+const EMPTY_CONSENTS = [false, false];
+const SUCCESS_MESSAGE = "Заявка отправлена. Мы свяжемся с вами в ближайшее время.";
+const ERROR_MESSAGE = "Не удалось отправить заявку. Попробуйте еще раз.";
 
 function formatPhoneValue(rawValue: string) {
   const digits = rawValue.replace(/\D/g, "");
@@ -68,12 +72,65 @@ function DecorativeColumn({
 export function LeadFormSection() {
   const { consents, decorativeLabels, fields, messengersLabel, submitLabel, subtitle, taskMaxLength, title } =
     leadFormContent;
+  const [nameValue, setNameValue] = useState("");
   const [taskValue, setTaskValue] = useState("");
   const [phoneValue, setPhoneValue] = useState("");
+  const [consentValues, setConsentValues] = useState<boolean[]>(EMPTY_CONSENTS);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const remainingTaskSymbols = taskMaxLength - taskValue.length;
+  const allConsentsAccepted = consentValues.every(Boolean);
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    setSubmitMessage(null);
+    setSubmitError(null);
+
+    const payload: LeadFormPayload = {
+      name: nameValue.trim(),
+      phone: phoneValue.trim(),
+      task: taskValue.trim(),
+      consentsAccepted: allConsentsAccepted,
+      source: typeof window !== "undefined" ? window.location.href : undefined,
+    };
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/lead", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const body = (await response.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(body?.error || ERROR_MESSAGE);
+      }
+
+      setNameValue("");
+      setPhoneValue("");
+      setTaskValue("");
+      setConsentValues([...EMPTY_CONSENTS]);
+      setSubmitMessage(SUCCESS_MESSAGE);
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : ERROR_MESSAGE;
+      setSubmitError(errorMessage);
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  function handleConsentChange(index: number, checked: boolean) {
+    setConsentValues((current) => current.map((value, currentIndex) => (currentIndex === index ? checked : value)));
+  }
 
   return (
-    <section id="lead-form" className="bg-[rgba(250,254,255,1)] pb-16 pt-[60px] lg:px-0 lg:py-20">
+    <section id="lead-form" className="bg-[rgba(250,254,255,1)] pb-16 pt-[60px] lg:mt-[120px] lg:px-0 lg:pb-20 lg:pt-0">
       <div className="mx-auto w-full max-w-[320px] px-[10px] lg:w-[90rem] lg:max-w-none lg:px-0">
         <h2 className="mx-auto w-full max-w-[300px] text-center font-display text-[20px] font-normal leading-[1] text-[#004B62] lg:max-w-[61rem] lg:text-[44px]">
           {title}
@@ -87,12 +144,15 @@ export function LeadFormSection() {
 
           <div className="mx-auto w-full max-w-[300px] lg:max-w-[387px]">
             <div className="min-h-[337px] rounded-[20px] bg-[#004B62] p-[15px] shadow-[0_0_16.3px_rgba(0,75,98,0.62)] lg:p-10">
-              <form className="grid gap-[10px] lg:gap-[26px]">
+              <form className="grid gap-[10px] lg:gap-[26px]" onSubmit={handleSubmit}>
                 <input
                   className="h-[42px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1] text-[#242424] outline-none placeholder:text-[#6a6a6a] lg:h-[52px] lg:px-[22px] lg:py-[18px] lg:text-[1rem]"
                   name="name"
+                  onChange={(event) => setNameValue(event.target.value)}
                   placeholder={fields.name}
+                  required
                   type="text"
+                  value={nameValue}
                 />
                 <input
                   className="h-[42px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1] text-[#242424] outline-none placeholder:text-[#6a6a6a] lg:h-[52px] lg:px-[22px] lg:py-[18px] lg:text-[1rem]"
@@ -110,6 +170,7 @@ export function LeadFormSection() {
                     }
                   }}
                   placeholder={fields.phone}
+                  required
                   type="tel"
                   value={phoneValue}
                 />
@@ -131,7 +192,13 @@ export function LeadFormSection() {
                 <FieldGroup className="gap-[8px] lg:gap-3">
                   {consents.map((consent, index) => (
                     <Field key={`${consent}-${index}`} orientation="horizontal">
-                      <Checkbox id={`lead-consent-${index}`} name={`lead-consent-${index}`} />
+                      <Checkbox
+                        checked={consentValues[index] ?? false}
+                        id={`lead-consent-${index}`}
+                        name={`lead-consent-${index}`}
+                        onChange={(event) => handleConsentChange(index, event.target.checked)}
+                        required
+                      />
                       <FieldLabel
                         className="text-[10px] leading-[1.15] text-white lg:text-[14px] lg:leading-[1.2]"
                         htmlFor={`lead-consent-${index}`}
@@ -143,10 +210,11 @@ export function LeadFormSection() {
                 </FieldGroup>
 
                 <button
-                  className="flex h-[42px] items-center justify-center gap-[10px] rounded-[10px] bg-[#1E1E1E] px-[20px] py-[12px] font-body text-[14px] font-medium leading-[1] text-white transition-colors hover:bg-[#111111] lg:h-[54px] lg:gap-5 lg:rounded-[15px] lg:px-[62px] lg:py-[17px] lg:text-[20px]"
+                  className="flex h-[42px] items-center justify-center gap-[10px] rounded-[10px] bg-[#1E1E1E] px-[20px] py-[12px] font-body text-[14px] font-medium leading-[1] text-white transition-colors hover:bg-[#111111] disabled:cursor-not-allowed disabled:opacity-70 lg:h-[54px] lg:gap-5 lg:rounded-[15px] lg:px-[62px] lg:py-[17px] lg:text-[20px]"
+                  disabled={isSubmitting}
                   type="submit"
                 >
-                  <span>{submitLabel}</span>
+                  <span>{isSubmitting ? "Отправляем..." : submitLabel}</span>
                   <Image
                     alt=""
                     aria-hidden="true"
@@ -156,6 +224,17 @@ export function LeadFormSection() {
                     width={20}
                   />
                 </button>
+
+                {(submitMessage || submitError) && (
+                  <p
+                    className={`text-center font-body text-[11px] leading-[1.2] lg:text-[13px] ${
+                      submitError ? "text-[#ffd7d7]" : "text-[#d7ffe4]"
+                    }`}
+                    role={submitError ? "alert" : "status"}
+                  >
+                    {submitError || submitMessage}
+                  </p>
+                )}
               </form>
             </div>
 

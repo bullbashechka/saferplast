@@ -82,6 +82,7 @@ function SolutionCard({
             className="block"
             height={292}
             src="/images/webp/freezing-wooman.webp"
+            style={{ height: "auto" }}
             width={184}
           />
         </div>
@@ -168,7 +169,7 @@ export function SolutionMatchingSection() {
     <section
       id="solution-matching"
       aria-labelledby="solution-matching-title"
-      className="mt-[20px] bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-0 lg:mt-0 lg:px-8 lg:py-20"
+      className="mt-[20px] bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-0 lg:mt-[120px] lg:px-8 lg:pb-20 lg:pt-0"
     >
       <div className="mx-auto w-full max-w-[300px] lg:max-w-content">
         <h2
