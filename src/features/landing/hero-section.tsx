@@ -98,7 +98,7 @@ export function HeroSection({
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: "url('/images/original/fontheroleftside.png')" }}
           />
-          <div className="relative z-10 px-[0.6875rem] pb-6 pt-4 sm:px-6 sm:pb-8">
+          <div className="relative z-10 px-[0.6875rem] pb-6 pt-4">
             <SiteHeader
               cityLabel={cityLabel}
               navigationLinks={headerNavigationLinks}
@@ -106,18 +106,15 @@ export function HeroSection({
               phoneLabel={phoneLabel}
             />
 
-            <h1 className="mx-auto mt-8 w-[18.625rem] max-w-full text-center font-display text-[1.3125rem] font-normal leading-[1] text-[#004B62] sm:mt-10 sm:w-full sm:max-w-[34rem] sm:text-[2.75rem]">
-              <span className="sm:hidden">
-                {mobileHeadlineLines.map((line) => (
-                  <span className="block" key={line}>
-                    {line}
-                  </span>
-                ))}
-              </span>
-              <span className="hidden sm:inline">{headline}</span>
+            <h1 className="mx-auto mt-8 w-[18.625rem] max-w-full text-center font-display text-[1.3125rem] font-normal leading-[1] text-[#004B62]">
+              {mobileHeadlineLines.map((line) => (
+                <span className="block" key={line}>
+                  {line}
+                </span>
+              ))}
             </h1>
 
-            <div className="mt-8 grid justify-items-center gap-4 sm:mt-10 sm:gap-5">
+            <div className="mt-8 grid justify-items-center gap-4">
               <SupportCard {...supportCard} />
               <ServiceCard {...serviceCard} />
             </div>
