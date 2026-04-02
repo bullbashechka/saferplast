@@ -84,7 +84,8 @@ function DesktopAdvantagesCard({ card, index }: { card: AdvantagesCard; index: n
             alt="Saferplast"
             className="h-auto w-[clamp(10rem,20vw,26.875rem)]"
             height={300}
-            src="/images/original/logo.PNG"
+            src="/images/original/logo.png"
+            unoptimized
             width={430}
           />
         </div>
@@ -155,7 +156,14 @@ export function AdvantagesSection() {
 
           {imageCard ? (
             <div className="mt-5 flex h-[11.5625rem] w-[16.4375rem] items-center justify-center">
-              <Image alt="Saferplast" className="h-auto w-full object-contain" height={185} src="/images/original/logo.PNG" width={263} />
+              <Image
+                alt="Saferplast"
+                className="h-auto w-full object-contain"
+                height={185}
+                src="/images/original/logo.png"
+                unoptimized
+                width={263}
+              />
             </div>
           ) : null}
 

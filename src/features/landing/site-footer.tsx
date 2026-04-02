@@ -44,7 +44,8 @@ export function SiteFooter() {
                 alt="Saferplast"
                 className="h-[78px] w-[111px] object-contain object-right"
                 height={78}
-                src="/images/original/logo.PNG"
+                src="/images/original/logo.png"
+                unoptimized
                 width={111}
               />
             </a>
@@ -119,7 +120,8 @@ export function SiteFooter() {
                 alt="Saferplast"
                 className="h-auto w-full max-w-full object-contain"
                 height={185}
-                src="/images/original/logo.PNG"
+                src="/images/original/logo.png"
+                unoptimized
                 width={263}
               />
             </a>

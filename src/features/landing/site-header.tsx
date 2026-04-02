@@ -63,7 +63,8 @@ export function DesktopHeaderBrandNav({ navigationLinks }: DesktopHeaderBrandNav
           className="h-auto w-full object-contain"
           height={92}
           priority
-          src="/images/original/logo.PNG"
+          src="/images/original/logo.png"
+          unoptimized
           width={179}
         />
       </Link>
@@ -132,7 +133,8 @@ export function SiteHeader({ cityLabel, navigationLinks, phoneHref }: SiteHeader
             className="h-[2.8125rem] w-[5.5rem] object-contain"
             height={92}
             priority
-            src="/images/original/logo.PNG"
+            src="/images/original/logo.png"
+            unoptimized
             width={179}
           />
         </Link>
