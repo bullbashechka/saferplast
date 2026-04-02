@@ -3,6 +3,7 @@
 import ClassNames from "embla-carousel-class-names";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
+import type { CSSProperties } from "react";
 
 import { projectsContent } from "@/features/landing/projects-content";
 
@@ -108,6 +109,13 @@ export function ProjectsSection() {
     images.middleBottom,
     images.right,
   ] as const;
+  const desktopGridStyle: CSSProperties & Record<string, string> = {
+    "--projects-column-height": "clamp(24rem, 9.6rem + 30vw, 36.125rem)",
+    "--projects-stack-gap": "clamp(0.75rem, 0.25rem + 1.05vw, 1.25rem)",
+    "--projects-title-height": "clamp(4.5rem, 3.4rem + 2.3vw, 5.4375rem)",
+    "--projects-middle-top-height": "clamp(11.5rem, 7.6rem + 8.1vw, 17.6875rem)",
+    "--projects-cta-height": "clamp(3.625rem, 2.95rem + 1.4vw, 4.625rem)",
+  };
 
   return (
     <section
@@ -134,47 +142,50 @@ export function ProjectsSection() {
           </a>
         </div>
 
-        <div className="hidden md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] md:gap-3 lg:gap-4 xl:grid-cols-[387px_387px_387px] xl:gap-x-5 xl:gap-y-0">
-          <div className="flex flex-col gap-4 lg:gap-6 xl:gap-9">
-            <div className="xl:h-[87px]">
-              <h2 className="font-display text-[1.75rem] font-normal leading-[1] text-[#004B62] lg:text-[2.25rem] xl:text-[44px]">
+        <div
+          className="hidden md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] md:gap-[var(--projects-stack-gap)] xl:grid-cols-[387px_387px_387px] xl:gap-x-5 xl:gap-y-0"
+          style={desktopGridStyle}
+        >
+          <div className="flex flex-col gap-[var(--projects-stack-gap)]">
+            <div className="flex h-[var(--projects-title-height)] flex-col justify-between">
+              <h2 className="font-display text-[clamp(1.75rem,1.05rem+1.45vw,2.75rem)] font-normal leading-[1] text-[#004B62]">
                 {title}
               </h2>
-              <p className="mt-3 max-w-[16rem] text-[0.875rem] font-normal leading-[1.2] text-[#000000] lg:mt-4 lg:max-w-[20rem] lg:text-[1rem] xl:w-[279px]">
+              <p className="max-w-[clamp(13.5rem,10.5rem+6.2vw,17.4375rem)] text-[clamp(0.875rem,0.79rem+0.18vw,1rem)] font-normal leading-[1.2] text-[#000000]">
                 {subtitle}
               </p>
             </div>
 
             <ProjectCard
               alt={images.left.alt}
-              className="h-[20rem] lg:h-[24rem] xl:h-[455px]"
+              className="h-[calc(var(--projects-column-height)-var(--projects-title-height)-var(--projects-stack-gap))]"
               objectPositionClassName={images.left.objectPositionClassName}
               sizes="(max-width: 1023px) 100vw, 387px"
               src={images.left.src}
             />
           </div>
 
-          <div className="flex flex-col gap-3 lg:gap-4 xl:gap-5">
+          <div className="flex flex-col gap-[var(--projects-stack-gap)]">
             <ProjectCard
               alt={images.middleTop.alt}
-              className="h-[15rem] lg:h-[18rem] xl:h-[283px]"
+              className="h-[var(--projects-middle-top-height)]"
               objectPositionClassName={images.middleTop.objectPositionClassName}
               sizes="(max-width: 1023px) 100vw, 387px"
               src={images.middleTop.src}
             />
             <ProjectCard
               alt={images.middleBottom.alt}
-              className="h-[15rem] lg:h-[18rem] xl:h-[275px]"
+              className="h-[calc(var(--projects-column-height)-var(--projects-middle-top-height)-var(--projects-stack-gap))]"
               objectPositionClassName={images.middleBottom.objectPositionClassName}
               sizes="(max-width: 1023px) 100vw, 387px"
               src={images.middleBottom.src}
             />
           </div>
 
-          <div className="flex flex-col gap-3 lg:gap-4 xl:gap-5">
+          <div className="flex flex-col gap-[var(--projects-stack-gap)]">
             <ProjectCard
               alt={images.right.alt}
-              className="h-[20rem] lg:h-[24rem] xl:h-[484px]"
+              className="h-[calc(var(--projects-column-height)-var(--projects-cta-height)-var(--projects-stack-gap))]"
               imageClassName="md:scale-[0.94] lg:scale-100"
               objectPositionClassName={images.right.objectPositionClassName}
               sizes="(max-width: 1023px) 100vw, 387px"
@@ -182,7 +193,7 @@ export function ProjectsSection() {
             />
 
             <a
-              className="inline-flex h-[58px] w-full items-center justify-center whitespace-nowrap rounded-[15px] border border-[#004B62] px-4 text-center text-[1rem] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#004B62] hover:text-white lg:h-[74px] lg:px-[2.75rem] lg:text-[1.125rem] xl:px-[66px] xl:text-[20px]"
+              className="inline-flex h-[var(--projects-cta-height)] w-full items-center justify-center whitespace-nowrap rounded-[15px] border border-[#004B62] px-[clamp(1rem,0.35rem+1.35vw,4.125rem)] text-center text-[clamp(1rem,0.82rem+0.36vw,1.25rem)] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#004B62] hover:text-white"
               href={ctaHref}
             >
               {ctaLabel}

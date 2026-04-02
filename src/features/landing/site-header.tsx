@@ -41,7 +41,7 @@ function DesktopHeaderActionButton({
   isLink?: boolean;
 }) {
   const baseClassName =
-    "liquid-glass-strong liquid-glass-soft flex h-10 min-w-0 items-center rounded-[15px] px-3 py-3 lg:h-12 lg:px-5 lg:py-[0.875rem]";
+    "liquid-glass-strong liquid-glass-soft flex h-10 min-w-0 items-center rounded-[15px] px-3 py-3 xl:h-12 xl:px-5 xl:py-[0.875rem]";
 
   if (isLink && href) {
     return (
@@ -56,8 +56,8 @@ function DesktopHeaderActionButton({
 
 export function DesktopHeaderBrandNav({ navigationLinks }: DesktopHeaderBrandNavProps) {
   return (
-    <div className="flex min-w-0 items-start gap-3 lg:gap-6 xl:gap-[clamp(1.5rem,3vw,3rem)]">
-      <Link aria-label="Saferplast" className="block w-[6.75rem] shrink-0 lg:w-[9rem] xl:w-[10.5rem] 2xl:w-[11.1875rem]" href="/">
+    <div className="flex min-w-0 items-start gap-2.5 xl:gap-[clamp(1.5rem,3vw,3rem)]">
+      <Link aria-label="Saferplast" className="block w-[6rem] shrink-0 xl:w-[10.5rem] 2xl:w-[11.1875rem]" href="/">
         <Image
           alt="Saferplast"
           className="h-auto w-full object-contain"
@@ -68,12 +68,15 @@ export function DesktopHeaderBrandNav({ navigationLinks }: DesktopHeaderBrandNav
         />
       </Link>
 
-      <nav aria-label="Основная навигация" className="ml-auto w-[15rem] shrink-0 pt-2 lg:w-[17rem] xl:w-[19.8125rem] xl:pt-[0.75rem]">
-        <ul className="grid h-auto w-full grid-cols-2 grid-rows-2 gap-x-4 gap-y-4 lg:gap-x-5 lg:gap-y-5 xl:h-[3.5rem] xl:gap-x-6 xl:gap-y-6">
+      <nav
+        aria-label="Основная навигация"
+        className="ml-auto mr-8 w-[10.25rem] shrink-0 pt-1 xl:mr-0 xl:w-[19.8125rem] xl:pt-[0.75rem]"
+      >
+        <ul className="grid h-auto w-full grid-cols-2 grid-rows-2 gap-x-2.5 gap-y-2.5 xl:h-[3.5rem] xl:gap-x-6 xl:gap-y-6">
           {navigationLinks.map((link) => (
             <li key={link.href}>
               <a
-                className="block whitespace-nowrap font-body text-[0.75rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62] lg:text-[0.875rem] xl:text-[clamp(0.8125rem,0.95vw,1rem)]"
+                className="block whitespace-nowrap font-body text-[0.6875rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62] xl:text-[clamp(0.8125rem,0.95vw,1rem)]"
                 href={link.href}
               >
                 {link.label}
@@ -93,23 +96,23 @@ export function DesktopHeaderContactActions({
   phoneLabel,
 }: DesktopHeaderContactActionsProps) {
   return (
-    <div className={cn("flex flex-wrap items-center justify-end gap-2 lg:gap-3 2xl:gap-5", className)}>
+    <div className={cn("flex flex-wrap items-center justify-end gap-2 xl:gap-3 2xl:gap-5", className)}>
       <DesktopHeaderActionButton
-        className="w-[8.75rem] justify-start gap-2 lg:w-[12rem] lg:gap-[0.875rem] xl:w-[clamp(12rem,16vw,14.8125rem)]"
+        className="w-[8.75rem] justify-start gap-2 xl:w-[clamp(12rem,16vw,14.8125rem)]"
         href={phoneHref}
       >
         <Image alt="" aria-hidden="true" className="relative z-10 shrink-0" height={16} src="/icons/phone.svg" width={16} />
-        <span className="relative z-10 whitespace-nowrap font-body text-[0.8125rem] font-medium leading-[1] tracking-[0] lg:text-[1rem] xl:text-[clamp(0.9375rem,1vw,1.25rem)]">
+        <span className="relative z-10 whitespace-nowrap font-body text-[0.8125rem] font-medium leading-[1] tracking-[0] xl:text-[clamp(0.9375rem,1vw,1.25rem)]">
           {phoneLabel}
         </span>
       </DesktopHeaderActionButton>
 
       <DesktopHeaderActionButton
-        className="w-[8.75rem] justify-start gap-2 lg:w-[12rem] lg:gap-[0.875rem] xl:w-[clamp(12rem,16vw,14.8125rem)]"
+        className="w-[8.75rem] justify-start gap-2 xl:w-[clamp(12rem,16vw,14.8125rem)]"
         isLink={false}
       >
         <Image alt="" aria-hidden="true" className="relative z-10 shrink-0" height={16} src="/icons/location.svg" width={16} />
-        <span className="relative z-10 truncate whitespace-nowrap font-body text-[0.8125rem] font-medium leading-[1] tracking-[0] lg:text-[1rem] xl:text-[clamp(0.9375rem,1vw,1.25rem)]">
+        <span className="relative z-10 truncate whitespace-nowrap font-body text-[0.8125rem] font-medium leading-[1] tracking-[0] xl:text-[clamp(0.9375rem,1vw,1.25rem)]">
           {cityLabel}
         </span>
       </DesktopHeaderActionButton>

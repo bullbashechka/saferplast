@@ -94,13 +94,13 @@ function DesktopAdvantagesCard({ card, index }: { card: AdvantagesCard; index: n
 
   const { baseClassName, isDark, titleClassName } = getCardClassNames(card);
   const content = (
-    <>
+    <div className="flex h-full flex-col">
       <h3
         className={`max-w-[33.125rem] font-display text-[clamp(1rem,1.35vw,1.875rem)] font-normal leading-[1] ${titleClassName}`}
       >
         {card.title}
       </h3>
-      <p className="mt-[clamp(0.75rem,1.4vw,2rem)] max-w-[33.125rem] text-[clamp(0.75rem,0.72vw,1rem)] leading-[1.2]">
+      <p className="mt-auto max-w-[33.125rem] pt-[clamp(0.75rem,1.4vw,2rem)] text-[clamp(0.75rem,0.72vw,1rem)] leading-[1.2]">
         {card.description}
       </p>
       {isDark ? (
@@ -108,7 +108,7 @@ function DesktopAdvantagesCard({ card, index }: { card: AdvantagesCard; index: n
           &rarr;
         </span>
       ) : null}
-    </>
+    </div>
   );
 
   if (card.href) {
