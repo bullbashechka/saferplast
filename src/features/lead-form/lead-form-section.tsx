@@ -173,7 +173,7 @@ export function LeadFormSection() {
                   aria-hidden="true"
                   className="h-[38px] w-[38px] lg:h-[47px] lg:w-[47px]"
                   height={47}
-                  src="/icons/ic_baseline-telegram.svg"
+                  src="/icons/teleg.svg"
                   width={47}
                 />
               </a>
@@ -185,10 +185,10 @@ export function LeadFormSection() {
                 <Image
                   alt=""
                   aria-hidden="true"
-                  className="h-[38px] w-[38px]"
-                  height={38}
+                  className="h-[38px] w-[38px] lg:h-[47px] lg:w-[47px]"
+                  height={47}
                   src="/icons/instagram.svg"
-                  width={38}
+                  width={47}
                 />
               </a>
               <a
@@ -199,10 +199,10 @@ export function LeadFormSection() {
                 <Image
                   alt=""
                   aria-hidden="true"
-                  className="h-[38px] w-[38px]"
-                  height={38}
-                  src="/icons/ri_whatsapp-fill.svg"
-                  width={38}
+                  className="h-[38px] w-[38px] lg:h-[47px] lg:w-[47px]"
+                  height={47}
+                  src="/icons/whats.svg"
+                  width={47}
                 />
               </a>
             </div>

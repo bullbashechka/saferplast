@@ -77,7 +77,7 @@ export function SiteFooter() {
                   rel="noreferrer"
                   target="_blank"
                 >
-                  <Image alt="" aria-hidden="true" height={38} src="/icons/ic_baseline-telegram.svg" width={38} />
+                  <Image alt="" aria-hidden="true" height={38} src="/icons/teleg.svg" width={38} />
                 </a>
                 <a
                   aria-label="WhatsApp"
@@ -86,7 +86,7 @@ export function SiteFooter() {
                   rel="noreferrer"
                   target="_blank"
                 >
-                  <Image alt="" aria-hidden="true" height={38} src="/icons/ri_whatsapp-fill.svg" width={38} />
+                  <Image alt="" aria-hidden="true" height={38} src="/icons/whats.svg" width={38} />
                 </a>
               </div>
             </div>
