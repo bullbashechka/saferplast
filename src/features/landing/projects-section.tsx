@@ -1,7 +1,8 @@
 "use client";
 
+import ClassNames from "embla-carousel-class-names";
+import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { projectsContent } from "@/features/landing/projects-content";
 
@@ -56,196 +57,42 @@ function MobileProjectSlide({
 }
 
 type MobileProjectsImage = (typeof projectsContent.images)[keyof typeof projectsContent.images];
-type MobileProjectsTransition = {
-  fromIndex: number;
-  toIndex: number;
-  direction: "forward" | "backward";
-  isActive: boolean;
-};
 
 function MobileProjectsSlider({
   images,
 }: {
   images: readonly MobileProjectsImage[];
 }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [transition, setTransition] = useState<MobileProjectsTransition | null>(null);
-  const touchStartXRef = useRef<number | null>(null);
-  const frameRef = useRef<number | null>(null);
-  const timeoutRef = useRef<number | null>(null);
-
-  const previewIndex = useMemo(() => {
-    if (activeIndex === images.length - 1) {
-      return Math.max(0, activeIndex - 1);
-    }
-
-    return activeIndex + 1;
-  }, [activeIndex, images.length]);
-
-  const clearAnimationTimers = useCallback(() => {
-    if (frameRef.current !== null) {
-      cancelAnimationFrame(frameRef.current);
-      frameRef.current = null;
-    }
-
-    if (timeoutRef.current !== null) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
-  }, []);
-
-  useEffect(() => clearAnimationTimers, [clearAnimationTimers]);
-
-  const startTransition = useCallback(
-    (nextIndex: number) => {
-      if (nextIndex === activeIndex || nextIndex < 0 || nextIndex >= images.length || transition) {
-        return;
-      }
-
-      clearAnimationTimers();
-
-      const direction = nextIndex > activeIndex ? "forward" : "backward";
-
-      setTransition({
-        fromIndex: activeIndex,
-        toIndex: nextIndex,
-        direction,
-        isActive: false,
-      });
-
-      frameRef.current = requestAnimationFrame(() => {
-        setTransition((currentTransition) =>
-          currentTransition
-            ? {
-                ...currentTransition,
-                isActive: true,
-              }
-            : null,
-        );
-      });
-
-      timeoutRef.current = window.setTimeout(() => {
-        setActiveIndex(nextIndex);
-        setTransition(null);
-      }, 320);
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      align: "start",
+      loop: false,
+      containScroll: "trimSnaps",
     },
-    [activeIndex, clearAnimationTimers, images.length, transition],
+    [ClassNames()],
   );
-
-  const handlePreviewClick = useCallback(() => {
-    startTransition(previewIndex);
-  }, [previewIndex, startTransition]);
-
-  const handleTouchStart = useCallback((event: React.TouchEvent<HTMLDivElement>) => {
-    touchStartXRef.current = event.touches[0]?.clientX ?? null;
-  }, []);
-
-  const handleTouchEnd = useCallback(
-    (event: React.TouchEvent<HTMLDivElement>) => {
-      const touchStartX = touchStartXRef.current;
-      const touchEndX = event.changedTouches[0]?.clientX;
-
-      touchStartXRef.current = null;
-
-      if (touchStartX === null || touchEndX === undefined) {
-        return;
-      }
-
-      const deltaX = touchEndX - touchStartX;
-
-      if (Math.abs(deltaX) < 30) {
-        return;
-      }
-
-      if (deltaX < 0 && activeIndex < images.length - 1) {
-        startTransition(activeIndex + 1);
-        return;
-      }
-
-      if (deltaX > 0 && activeIndex > 0) {
-        startTransition(activeIndex - 1);
-      }
-    },
-    [activeIndex, images.length, startTransition],
-  );
-
-  const mainImage = images[activeIndex];
-  const previewImage = images[previewIndex];
-  const isTransitioning = transition !== null;
-  const outgoingImage = transition ? images[transition.fromIndex] : null;
-  const incomingImage = transition ? images[transition.toIndex] : null;
-
-  const outgoingCardClassName = transition
-    ? transition.isActive
-      ? transition.direction === "forward"
-        ? "left-0 top-0 z-20 h-[275px] w-[244px] translate-x-[-28px] scale-[0.96] opacity-0"
-        : "left-0 top-0 z-20 h-[275px] w-[244px] translate-x-[18px] scale-[0.96] opacity-0"
-      : "left-0 top-0 z-20 h-[275px] w-[244px] translate-x-0 scale-100 opacity-100"
-    : "";
-
-  const incomingCardClassName = transition
-    ? transition.isActive
-      ? "left-0 top-0 z-30 h-[275px] w-[244px] translate-x-0 scale-100 opacity-100"
-      : "left-[265px] top-[34px] z-10 h-[169px] w-[259px] translate-x-0 scale-100 opacity-100"
-    : "";
 
   return (
-    <div className="relative mt-[20px] h-[275px]">
-      {transition && outgoingImage && incomingImage ? (
-        <>
-          <div className="pointer-events-none absolute inset-0">
-            <MobileProjectSlide
-              alt={outgoingImage.alt}
-              className={`absolute transition-all duration-300 ease-out ${outgoingCardClassName}`}
-              objectPositionClassName={outgoingImage.objectPositionClassName}
-              src={outgoingImage.src}
-            />
-          </div>
-
-          <div className="pointer-events-none absolute inset-0">
-            <MobileProjectSlide
-              alt={incomingImage.alt}
-              className={`absolute transition-all duration-300 ease-out ${incomingCardClassName}`}
-              objectPositionClassName={incomingImage.objectPositionClassName}
-              src={incomingImage.src}
-            />
-          </div>
-        </>
-      ) : null}
-
-      <div
-        className={`absolute left-[265px] top-[34px] z-0 cursor-pointer transition-opacity duration-200 ${
-          isTransitioning ? "pointer-events-none opacity-0" : "opacity-100"
-        }`}
-        onClick={handlePreviewClick}
-        onKeyDown={(event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            handlePreviewClick();
-          }
-        }}
-        role="button"
-        tabIndex={0}
-      >
-        <MobileProjectSlide
-          alt={previewImage.alt}
-          className="h-[169px] w-[259px]"
-          objectPositionClassName={previewImage.objectPositionClassName}
-          src={previewImage.src}
-        />
-      </div>
-
-      <div
-        className={`relative z-10 transition-opacity duration-200 ${isTransitioning ? "opacity-0" : "opacity-100"}`}
-        onTouchEnd={handleTouchEnd}
-        onTouchStart={handleTouchStart}
-      >
-        <MobileProjectSlide
-          alt={mainImage.alt}
-          className="h-[275px] w-[244px]"
-          objectPositionClassName={mainImage.objectPositionClassName}
-          src={mainImage.src}
-        />
+    <div className="projects-mobile-carousel mt-[20px]">
+      <div className="projects-mobile-carousel__viewport" ref={emblaRef}>
+        <div className="projects-mobile-carousel__container">
+          {images.map((image, index) => (
+            <button
+              aria-label={`Открыть проект ${index + 1}`}
+              className="embla__slide projects-mobile-carousel__slide"
+              key={image.alt}
+              onClick={() => emblaApi?.scrollTo(index)}
+              type="button"
+            >
+              <MobileProjectSlide
+                alt={image.alt}
+                className="projects-mobile-carousel__card"
+                objectPositionClassName={image.objectPositionClassName}
+                src={image.src}
+              />
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
