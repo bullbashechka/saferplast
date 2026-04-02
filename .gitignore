@@ -9,6 +9,8 @@ coverage
 .env
 .env.local
 .env.production.local
+.dev.vars
+.wrangler
 .DS_Store
 .codex
 tsconfig.tsbuildinfo
