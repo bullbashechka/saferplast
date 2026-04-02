@@ -51,24 +51,26 @@ export function TestimonialModal({ isOpen, onClose, testimonial }: TestimonialMo
       <div
         aria-labelledby="testimonial-modal-title"
         aria-modal="true"
-        className="w-full max-w-[42rem] rounded-[1.25rem] bg-[rgba(250,254,255,1)] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.2)] sm:p-8"
+        className="w-full max-w-[42rem] rounded-[1.25rem] bg-[rgba(250,254,255,1)] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.2)] sm:p-7"
         onClick={(event) => event.stopPropagation()}
         role="dialog"
       >
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="font-body text-[1rem] font-medium leading-[1] text-[#242424]">{testimonial.service}</p>
             <h3
               id="testimonial-modal-title"
-              className="mt-3 font-body text-[1.75rem] font-medium leading-[1] text-[#004B62] sm:text-[30px]"
+              className="font-display text-[1.25rem] font-normal leading-[1] text-[#004B62] sm:text-[1.75rem]"
             >
               {testimonial.name}
             </h3>
+            <p className="mt-2 font-body text-[0.8125rem] font-medium leading-[1.2] text-[#242424] sm:text-[0.9375rem]">
+              {testimonial.service}
+            </p>
           </div>
 
           <button
-            aria-label="Закрыть полный отзыв"
-            className="rounded-md p-1 text-[#004B62] transition-colors hover:bg-[#e8f2f5]"
+            aria-label="Р—Р°РєСЂС‹С‚СЊ РїРѕР»РЅС‹Р№ РѕС‚Р·С‹РІ"
+            className="rounded-md p-1 text-[1.75rem] leading-none text-[#004B62] transition-colors hover:bg-[#e8f2f5]"
             onClick={onClose}
             type="button"
           >
@@ -76,7 +78,7 @@ export function TestimonialModal({ isOpen, onClose, testimonial }: TestimonialMo
           </button>
         </div>
 
-        <p className="mt-6 max-h-[60vh] overflow-y-auto pr-2 text-[1rem] font-normal leading-[1.5] text-[#242424]">
+        <p className="mt-4 max-h-[60vh] overflow-y-auto pr-2 text-[0.875rem] font-normal leading-[1.4] text-[#242424] sm:mt-5 sm:text-[1rem] sm:leading-[1.5]">
           {testimonial.review}
         </p>
       </div>
