@@ -1,360 +1,345 @@
-# Деплой проекта в Cloudflare Workers
+# Деплой проекта через веб-интерфейс Cloudflare
 
-Этот проект уже подготовлен для деплоя в Cloudflare Workers через `@opennextjs/cloudflare`.
-Ниже полная пошаговая инструкция: что установить, что написать в `env`, какие команды запускать и что делать в панели Cloudflare.
+Этот проект нужно деплоить не с локальной машины, а через Cloudflare Dashboard с подключённым Git-репозиторием.
 
-## Как это устроено в этом проекте
+То есть схема такая:
 
-- Приложение написано на `Next.js`
-- Для Cloudflare используется `OpenNext`
-- Конфиг Worker лежит в `wrangler.jsonc`
-- Команды деплоя уже добавлены в `package.json`
-- Серверный маршрут `/api/lead` использует Telegram и читает:
-  - `TELEGRAM_BOT_TOKEN`
-  - `TELEGRAM_CHAT_ID`
+1. код лежит в GitHub или GitLab
+2. Cloudflare подключается к репозиторию
+3. после каждого `push` Cloudflare сам собирает и деплоит проект
 
-Важно:
+## Как это работает именно в этом проекте
 
-- Для обычной локальной разработки используется `.env`
-- Для локального preview в runtime Cloudflare Workers используется `.dev.vars`
-- Для production в Cloudflare используются `secrets`, задаваемые через `wrangler secret put`
-
-## Что нужно заранее
-
-1. Должен быть установлен `Node.js`
-2. Должен быть установлен `npm`
-3. Должен быть доступ к аккаунту Cloudflare
-4. В Cloudflare должен быть доступен Workers
-
-## Что уже настроено в проекте
-
-Ничего вручную в коде добавлять не нужно. Уже настроены:
-
-- `open-next.config.ts`
-- `wrangler.jsonc`
-- `public/_headers`
-- команды `preview`, `deploy`, `upload`, `cf-typegen`
-
-## Первый запуск на новой машине
-
-В корне проекта:
-
-```bash
-npm install
-```
-
-Потом авторизоваться в Cloudflare:
-
-```bash
-npx wrangler login
-```
-
-После команды откроется браузер. Нужно подтвердить доступ к нужному Cloudflare-аккаунту.
-
-## Какие env нужны в этом проекте
-
-### 1. `.env` для локального `npm run dev`
-
-Создайте файл `.env` рядом с `.env.example`.
-
-Минимальный пример:
-
-```dotenv
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-NEXT_PUBLIC_CONTACT_PHONE=
-TELEGRAM_BOT_TOKEN=сюда_токен_бота
-TELEGRAM_CHAT_ID=сюда_chat_id
-```
-
-Пояснение:
-
-- `TELEGRAM_BOT_TOKEN` обязателен, если форма должна реально отправлять заявки
-- `TELEGRAM_CHAT_ID` обязателен, если форма должна реально отправлять заявки
-- `NEXT_PUBLIC_SITE_URL` можно указать как `http://localhost:3000` для локальной работы
-- `NEXT_PUBLIC_CONTACT_PHONE` сейчас кодом не используется, можно оставить пустым
-
-Если Telegram пока не нужен, локально сайт всё равно запустится, но отправка формы через `/api/lead` будет возвращать ошибку конфигурации.
-
-### 2. `.dev.vars` для `npm run preview`
-
-Создайте файл `.dev.vars` рядом с `.dev.vars.example`.
-
-Рекомендуемое содержимое:
-
-```dotenv
-NEXTJS_ENV=development
-TELEGRAM_BOT_TOKEN=сюда_токен_бота
-TELEGRAM_CHAT_ID=сюда_chat_id
-```
-
-Зачем это нужно:
-
-- `NEXTJS_ENV=development` говорит OpenNext/Wrangler использовать development-окружение при локальном preview
-- `TELEGRAM_*` нужны именно для локального запуска в runtime Cloudflare Workers, если вы хотите проверить отправку формы до production-деплоя
-
-Если хотите просто проверить рендеринг, а форму не тестируете, можно оставить в `.dev.vars` только:
-
-```dotenv
-NEXTJS_ENV=development
-```
-
-Но тогда `/api/lead` в preview не сможет отправлять данные в Telegram.
-
-## Какие secrets нужны в Cloudflare production
-
-Для production `TELEGRAM_*` нужно задавать не в файле, а как secrets Worker.
-
-Выполните в корне проекта:
-
-```bash
-wrangler secret put TELEGRAM_BOT_TOKEN
-wrangler secret put TELEGRAM_CHAT_ID
-```
-
-После каждой команды Cloudflare попросит вставить значение.
+- проект на `Next.js`
+- для Cloudflare используется `@opennextjs/cloudflare`
+- Worker описан в `wrangler.jsonc`
+- имя Worker в проекте сейчас: `saferplast-main`
 
 Важно:
 
-- Эти значения не нужно коммитить в репозиторий
-- Эти значения не нужно писать в `wrangler.jsonc`
-- Для production достаточно хранить их как secrets в Cloudflare
+- имя Worker в Cloudflare Dashboard должно совпадать со значением `"name"` в `wrangler.jsonc`
+- если названия не совпадут, build в Cloudflare упадёт
 
-## Что именно делать для первого деплоя
-
-### Шаг 1. Установить зависимости
-
-```bash
-npm install
-```
-
-### Шаг 2. Авторизоваться в Cloudflare
-
-```bash
-npx wrangler login
-```
-
-### Шаг 3. Подготовить локальные env-файлы
-
-Создать:
-
-- `.env`
-- `.dev.vars`
-
-по примерам выше.
-
-### Шаг 4. Задать production secrets в Cloudflare
-
-```bash
-wrangler secret put TELEGRAM_BOT_TOKEN
-wrangler secret put TELEGRAM_CHAT_ID
-```
-
-### Шаг 5. Проверить типы и линтер
-
-```bash
-npm run typecheck
-npm run lint
-```
-
-### Шаг 6. Проверить обычную production-сборку
-
-```bash
-npm run build
-```
-
-### Шаг 7. Проверить Cloudflare preview локально
-
-```bash
-npm run preview
-```
-
-Что здесь стоит проверить:
-
-- открывается главная страница
-- загружаются стили и изображения
-- корректно работает навигация
-- форма отправляется, если в `.dev.vars` заданы `TELEGRAM_*`
-
-### Шаг 8. Сделать production deploy
-
-```bash
-npm run deploy
-```
-
-После этого Cloudflare создаст или обновит Worker с именем из `wrangler.jsonc`.
-В текущем проекте имя Worker:
-
-```txt
-saferplast-main
-```
-
-## Что делать после первого деплоя в Cloudflare Dashboard
-
-1. Откройте Cloudflare Dashboard
-2. Перейдите в `Workers & Pages`
-3. Найдите Worker `saferplast-main`
-4. Откройте его
-
-Дальше обычно нужно проверить:
-
-- что deploy прошёл успешно
-- что secrets присутствуют
-- что сайт отвечает без ошибок
-
-## Как привязать домен
-
-После первого успешного деплоя:
-
-1. Откройте Worker в Cloudflare Dashboard
-2. Перейдите в `Settings -> Domains & Routes`
-3. Нажмите добавление домена или route
-4. Привяжите нужный production-домен
-
-Примеры:
-
-- `site.com`
-- `www.site.com`
-- или route вида `site.com/*`
-
-Если DNS этого домена уже находится в Cloudflare, привязка обычно делается прямо из панели.
-
-## Как обновлять проект после изменений
-
-Если вы поменяли код:
-
-```bash
-npm run typecheck
-npm run lint
-npm run deploy
-```
-
-Если хотите сначала проверить сборку в Cloudflare runtime:
-
-```bash
-npm run preview
-```
-
-## Если нужно сменить имя Worker
-
-Имя задаётся в `wrangler.jsonc`:
+Сейчас в `wrangler.jsonc` указано:
 
 ```json
 "name": "saferplast-main"
 ```
 
-Если измените имя:
+Значит при создании проекта в Cloudflare лучше тоже использовать имя `saferplast-main`.
 
-- Cloudflare будет считать это другим Worker
-- для нового имени придётся заново задать secrets
-- возможно, придётся заново привязать домен
+## Что нужно заранее
 
-Поэтому без причины имя лучше не менять.
+Перед началом у вас должно быть:
 
-## Что важно помнить про env и secrets
+1. аккаунт Cloudflare
+2. репозиторий проекта в GitHub или GitLab
+3. доступ к настройкам `Workers & Pages`
+4. реальные значения:
+   - `TELEGRAM_BOT_TOKEN`
+   - `TELEGRAM_CHAT_ID`
 
-Коротко:
+## Что уже настроено в проекте
+
+В проекте уже подготовлены:
+
+- `wrangler.jsonc`
+- `open-next.config.ts`
+- команды для OpenNext в `package.json`
+- `public/_headers` для кэширования статики
+
+То есть вручную код под Cloudflare дописывать не нужно.
+
+## Что делать в Cloudflare Dashboard
+
+### Шаг 1. Открыть создание проекта
+
+В Cloudflare:
+
+1. открыть `Workers & Pages`
+2. нажать `Create application`
+3. выбрать `Import a repository`
+
+### Шаг 2. Подключить GitHub или GitLab
+
+Дальше:
+
+1. выбрать Git-провайдера
+2. дать Cloudflare доступ к репозиторию
+3. выбрать нужный репозиторий с этим проектом
+
+Если репозиторий уже подключён, просто выбрать его из списка.
+
+### Шаг 3. Указать имя Worker
+
+На этапе настройки проекта укажите имя Worker:
+
+```txt
+saferplast-main
+```
+
+Это важно, потому что оно должно совпасть с `wrangler.jsonc`.
+
+Если хотите другое имя, сначала поменяйте `"name"` в `wrangler.jsonc`, закоммитьте это, а уже потом создавайте проект в Cloudflare с тем же именем.
+
+## Какие настройки сборки указать в веб-интерфейсе
+
+Когда Cloudflare попросит заполнить Build Settings, укажите следующее.
+
+### Production Branch
+
+Обычно:
+
+```txt
+main
+```
+
+или та ветка, из которой у вас должен идти production deploy.
+
+### Root Directory
+
+Если проект лежит в корне репозитория, оставьте пусто.
+
+Если это монорепо и проект лежит в подпапке, укажите путь до папки проекта.
+
+Для текущего репозитория обычно нужен корень репозитория.
+
+### Build Command
+
+Укажите:
+
+```bash
+npx opennextjs-cloudflare build
+```
+
+### Deploy Command
+
+Укажите:
+
+```bash
+npx opennextjs-cloudflare deploy
+```
+
+### Non-production Branch Deploy Command
+
+Если Cloudflare попросит отдельную команду для не-production веток, укажите:
+
+```bash
+npx opennextjs-cloudflare upload
+```
+
+Это удобно для preview-сборок без немедленного выката в production.
+
+## Что писать в Variables / Secrets
+
+В Cloudflare есть два разных места, и их важно не путать:
+
+1. `Build Variables and secrets`
+   Это переменные, доступные только во время сборки.
+
+2. `Variables & Secrets`
+   Это runtime-переменные Worker, доступные уже после деплоя во время выполнения приложения.
+
+## Что обязательно нужно для этого проекта
+
+Для текущего кода обязательно нужны runtime secrets:
+
+- `TELEGRAM_BOT_TOKEN`
+- `TELEGRAM_CHAT_ID`
+
+Именно они нужны маршруту `/api/lead`, который отправляет заявки в Telegram.
+
+### Куда их вносить
+
+После создания Worker:
+
+1. открыть проект в Cloudflare
+2. перейти в `Settings`
+3. открыть `Variables & Secrets`
+4. добавить там secrets:
+
+```txt
+TELEGRAM_BOT_TOKEN = ваш_реальный_токен_бота
+TELEGRAM_CHAT_ID = ваш_реальный_chat_id
+```
+
+Их лучше добавлять именно как `Secret`, а не как plain text variable.
+
+## Что писать в Build Variables and secrets
+
+Для текущего проекта строго обязательных build-переменных сейчас нет, потому что в коде нет использования `NEXT_PUBLIC_*` или `process.env.*` на этапе сборки страницы.
+
+То есть на текущий момент можно:
+
+- либо оставить `Build Variables and secrets` пустыми
+- либо сразу добавить туда будущие публичные переменные, если хотите использовать их потом
+
+### Если хотите заполнить заранее
+
+Можно добавить:
+
+```txt
+NEXT_PUBLIC_SITE_URL = https://ваш-домен.uz
+NEXT_PUBLIC_CONTACT_PHONE = +998...
+```
+
+Но важно понимать:
+
+- сейчас код проекта эти переменные не использует
+- они не обязательны для текущего deploy
+- `TELEGRAM_*` для текущего кода нужны именно в runtime secrets
+
+## Минимальный рабочий вариант переменных
+
+### Runtime Variables & Secrets
+
+Добавить обязательно:
+
+```txt
+TELEGRAM_BOT_TOKEN = ваш_токен
+TELEGRAM_CHAT_ID = ваш_chat_id
+```
+
+### Build Variables and secrets
+
+Можно оставить пусто.
+
+## Если хотите сразу заполнить всё "на будущее"
+
+Тогда можно сделать так.
+
+### Build Variables and secrets
+
+```txt
+NEXT_PUBLIC_SITE_URL = https://ваш-домен.uz
+NEXT_PUBLIC_CONTACT_PHONE = +998...
+```
+
+### Runtime Variables & Secrets
+
+```txt
+TELEGRAM_BOT_TOKEN = ваш_токен
+TELEGRAM_CHAT_ID = ваш_chat_id
+NEXT_PUBLIC_SITE_URL = https://ваш-домен.uz
+NEXT_PUBLIC_CONTACT_PHONE = +998...
+```
+
+Но ещё раз: для текущего кода реально обязательны только `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID`.
+
+## Порядок действий без путаницы
+
+Если вам нужно просто задеплоить сайт через веб Cloudflare, делайте так:
+
+1. запушить актуальный код в GitHub/GitLab
+2. в Cloudflare открыть `Workers & Pages`
+3. выбрать `Create application`
+4. выбрать `Import a repository`
+5. выбрать репозиторий
+6. указать имя Worker `saferplast-main`
+7. в Build Settings указать:
+
+```txt
+Build Command: npx opennextjs-cloudflare build
+Deploy Command: npx opennextjs-cloudflare deploy
+Non-production Branch Deploy Command: npx opennextjs-cloudflare upload
+```
+
+8. завершить создание проекта
+9. после создания открыть `Settings -> Variables & Secrets`
+10. добавить secrets:
+
+```txt
+TELEGRAM_BOT_TOKEN
+TELEGRAM_CHAT_ID
+```
+
+11. запустить первый deploy
+
+Если при первом deploy secrets были ещё не добавлены, просто добавьте их и перезапустите build.
+
+## Как запускать повторные деплои
+
+После того как Git-интеграция настроена:
+
+- вы меняете код локально
+- делаете commit
+- делаете push в production-ветку
+- Cloudflare сам запускает build и deploy
+
+То есть дальше локальный `wrangler deploy` вам не нужен.
+
+## Как смотреть ошибки сборки
+
+Если деплой не прошёл:
+
+1. откройте проект в Cloudflare Dashboard
+2. перейдите в раздел `Deployments` или `Build history`
+3. откройте конкретную неуспешную сборку
+4. посмотрите лог
+
+На что смотреть в первую очередь:
+
+- совпадает ли имя Worker с `wrangler.jsonc`
+- правильно ли указан `Build Command`
+- правильно ли указан `Deploy Command`
+- не забыты ли `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID`
+- не указан ли неправильный `Root Directory`
+
+## Как привязать домен
+
+После первого успешного деплоя:
+
+1. откройте Worker в Cloudflare Dashboard
+2. перейдите в `Settings -> Domains & Routes`
+3. добавьте нужный домен или route
+
+Примеры:
+
+- `site.com`
+- `www.site.com`
+- `site.com/*`
+
+Если домен уже обслуживается через Cloudflare, дальше всё делается из панели.
+
+## Что сейчас не нужно
+
+Если вы деплоите только через веб Cloudflare, вам не нужно:
+
+- запускать `wrangler secret put` локально
+- делать `wrangler deploy` локально
+- заполнять `.dev.vars` ради production-деплоя
+
+`.dev.vars` нужен только если вы хотите локально запускать `npm run preview` у себя на машине.
+
+## Когда всё же нужен `.env` или `.dev.vars`
+
+Это только для локальной разработки и локальной проверки:
 
 - `.env` нужен для `npm run dev`
 - `.dev.vars` нужен для `npm run preview`
-- `wrangler secret put ...` нужен для production в Cloudflare
 
-То есть одно и то же значение `TELEGRAM_BOT_TOKEN` может существовать в трёх местах:
+Если вы делаете деплой только через Cloudflare Dashboard, для production этого недостаточно и не обязательно.
+Production-настройки всё равно должны жить в Cloudflare Dashboard.
 
-- в `.env` для обычной локальной разработки
-- в `.dev.vars` для локального preview через Workers runtime
-- в Cloudflare secrets для production
+## Короткая версия
 
-Это нормально, потому что это три разных окружения.
+Если совсем коротко, для веб-деплоя через Cloudflare вам нужно:
 
-## Типовой сценарий без путаницы
+1. подключить репозиторий
+2. задать имя Worker `saferplast-main`
+3. указать команды:
 
-Если нужно просто развернуть проект:
-
-1. Вписать реальные `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID` в `.env`
-2. Вписать те же значения в `.dev.vars`
-3. Выполнить:
-
-```bash
-wrangler secret put TELEGRAM_BOT_TOKEN
-wrangler secret put TELEGRAM_CHAT_ID
+```txt
+Build Command: npx opennextjs-cloudflare build
+Deploy Command: npx opennextjs-cloudflare deploy
 ```
 
-4. Проверить:
+4. в `Variables & Secrets` добавить:
 
-```bash
-npm run typecheck
-npm run lint
-npm run preview
+```txt
+TELEGRAM_BOT_TOKEN
+TELEGRAM_CHAT_ID
 ```
 
-5. Задеплоить:
-
-```bash
-npm run deploy
-```
-
-## Полезные команды
-
-Локальная разработка:
-
-```bash
-npm run dev
-```
-
-Проверка production-сборки:
-
-```bash
-npm run build
-```
-
-Локальный Cloudflare preview:
-
-```bash
-npm run preview
-```
-
-Production deploy:
-
-```bash
-npm run deploy
-```
-
-Загрузка новой версии без немедленного переключения трафика:
-
-```bash
-npm run upload
-```
-
-Генерация типов Cloudflare env:
-
-```bash
-npm run cf-typegen
-```
-
-## Текущие особенности проекта
-
-- `next/image` работает через binding `IMAGES` в `wrangler.jsonc`
-- кэширование `/_next/static/*` настроено в `public/_headers`
-- R2 сейчас не нужен, потому что проект не использует ISR-кэш, которому требуется внешнее хранилище
-
-## Если что-то не работает
-
-Проверьте по порядку:
-
-1. Выполнен ли `npm install`
-2. Выполнен ли `npx wrangler login`
-3. Есть ли `.env` для `npm run dev`
-4. Есть ли `.dev.vars` для `npm run preview`
-5. Заданы ли `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID`
-6. Выполняются ли `npm run typecheck`
-7. Выполняются ли `npm run lint`
-8. Проходит ли `npm run build`
-9. Проходит ли `npm run preview`
-10. Заданы ли secrets в Cloudflare через `wrangler secret put`
-
-Если проблема только в отправке формы, почти всегда причина в одном из этих пунктов:
-
-- отсутствует `TELEGRAM_BOT_TOKEN`
-- отсутствует `TELEGRAM_CHAT_ID`
-- secrets не были заданы в Cloudflare для production
-- в локальном preview не заполнен `.dev.vars`
+5. нажать deploy
+6. дальше просто делать `git push`, а Cloudflare всё соберёт сам
