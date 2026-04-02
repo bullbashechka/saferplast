@@ -95,7 +95,7 @@ export function WorkProcessSection() {
   return (
     <section
       aria-labelledby="work-process-title"
-      className="bg-[rgba(250,254,255,1)] px-[10px] pb-16 pt-[60px] lg:px-8 lg:py-20"
+      className="bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-[60px] lg:px-8 lg:py-20"
     >
       <div className="mx-auto w-full max-w-[300px] lg:max-w-content">
         <h2
