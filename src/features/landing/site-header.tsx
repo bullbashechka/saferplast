@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -56,8 +56,8 @@ function DesktopHeaderActionButton({
 
 export function DesktopHeaderBrandNav({ navigationLinks }: DesktopHeaderBrandNavProps) {
   return (
-    <div className="flex min-w-0 items-start gap-[clamp(1.5rem,3vw,3rem)]">
-      <Link aria-label="Saferplast" className="block w-[10.5rem] shrink-0 2xl:w-[11.1875rem]" href="/">
+    <div className="flex min-w-0 items-start gap-4 lg:gap-6 xl:gap-[clamp(1.5rem,3vw,3rem)]">
+      <Link aria-label="Saferplast" className="block w-[8rem] shrink-0 lg:w-[9rem] xl:w-[10.5rem] 2xl:w-[11.1875rem]" href="/">
         <Image
           alt="Saferplast"
           className="h-auto w-full object-contain"
@@ -68,8 +68,8 @@ export function DesktopHeaderBrandNav({ navigationLinks }: DesktopHeaderBrandNav
         />
       </Link>
 
-      <nav aria-label="Основная навигация" className="ml-auto w-[19.8125rem] shrink-0 pt-[0.75rem]">
-        <ul className="grid h-[3.5rem] w-[19.8125rem] grid-cols-2 grid-rows-2 gap-x-6 gap-y-6">
+      <nav aria-label="Основная навигация" className="ml-auto hidden w-[15rem] shrink-0 pt-2 lg:block lg:w-[17rem] xl:w-[19.8125rem] xl:pt-[0.75rem]">
+        <ul className="grid h-auto w-full grid-cols-2 grid-rows-2 gap-x-4 gap-y-4 lg:gap-x-5 lg:gap-y-5 xl:h-[3.5rem] xl:gap-x-6 xl:gap-y-6">
           {navigationLinks.map((link) => (
             <li key={link.href}>
               <a
@@ -93,9 +93,9 @@ export function DesktopHeaderContactActions({
   phoneLabel,
 }: DesktopHeaderContactActionsProps) {
   return (
-    <div className={cn("flex items-center justify-end gap-3 2xl:gap-5", className)}>
+    <div className={cn("flex flex-wrap items-center justify-end gap-2 lg:gap-3 2xl:gap-5", className)}>
       <DesktopHeaderActionButton
-        className="w-[clamp(12rem,16vw,14.8125rem)] justify-start gap-[0.875rem]"
+        className="w-[11rem] justify-start gap-2 lg:w-[12rem] lg:gap-[0.875rem] xl:w-[clamp(12rem,16vw,14.8125rem)]"
         href={phoneHref}
       >
         <Image alt="" aria-hidden="true" className="relative z-10 shrink-0" height={16} src="/icons/phone.svg" width={16} />
@@ -105,7 +105,7 @@ export function DesktopHeaderContactActions({
       </DesktopHeaderActionButton>
 
       <DesktopHeaderActionButton
-        className="w-[clamp(12rem,16vw,14.8125rem)] justify-start gap-[0.875rem]"
+        className="w-[11rem] justify-start gap-2 lg:w-[12rem] lg:gap-[0.875rem] xl:w-[clamp(12rem,16vw,14.8125rem)]"
         isLink={false}
       >
         <Image alt="" aria-hidden="true" className="relative z-10 shrink-0" height={16} src="/icons/location.svg" width={16} />

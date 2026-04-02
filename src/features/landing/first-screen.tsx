@@ -6,7 +6,7 @@ export function FirstScreen() {
 
   return (
     <section className="bg-[rgba(250,254,255,1)]" id="top">
-      <div className="mx-auto w-full max-w-[1440px] pb-[0.625rem] xl:px-[20px] xl:pb-0 xl:pl-[21px] xl:pt-[10px]">
+      <div className="mx-auto w-full max-w-[1440px] pb-[0.625rem] md:px-4 md:pb-0 md:pt-[10px] xl:px-[20px] xl:pl-[21px]">
         <HeroSection
           cityLabel={cityLabel}
           headerNavigationLinks={headerNavigationLinks}

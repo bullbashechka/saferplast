@@ -19,10 +19,10 @@ export function SiteFooter() {
     <footer
       id="contacts"
       aria-label={contactsTitle}
-      className="bg-[rgba(250,254,255,1)] px-[10px] pb-10 pt-14 lg:px-8 lg:pb-12 lg:pt-20"
+      className="bg-[rgba(250,254,255,1)] px-[10px] pb-10 pt-14 md:px-5 md:pb-12 md:pt-20 lg:px-8"
     >
-      <div className="mx-auto w-full max-w-[300px] lg:max-w-[1201px]">
-        <div className="lg:hidden">
+      <div className="mx-auto w-full max-w-[300px] md:max-w-[1201px]">
+        <div className="md:hidden">
           <div className="grid grid-cols-[1fr_auto] items-start gap-[16px]">
             <nav aria-label="Навигация в подвале">
               <ul className="grid gap-[1px]">
@@ -112,12 +112,12 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="hidden lg:block">
-          <div className="grid gap-10 lg:grid-cols-[263px_minmax(12rem,14rem)_minmax(0,1fr)] lg:gap-[9rem]">
-            <a aria-label="Saferplast" className="block w-[263px] max-w-full" href="#top">
+        <div className="hidden md:block">
+          <div className="grid gap-10 lg:grid-cols-[220px_minmax(12rem,14rem)_minmax(0,1fr)] xl:grid-cols-[263px_minmax(12rem,14rem)_minmax(0,1fr)] xl:gap-[9rem]">
+            <a aria-label="Saferplast" className="block w-[220px] max-w-full xl:w-[263px]" href="#top">
               <Image
                 alt="Saferplast"
-                className="h-[185px] w-[263px] max-w-full object-contain"
+                className="h-auto w-full max-w-full object-contain"
                 height={185}
                 src="/images/original/logo.PNG"
                 width={263}
@@ -141,7 +141,7 @@ export function SiteFooter() {
 
             <div className="flex flex-col gap-5 lg:items-end lg:text-right">
               <div>
-                <h2 className="font-body text-[2rem] font-medium leading-[1] tracking-[0] text-[#004B62] sm:text-[2.25rem] lg:text-[40px]">
+                <h2 className="font-body text-[2rem] font-medium leading-[1] tracking-[0] text-[#004B62] lg:text-[2.25rem] xl:text-[40px]">
                   {contactsTitle}
                 </h2>
                 <p className="mt-4 max-w-[26.1875rem] font-body text-[1rem] font-normal leading-[1.3] tracking-[0] text-[#242424] lg:ml-auto">

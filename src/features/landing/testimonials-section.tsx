@@ -123,17 +123,17 @@ export function TestimonialsSection() {
     <section
       id="testimonials"
       aria-labelledby="testimonials-title"
-      className="bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-[60px] lg:mt-[120px] lg:px-8 lg:pb-20 lg:pt-0"
+      className="bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-[60px] md:mt-[120px] md:px-5 md:pt-0 lg:px-8"
     >
-      <div className="mx-auto w-full max-w-[300px] lg:max-w-[1201px]">
+      <div className="mx-auto w-full max-w-[300px] md:max-w-[1201px]">
         <h2
           id="testimonials-title"
-          className="text-center font-['Sansation'] text-[20px] font-normal leading-[1] tracking-[0] text-[#004B62] lg:font-display lg:text-[44px]"
+          className="text-center font-['Sansation'] text-[20px] font-normal leading-[1] tracking-[0] text-[#004B62] md:font-display md:text-[44px]"
         >
           {testimonialsContent.title}
         </h2>
 
-        <div className="mt-[20px] lg:hidden">
+        <div className="mt-[20px] md:hidden">
           <div className="overflow-hidden" ref={mobileEmblaRef}>
             <div className="flex gap-[10px]">
               {mobileTestimonialSlides.map((slide, slideIndex) => (
@@ -175,7 +175,7 @@ export function TestimonialsSection() {
           </div>
         </div>
 
-        <div className="hidden lg:block">
+        <div className="hidden md:block">
           <Carousel
             className="mt-10 w-full"
             opts={{
@@ -184,11 +184,11 @@ export function TestimonialsSection() {
             }}
           >
             <div className="relative">
-              <CarouselContent className="lg:-ml-0 lg:gap-5">
+              <CarouselContent className="md:-ml-0 md:gap-5">
                 {testimonialsContent.items.map((testimonial) => (
                   <CarouselItem
                     key={`${testimonial.name}-${testimonial.service}`}
-                    className="select-none lg:basis-[387px] lg:pl-0"
+                    className="select-none md:basis-[calc(50%-10px)] md:pl-0 xl:basis-[387px]"
                   >
                     <div className="h-full">
                       <DesktopTestimonialCard onOpen={setSelectedTestimonial} testimonial={testimonial} />

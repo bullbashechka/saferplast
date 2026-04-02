@@ -7,16 +7,16 @@ import {
 
 function getDesktopPositionClassName(index: number) {
   return index === 0
-    ? "lg:col-start-1 lg:row-start-1"
+    ? "xl:col-start-1 xl:row-start-1"
     : index === 1
-      ? "lg:col-start-1 lg:row-start-2"
+      ? "xl:col-start-1 xl:row-start-2"
       : index === 2
-        ? "lg:col-start-2 lg:row-start-1 lg:row-span-2"
+        ? "xl:col-start-2 xl:row-start-1 xl:row-span-2"
         : index === 3
-          ? "lg:col-start-3 lg:row-start-1 lg:col-span-2"
+          ? "xl:col-start-3 xl:row-start-1 xl:col-span-2"
           : index === 4
-            ? "lg:col-start-3 lg:row-start-2"
-            : "lg:col-start-4 lg:row-start-2";
+            ? "xl:col-start-3 xl:row-start-2"
+            : "xl:col-start-4 xl:row-start-2";
 }
 
 function getCardClassNames(card: AdvantagesCard) {
@@ -122,10 +122,10 @@ export function AdvantagesSection() {
   return (
     <section
       aria-label={advantagesSectionContent.title}
-      className="relative z-10 -mt-[5.3125rem] rounded-t-[1.875rem] bg-[rgba(250,254,255,1)] pb-0 pt-8 lg:mt-[120px] lg:pb-20 lg:pt-0 xl:rounded-t-none"
+      className="relative z-10 -mt-[5.3125rem] rounded-t-[1.875rem] bg-[rgba(250,254,255,1)] pb-0 pt-8 md:mt-[120px] md:pt-0 xl:rounded-t-none"
     >
-      <div className="mx-auto max-w-[90rem] px-[10px] sm:px-6 lg:w-[90rem] lg:max-w-none lg:px-[7.5rem]">
-        <div className="mx-auto flex max-w-[18.75rem] flex-col items-center lg:hidden">
+      <div className="mx-auto max-w-[90rem] px-[10px] sm:px-6 md:px-5 lg:px-8 xl:w-[90rem] xl:max-w-none xl:px-[7.5rem]">
+        <div className="mx-auto flex max-w-[18.75rem] flex-col items-center md:hidden">
           <h2 className="text-center font-display text-[1.25rem] font-normal leading-[1] text-[#004B62]">
             {advantagesSectionContent.title}
           </h2>
@@ -150,15 +150,15 @@ export function AdvantagesSection() {
           </div>
         </div>
 
-        <div className="hidden lg:block">
-          <h2 className="text-center font-display text-[2rem] font-normal leading-[1] text-[#004B62] sm:text-[2.25rem] lg:text-[2.75rem]">
+        <div className="hidden md:block">
+          <h2 className="text-center font-display text-[2rem] font-normal leading-[1] text-[#004B62] lg:text-[2.25rem] xl:text-[2.75rem]">
             {advantagesSectionContent.title}
           </h2>
           <p className="mx-auto mt-4 max-w-[40rem] text-center text-[1rem] leading-[1.2] text-[#242424]">
             {advantagesSectionContent.subtitle}
           </p>
 
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-10 lg:grid-cols-[17.8125rem_17.8125rem_17.6875rem_17.8125rem] lg:grid-rows-[13.125rem_13.125rem] lg:gap-5">
+          <div className="mt-8 grid grid-cols-2 gap-4 xl:mt-10 xl:grid-cols-[17.8125rem_17.8125rem_17.6875rem_17.8125rem] xl:grid-rows-[13.125rem_13.125rem] xl:gap-5">
             {advantagesSectionContent.cards.map((card, index) => (
               <DesktopAdvantagesCard card={card} index={index} key={card.title ?? `image-card-${index}`} />
             ))}

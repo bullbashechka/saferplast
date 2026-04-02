@@ -130,16 +130,16 @@ export function LeadFormSection() {
   }
 
   return (
-    <section id="lead-form" className="bg-[rgba(250,254,255,1)] pb-16 pt-[60px] lg:mt-[120px] lg:px-0 lg:pb-20 lg:pt-0">
-      <div className="mx-auto w-full max-w-[320px] px-[10px] lg:w-[90rem] lg:max-w-none lg:px-0">
-        <h2 className="mx-auto w-full max-w-[300px] text-center font-display text-[20px] font-normal leading-[1] text-[#004B62] lg:max-w-[61rem] lg:text-[44px]">
+    <section id="lead-form" className="bg-[rgba(250,254,255,1)] pb-16 pt-[60px] md:mt-[120px] md:px-5 md:pt-0 lg:px-8 xl:px-0">
+      <div className="mx-auto w-full max-w-[320px] px-[10px] md:max-w-[1200px] md:px-0 xl:w-[90rem] xl:max-w-none">
+        <h2 className="mx-auto w-full max-w-[300px] text-center font-display text-[20px] font-normal leading-[1] text-[#004B62] md:max-w-[61rem] md:text-[44px]">
           {title}
         </h2>
-        <p className="mx-auto mt-[10px] w-full max-w-[300px] text-center font-body text-[12px] font-normal leading-[1] text-[#242424] lg:mt-4 lg:max-w-[52rem] lg:text-[1rem]">
+        <p className="mx-auto mt-[10px] w-full max-w-[300px] text-center font-body text-[12px] font-normal leading-[1] text-[#242424] md:mt-4 md:max-w-[52rem] md:text-[1rem]">
           {subtitle}
         </p>
 
-        <div className="mt-[20px] grid items-start gap-[15px] lg:ml-[7.5rem] lg:mr-[1.25rem] lg:mt-10 lg:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] lg:gap-[3rem]">
+        <div className="mt-[20px] grid items-start gap-[15px] md:mt-10 lg:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] lg:gap-[3rem] xl:ml-[7.5rem] xl:mr-[1.25rem]">
           <DecorativeColumn items={decorativeLabels.left} side="left" />
 
           <div className="mx-auto w-full max-w-[300px] lg:max-w-[387px]">

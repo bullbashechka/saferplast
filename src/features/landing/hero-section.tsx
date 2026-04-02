@@ -15,18 +15,18 @@ function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
   const mobileAvailabilityLabel = availabilityLabel.replace(" ежедневно", "");
 
   return (
-    <article className="mx-auto flex h-[8.75rem] w-full max-w-[18.8125rem] flex-col rounded-[1.25rem] border border-[#004B62] bg-[#004B62] p-[0.625rem] text-white shadow-[0_16px_40px_rgba(0,75,98,0.18)] xl:mx-0 xl:h-auto xl:max-w-none xl:min-h-[11.1875rem] xl:w-[17.8125rem]">
-      <div className="flex flex-1 flex-col justify-between gap-2 xl:gap-4">
-        <div className="w-fit rounded-t-[0.625rem] rounded-br-[0.625rem] bg-white px-3 py-2 xl:px-4 xl:py-[0.625rem]">
-          <p className="text-[0.75rem] leading-[1] text-[#242424] xl:text-[0.875rem]">
-            <span className="xl:hidden">{mobileAvailabilityLabel}</span>
-            <span className="hidden xl:inline">{availabilityLabel}</span>
-            <br className="xl:hidden" />
+    <article className="mx-auto flex h-[8.75rem] w-full max-w-[18.8125rem] flex-col rounded-[1.25rem] border border-[#004B62] bg-[#004B62] p-[0.625rem] text-white shadow-[0_16px_40px_rgba(0,75,98,0.18)] md:mx-0 md:h-auto md:max-w-none md:min-h-[9.5rem] md:w-[15rem] md:p-4 lg:min-h-[10rem] lg:w-[16rem] xl:min-h-[11.1875rem] xl:w-[17.8125rem]">
+      <div className="flex flex-1 flex-col justify-between gap-2 md:gap-3 xl:gap-4">
+        <div className="w-fit rounded-t-[0.625rem] rounded-br-[0.625rem] bg-white px-3 py-2 md:px-4 md:py-[0.625rem]">
+          <p className="text-[0.75rem] leading-[1] text-[#242424] md:text-[0.875rem]">
+            <span className="md:hidden">{mobileAvailabilityLabel}</span>
+            <span className="hidden md:inline">{availabilityLabel}</span>
+            <br className="md:hidden" />
             ежедневно
           </p>
         </div>
 
-        <div className="flex items-center gap-2 xl:gap-3">
+        <div className="flex items-center gap-2 md:gap-3">
           <div className="relative h-[1.6875rem] w-[2.6875rem] shrink-0">
             <Image
               alt=""
@@ -46,11 +46,11 @@ function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
             />
           </div>
 
-          <p className="text-[0.75rem] leading-[1] text-white xl:text-[0.875rem]">{namesLabel}</p>
+          <p className="text-[0.75rem] leading-[1] text-white md:text-[0.875rem]">{namesLabel}</p>
         </div>
 
         <a
-          className="inline-flex h-[2.375rem] w-full items-center justify-center rounded-[0.625rem] bg-white px-[3.3125rem] py-3 text-center text-[0.875rem] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#eef6ff] xl:mt-auto xl:min-h-[4.25rem] xl:px-6 xl:py-4 xl:text-[1.25rem]"
+          className="inline-flex h-[2.375rem] w-full items-center justify-center rounded-[0.625rem] bg-white px-[3.3125rem] py-3 text-center text-[0.875rem] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#eef6ff] md:mt-auto md:min-h-[3.5rem] md:px-6 md:py-4 md:text-[1rem] xl:min-h-[4.25rem] xl:text-[1.25rem]"
           href={cta.href}
         >
           {cta.label}
@@ -62,10 +62,10 @@ function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
 
 function ServiceCard({ cta, description }: ServiceCardProps) {
   return (
-    <article className="mx-auto flex h-[6.3125rem] w-full max-w-[19.0625rem] flex-col gap-[0.4375rem] rounded-[1.25rem] bg-white p-[0.625rem] text-[#242424] shadow-[0_16px_40px_rgba(0,0,0,0.08)] xl:mx-0 xl:h-auto xl:max-w-none xl:min-h-[11.1875rem] xl:w-[17.8125rem] xl:justify-between xl:gap-[1.625rem]">
-      <p className="w-full font-body text-[0.75rem] font-normal leading-[1] tracking-[0] xl:text-[1rem]">{description}</p>
+    <article className="mx-auto flex h-[6.3125rem] w-full max-w-[19.0625rem] flex-col gap-[0.4375rem] rounded-[1.25rem] bg-white p-[0.625rem] text-[#242424] shadow-[0_16px_40px_rgba(0,0,0,0.08)] md:mx-0 md:h-auto md:max-w-none md:min-h-[9.5rem] md:w-[15rem] md:justify-between md:gap-4 md:p-4 lg:min-h-[10rem] lg:w-[16rem] xl:min-h-[11.1875rem] xl:w-[17.8125rem] xl:gap-[1.625rem]">
+      <p className="w-full font-body text-[0.75rem] font-normal leading-[1] tracking-[0] md:text-[0.875rem] xl:text-[1rem]">{description}</p>
       <a
-        className="inline-flex h-[2.375rem] w-full items-center justify-center rounded-[0.625rem] bg-[#004B62] px-[4.4375rem] py-3 text-center font-body text-[0.875rem] font-medium leading-[1] text-white whitespace-nowrap transition-colors hover:bg-[#00384a] xl:mt-auto xl:min-h-[4.25rem] xl:px-6 xl:py-4 xl:text-[1.25rem]"
+        className="inline-flex h-[2.375rem] w-full items-center justify-center rounded-[0.625rem] bg-[#004B62] px-[4.4375rem] py-3 text-center font-body text-[0.875rem] font-medium leading-[1] text-white whitespace-nowrap transition-colors hover:bg-[#00384a] md:mt-auto md:min-h-[3.5rem] md:px-6 md:py-4 md:text-[1rem] xl:min-h-[4.25rem] xl:text-[1.25rem]"
         href={cta.href}
       >
         {cta.label}
@@ -86,15 +86,15 @@ export function HeroSection({
   const mobileHeadlineLines = ["Окна, двери и балконы", "из ПВХ и алюминия", "напрямую от производителя"];
 
   return (
-    <section aria-label="Первый экран" className="mt-0 xl:mt-0">
-      <div className="xl:hidden">
+    <section aria-label="Первый экран" className="mt-0">
+      <div className="md:hidden">
         <div className="relative z-10 min-h-[32.5rem] overflow-hidden rounded-b-[1.875rem] bg-[#d9e5ea]">
           <div
             aria-hidden="true"
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: "url('/images/original/fontheroleftside.png')" }}
           />
-          <div className="relative z-10 px-[0.6875rem] pb-6 pt-4 sm:px-6 sm:pb-8 lg:px-8">
+          <div className="relative z-10 px-[0.6875rem] pb-6 pt-4 sm:px-6 sm:pb-8">
             <SiteHeader
               cityLabel={cityLabel}
               navigationLinks={headerNavigationLinks}
@@ -102,9 +102,7 @@ export function HeroSection({
               phoneLabel={phoneLabel}
             />
 
-            <h1
-              className="mx-auto mt-8 w-[18.625rem] max-w-full text-center font-display text-[1.3125rem] font-normal leading-[1] text-[#004B62] sm:mt-10 sm:w-full sm:max-w-[34rem] sm:text-[2.75rem]"
-            >
+            <h1 className="mx-auto mt-8 w-[18.625rem] max-w-full text-center font-display text-[1.3125rem] font-normal leading-[1] text-[#004B62] sm:mt-10 sm:w-full sm:max-w-[34rem] sm:text-[2.75rem]">
               <span className="sm:hidden">
                 {mobileHeadlineLines.map((line) => (
                   <span className="block" key={line}>
@@ -131,27 +129,31 @@ export function HeroSection({
         </div>
       </div>
 
-      <div className="hidden xl:grid xl:grid-cols-[811fr_588fr]">
-        <div className="relative aspect-[811/759] overflow-hidden rounded-[1.875rem] bg-[#d9e5ea]">
+      <div className="hidden md:block">
+        <div className="relative overflow-hidden rounded-[1.875rem] bg-[#d9e5ea] xl:hidden">
           <div
             aria-hidden="true"
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: "url('/images/original/fontheroleftside.png')" }}
           />
 
-          <div className="relative z-10 flex h-full flex-col">
-            <div className="px-[clamp(1.5rem,3.6vw,3.25rem)] pt-[clamp(1rem,1.8vw,1.625rem)]">
+          <div className="relative z-10 flex min-h-[42rem] flex-col px-5 pb-6 pt-5 lg:min-h-[46rem] lg:px-8 lg:pb-8 lg:pt-6">
+            <div className="flex items-start justify-between gap-4">
               <DesktopHeaderBrandNav navigationLinks={headerNavigationLinks} />
+              <DesktopHeaderContactActions
+                cityLabel={cityLabel}
+                className="max-w-[23rem] shrink-0"
+                phoneHref={phoneHref}
+                phoneLabel={phoneLabel}
+              />
             </div>
 
-            <div className="flex flex-1 flex-col px-[clamp(1.5rem,7vw,6.125rem)] pb-[clamp(1.25rem,2vw,1.8125rem)] pt-[clamp(2.5rem,9vw,7.5rem)]">
-              <h1
-                className="max-w-[34rem] font-display text-[clamp(2.5rem,3.5vw,3rem)] font-normal leading-[1] text-[#004B62]"
-              >
+            <div className="mt-12 flex flex-1 flex-col justify-between lg:mt-16">
+              <h1 className="max-w-[34rem] font-display text-[2.5rem] font-normal leading-[1] text-[#004B62] lg:text-[3rem]">
                 {headline}
               </h1>
 
-              <div className="mt-auto flex flex-wrap items-end gap-x-[1.3125rem] gap-y-4">
+              <div className="mt-10 flex flex-wrap items-end gap-5">
                 <SupportCard {...supportCard} />
                 <ServiceCard {...serviceCard} />
               </div>
@@ -159,15 +161,42 @@ export function HeroSection({
           </div>
         </div>
 
-        <div className="relative aspect-[588/759] overflow-hidden rounded-[1.875rem] bg-[#d9e5ea]">
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/original/fontherorightside.png')" }}
-          />
+        <div className="hidden xl:grid xl:grid-cols-[811fr_588fr]">
+          <div className="relative aspect-[811/759] overflow-hidden rounded-[1.875rem] bg-[#d9e5ea]">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: "url('/images/original/fontheroleftside.png')" }}
+            />
 
-          <div className="relative z-10 flex h-full flex-col px-[clamp(1rem,2vw,2rem)] pt-[clamp(1rem,1.8vw,1.625rem)]">
-            <DesktopHeaderContactActions cityLabel={cityLabel} phoneHref={phoneHref} phoneLabel={phoneLabel} />
+            <div className="relative z-10 flex h-full flex-col">
+              <div className="px-[clamp(1.5rem,3.6vw,3.25rem)] pt-[clamp(1rem,1.8vw,1.625rem)]">
+                <DesktopHeaderBrandNav navigationLinks={headerNavigationLinks} />
+              </div>
+
+              <div className="flex flex-1 flex-col px-[clamp(1.5rem,7vw,6.125rem)] pb-[clamp(1.25rem,2vw,1.8125rem)] pt-[clamp(2.5rem,9vw,7.5rem)]">
+                <h1 className="max-w-[34rem] font-display text-[clamp(2.5rem,3.5vw,3rem)] font-normal leading-[1] text-[#004B62]">
+                  {headline}
+                </h1>
+
+                <div className="mt-auto flex flex-wrap items-end gap-x-[1.3125rem] gap-y-4">
+                  <SupportCard {...supportCard} />
+                  <ServiceCard {...serviceCard} />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative aspect-[588/759] overflow-hidden rounded-[1.875rem] bg-[#d9e5ea]">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: "url('/images/original/fontherorightside.png')" }}
+            />
+
+            <div className="relative z-10 flex h-full flex-col px-[clamp(1rem,2vw,2rem)] pt-[clamp(1rem,1.8vw,1.625rem)]">
+              <DesktopHeaderContactActions cityLabel={cityLabel} phoneHref={phoneHref} phoneLabel={phoneLabel} />
+            </div>
           </div>
         </div>
       </div>

@@ -12,18 +12,18 @@ export function FaqSection() {
   return (
     <section
       aria-labelledby={`${sectionId}-title`}
-      className="bg-[rgba(250,254,255,1)] px-[10px] pb-16 pt-[46px] lg:mt-[120px] lg:px-8 lg:pb-20 lg:pt-0"
+      className="bg-[rgba(250,254,255,1)] px-[10px] pb-16 pt-[46px] md:mt-[120px] md:px-5 md:pt-0 lg:px-8"
     >
-      <div className="mx-auto w-full max-w-[300px] lg:max-w-content">
-        <div className="mx-auto w-full max-w-[300px] lg:max-w-[954px]">
+      <div className="mx-auto w-full max-w-[300px] md:max-w-content">
+        <div className="mx-auto w-full max-w-[300px] md:max-w-[954px]">
           <h2
             id={`${sectionId}-title`}
-            className="text-center font-display text-[20px] font-normal leading-[1] text-[#004B62] lg:text-[44px]"
+            className="text-center font-display text-[20px] font-normal leading-[1] text-[#004B62] md:text-[44px]"
           >
             {faqContent.title}
           </h2>
 
-          <div className="mt-[20px] grid gap-[10px] lg:mt-10 lg:gap-5">
+          <div className="mt-[20px] grid gap-[10px] md:mt-10 md:gap-5">
             {faqContent.items.map((item, index) => {
               const isActive = index === activeIndex;
               const mobileHeadingId = `${sectionId}-question-mobile-${index}`;
@@ -34,7 +34,7 @@ export function FaqSection() {
               return (
                 <div className="min-w-0" key={item.question}>
                   <article
-                    className={`grid w-full max-w-full overflow-hidden rounded-[10px] border border-[#d8e6eb] bg-white px-[15px] shadow-[0_2px_10px_rgba(0,75,98,0.04)] transition-[min-height] duration-300 ease-out lg:hidden ${
+                    className={`grid w-full max-w-full overflow-hidden rounded-[10px] border border-[#d8e6eb] bg-white px-[15px] shadow-[0_2px_10px_rgba(0,75,98,0.04)] transition-[min-height] duration-300 ease-out md:hidden ${
                       isActive ? "min-h-[104px]" : "min-h-[72px]"
                     }`}
                     style={{ gridTemplateRows: isActive ? "72px 1fr" : "72px 0fr" }}
@@ -84,8 +84,8 @@ export function FaqSection() {
                   </article>
 
                   <article
-                    className={`hidden rounded-[20px] border border-[#d8e6eb] bg-white px-5 shadow-[0_2px_10px_rgba(0,75,98,0.04)] transition-[min-height] duration-300 ease-out lg:grid ${
-                      isActive ? "lg:min-h-[137px]" : "lg:min-h-[95px]"
+                    className={`hidden rounded-[20px] border border-[#d8e6eb] bg-white px-5 shadow-[0_2px_10px_rgba(0,75,98,0.04)] transition-[min-height] duration-300 ease-out md:grid ${
+                      isActive ? "md:min-h-[137px]" : "md:min-h-[95px]"
                     }`}
                     style={{ gridTemplateRows: isActive ? "95px 1fr" : "95px 0fr" }}
                   >

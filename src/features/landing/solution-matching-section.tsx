@@ -111,9 +111,9 @@ function SolutionCard({
         <a
           className={`${card.typography.ctaClassName} ${
             card.row === "top"
-              ? "absolute bottom-[38px] left-[30px] right-[197px]"
-              : "absolute bottom-[32px] left-[30px] right-[400px]"
-          } whitespace-nowrap text-[#004B62]`}
+              ? "absolute bottom-[28px] left-[20px] right-[20px] lg:bottom-[38px] lg:left-[30px] xl:right-[197px]"
+              : "absolute bottom-[24px] left-[20px] right-[20px] lg:bottom-[32px] lg:left-[30px] xl:right-[400px]"
+          } text-[#004B62]`}
           href={card.ctaHref}
         >
           {card.ctaLabel}
@@ -169,36 +169,36 @@ export function SolutionMatchingSection() {
     <section
       id="solution-matching"
       aria-labelledby="solution-matching-title"
-      className="mt-[20px] bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-0 lg:mt-[120px] lg:px-8 lg:pb-20 lg:pt-0"
+      className="mt-[20px] bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-0 md:mt-[120px] md:px-5 md:pt-0 lg:px-8"
     >
-      <div className="mx-auto w-full max-w-[300px] lg:max-w-content">
+      <div className="mx-auto w-full max-w-[300px] md:max-w-content">
         <h2
           id="solution-matching-title"
-          className="font-['Sansation'] text-center text-[20px] font-normal leading-[1] tracking-[0] text-[hsla(194,100%,19%,1)] lg:font-display lg:text-[44px]"
+          className="font-['Sansation'] text-center text-[20px] font-normal leading-[1] tracking-[0] text-[hsla(194,100%,19%,1)] md:font-display md:text-[44px]"
         >
           {section.heading}
         </h2>
         <p
-          className="mx-auto mt-[10px] max-w-[300px] text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[hsla(0,0%,14%,1)] lg:mt-4 lg:max-w-[51rem] lg:font-body lg:text-[16px]"
+          className="mx-auto mt-[10px] max-w-[300px] text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[hsla(0,0%,14%,1)] md:mt-4 md:max-w-[51rem] md:font-body md:text-[16px]"
         >
           {section.subtitle}
         </p>
 
-        <div className="mt-[20px] space-y-[10px] lg:hidden">
+        <div className="mt-[20px] space-y-[10px] md:hidden">
           {mobileCards.map((card) => (
             <MobileSolutionCard card={card} key={card.id} />
           ))}
         </div>
 
         <a
-          className="mx-auto mt-[26px] flex h-[38px] w-[215px] items-center justify-center gap-[14px] rounded-[10px] bg-[#004B62] px-[39px] py-[12px] text-center font-['Montserrat'] text-[14px] font-medium leading-[1] tracking-[0] text-white transition-colors hover:bg-[#00384a] lg:hidden"
+          className="mx-auto mt-[26px] flex h-[38px] w-[215px] items-center justify-center gap-[14px] rounded-[10px] bg-[#004B62] px-[39px] py-[12px] text-center font-['Montserrat'] text-[14px] font-medium leading-[1] tracking-[0] text-white transition-colors hover:bg-[#00384a] md:hidden"
           href="#lead-form"
         >
           Узнать подробнее
         </a>
 
-        <div className="hidden lg:mt-8 lg:block lg:space-y-5">
-          <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
+        <div className="hidden md:mt-8 md:block md:space-y-5">
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-3">
             {rows.topCards.map((card) => (
               <SolutionCard card={card} isBottomLeft={false} key={card.id} />
             ))}
