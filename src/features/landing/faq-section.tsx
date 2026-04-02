@@ -32,18 +32,18 @@ export function FaqSection() {
               const desktopPanelId = `${sectionId}-answer-desktop-${index}`;
 
               return (
-                <div key={item.question}>
+                <div className="min-w-0" key={item.question}>
                   <article
-                    className={`grid rounded-[10px] border border-[#d8e6eb] bg-white px-[15px] shadow-[0_2px_10px_rgba(0,75,98,0.04)] transition-[min-height] duration-300 ease-out lg:hidden ${
-                      isActive ? "min-h-[102px]" : "min-h-[66px]"
+                    className={`grid w-full max-w-full overflow-hidden rounded-[10px] border border-[#d8e6eb] bg-white px-[15px] shadow-[0_2px_10px_rgba(0,75,98,0.04)] transition-[min-height] duration-300 ease-out lg:hidden ${
+                      isActive ? "min-h-[104px]" : "min-h-[72px]"
                     }`}
-                    style={{ gridTemplateRows: isActive ? "66px 1fr" : "66px 0fr" }}
+                    style={{ gridTemplateRows: isActive ? "72px 1fr" : "72px 0fr" }}
                   >
-                    <div className="flex h-[66px] items-center">
+                    <div className="flex h-[72px] items-center">
                       <button
                         aria-controls={mobilePanelId}
                         aria-expanded={isActive}
-                        className="flex h-full w-full items-center gap-[10px] text-left"
+                        className="flex h-full min-w-0 w-full items-center gap-[8px] text-left"
                         id={mobileHeadingId}
                         type="button"
                         onClick={() => setActiveIndex(index)}
@@ -51,14 +51,14 @@ export function FaqSection() {
                         <Image
                           alt=""
                           aria-hidden="true"
-                          className={`h-[14px] w-[14px] shrink-0 transform transition-transform duration-300 ease-out ${
+                          className={`h-[12px] w-[12px] shrink-0 transform transition-transform duration-300 ease-out ${
                             isActive ? "rotate-0" : "-rotate-90"
                           }`}
-                          height={14}
+                          height={12}
                           src="/icons/arrow.svg"
-                          width={14}
+                          width={12}
                         />
-                        <span className="flex items-center font-display text-[18px] font-normal leading-[1] text-[#004B62]">
+                        <span className="min-w-0 flex-1 overflow-hidden font-display text-[15px] font-normal leading-[1] text-[#004B62] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
                           {item.question}
                         </span>
                       </button>
@@ -75,8 +75,8 @@ export function FaqSection() {
                         opacity: isActive ? 1 : 0,
                       }}
                     >
-                      <div className="min-h-0 overflow-hidden pb-[15px] pl-[24px] pr-0">
-                        <p className="font-body text-[11px] font-normal leading-[1.2] text-[#242424]">
+                      <div className="min-h-0 overflow-hidden pb-[12px] pl-[20px] pr-0">
+                        <p className="font-body text-[10px] font-normal leading-[1.15] text-[#242424]">
                           {item.answer}
                         </p>
                       </div>

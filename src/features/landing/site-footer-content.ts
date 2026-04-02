@@ -8,6 +8,7 @@ export type SiteFooterLink = {
 export type SiteFooterContent = {
   contactsDescription: string;
   contactsTitle: string;
+  instagramHref: string;
   legalItems: readonly [string, string];
   navigationLinks: readonly SiteFooterLink[];
   phoneHref: string;
@@ -28,9 +29,10 @@ export const siteFooterContent: SiteFooterContent = {
     { href: "#solution-matching", label: "подобрать решение" },
     { href: "#contacts", label: "контакты" },
   ],
+  instagramHref: "#",
   phoneHref,
   phoneLabel,
   telegramHref,
   whatsappHref,
-  legalItems: ["Политика конфиденциальности", "Пользовательское соглашение"],
+  legalItems: ["Политика конфиденциальности", "Политика обработки данных"],
 };
