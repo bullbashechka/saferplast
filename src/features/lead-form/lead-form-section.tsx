@@ -73,29 +73,29 @@ export function LeadFormSection() {
   const remainingTaskSymbols = taskMaxLength - taskValue.length;
 
   return (
-    <section id="lead-form" className="bg-[rgba(250,254,255,1)] py-16 lg:py-20">
-      <div className="mx-auto w-full max-w-[90rem] px-4 sm:px-6 lg:w-[90rem] lg:max-w-none lg:px-0">
-        <h2 className="mx-auto max-w-[61rem] text-center font-display text-[2rem] font-normal leading-[1] text-[#004B62] sm:text-[2.25rem] lg:text-[44px]">
+    <section id="lead-form" className="bg-[rgba(250,254,255,1)] pb-16 pt-[60px] lg:px-0 lg:py-20">
+      <div className="mx-auto w-full max-w-[320px] px-[10px] lg:w-[90rem] lg:max-w-none lg:px-0">
+        <h2 className="mx-auto w-full max-w-[300px] text-center font-display text-[20px] font-normal leading-[1] text-[#004B62] lg:max-w-[61rem] lg:text-[44px]">
           {title}
         </h2>
-        <p className="mx-auto mt-4 max-w-[52rem] text-center font-body text-[1rem] font-normal leading-[1] text-[#242424]">
+        <p className="mx-auto mt-[10px] w-full max-w-[300px] text-center font-body text-[12px] font-normal leading-[1] text-[#242424] lg:mt-4 lg:max-w-[52rem] lg:text-[1rem]">
           {subtitle}
         </p>
 
-        <div className="mt-10 grid items-start gap-6 lg:ml-[7.5rem] lg:mr-[1.25rem] lg:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] lg:gap-[3rem]">
+        <div className="mt-[20px] grid items-start gap-[15px] lg:ml-[7.5rem] lg:mr-[1.25rem] lg:mt-10 lg:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] lg:gap-[3rem]">
           <DecorativeColumn items={decorativeLabels.left} side="left" />
 
-          <div className="mx-auto w-full max-w-[387px]">
-            <div className="rounded-[20px] bg-[#004B62] p-6 shadow-[0_0_16.3px_rgba(0,75,98,0.62)] sm:p-8 lg:p-10">
-              <form className="grid gap-[26px]">
+          <div className="mx-auto w-full max-w-[300px] lg:max-w-[387px]">
+            <div className="min-h-[337px] rounded-[20px] bg-[#004B62] p-[15px] shadow-[0_0_16.3px_rgba(0,75,98,0.62)] lg:p-10">
+              <form className="grid gap-[10px] lg:gap-[26px]">
                 <input
-                  className="h-[52px] rounded-[10px] bg-white px-[22px] py-[18px] font-body text-[1rem] font-normal leading-[1] text-[#242424] outline-none placeholder:text-[#6a6a6a]"
+                  className="h-[42px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1] text-[#242424] outline-none placeholder:text-[#6a6a6a] lg:h-[52px] lg:px-[22px] lg:py-[18px] lg:text-[1rem]"
                   name="name"
                   placeholder={fields.name}
                   type="text"
                 />
                 <input
-                  className="h-[52px] rounded-[10px] bg-white px-[22px] py-[18px] font-body text-[1rem] font-normal leading-[1] text-[#242424] outline-none placeholder:text-[#6a6a6a]"
+                  className="h-[42px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1] text-[#242424] outline-none placeholder:text-[#6a6a6a] lg:h-[52px] lg:px-[22px] lg:py-[18px] lg:text-[1rem]"
                   name="phone"
                   inputMode="numeric"
                   onBlur={() => {
@@ -113,26 +113,29 @@ export function LeadFormSection() {
                   type="tel"
                   value={phoneValue}
                 />
-                <div className="grid gap-2">
+                <div className="grid gap-[4px] lg:gap-2">
                   <textarea
-                    className="min-h-[52px] rounded-[10px] bg-white px-[22px] py-[18px] font-body text-[1rem] font-normal leading-[1.2] text-[#242424] outline-none placeholder:text-[#6a6a6a]"
+                    className="min-h-[58px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1.15] text-[#242424] outline-none placeholder:text-[#6a6a6a] lg:min-h-[52px] lg:px-[22px] lg:py-[18px] lg:text-[1rem] lg:leading-[1.2]"
                     maxLength={taskMaxLength}
                     name="task"
                     onChange={(event) => setTaskValue(event.target.value)}
                     placeholder={fields.task}
-                    rows={3}
+                    rows={2}
                     value={taskValue}
                   />
-                  <p className="text-right font-body text-[0.75rem] font-normal leading-[1.2] text-white/85">
+                  <p className="text-right font-body text-[10px] font-normal leading-[1] text-white/85 lg:text-[0.75rem] lg:leading-[1.2]">
                     {remainingTaskSymbols}
                   </p>
                 </div>
 
-                <FieldGroup className="gap-3">
+                <FieldGroup className="gap-[8px] lg:gap-3">
                   {consents.map((consent, index) => (
                     <Field key={`${consent}-${index}`} orientation="horizontal">
                       <Checkbox id={`lead-consent-${index}`} name={`lead-consent-${index}`} />
-                      <FieldLabel className="text-white" htmlFor={`lead-consent-${index}`}>
+                      <FieldLabel
+                        className="text-[10px] leading-[1.15] text-white lg:text-[14px] lg:leading-[1.2]"
+                        htmlFor={`lead-consent-${index}`}
+                      >
                         {consent}
                       </FieldLabel>
                     </Field>
@@ -140,30 +143,67 @@ export function LeadFormSection() {
                 </FieldGroup>
 
                 <button
-                  className="flex h-[54px] items-center justify-center gap-5 rounded-[15px] bg-[#1E1E1E] px-[62px] py-[17px] font-body text-[20px] font-medium leading-[1] text-white transition-colors hover:bg-[#111111]"
+                  className="flex h-[42px] items-center justify-center gap-[10px] rounded-[10px] bg-[#1E1E1E] px-[20px] py-[12px] font-body text-[14px] font-medium leading-[1] text-white transition-colors hover:bg-[#111111] lg:h-[54px] lg:gap-5 lg:rounded-[15px] lg:px-[62px] lg:py-[17px] lg:text-[20px]"
                   type="submit"
                 >
                   <span>{submitLabel}</span>
-                  <Image alt="" aria-hidden="true" height={20} src="/icons/send.svg" width={20} />
+                  <Image
+                    alt=""
+                    aria-hidden="true"
+                    className="h-4 w-4 lg:h-5 lg:w-5"
+                    height={20}
+                    src="/icons/send.svg"
+                    width={20}
+                  />
                 </button>
               </form>
             </div>
 
-            <p className="mt-[19px] text-center font-body text-[1rem] font-normal leading-[1] text-black">{messengersLabel}</p>
-            <div className="mt-4 flex items-center justify-center gap-5">
+            <p className="mt-[15px] text-center font-body text-[12px] font-normal leading-[1] text-black lg:mt-[19px] lg:text-[1rem]">
+              {messengersLabel}
+            </p>
+            <div className="mt-[10px] flex items-center justify-center gap-[15px] lg:mt-4 lg:gap-5">
               <a
                 aria-label="Telegram"
                 className="flex items-center justify-center transition-transform hover:-translate-y-0.5"
                 href="#"
               >
-                <Image alt="" aria-hidden="true" height={47} src="/icons/ic_baseline-telegram.svg" width={47} />
+                <Image
+                  alt=""
+                  aria-hidden="true"
+                  className="h-[38px] w-[38px] lg:h-[47px] lg:w-[47px]"
+                  height={47}
+                  src="/icons/ic_baseline-telegram.svg"
+                  width={47}
+                />
+              </a>
+              <a
+                aria-label="Instagram"
+                className="flex items-center justify-center transition-transform hover:-translate-y-0.5"
+                href="#"
+              >
+                <Image
+                  alt=""
+                  aria-hidden="true"
+                  className="h-[38px] w-[38px]"
+                  height={38}
+                  src="/icons/instagram.svg"
+                  width={38}
+                />
               </a>
               <a
                 aria-label="WhatsApp"
                 className="flex items-center justify-center transition-transform hover:-translate-y-0.5"
                 href="#"
               >
-                <Image alt="" aria-hidden="true" height={38} src="/icons/ri_whatsapp-fill.svg" width={38} />
+                <Image
+                  alt=""
+                  aria-hidden="true"
+                  className="h-[38px] w-[38px]"
+                  height={38}
+                  src="/icons/ri_whatsapp-fill.svg"
+                  width={38}
+                />
               </a>
             </div>
           </div>
