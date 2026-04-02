@@ -15,10 +15,10 @@ function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
   const mobileAvailabilityLabel = availabilityLabel.replace(" ежедневно", "");
 
   return (
-    <article className="mx-auto flex h-[8.75rem] w-full max-w-[18.8125rem] flex-col rounded-[1.25rem] border border-[#004B62] bg-[#004B62] p-[0.625rem] text-white shadow-[0_16px_40px_rgba(0,75,98,0.18)] md:mx-0 md:h-auto md:max-w-none md:min-h-[8.5rem] md:w-[13rem] md:p-3 lg:min-h-[10rem] lg:w-[16rem] xl:min-h-[11.1875rem] xl:w-[17.8125rem]">
-      <div className="flex flex-1 flex-col justify-between gap-2 md:gap-3 xl:gap-4">
-        <div className="w-fit rounded-t-[0.625rem] rounded-br-[0.625rem] bg-white px-3 py-2 md:px-3 md:py-2 lg:px-4 lg:py-[0.625rem]">
-          <p className="text-[0.75rem] leading-[1] text-[#242424] md:text-[0.8125rem] lg:text-[0.875rem]">
+    <article className="mx-auto flex h-[8.75rem] w-full max-w-[18.8125rem] flex-col rounded-[1.25rem] border border-[#004B62] bg-[#004B62] p-[0.625rem] text-white shadow-[0_16px_40px_rgba(0,75,98,0.18)] md:mx-0 md:h-[8.75rem] md:max-w-none md:w-[11.5rem] md:p-3 lg:h-[9.75rem] lg:w-[13.5rem] lg:p-3.5 min-[1400px]:h-auto min-[1400px]:min-h-[11.1875rem] min-[1400px]:w-[17.8125rem] min-[1400px]:p-4">
+      <div className="flex flex-1 flex-col justify-between gap-2 md:gap-2.5 lg:gap-3 min-[1400px]:gap-4">
+        <div className="w-fit rounded-t-[0.625rem] rounded-br-[0.625rem] bg-white px-3 py-2 md:px-2.5 md:py-1.5 lg:px-3 lg:py-2 min-[1400px]:px-4 min-[1400px]:py-[0.625rem]">
+          <p className="text-[0.75rem] leading-[1] text-[#242424] md:text-[0.6875rem] lg:text-[0.75rem] min-[1400px]:text-[0.875rem]">
             <span className="md:hidden">{mobileAvailabilityLabel}</span>
             <span className="hidden md:inline">{availabilityLabel}</span>
             <br className="md:hidden" />
@@ -46,11 +46,13 @@ function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
             />
           </div>
 
-          <p className="text-[0.75rem] leading-[1] text-white md:text-[0.8125rem] lg:text-[0.875rem]">{namesLabel}</p>
+          <p className="text-[0.75rem] leading-[1] text-white md:text-[0.6875rem] lg:text-[0.75rem] min-[1400px]:text-[0.875rem]">
+            {namesLabel}
+          </p>
         </div>
 
         <a
-          className="inline-flex h-[2.375rem] w-full items-center justify-center rounded-[0.625rem] bg-white px-[3.3125rem] py-3 text-center text-[0.875rem] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#eef6ff] md:mt-auto md:min-h-[3rem] md:px-4 md:py-3 md:text-[0.9375rem] lg:min-h-[3.5rem] lg:px-6 lg:py-4 lg:text-[1rem] xl:min-h-[4.25rem] xl:text-[1.25rem]"
+          className="inline-flex h-[2.375rem] w-full items-center justify-center rounded-[0.625rem] bg-white px-[3.3125rem] py-3 text-center text-[0.875rem] font-medium leading-[1] tracking-[-0.02em] text-[#004B62] whitespace-nowrap transition-colors hover:bg-[#eef6ff] md:mt-auto md:min-h-[2.625rem] md:px-1.5 md:py-2 md:text-[0.625rem] lg:min-h-[2.875rem] lg:px-2 lg:py-2.5 lg:text-[0.75rem] min-[1400px]:min-h-[4.25rem] min-[1400px]:px-6 min-[1400px]:py-4 min-[1400px]:text-[1.25rem] min-[1400px]:tracking-normal"
           href={cta.href}
         >
           {cta.label}
@@ -62,10 +64,12 @@ function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
 
 function ServiceCard({ cta, description }: ServiceCardProps) {
   return (
-    <article className="mx-auto flex h-[6.3125rem] w-full max-w-[19.0625rem] flex-col gap-[0.4375rem] rounded-[1.25rem] bg-white p-[0.625rem] text-[#242424] shadow-[0_16px_40px_rgba(0,0,0,0.08)] md:mx-0 md:h-auto md:max-w-none md:min-h-[8.5rem] md:w-[13rem] md:justify-between md:gap-3 md:p-3 lg:min-h-[10rem] lg:w-[16rem] lg:gap-4 lg:p-4 xl:min-h-[11.1875rem] xl:w-[17.8125rem] xl:gap-[1.625rem]">
-      <p className="w-full font-body text-[0.75rem] font-normal leading-[1] tracking-[0] md:text-[0.8125rem] lg:text-[0.875rem] xl:text-[1rem]">{description}</p>
+    <article className="mx-auto flex h-[6.3125rem] w-full max-w-[19.0625rem] flex-col gap-[0.4375rem] rounded-[1.25rem] bg-white p-[0.625rem] text-[#242424] shadow-[0_16px_40px_rgba(0,0,0,0.08)] md:mx-0 md:h-[8.75rem] md:max-w-none md:w-[11.5rem] md:justify-between md:gap-2.5 md:p-3 lg:h-[9.75rem] lg:w-[13.5rem] lg:gap-3 lg:p-3.5 min-[1400px]:h-auto min-[1400px]:min-h-[11.1875rem] min-[1400px]:w-[17.8125rem] min-[1400px]:gap-[1.625rem] min-[1400px]:p-4">
+      <p className="w-full font-body text-[0.75rem] font-normal leading-[1] tracking-[0] md:text-[0.6875rem] lg:text-[0.75rem] min-[1400px]:text-[1rem]">
+        {description}
+      </p>
       <a
-        className="inline-flex h-[2.375rem] w-full items-center justify-center rounded-[0.625rem] bg-[#004B62] px-[4.4375rem] py-3 text-center font-body text-[0.875rem] font-medium leading-[1] text-white whitespace-nowrap transition-colors hover:bg-[#00384a] md:mt-auto md:min-h-[3rem] md:px-4 md:py-3 md:text-[0.9375rem] lg:min-h-[3.5rem] lg:px-6 lg:py-4 lg:text-[1rem] xl:min-h-[4.25rem] xl:text-[1.25rem]"
+        className="inline-flex h-[2.375rem] w-full items-center justify-center rounded-[0.625rem] bg-[#004B62] px-[4.4375rem] py-3 text-center font-body text-[0.875rem] font-medium leading-[1] text-white whitespace-nowrap transition-colors hover:bg-[#00384a] md:mt-auto md:min-h-[2.75rem] md:px-2 md:py-2.5 md:text-[0.6875rem] lg:min-h-[3rem] lg:px-2.5 lg:py-3 lg:text-[0.8125rem] min-[1400px]:min-h-[4.25rem] min-[1400px]:px-6 min-[1400px]:py-4 min-[1400px]:text-[1.25rem]"
         href={cta.href}
       >
         {cta.label}
@@ -147,7 +151,7 @@ export function HeroSection({
                 {headline}
               </h1>
 
-              <div className="mt-auto flex flex-wrap items-end gap-3 lg:gap-4 xl:gap-x-[1.3125rem] xl:gap-y-4">
+              <div className="mt-auto flex flex-nowrap items-stretch gap-2 md:gap-2.5 lg:gap-3 min-[1400px]:gap-x-[1.3125rem] min-[1400px]:gap-y-4">
                 <SupportCard {...supportCard} />
                 <ServiceCard {...serviceCard} />
               </div>
