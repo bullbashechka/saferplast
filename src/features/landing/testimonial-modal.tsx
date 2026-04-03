@@ -69,7 +69,7 @@ export function TestimonialModal({ isOpen, onClose, testimonial }: TestimonialMo
           </div>
 
           <button
-            aria-label="Р—Р°РєСЂС‹С‚СЊ РїРѕР»РЅС‹Р№ РѕС‚Р·С‹РІ"
+            aria-label="Закрыть полный отзыв"
             className="rounded-md p-1 text-[1.75rem] leading-none text-[#004B62] transition-colors hover:bg-[#e8f2f5]"
             onClick={onClose}
             type="button"

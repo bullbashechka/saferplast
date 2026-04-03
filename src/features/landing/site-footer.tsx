@@ -24,7 +24,7 @@ export function SiteFooter() {
       <div className="mx-auto w-full max-w-[300px] md:max-w-[1201px]">
         <div className="md:hidden">
           <div className="grid grid-cols-[1fr_auto] items-start gap-[16px]">
-            <nav aria-label="РќР°РІРёРіР°С†РёСЏ РІ РїРѕРґРІР°Р»Рµ">
+            <nav aria-label="Навигация в подвале">
               <ul className="grid gap-[1px]">
                 {navigationLinks.map((link) => (
                   <li key={link.href}>
@@ -126,7 +126,7 @@ export function SiteFooter() {
               />
             </a>
 
-            <nav aria-label="РќР°РІРёРіР°С†РёСЏ РІ РїРѕРґРІР°Р»Рµ" className="md:self-center md:justify-self-center">
+            <nav aria-label="Навигация в подвале" className="md:self-center md:justify-self-center">
               <ul className="grid gap-4 sm:grid-cols-2 sm:gap-x-[1px]">
                 {navigationLinks.map((link) => (
                   <li key={link.href}>

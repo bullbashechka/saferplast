@@ -54,7 +54,7 @@ function MobileTestimonialCard({
           onClick={() => onOpen(testimonial)}
           type="button"
         >
-          Р§РёС‚Р°С‚СЊ РїРѕР»РЅРѕСЃС‚СЊСЋ
+          Читать полностью
         </button>
       </div>
     </Card>
@@ -85,7 +85,7 @@ function DesktopTestimonialCard({
           onClick={() => onOpen(testimonial)}
           type="button"
         >
-          Р§РёС‚Р°С‚СЊ РїРѕР»РЅРѕСЃС‚СЊСЋ
+          Читать полностью
         </button>
       </div>
     </Card>
@@ -162,7 +162,7 @@ export function TestimonialsSection() {
 
               return (
                 <button
-                  aria-label={`РџРѕРєР°Р·Р°С‚СЊ РіСЂСѓРїРїСѓ РѕС‚Р·С‹РІРѕРІ ${index + 1}`}
+                  aria-label={`Показать группу отзывов ${index + 1}`}
                   className={`h-[6px] rounded-full transition-all duration-300 ${
                     isActive ? "w-6 bg-[#004B62]" : "w-[6px] bg-[#B7CCD4]"
                   }`}

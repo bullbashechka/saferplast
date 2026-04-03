@@ -81,7 +81,7 @@ function MobileProjectsSlider({
         <div className="projects-mobile-carousel__container">
           {images.map((image, index) => (
             <button
-              aria-label={`РћС‚РєСЂС‹С‚СЊ РїСЂРѕРµРєС‚ ${index + 1}`}
+              aria-label={`Открыть проект ${index + 1}`}
               className="embla__slide projects-mobile-carousel__slide"
               key={image.alt}
               onClick={() => emblaApi?.scrollTo(index)}
@@ -120,7 +120,7 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
-      aria-label="РќР°С€Рё СЂР°Р±РѕС‚С‹"
+      aria-label="Наши работы"
       className="bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-[60px] md:mt-[120px] md:px-5 md:pt-0 min-[1025px]:px-8"
     >
       <div className="mx-auto w-full max-w-[300px] md:max-w-[1201px]">

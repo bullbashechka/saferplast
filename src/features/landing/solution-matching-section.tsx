@@ -194,7 +194,7 @@ export function SolutionMatchingSection() {
           className="mx-auto mt-[26px] flex h-[38px] w-[215px] items-center justify-center gap-[14px] rounded-[10px] bg-[#004B62] px-[39px] py-[12px] text-center font-['Montserrat'] text-[14px] font-medium leading-[1] tracking-[0] text-white transition-colors hover:bg-[#00384a] md:hidden"
           href="#lead-form"
         >
-          РЈР·РЅР°С‚СЊ РїРѕРґСЂРѕР±РЅРµРµ
+          Узнать подробнее
         </a>
 
         <div className="hidden md:mt-8 md:block md:space-y-4 min-[1025px]:space-y-5">

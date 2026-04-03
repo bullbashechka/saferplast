@@ -11,8 +11,8 @@ import type { LeadFormPayload } from "@/features/lead-form/lead-form-types";
 
 const PHONE_PREFIX = "+7";
 const EMPTY_CONSENTS = [false, false];
-const SUCCESS_MESSAGE = "Р—Р°СЏРІРєР° РѕС‚РїСЂР°РІР»РµРЅР°. РњС‹ СЃРІСЏР¶РµРјСЃСЏ СЃ РІР°РјРё РІ Р±Р»РёР¶Р°Р№С€РµРµ РІСЂРµРјСЏ.";
-const ERROR_MESSAGE = "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РїСЂР°РІРёС‚СЊ Р·Р°СЏРІРєСѓ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.";
+const SUCCESS_MESSAGE = "Заявка отправлена. Мы свяжемся с вами в ближайшее время.";
+const ERROR_MESSAGE = "Не удалось отправить заявку. Попробуйте еще раз.";
 
 function formatPhoneValue(rawValue: string) {
   const digits = rawValue.replace(/\D/g, "");
@@ -214,7 +214,7 @@ export function LeadFormSection() {
                   disabled={isSubmitting}
                   type="submit"
                 >
-                  <span>{isSubmitting ? "РћС‚РїСЂР°РІР»СЏРµРј..." : submitLabel}</span>
+                  <span>{isSubmitting ? "Отправляем..." : submitLabel}</span>
                   <Image
                     alt=""
                     aria-hidden="true"

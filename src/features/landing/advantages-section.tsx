@@ -77,7 +77,7 @@ function DesktopAdvantagesCard({ card, index }: { card: AdvantagesCard; index: n
         className={`${positionClassName} relative min-h-[25rem] overflow-hidden rounded-[1.25rem] bg-[#d9e5ea] min-[1025px]:min-h-[27.5rem]`}
       >
         <Image
-          alt="Р¤РёСЂРјРµРЅРЅС‹Р№ СЃС‚РёР»СЊ Saferplast"
+          alt="Фирменный стиль Saferplast"
           className="rounded-[1.25rem] object-cover blur-[2.5px] opacity-[0.29]"
           fill
           sizes="(max-width: 767px) 100vw, 285px"

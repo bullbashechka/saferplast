@@ -16,7 +16,7 @@ type SupportCardProps = FirstScreenContent["supportCard"];
 type ServiceCardProps = FirstScreenContent["serviceCard"];
 
 function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
-  const mobileAvailabilityLabel = availabilityLabel.replace(" РµР¶РµРґРЅРµРІРЅРѕ", "");
+  const mobileAvailabilityLabel = availabilityLabel.replace(" ежедневно", "");
 
   return (
     <article className="mx-auto flex h-[8.75rem] w-full max-w-[18.8125rem] flex-col rounded-[1.25rem] border border-[#004B62] bg-[#004B62] p-[0.625rem] text-white shadow-[0_16px_40px_rgba(0,75,98,0.18)] md:mx-0 md:h-[9.75rem] md:max-w-none md:w-[13.5rem] md:p-3.5 min-[1025px]:h-auto min-[1025px]:min-h-[11.1875rem] min-[1025px]:w-[17.8125rem] min-[1025px]:p-4">
@@ -26,7 +26,7 @@ function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
             <span className="md:hidden">{mobileAvailabilityLabel}</span>
             <span className="hidden md:inline">{availabilityLabel}</span>
             <br className="md:hidden" />
-            РµР¶РµРґРЅРµРІРЅРѕ
+            ежедневно
           </p>
         </div>
 
@@ -92,13 +92,13 @@ export function HeroSection({
   supportCard,
 }: HeroSectionProps) {
   const mobileHeadlineLines = [
-    "РћРєРЅР°, РґРІРµСЂРё Рё Р±Р°Р»РєРѕРЅС‹",
-    "РёР· РџР’РҐ Рё Р°Р»СЋРјРёРЅРёСЏ",
-    "РЅР°РїСЂСЏРјСѓСЋ РѕС‚ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЏ",
+    "Окна, двери и балконы",
+    "из ПВХ и алюминия",
+    "напрямую от производителя",
   ];
 
   return (
-    <section aria-label="РџРµСЂРІС‹Р№ СЌРєСЂР°РЅ" className="mt-0">
+    <section aria-label="Первый экран" className="mt-0">
       <div className="md:hidden">
         <div className="relative z-10 min-h-[32.5rem] overflow-hidden rounded-b-[1.875rem] bg-[#d9e5ea]">
           <div

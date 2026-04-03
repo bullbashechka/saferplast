@@ -29,6 +29,8 @@ Use TypeScript for all new code. Prefer functional React components. Keep sectio
 - Use `kebab-case` for feature files such as `first-screen.tsx`.
 - Use `PascalCase` for React component names and exported types/interfaces when appropriate.
 - Prefer Tailwind utilities for component styling.
+- Store files with Russian or Kazakh copy in `UTF-8` without BOM. Do not paste text that already contains typical mojibake fragments from broken Cyrillic encoding.
+- Before finishing text-heavy UI edits, scan changed source files for broken Cyrillic and fix the source strings directly instead of masking the issue in rendering code.
 - Use `src/styles/globals.css` only for app-wide concerns: font imports, base resets, shared typography/background rules, and genuinely reusable global utility classes.
 - Preserve the existing visual language unless a task explicitly requires redesign.
 - Follow `eslint.config.mjs`, `tsconfig.json`, and the existing import alias conventions such as `@/features/...`.

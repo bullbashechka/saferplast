@@ -4,11 +4,11 @@ const rightProofImageSrc = encodeURI(
   "/images/webp/glass-broken-from- house-by-accident- man-checking- repair.webp",
 );
 const proofSectionCtaCopy =
-  "Р‘РµСЃРїР»Р°С‚РЅРѕ РїРѕРґСЃРєР°Р¶РµРј, С‡С‚Рѕ РІР°Рј РІС‹РіРѕРґРЅРµРµ: СЂРµРјРѕРЅС‚, Р·Р°РјРµРЅР° РёР»Рё РЅРѕРІРѕРµ РёР·РіРѕС‚РѕРІР»РµРЅРёРµ";
+  "Бесплатно подскажем, что вам выгоднее: ремонт, замена или новое изготовление";
 const desktopProofSectionCtaLines = [
-  "Р‘РµСЃРїР»Р°С‚РЅРѕ РїРѕРґСЃРєР°Р¶РµРј, С‡С‚Рѕ,",
-  "РІР°Рј РІС‹РіРѕРґРЅРµРµ: СЂРµРјРѕРЅС‚, Р·Р°РјРµРЅР°",
-  "РёР»Рё РЅРѕРІРѕРµ РёР·РіРѕС‚РѕРІР»РµРЅРёРµ",
+  "Бесплатно подскажем, что,",
+  "вам выгоднее: ремонт, замена",
+  "или новое изготовление",
 ] as const;
 
 export function ProofSection() {
@@ -19,13 +19,13 @@ export function ProofSection() {
     >
       <div className="mx-auto max-w-[90rem] px-[10px] md:px-5 min-[1025px]:px-8 xl:w-[90rem] xl:max-w-none xl:px-[7.5rem]">
         <h2 id="proof-title" className="sr-only">
-          РћРїС‹С‚, Р°РєРєСѓСЂР°С‚РЅРѕСЃС‚СЊ Рё РєРѕРЅС‚СЂРѕР»СЊ
+          Опыт, аккуратность и контроль
         </h2>
 
         <div className="mx-auto w-fit md:hidden">
           <article className="relative h-[369px] w-[300px] overflow-hidden rounded-[20px] bg-[#d9e5ea]">
             <Image
-              alt="РЎРѕС‚СЂСѓРґРЅРёРє Saferplast РЅР° РїСЂРѕРёР·РІРѕРґСЃС‚РІРµ"
+              alt="Сотрудник Saferplast на производстве"
               className="object-cover"
               fill
               sizes="300px"
@@ -43,7 +43,7 @@ export function ProofSection() {
                   className="mx-auto inline-flex h-[38px] w-[258px] shrink-0 items-center justify-center gap-[14px] rounded-[10px] bg-[#004B62] px-[39px] py-3 text-center font-body text-[14px] font-medium leading-[1] text-white transition-colors hover:bg-[#00384a]"
                   href="#lead-form"
                 >
-                  РџРѕР»СѓС‡РёС‚СЊ РєРѕРЅСЃСѓР»СЊС‚Р°С†РёСЋ
+                  Получить консультацию
                 </a>
               </div>
             </div>
@@ -53,7 +53,7 @@ export function ProofSection() {
         <div className="hidden md:grid md:grid-cols-[0.85fr_1.35fr] md:gap-4 min-[1025px]:grid-cols-[387px_793px] min-[1025px]:gap-5">
           <article className="relative h-[340px] overflow-hidden rounded-[20px] bg-[#d9e5ea] min-[1025px]:h-[360px]">
             <Image
-              alt="РЎРѕС‚СЂСѓРґРЅРёРє Saferplast РЅР° РїСЂРѕРёР·РІРѕРґСЃС‚РІРµ"
+              alt="Сотрудник Saferplast на производстве"
               className="object-cover"
               fill
               sizes="(max-width: 767px) 100vw, (max-width: 1024px) 32vw, 387px"
@@ -63,7 +63,7 @@ export function ProofSection() {
 
           <article className="relative h-[340px] overflow-hidden rounded-[20px] bg-[#cfdbe0] min-[1025px]:h-[360px]">
             <Image
-              alt="РџСЂРѕРІРµСЂРєР° СЃС‚РµРєР»Р° РЅР° РѕР±СЉРµРєС‚Рµ"
+              alt="Проверка стекла на объекте"
               className="object-cover"
               fill
               sizes="(max-width: 767px) 100vw, (max-width: 1024px) 68vw, 793px"
@@ -88,7 +88,7 @@ export function ProofSection() {
                   className="mt-5 inline-flex h-[48px] w-full max-w-[280px] shrink-0 items-center justify-center whitespace-nowrap rounded-[10px] bg-[#004B62] px-4 py-3 text-center font-body text-[1rem] font-medium leading-[1] text-white transition-colors hover:bg-[#00384a] md:absolute md:bottom-0 md:left-0 md:mt-0 md:h-[66px] md:max-w-[340px] md:px-[44px] md:py-[24px] md:text-[19px] min-[1025px]:h-[68px] min-[1025px]:max-w-[355px] min-[1025px]:px-[49px] min-[1025px]:text-[20px]"
                   href="#lead-form"
                 >
-                  РџРѕР»СѓС‡РёС‚СЊ РєРѕРЅСЃСѓР»СЊС‚Р°С†РёСЋ
+                  Получить консультацию
                 </a>
               </div>
             </div>
