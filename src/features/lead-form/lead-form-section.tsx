@@ -130,8 +130,8 @@ export function LeadFormSection() {
   }
 
   return (
-    <section id="lead-form" className="bg-[rgba(250,254,255,1)] pb-16 pt-[60px] lg:mt-[120px] lg:px-5 lg:pt-0 lg:px-8 xl:px-0">
-      <div className="mx-auto w-full max-w-[320px] px-[10px] lg:max-w-[1200px] lg:px-0 xl:w-[90rem] xl:max-w-none">
+    <section id="lead-form" className="bg-[rgba(250,254,255,1)] pb-16 pt-[60px] lg:mt-[120px] lg:pt-0">
+      <div className="mx-auto w-full max-w-[1440px] px-[10px] lg:px-4 xl:px-[20px] xl:pl-[21px]">
         <h2 className="mx-auto w-full max-w-[300px] text-center font-display text-[20px] font-normal leading-[1] text-[#004B62] lg:max-w-[61rem] lg:text-[44px]">
           {title}
         </h2>
@@ -139,7 +139,7 @@ export function LeadFormSection() {
           {subtitle}
         </p>
 
-        <div className="mt-[20px] grid items-start gap-[15px] lg:mt-10 lg:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] lg:gap-[3rem] xl:ml-[7.5rem] xl:mr-[1.25rem]">
+        <div className="mt-[20px] grid items-start gap-[15px] lg:mt-10 lg:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] lg:gap-[3rem]">
           <DecorativeColumn items={decorativeLabels.left} side="left" />
 
           <div className="mx-auto w-full max-w-[300px] lg:max-w-[340px] lg:max-w-[387px]">
