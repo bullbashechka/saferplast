@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "a5j2wAbP42rURdiWwSKMibnavkTAwHjwq4tHpKBxWj8",
+    yandex: "6ec04759d2316256",
   },
   openGraph: {
     title: "Saferplast",
