@@ -11,7 +11,7 @@ import { LeadFormSection } from "@/features/lead-form/lead-form-section";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[rgba(250,254,255,1)] text-slate-900">
+    <main className="min-h-screen overflow-x-hidden bg-[rgba(250,254,255,1)] text-slate-900">
       <FirstScreen />
       <AdvantagesSection />
       <ProofSection />

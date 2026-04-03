@@ -5,6 +5,9 @@ import "@/styles/globals.css";
 export const metadata: Metadata = {
   title: "Saferplast",
   description: "Пластиковые окна с формой заявки и калькулятором стоимости.",
+  verification: {
+    google: "a5j2wAbP42rURdiWwSKMibnavkTAwHjwq4tHpKBxWj8",
+  },
   icons: {
     icon: "/images/original/logo.png",
     shortcut: "/images/original/logo.png",

@@ -11,8 +11,8 @@ import type { LeadFormPayload } from "@/features/lead-form/lead-form-types";
 
 const PHONE_PREFIX = "+7";
 const EMPTY_CONSENTS = [false, false];
-const SUCCESS_MESSAGE = "Заявка отправлена. Мы свяжемся с вами в ближайшее время.";
-const ERROR_MESSAGE = "Не удалось отправить заявку. Попробуйте еще раз.";
+const SUCCESS_MESSAGE = "Р—Р°СЏРІРєР° РѕС‚РїСЂР°РІР»РµРЅР°. РњС‹ СЃРІСЏР¶РµРјСЃСЏ СЃ РІР°РјРё РІ Р±Р»РёР¶Р°Р№С€РµРµ РІСЂРµРјСЏ.";
+const ERROR_MESSAGE = "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РїСЂР°РІРёС‚СЊ Р·Р°СЏРІРєСѓ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.";
 
 function formatPhoneValue(rawValue: string) {
   const digits = rawValue.replace(/\D/g, "");
@@ -46,11 +46,11 @@ function DecorativeColumn({
   side: "left" | "right";
 }>) {
   return (
-    <div className="hidden w-full lg:grid lg:gap-[80px]">
+    <div className="hidden w-full md:grid md:gap-[60px] min-[1025px]:gap-[80px]">
       {items.map((item) => (
         <div
           key={item.label}
-          className={`flex min-h-[38px] w-fit items-center whitespace-nowrap rounded-[11px] border border-[#004B62] px-4 py-2 text-[0.8125rem] font-normal leading-[1] text-[#004B62] shadow-[0_0_19.9px_rgba(0,75,98,0.41)] lg:min-h-[44px] lg:px-[21px] lg:py-3 lg:text-[1rem] ${
+          className={`flex min-h-[38px] w-fit items-center whitespace-nowrap rounded-[11px] border border-[#004B62] px-4 py-2 text-[0.8125rem] font-normal leading-[1] text-[#004B62] shadow-[0_0_19.9px_rgba(0,75,98,0.41)] md:min-h-[42px] md:px-[18px] md:py-3 md:text-[0.9375rem] min-[1025px]:min-h-[44px] min-[1025px]:px-[21px] min-[1025px]:text-[1rem] ${
             side === "right" ? "bg-[hsla(190,32%,93%,1)]" : ""
           } ${
             side === "left"
@@ -130,23 +130,23 @@ export function LeadFormSection() {
   }
 
   return (
-    <section id="lead-form" className="bg-[rgba(250,254,255,1)] pb-16 pt-[60px] lg:mt-[120px] lg:pt-0">
-      <div className="mx-auto w-full max-w-[1440px] px-[10px] lg:px-4 xl:px-[20px] xl:pl-[21px]">
-        <h2 className="mx-auto w-full max-w-[300px] text-center font-display text-[20px] font-normal leading-[1] text-[#004B62] lg:max-w-[61rem] lg:text-[44px]">
+    <section id="lead-form" className="bg-[rgba(250,254,255,1)] pb-16 pt-[60px] md:mt-[120px] md:pt-0">
+      <div className="mx-auto w-full max-w-[1440px] px-[10px] md:px-4 min-[1025px]:px-[20px] min-[1025px]:pl-[21px]">
+        <h2 className="mx-auto w-full max-w-[300px] text-center font-display text-[20px] font-normal leading-[1] text-[#004B62] md:max-w-[61rem] md:text-[43px] min-[1025px]:text-[44px]">
           {title}
         </h2>
-        <p className="mx-auto mt-[10px] w-full max-w-[300px] text-center font-body text-[12px] font-normal leading-[1] text-[#242424] lg:mt-4 lg:max-w-[52rem] lg:text-[1rem]">
+        <p className="mx-auto mt-[10px] w-full max-w-[300px] text-center font-body text-[12px] font-normal leading-[1] text-[#242424] md:mt-4 md:max-w-[52rem] md:text-[0.9375rem] min-[1025px]:text-[1rem]">
           {subtitle}
         </p>
 
-        <div className="mt-[20px] grid items-start gap-[15px] lg:mt-10 lg:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] lg:gap-[3rem]">
+        <div className="mt-[20px] grid items-start gap-[15px] md:mt-10 md:grid-cols-[minmax(0,1fr)_minmax(320px,360px)_minmax(0,1fr)] md:gap-[2.5rem] min-[1025px]:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] min-[1025px]:gap-[3rem]">
           <DecorativeColumn items={decorativeLabels.left} side="left" />
 
-          <div className="mx-auto w-full max-w-[300px] lg:max-w-[340px] lg:max-w-[387px]">
-            <div className="min-h-[337px] rounded-[20px] bg-[#004B62] p-[15px] shadow-[0_0_16.3px_rgba(0,75,98,0.62)] lg:p-6 lg:p-10">
-              <form className="grid gap-[10px] lg:gap-4 lg:gap-[26px]" onSubmit={handleSubmit}>
+          <div className="mx-auto w-full max-w-[300px] md:max-w-[360px] min-[1025px]:max-w-[387px]">
+            <div className="min-h-[337px] rounded-[20px] bg-[#004B62] p-[15px] shadow-[0_0_16.3px_rgba(0,75,98,0.62)] md:p-8 min-[1025px]:p-10">
+              <form className="grid gap-[10px] md:gap-5 min-[1025px]:gap-[26px]" onSubmit={handleSubmit}>
                 <input
-                  className="h-[42px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1] text-[#242424] outline-none placeholder:text-[#6a6a6a] lg:h-[46px] lg:px-4 lg:py-3 lg:text-[0.875rem] lg:h-[52px] lg:px-[22px] lg:py-[18px] lg:text-[1rem]"
+                  className="h-[42px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1] text-[#242424] outline-none placeholder:text-[#6a6a6a] md:h-[50px] md:px-[20px] md:py-[16px] md:text-[0.9375rem] min-[1025px]:h-[52px] min-[1025px]:px-[22px] min-[1025px]:py-[18px] min-[1025px]:text-[1rem]"
                   name="name"
                   onChange={(event) => setNameValue(event.target.value)}
                   placeholder={fields.name}
@@ -155,7 +155,7 @@ export function LeadFormSection() {
                   value={nameValue}
                 />
                 <input
-                  className="h-[42px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1] text-[#242424] outline-none placeholder:text-[#6a6a6a] lg:h-[46px] lg:px-4 lg:py-3 lg:text-[0.875rem] lg:h-[52px] lg:px-[22px] lg:py-[18px] lg:text-[1rem]"
+                  className="h-[42px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1] text-[#242424] outline-none placeholder:text-[#6a6a6a] md:h-[50px] md:px-[20px] md:py-[16px] md:text-[0.9375rem] min-[1025px]:h-[52px] min-[1025px]:px-[22px] min-[1025px]:py-[18px] min-[1025px]:text-[1rem]"
                   name="phone"
                   inputMode="numeric"
                   onBlur={() => {
@@ -174,9 +174,9 @@ export function LeadFormSection() {
                   type="tel"
                   value={phoneValue}
                 />
-                <div className="grid gap-[4px] lg:gap-1.5 lg:gap-2">
+                <div className="grid gap-[4px] md:gap-2">
                   <textarea
-                    className="min-h-[58px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1.15] text-[#242424] outline-none placeholder:text-[#6a6a6a] lg:min-h-[78px] lg:px-4 lg:py-3 lg:text-[0.875rem] lg:min-h-[52px] lg:px-[22px] lg:py-[18px] lg:text-[1rem] lg:leading-[1.2]"
+                    className="min-h-[58px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1.15] text-[#242424] outline-none placeholder:text-[#6a6a6a] md:min-h-[76px] md:px-[20px] md:py-[16px] md:text-[0.9375rem] md:leading-[1.2] min-[1025px]:min-h-[78px] min-[1025px]:px-[22px] min-[1025px]:py-[18px] min-[1025px]:text-[1rem]"
                     maxLength={taskMaxLength}
                     name="task"
                     onChange={(event) => setTaskValue(event.target.value)}
@@ -184,12 +184,12 @@ export function LeadFormSection() {
                     rows={2}
                     value={taskValue}
                   />
-                  <p className="text-right font-body text-[10px] font-normal leading-[1] text-white/85 lg:text-[0.6875rem] lg:text-[0.75rem] lg:leading-[1.2]">
+                  <p className="text-right font-body text-[10px] font-normal leading-[1] text-white/85 md:text-[0.6875rem] md:leading-[1.2] min-[1025px]:text-[0.75rem]">
                     {remainingTaskSymbols}
                   </p>
                 </div>
 
-                <FieldGroup className="gap-[8px] lg:gap-2 lg:gap-3">
+                <FieldGroup className="gap-[8px] md:gap-2.5 min-[1025px]:gap-3">
                   {consents.map((consent, index) => (
                     <Field key={`${consent}-${index}`} orientation="horizontal">
                       <Checkbox
@@ -200,7 +200,7 @@ export function LeadFormSection() {
                         required
                       />
                       <FieldLabel
-                        className="text-[10px] leading-[1.15] text-white lg:text-[0.75rem] lg:text-[14px] lg:leading-[1.2]"
+                        className="text-[10px] leading-[1.15] text-white md:text-[13px] md:leading-[1.2] min-[1025px]:text-[14px]"
                         htmlFor={`lead-consent-${index}`}
                       >
                         {consent}
@@ -210,15 +210,15 @@ export function LeadFormSection() {
                 </FieldGroup>
 
                 <button
-                  className="flex h-[42px] items-center justify-center gap-[10px] rounded-[10px] bg-[#1E1E1E] px-[20px] py-[12px] font-body text-[14px] font-medium leading-[1] text-white transition-colors hover:bg-[#111111] disabled:cursor-not-allowed disabled:opacity-70 lg:h-[48px] lg:px-6 lg:text-[1rem] lg:h-[54px] lg:gap-5 lg:rounded-[15px] lg:px-[62px] lg:py-[17px] lg:text-[20px]"
+                  className="flex h-[42px] items-center justify-center gap-[10px] rounded-[10px] bg-[#1E1E1E] px-[20px] py-[12px] font-body text-[14px] font-medium leading-[1] text-white transition-colors hover:bg-[#111111] disabled:cursor-not-allowed disabled:opacity-70 md:h-[52px] md:gap-4 md:rounded-[15px] md:px-[54px] md:py-[16px] md:text-[19px] min-[1025px]:h-[54px] min-[1025px]:gap-5 min-[1025px]:px-[62px] min-[1025px]:py-[17px] min-[1025px]:text-[20px]"
                   disabled={isSubmitting}
                   type="submit"
                 >
-                  <span>{isSubmitting ? "Отправляем..." : submitLabel}</span>
+                  <span>{isSubmitting ? "РћС‚РїСЂР°РІР»СЏРµРј..." : submitLabel}</span>
                   <Image
                     alt=""
                     aria-hidden="true"
-                    className="h-4 w-4 lg:h-5 lg:w-5"
+                    className="h-4 w-4 md:h-[19px] md:w-[19px] min-[1025px]:h-5 min-[1025px]:w-5"
                     height={20}
                     src="/icons/send.svg"
                     width={20}
@@ -227,7 +227,7 @@ export function LeadFormSection() {
 
                 {(submitMessage || submitError) && (
                   <p
-                    className={`text-center font-body text-[11px] leading-[1.2] lg:text-[13px] ${
+                    className={`text-center font-body text-[11px] leading-[1.2] md:text-[12px] min-[1025px]:text-[13px] ${
                       submitError ? "text-[#ffd7d7]" : "text-[#d7ffe4]"
                     }`}
                     role={submitError ? "alert" : "status"}
@@ -238,10 +238,10 @@ export function LeadFormSection() {
               </form>
             </div>
 
-            <p className="mt-[15px] text-center font-body text-[12px] font-normal leading-[1] text-black lg:mt-[19px] lg:text-[1rem]">
+            <p className="mt-[15px] text-center font-body text-[12px] font-normal leading-[1] text-black md:mt-[19px] md:text-[0.9375rem] min-[1025px]:text-[1rem]">
               {messengersLabel}
             </p>
-            <div className="mt-[10px] flex items-center justify-center gap-[15px] lg:mt-4 lg:gap-5">
+            <div className="mt-[10px] flex items-center justify-center gap-[15px] md:mt-4 md:gap-5">
               <a
                 aria-label="Telegram"
                 className="flex items-center justify-center transition-transform hover:-translate-y-0.5"
@@ -250,7 +250,7 @@ export function LeadFormSection() {
                 <Image
                   alt=""
                   aria-hidden="true"
-                  className="h-[38px] w-[38px] lg:h-[47px] lg:w-[47px]"
+                  className="h-[38px] w-[38px] md:h-[44px] md:w-[44px] min-[1025px]:h-[47px] min-[1025px]:w-[47px]"
                   height={47}
                   src="/icons/teleg.svg"
                   width={47}
@@ -264,7 +264,7 @@ export function LeadFormSection() {
                 <Image
                   alt=""
                   aria-hidden="true"
-                  className="h-[38px] w-[38px] lg:h-[47px] lg:w-[47px]"
+                  className="h-[38px] w-[38px] md:h-[44px] md:w-[44px] min-[1025px]:h-[47px] min-[1025px]:w-[47px]"
                   height={47}
                   src="/icons/instagram.svg"
                   width={47}
@@ -278,7 +278,7 @@ export function LeadFormSection() {
                 <Image
                   alt=""
                   aria-hidden="true"
-                  className="h-[38px] w-[38px] lg:h-[47px] lg:w-[47px]"
+                  className="h-[38px] w-[38px] md:h-[44px] md:w-[44px] min-[1025px]:h-[47px] min-[1025px]:w-[47px]"
                   height={47}
                   src="/icons/whats.svg"
                   width={47}

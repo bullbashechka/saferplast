@@ -19,12 +19,12 @@ export function SiteFooter() {
     <footer
       id="contacts"
       aria-label={contactsTitle}
-      className="bg-[rgba(250,254,255,1)] px-[10px] pb-10 pt-14 lg:px-5 lg:pb-12 lg:pt-20 lg:px-8"
+      className="bg-[rgba(250,254,255,1)] px-[10px] pb-10 pt-14 md:px-5 md:pb-12 md:pt-20 min-[1025px]:px-8"
     >
-      <div className="mx-auto w-full max-w-[300px] lg:max-w-[1201px]">
-        <div className="lg:hidden">
+      <div className="mx-auto w-full max-w-[300px] md:max-w-[1201px]">
+        <div className="md:hidden">
           <div className="grid grid-cols-[1fr_auto] items-start gap-[16px]">
-            <nav aria-label="Навигация в подвале">
+            <nav aria-label="РќР°РІРёРіР°С†РёСЏ РІ РїРѕРґРІР°Р»Рµ">
               <ul className="grid gap-[1px]">
                 {navigationLinks.map((link) => (
                   <li key={link.href}>
@@ -113,9 +113,9 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="hidden lg:block">
-          <div className="grid gap-10 lg:grid-cols-[220px_minmax(12rem,14rem)_minmax(0,1fr)] xl:grid-cols-[263px_minmax(12rem,14rem)_minmax(0,1fr)] xl:gap-[9rem]">
-            <a aria-label="Saferplast" className="block w-[220px] max-w-full xl:w-[263px]" href="#top">
+        <div className="hidden md:block">
+          <div className="grid gap-8 md:grid-cols-[220px_minmax(10rem,12rem)_minmax(0,1fr)] min-[1025px]:gap-10 min-[1025px]:grid-cols-[263px_minmax(12rem,14rem)_minmax(0,1fr)] xl:gap-[9rem]">
+            <a aria-label="Saferplast" className="block w-[220px] max-w-full min-[1025px]:w-[263px]" href="#top">
               <Image
                 alt="Saferplast"
                 className="h-auto w-full max-w-full object-contain"
@@ -126,12 +126,12 @@ export function SiteFooter() {
               />
             </a>
 
-            <nav aria-label="Навигация в подвале" className="lg:self-center lg:justify-self-center">
+            <nav aria-label="РќР°РІРёРіР°С†РёСЏ РІ РїРѕРґРІР°Р»Рµ" className="md:self-center md:justify-self-center">
               <ul className="grid gap-4 sm:grid-cols-2 sm:gap-x-[1px]">
                 {navigationLinks.map((link) => (
                   <li key={link.href}>
                     <a
-                      className="whitespace-nowrap font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
+                      className="whitespace-nowrap font-body text-[0.9375rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62] min-[1025px]:text-[1rem]"
                       href={link.href}
                     >
                       {link.label}
@@ -141,19 +141,19 @@ export function SiteFooter() {
               </ul>
             </nav>
 
-            <div className="flex flex-col gap-5 lg:items-end lg:text-right">
+            <div className="flex flex-col gap-5 md:items-end md:text-right">
               <div>
-                <h2 className="font-body text-[2rem] font-medium leading-[1] tracking-[0] text-[#004B62] lg:text-[2.25rem] xl:text-[40px]">
+                <h2 className="font-body text-[2.1875rem] font-medium leading-[1] tracking-[0] text-[#004B62] min-[1025px]:text-[2.25rem] xl:text-[40px]">
                   {contactsTitle}
                 </h2>
-                <p className="mt-4 max-w-[26.1875rem] font-body text-[1rem] font-normal leading-[1.3] tracking-[0] text-[#242424] lg:ml-auto">
+                <p className="mt-4 max-w-[26.1875rem] font-body text-[0.9375rem] font-normal leading-[1.3] tracking-[0] text-[#242424] md:ml-auto min-[1025px]:text-[1rem]">
                   {contactsDescription}
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-4 lg:justify-end">
+              <div className="flex flex-wrap items-center gap-4 md:justify-end">
                 <a
-                  className="inline-flex items-center gap-3 font-body text-[1.125rem] font-medium leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62] sm:text-[1.25rem]"
+                  className="inline-flex items-center gap-3 font-body text-[1.1875rem] font-medium leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62] min-[1025px]:text-[1.25rem]"
                   href={phoneHref}
                 >
                   <Image alt="" aria-hidden="true" height={18} src="/icons/phone.svg" width={18} />
@@ -193,10 +193,10 @@ export function SiteFooter() {
             </div>
           </div>
 
-          <div className="mt-8 border-t border-[#d8e6eb] pt-6 lg:mt-10">
+          <div className="mt-8 border-t border-[#d8e6eb] pt-6 md:mt-9 min-[1025px]:mt-10">
             <div className="grid justify-center gap-3 text-center sm:grid-cols-2 sm:gap-8">
               {legalItems.map((item) => (
-                <p key={item} className="font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#242424]">
+                <p key={item} className="font-body text-[0.9375rem] font-normal leading-[1] tracking-[0] text-[#242424] min-[1025px]:text-[1rem]">
                   {item}
                 </p>
               ))}
