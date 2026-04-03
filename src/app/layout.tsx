@@ -1,12 +1,31 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 
 import "@/styles/globals.css";
+
+const siteUrl = new URL("https://saferplast.saidashev-kirill2004.workers.dev/");
 
 export const metadata: Metadata = {
   title: "Saferplast",
   description: "Пластиковые окна с формой заявки и калькулятором стоимости.",
+  metadataBase: siteUrl,
+  alternates: {
+    canonical: "/",
+  },
   verification: {
     google: "a5j2wAbP42rURdiWwSKMibnavkTAwHjwq4tHpKBxWj8",
+  },
+  openGraph: {
+    title: "Saferplast",
+    description: "Пластиковые окна с формой заявки и калькулятором стоимости.",
+    url: siteUrl,
+    siteName: "Saferplast",
+    locale: "ru_RU",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Saferplast",
+    description: "Пластиковые окна с формой заявки и калькулятором стоимости.",
   },
   icons: {
     icon: "/images/original/logo.png",
