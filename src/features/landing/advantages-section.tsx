@@ -70,7 +70,7 @@ function DesktopAdvantagesCard({ card, index }: { card: AdvantagesCard; index: n
   if (card.kind === "image") {
     return (
       <article
-        className={`${positionClassName} relative min-h-[clamp(12rem,20vw,27.5rem)] overflow-hidden rounded-[1.25rem] bg-[#d9e5ea] min-[1440px]:min-h-[27.5rem]`}
+        className={`${positionClassName} relative min-h-[27.5rem] overflow-hidden rounded-[1.25rem] bg-[#d9e5ea]`}
       >
         <Image
           alt="Фирменный стиль Saferplast"
@@ -79,10 +79,10 @@ function DesktopAdvantagesCard({ card, index }: { card: AdvantagesCard; index: n
           sizes="(max-width: 1023px) 100vw, 285px"
           src="/images/webp/cloud.webp"
         />
-        <div className="absolute inset-0 flex items-center justify-center px-[clamp(0.75rem,1.4vw,1rem)] min-[1440px]:px-4">
+        <div className="absolute inset-0 flex items-center justify-center px-4">
           <Image
             alt="Saferplast"
-            className="h-auto w-[clamp(10rem,20vw,26.875rem)] min-[1440px]:w-[26.875rem]"
+            className="h-auto w-[26.875rem]"
             height={300}
             src="/images/original/logo.png"
             unoptimized
@@ -97,15 +97,15 @@ function DesktopAdvantagesCard({ card, index }: { card: AdvantagesCard; index: n
   const content = (
     <div className="flex h-full flex-col">
       <h3
-        className={`max-w-[33.125rem] font-display text-[clamp(1rem,1.35vw,1.875rem)] font-normal leading-[1] min-[1440px]:text-[1.875rem] ${titleClassName}`}
+        className={`max-w-[33.125rem] font-display text-[1.875rem] font-normal leading-[1] ${titleClassName}`}
       >
         {card.title}
       </h3>
-      <p className="mt-auto max-w-[33.125rem] pt-[clamp(0.75rem,1.4vw,2rem)] text-[clamp(0.75rem,0.72vw,1rem)] leading-[1.2] min-[1440px]:pt-8 min-[1440px]:text-[1rem]">
+      <p className="mt-auto max-w-[33.125rem] pt-8 text-[1rem] leading-[1.2]">
         {card.description}
       </p>
       {isDark ? (
-        <span className="absolute right-[clamp(0.875rem,1.4vw,1.5rem)] top-[clamp(0.875rem,1.8vw,2.5rem)] text-[clamp(1rem,0.95vw,1.375rem)] leading-none min-[1440px]:right-6 min-[1440px]:top-10 min-[1440px]:text-[1.375rem]">
+        <span className="absolute right-6 top-10 text-[1.375rem] leading-none">
           &rarr;
         </span>
       ) : null}
@@ -115,7 +115,7 @@ function DesktopAdvantagesCard({ card, index }: { card: AdvantagesCard; index: n
   if (card.href) {
     return (
       <a
-        className={`${positionClassName} relative min-h-[clamp(8.75rem,14vw,13.125rem)] rounded-[1.25rem] px-[clamp(0.875rem,1.8vw,1.875rem)] py-[clamp(1rem,2vw,2.5rem)] transition-colors hover:bg-[#00384a] min-[1440px]:min-h-[13.125rem] min-[1440px]:px-[1.875rem] min-[1440px]:py-[2.5rem] ${baseClassName}`}
+        className={`${positionClassName} relative min-h-[13.125rem] rounded-[1.25rem] px-[1.875rem] py-[2.5rem] transition-colors hover:bg-[#00384a] ${baseClassName}`}
         href={card.href}
       >
         {content}
@@ -125,7 +125,7 @@ function DesktopAdvantagesCard({ card, index }: { card: AdvantagesCard; index: n
 
   return (
     <article
-      className={`${positionClassName} min-h-[clamp(8.75rem,14vw,13.125rem)] rounded-[1.25rem] px-[clamp(0.875rem,1.8vw,1.875rem)] py-[clamp(1rem,2vw,2.5rem)] min-[1440px]:min-h-[13.125rem] min-[1440px]:px-[1.875rem] min-[1440px]:py-[2.5rem] ${baseClassName}`}
+      className={`${positionClassName} min-h-[13.125rem] rounded-[1.25rem] px-[1.875rem] py-[2.5rem] ${baseClassName}`}
     >
       {content}
     </article>
@@ -175,14 +175,14 @@ export function AdvantagesSection() {
         </div>
 
         <div className="hidden lg:block">
-          <h2 className="text-center font-display text-[clamp(1.75rem,2.2vw,2.75rem)] font-normal leading-[1] text-[#004B62] min-[1440px]:text-[2.75rem]">
+          <h2 className="text-center font-display text-[2.75rem] font-normal leading-[1] text-[#004B62]">
             {advantagesSectionContent.title}
           </h2>
-          <p className="mx-auto mt-[clamp(0.75rem,1vw,1rem)] max-w-[clamp(34rem,44vw,40rem)] text-center text-[clamp(0.8125rem,0.8vw,1rem)] leading-[1.2] text-[#242424] min-[1440px]:mt-4 min-[1440px]:max-w-[40rem] min-[1440px]:text-[1rem]">
+          <p className="mx-auto mt-4 max-w-[40rem] text-center text-[1rem] leading-[1.2] text-[#242424]">
             {advantagesSectionContent.subtitle}
           </p>
 
-          <div className="mt-[clamp(1.75rem,2.2vw,2.5rem)] grid lg:grid-cols-4 lg:grid-rows-[clamp(8.75rem,14vw,13.125rem)_clamp(8.75rem,14vw,13.125rem)] lg:gap-[clamp(0.75rem,1vw,1.25rem)] min-[1440px]:mt-10 min-[1440px]:grid-rows-[13.125rem_13.125rem] min-[1440px]:gap-5 xl:grid-cols-[17.8125rem_17.8125rem_17.6875rem_17.8125rem]">
+          <div className="mt-10 grid lg:grid-cols-4 lg:grid-rows-[13.125rem_13.125rem] lg:gap-5 xl:grid-cols-[17.8125rem_17.8125rem_17.6875rem_17.8125rem]">
             {advantagesSectionContent.cards.map((card, index) => (
               <DesktopAdvantagesCard card={card} index={index} key={card.title ?? `image-card-${index}`} />
             ))}

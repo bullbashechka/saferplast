@@ -12,7 +12,7 @@ function DesktopWorkProcessCard({
   imageSrc: `/images/${string}`;
 }) {
   return (
-    <article className="relative h-[15.5rem] overflow-hidden rounded-[20px] bg-[#d9e5ea] xl:h-[20.5625rem]">
+    <article className="relative h-[20.5625rem] overflow-hidden rounded-[20px] bg-[#d9e5ea]">
       <Image
         alt={titleLines.join(" ")}
         className="object-cover"
@@ -23,18 +23,18 @@ function DesktopWorkProcessCard({
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,75,98,0.12)_0%,rgba(0,0,0,0.18)_100%)]" />
 
       <div className="absolute left-[9px] right-[9px] top-[11px]">
-        <div className="liquid-glass-strong rounded-[15px] p-2.5 xl:p-4">
-          <div className="relative z-10 flex items-start gap-2.5 xl:gap-4">
-            <div className="relative left-[1px] h-[40px] w-[42px] shrink-0 xl:left-[5px] xl:h-[55.00013px] xl:w-[57px]">
+        <div className="liquid-glass-strong rounded-[15px] p-4">
+          <div className="relative z-10 flex items-start gap-4">
+            <div className="relative left-[5px] h-[55.00013px] w-[57px] shrink-0">
               <Image alt="" aria-hidden="true" fill src="/icons/square.svg" />
-              <span className="absolute inset-0 flex items-center justify-center font-display text-[32px] font-normal leading-[1] text-[#004B62] xl:text-[45px]">
+              <span className="absolute inset-0 flex items-center justify-center font-display text-[45px] font-normal leading-[1] text-[#004B62]">
                 {step}
               </span>
             </div>
 
-            <h3 className="flex min-h-[44px] min-w-0 flex-1 flex-col justify-center gap-0.5 pl-[2px] text-[0.8125rem] font-medium leading-[0.95] text-[#004B62] xl:h-[55px] xl:max-w-[16rem] xl:justify-between xl:gap-0 xl:pl-[5px] xl:text-[1.5rem] xl:leading-[1]">
+            <h3 className="flex h-[55px] min-w-0 flex-1 flex-col justify-between gap-0 max-w-[16rem] pl-[5px] text-[1.5rem] font-medium leading-[1] text-[#004B62]">
               {titleLines.map((line, index) => (
-                <span className={`${index === 1 ? "xl:whitespace-nowrap" : ""} block`} key={line}>
+                <span className={`${index === 1 ? "whitespace-nowrap" : ""} block`} key={line}>
                   {line}
                 </span>
               ))}
@@ -97,11 +97,11 @@ export function WorkProcessSection() {
       <div className="mx-auto w-full max-w-[300px] lg:max-w-content">
         <h2
           id="work-process-title"
-          className="text-center font-['Sansation'] text-[20px] font-normal leading-[1] tracking-[0] text-[#004B62] lg:font-sans lg:text-[2rem] lg:font-medium xl:text-[2.5rem]"
+          className="text-center font-['Sansation'] text-[20px] font-normal leading-[1] tracking-[0] text-[#004B62] lg:font-sans lg:text-[2.5rem] lg:font-medium"
         >
           {workProcessContent.title}
         </h2>
-        <p className="mx-auto mt-[10px] max-w-[300px] text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[#242424] lg:mt-4 lg:max-w-[28rem] lg:font-sans lg:text-[0.875rem] xl:max-w-[30.125rem] xl:text-[1rem]">
+        <p className="mx-auto mt-[10px] max-w-[300px] text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[#242424] lg:mt-4 lg:max-w-[30.125rem] lg:font-sans lg:text-[1rem]">
           {workProcessContent.subtitle}
         </p>
 
@@ -116,7 +116,7 @@ export function WorkProcessSection() {
           ))}
         </div>
 
-        <div className="hidden lg:mt-8 lg:grid lg:grid-cols-3 lg:gap-3 xl:mt-10 xl:gap-[19px]">
+        <div className="hidden lg:mt-10 lg:grid lg:grid-cols-3 lg:gap-[19px]">
           {workProcessContent.cards.map((card) => (
             <DesktopWorkProcessCard
               imageSrc={card.imageSrc}

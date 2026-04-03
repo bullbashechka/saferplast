@@ -110,11 +110,11 @@ export function ProjectsSection() {
     images.right,
   ] as const;
   const desktopGridStyle: CSSProperties & Record<string, string> = {
-    "--projects-column-height": "clamp(24rem, 9.6rem + 30vw, 36.125rem)",
-    "--projects-stack-gap": "clamp(0.75rem, 0.25rem + 1.05vw, 1.25rem)",
-    "--projects-title-height": "clamp(4.5rem, 3.4rem + 2.3vw, 5.4375rem)",
-    "--projects-middle-top-height": "clamp(11.5rem, 7.6rem + 8.1vw, 17.6875rem)",
-    "--projects-cta-height": "clamp(3.625rem, 2.95rem + 1.4vw, 4.625rem)",
+    "--projects-column-height": "36.125rem",
+    "--projects-stack-gap": "1.25rem",
+    "--projects-title-height": "5.4375rem",
+    "--projects-middle-top-height": "17.6875rem",
+    "--projects-cta-height": "4.625rem",
   };
 
   return (
@@ -143,15 +143,15 @@ export function ProjectsSection() {
         </div>
 
         <div
-          className="hidden lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-[var(--projects-stack-gap)] min-[1440px]:[--projects-column-height:36.125rem] min-[1440px]:[--projects-stack-gap:1.25rem] min-[1440px]:[--projects-title-height:5.4375rem] min-[1440px]:[--projects-middle-top-height:17.6875rem] min-[1440px]:[--projects-cta-height:4.625rem] xl:grid-cols-[387px_387px_387px] xl:gap-x-5 xl:gap-y-0"
+          className="hidden lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-[var(--projects-stack-gap)] xl:grid-cols-[387px_387px_387px] xl:gap-x-5 xl:gap-y-0"
           style={desktopGridStyle}
         >
           <div className="flex flex-col gap-[var(--projects-stack-gap)]">
             <div className="flex h-[var(--projects-title-height)] flex-col justify-between">
-              <h2 className="font-display text-[clamp(1.75rem,1.05rem+1.45vw,2.75rem)] font-normal leading-[1] text-[#004B62] min-[1440px]:text-[2.75rem]">
+              <h2 className="font-display text-[2.75rem] font-normal leading-[1] text-[#004B62]">
                 {title}
               </h2>
-              <p className="max-w-[clamp(13.5rem,10.5rem+6.2vw,17.4375rem)] text-[clamp(0.875rem,0.79rem+0.18vw,1rem)] font-normal leading-[1.2] text-[#000000] min-[1440px]:max-w-[17.4375rem] min-[1440px]:text-[1rem]">
+              <p className="max-w-[17.4375rem] text-[1rem] font-normal leading-[1.2] text-[#000000]">
                 {subtitle}
               </p>
             </div>
@@ -193,7 +193,7 @@ export function ProjectsSection() {
             />
 
             <a
-              className="inline-flex h-[var(--projects-cta-height)] w-full items-center justify-center whitespace-nowrap rounded-[15px] border border-[#004B62] px-[clamp(1rem,0.35rem+1.35vw,4.125rem)] text-center text-[clamp(1rem,0.82rem+0.36vw,1.25rem)] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#004B62] hover:text-white min-[1440px]:px-[4.125rem] min-[1440px]:text-[1.25rem]"
+              className="inline-flex h-[var(--projects-cta-height)] w-full items-center justify-center whitespace-nowrap rounded-[15px] border border-[#004B62] px-[4.125rem] text-center text-[1.25rem] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#004B62] hover:text-white"
               href={ctaHref}
             >
               {ctaLabel}
