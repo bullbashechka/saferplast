@@ -15,14 +15,14 @@ export function ProofSection() {
   return (
     <section
       aria-labelledby="proof-title"
-      className="mt-[50px] bg-[rgba(250,254,255,1)] pb-10 md:mt-[77px] md:pb-10 lg:pb-14"
+      className="mt-[50px] bg-[rgba(250,254,255,1)] pb-10 lg:mt-[77px] lg:pb-10 lg:pb-14"
     >
-      <div className="mx-auto max-w-[90rem] px-[10px] md:px-5 lg:px-8 xl:w-[90rem] xl:max-w-none xl:px-[7.5rem]">
+      <div className="mx-auto max-w-[90rem] px-[10px] lg:px-5 lg:px-8 xl:w-[90rem] xl:max-w-none xl:px-[7.5rem]">
         <h2 id="proof-title" className="sr-only">
           Опыт, аккуратность и контроль
         </h2>
 
-        <div className="mx-auto w-fit md:hidden">
+        <div className="mx-auto w-fit lg:hidden">
           <article className="relative h-[369px] w-[300px] overflow-hidden rounded-[20px] bg-[#d9e5ea]">
             <Image
               alt="Сотрудник Saferplast на производстве"
@@ -50,13 +50,13 @@ export function ProofSection() {
           </article>
         </div>
 
-        <div className="hidden md:grid md:grid-cols-[0.9fr_1.1fr] md:gap-3 lg:grid-cols-[0.85fr_1.35fr] lg:gap-4 xl:grid-cols-[387px_793px] xl:gap-5">
+        <div className="hidden lg:grid lg:grid-cols-[0.9fr_1.1fr] lg:gap-3 lg:grid-cols-[0.85fr_1.35fr] lg:gap-4 xl:grid-cols-[387px_793px] xl:gap-5">
           <article className="relative h-[260px] overflow-hidden rounded-[20px] bg-[#d9e5ea] lg:h-[340px] xl:h-[360px]">
             <Image
               alt="Сотрудник Saferplast на производстве"
               className="object-cover"
               fill
-              sizes="(max-width: 1024px) 100vw, 387px"
+              sizes="(max-width: 1023px) 100vw, 387px"
               src="/images/webp/male-worker-factory.webp"
             />
           </article>
@@ -66,7 +66,7 @@ export function ProofSection() {
               alt="Проверка стекла на объекте"
               className="object-cover"
               fill
-              sizes="(max-width: 1024px) 100vw, 793px"
+              sizes="(max-width: 1023px) 100vw, 793px"
               src={rightProofImageSrc}
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,hsla(0,0%,0%,0.37)_0%,hsla(0,0%,0%,0.37)_100%)]" />

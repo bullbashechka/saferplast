@@ -17,7 +17,7 @@ function DesktopWorkProcessCard({
         alt={titleLines.join(" ")}
         className="object-cover"
         fill
-        sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 387px"
+        sizes="(max-width: 1023px) 100vw, 387px"
         src={imageSrc}
       />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,75,98,0.12)_0%,rgba(0,0,0,0.18)_100%)]" />
@@ -92,20 +92,20 @@ export function WorkProcessSection() {
   return (
     <section
       aria-labelledby="work-process-title"
-      className="bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-[60px] md:mt-[120px] md:px-5 md:pt-0 lg:px-8"
+      className="bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-[60px] lg:mt-[120px] lg:px-5 lg:pt-0 lg:px-8"
     >
-      <div className="mx-auto w-full max-w-[300px] md:max-w-content">
+      <div className="mx-auto w-full max-w-[300px] lg:max-w-content">
         <h2
           id="work-process-title"
-          className="text-center font-['Sansation'] text-[20px] font-normal leading-[1] tracking-[0] text-[#004B62] md:font-sans md:text-[2rem] md:font-medium xl:text-[2.5rem]"
+          className="text-center font-['Sansation'] text-[20px] font-normal leading-[1] tracking-[0] text-[#004B62] lg:font-sans lg:text-[2rem] lg:font-medium xl:text-[2.5rem]"
         >
           {workProcessContent.title}
         </h2>
-        <p className="mx-auto mt-[10px] max-w-[300px] text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[#242424] md:mt-4 md:max-w-[28rem] md:font-sans md:text-[0.875rem] xl:max-w-[30.125rem] xl:text-[1rem]">
+        <p className="mx-auto mt-[10px] max-w-[300px] text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[#242424] lg:mt-4 lg:max-w-[28rem] lg:font-sans lg:text-[0.875rem] xl:max-w-[30.125rem] xl:text-[1rem]">
           {workProcessContent.subtitle}
         </p>
 
-        <div className="mt-[20px] space-y-[10px] md:hidden">
+        <div className="mt-[20px] space-y-[10px] lg:hidden">
           {workProcessContent.cards.map((card) => (
             <MobileWorkProcessCard
               imageSrc={card.imageSrc}
@@ -116,7 +116,7 @@ export function WorkProcessSection() {
           ))}
         </div>
 
-        <div className="hidden md:mt-8 md:grid md:grid-cols-3 md:gap-3 xl:mt-10 xl:gap-[19px]">
+        <div className="hidden lg:mt-8 lg:grid lg:grid-cols-3 lg:gap-3 xl:mt-10 xl:gap-[19px]">
           {workProcessContent.cards.map((card) => (
             <DesktopWorkProcessCard
               imageSrc={card.imageSrc}

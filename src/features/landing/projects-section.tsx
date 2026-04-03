@@ -121,10 +121,10 @@ export function ProjectsSection() {
     <section
       id="projects"
       aria-label="Наши работы"
-      className="bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-[60px] md:mt-[120px] md:px-5 md:pt-0 lg:px-8"
+      className="bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-[60px] lg:mt-[120px] lg:px-5 lg:pt-0 lg:px-8"
     >
-      <div className="mx-auto w-full max-w-[300px] md:max-w-[1201px]">
-        <div className="md:hidden">
+      <div className="mx-auto w-full max-w-[300px] lg:max-w-[1201px]">
+        <div className="lg:hidden">
           <h2 className="text-center font-['Sansation'] text-[20px] font-normal leading-[1] tracking-[0] text-[#004B62]">
             {title}
           </h2>
@@ -143,15 +143,15 @@ export function ProjectsSection() {
         </div>
 
         <div
-          className="hidden md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] md:gap-[var(--projects-stack-gap)] xl:grid-cols-[387px_387px_387px] xl:gap-x-5 xl:gap-y-0"
+          className="hidden lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-[var(--projects-stack-gap)] min-[1440px]:[--projects-column-height:36.125rem] min-[1440px]:[--projects-stack-gap:1.25rem] min-[1440px]:[--projects-title-height:5.4375rem] min-[1440px]:[--projects-middle-top-height:17.6875rem] min-[1440px]:[--projects-cta-height:4.625rem] xl:grid-cols-[387px_387px_387px] xl:gap-x-5 xl:gap-y-0"
           style={desktopGridStyle}
         >
           <div className="flex flex-col gap-[var(--projects-stack-gap)]">
             <div className="flex h-[var(--projects-title-height)] flex-col justify-between">
-              <h2 className="font-display text-[clamp(1.75rem,1.05rem+1.45vw,2.75rem)] font-normal leading-[1] text-[#004B62]">
+              <h2 className="font-display text-[clamp(1.75rem,1.05rem+1.45vw,2.75rem)] font-normal leading-[1] text-[#004B62] min-[1440px]:text-[2.75rem]">
                 {title}
               </h2>
-              <p className="max-w-[clamp(13.5rem,10.5rem+6.2vw,17.4375rem)] text-[clamp(0.875rem,0.79rem+0.18vw,1rem)] font-normal leading-[1.2] text-[#000000]">
+              <p className="max-w-[clamp(13.5rem,10.5rem+6.2vw,17.4375rem)] text-[clamp(0.875rem,0.79rem+0.18vw,1rem)] font-normal leading-[1.2] text-[#000000] min-[1440px]:max-w-[17.4375rem] min-[1440px]:text-[1rem]">
                 {subtitle}
               </p>
             </div>
@@ -193,7 +193,7 @@ export function ProjectsSection() {
             />
 
             <a
-              className="inline-flex h-[var(--projects-cta-height)] w-full items-center justify-center whitespace-nowrap rounded-[15px] border border-[#004B62] px-[clamp(1rem,0.35rem+1.35vw,4.125rem)] text-center text-[clamp(1rem,0.82rem+0.36vw,1.25rem)] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#004B62] hover:text-white"
+              className="inline-flex h-[var(--projects-cta-height)] w-full items-center justify-center whitespace-nowrap rounded-[15px] border border-[#004B62] px-[clamp(1rem,0.35rem+1.35vw,4.125rem)] text-center text-[clamp(1rem,0.82rem+0.36vw,1.25rem)] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#004B62] hover:text-white min-[1440px]:px-[4.125rem] min-[1440px]:text-[1.25rem]"
               href={ctaHref}
             >
               {ctaLabel}

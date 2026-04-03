@@ -61,8 +61,8 @@ function SolutionCard({
         fill
         sizes={
           card.row === "top"
-            ? "(max-width: 1024px) 100vw, 387px"
-            : "(max-width: 1024px) 100vw, 590px"
+            ? "(max-width: 1023px) 100vw, 387px"
+            : "(max-width: 1023px) 100vw, 590px"
         }
         src={card.imageSrc}
       />
@@ -169,42 +169,42 @@ export function SolutionMatchingSection() {
     <section
       id="solution-matching"
       aria-labelledby="solution-matching-title"
-      className="mt-[20px] bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-0 md:mt-[120px] md:px-5 md:pt-0 lg:px-8"
+      className="mt-[20px] bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-0 lg:mt-[120px] lg:px-5 lg:pt-0 lg:px-8"
     >
-      <div className="mx-auto w-full max-w-[300px] md:max-w-content">
+      <div className="mx-auto w-full max-w-[300px] lg:max-w-content">
         <h2
           id="solution-matching-title"
-          className="font-['Sansation'] text-center text-[20px] font-normal leading-[1] tracking-[0] text-[hsla(194,100%,19%,1)] md:font-display md:text-[2rem] lg:text-[44px]"
+          className="font-['Sansation'] text-center text-[20px] font-normal leading-[1] tracking-[0] text-[hsla(194,100%,19%,1)] lg:font-display lg:text-[2rem] lg:text-[44px]"
         >
           {section.heading}
         </h2>
         <p
-          className="mx-auto mt-[10px] max-w-[300px] text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[hsla(0,0%,14%,1)] md:mt-4 md:max-w-[44rem] md:font-body md:text-[0.875rem] lg:max-w-[51rem] lg:text-[16px]"
+          className="mx-auto mt-[10px] max-w-[300px] text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[hsla(0,0%,14%,1)] lg:mt-4 lg:max-w-[44rem] lg:font-body lg:text-[0.875rem] lg:max-w-[51rem] lg:text-[16px]"
         >
           {section.subtitle}
         </p>
 
-        <div className="mt-[20px] space-y-[10px] md:hidden">
+        <div className="mt-[20px] space-y-[10px] lg:hidden">
           {mobileCards.map((card) => (
             <MobileSolutionCard card={card} key={card.id} />
           ))}
         </div>
 
         <a
-          className="mx-auto mt-[26px] flex h-[38px] w-[215px] items-center justify-center gap-[14px] rounded-[10px] bg-[#004B62] px-[39px] py-[12px] text-center font-['Montserrat'] text-[14px] font-medium leading-[1] tracking-[0] text-white transition-colors hover:bg-[#00384a] md:hidden"
+          className="mx-auto mt-[26px] flex h-[38px] w-[215px] items-center justify-center gap-[14px] rounded-[10px] bg-[#004B62] px-[39px] py-[12px] text-center font-['Montserrat'] text-[14px] font-medium leading-[1] tracking-[0] text-white transition-colors hover:bg-[#00384a] lg:hidden"
           href="#lead-form"
         >
           Узнать подробнее
         </a>
 
-        <div className="hidden md:mt-8 md:block md:space-y-4 lg:space-y-5">
-          <div className="grid md:grid-cols-3 md:gap-3 lg:gap-4 xl:gap-5">
+        <div className="hidden lg:mt-8 lg:block lg:space-y-4 lg:space-y-5">
+          <div className="grid lg:grid-cols-3 lg:gap-3 lg:gap-4 xl:gap-5">
             {rows.topCards.map((card) => (
               <SolutionCard card={card} isBottomLeft={false} key={card.id} />
             ))}
           </div>
 
-          <div className="grid md:grid-cols-2 md:gap-3 lg:gap-4 xl:gap-5">
+          <div className="grid lg:grid-cols-2 lg:gap-3 lg:gap-4 xl:gap-5">
             {rows.bottomCards.map((card, index) => (
               <SolutionCard
                 card={card}
