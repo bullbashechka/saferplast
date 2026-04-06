@@ -211,7 +211,33 @@ export function LeadFormSection() {
                         className="text-[10px] leading-[1.15] text-white md:text-[13px] md:leading-[1.2] min-[1025px]:text-[14px]"
                         htmlFor={`lead-consent-${index}`}
                       >
-                        {consent}
+                        {index === 0 ? (
+                          <>
+                            Я даю согласие на{" "}
+                            <a
+                              className="underline decoration-white/70 underline-offset-2 hover:text-white"
+                              href="/data-processing-policy"
+                              onClick={(event) => event.stopPropagation()}
+                              target="_blank"
+                            >
+                              обработку персональных данных
+                            </a>
+                          </>
+                        ) : index === 1 ? (
+                          <>
+                            Я ознакомлен(а) с{" "}
+                            <a
+                              className="underline decoration-white/70 underline-offset-2 hover:text-white"
+                              href="/privacy"
+                              onClick={(event) => event.stopPropagation()}
+                              target="_blank"
+                            >
+                              Политикой конфиденцальности
+                            </a>
+                          </>
+                        ) : (
+                          consent
+                        )}
                       </FieldLabel>
                     </Field>
                   ))}

@@ -2,6 +2,22 @@ import { Image } from "@/components/ui/image";
 
 import { siteFooterContent } from "@/features/landing/site-footer-content";
 
+const legalLinkHrefs = ["/privacy", "/data-processing-policy", "/public-offer"] as const;
+
+function LegalItem({ item, index }: { item: string; index: number }) {
+  const href = legalLinkHrefs[index];
+
+  if (!href) {
+    return <>{item}</>;
+  }
+
+  return (
+    <a className="transition-colors hover:text-[#004B62]" href={href}>
+      {item}
+    </a>
+  );
+}
+
 export function SiteFooter() {
   const {
     contactsDescription,
@@ -52,9 +68,7 @@ export function SiteFooter() {
           </div>
 
           <div className="mt-[24px]">
-            <h2 className="font-display text-[20px] font-normal leading-[1] text-[#004B62]">
-              {contactsTitle}
-            </h2>
+            <h2 className="font-display text-[20px] font-normal leading-[1] text-[#004B62]">{contactsTitle}</h2>
             <p className="mt-[10px] max-w-[230px] font-body text-[12px] font-normal leading-[1.15] text-[#242424]">
               {contactsDescription}
             </p>
@@ -109,7 +123,7 @@ export function SiteFooter() {
                   index === 0 ? "" : "mt-[8px]"
                 }`}
               >
-                {item}
+                <LegalItem index={index} item={item} />
               </p>
             ))}
           </div>
@@ -198,10 +212,10 @@ export function SiteFooter() {
           </div>
 
           <div className="mt-8 border-t border-[#d8e6eb] pt-6 md:mt-9 min-[1025px]:mt-10">
-            <div className="grid justify-center gap-3 text-center sm:grid-cols-2 sm:gap-8">
-              {legalItems.map((item) => (
+            <div className="flex flex-nowrap items-center justify-center gap-8 text-center">
+              {legalItems.map((item, index) => (
                 <p key={item} className="font-body text-[0.9375rem] font-normal leading-[1] tracking-[0] text-[#242424] min-[1025px]:text-[1rem]">
-                  {item}
+                  <LegalItem index={index} item={item} />
                 </p>
               ))}
             </div>
