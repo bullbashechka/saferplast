@@ -1,6 +1,7 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
+
 This repository is a `React 19 + Vite` landing-page app using `TypeScript` and `Tailwind CSS`. Keep application code under `src/`.
 
 - `src/main.tsx` and `src/App.tsx` contain the SPA entrypoints.
@@ -16,6 +17,7 @@ This repository is a `React 19 + Vite` landing-page app using `TypeScript` and `
 - `scripts` is reserved for project helpers and automation scripts.
 
 ## Build, Test, and Development Commands
+
 - `npm run dev`: start the local Vite dev server.
 - `npm run build`: create the production build.
 - `npm run preview`: preview the built frontend locally.
@@ -28,6 +30,7 @@ This repository is a `React 19 + Vite` landing-page app using `TypeScript` and `
 Run `npm install` before first use. On PowerShell systems with execution-policy restrictions, prefer `npm.cmd run <script>`.
 
 ## Coding Style & Naming Conventions
+
 Use TypeScript for all new code. Prefer functional React components. Keep sections composable and colocate static content with the feature that owns it, following the existing `*-content.ts`, `*-types.ts`, and `*-section.tsx` patterns.
 
 - Use `kebab-case` for feature files such as `first-screen.tsx`.
@@ -40,6 +43,7 @@ Use TypeScript for all new code. Prefer functional React components. Keep sectio
 - Follow `eslint.config.mjs`, `tsconfig.json`, and the existing import alias conventions such as `@/features/...`.
 
 ## Debugging & System Changes
+
 - Do not fix symptoms before identifying the root cause.
 - Fix issues at the source of truth, not at a downstream consumer.
 - Avoid child-layer compensation such as defensive fallbacks, duplicated logic, or UI-only patches that hide a bad upstream contract.
@@ -51,6 +55,7 @@ Use TypeScript for all new code. Prefer functional React components. Keep sectio
 - Prefer proportional systemic fixes over broad rewrites.
 
 ## Testing & Verification
+
 There is no dedicated automated test suite yet. Every code change should pass:
 
 - `npm run lint`
@@ -59,10 +64,13 @@ There is no dedicated automated test suite yet. Every code change should pass:
 If a task touches runtime behavior in a meaningful way, also validate via `npm run dev` when feasible. When tests are introduced later, place them near the related feature/component and use clear names such as `hero-section.test.tsx`.
 
 ## Commit & Pull Request Guidelines
+
 Keep commit messages short, imperative, and specific, for example `Refine lead form layout`. Keep changes focused. Pull requests should include a short summary, affected paths, screenshots for UI changes, and any relevant design/Figma references.
 
 ## Configuration & Deployment Notes
+
 - Do not commit secrets.
 - Use `.env.example` as the template for local environment variables.
 - Ignore generated output such as `dist/`, `node_modules/`, and `tsconfig.tsbuildinfo`.
 - Frontend deploy target is Cloudflare Pages; backend deploy target is Cloudflare Worker (`worker/wrangler.jsonc`).
+  1
