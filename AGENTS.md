@@ -1,9 +1,9 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-This repository is a `Next.js 15` landing-page app using `TypeScript`, `React 19`, and `Tailwind CSS`. Keep application code under `src/`.
+This repository is a `React 19 + Vite` landing-page app using `TypeScript` and `Tailwind CSS`. Keep application code under `src/`.
 
-- `src/app` contains the App Router entrypoints such as `layout.tsx` and `page.tsx`.
+- `src/main.tsx` and `src/App.tsx` contain the SPA entrypoints.
 - `src/features/landing`, `src/features/calculator`, and `src/features/lead-form` contain page sections and feature-specific content/types.
 - `src/components` is reserved for reusable shared UI. `src/components/ui` exists but is currently mostly empty, so prefer adding generic building blocks there rather than inside feature folders when reuse is expected.
 - `src/lib` contains shared config and utilities such as site metadata.
@@ -11,13 +11,17 @@ This repository is a `Next.js 15` landing-page app using `TypeScript`, `React 19
 - `src/hooks` is available for reusable hooks when stateful logic starts repeating across features.
 - `src/styles/globals.css` holds Tailwind imports, font imports, base element resets, and shared global utility classes already used by the UI.
 - `public/icons` and `public/images` contain static assets.
+- `worker/src` contains the Cloudflare Worker backend (`POST /api/lead`).
 - `docs` is for notes, architecture references, and design material.
 - `scripts` is reserved for project helpers and automation scripts.
 
 ## Build, Test, and Development Commands
-- `npm run dev`: start the local Next.js dev server.
+- `npm run dev`: start the local Vite dev server.
 - `npm run build`: create the production build.
-- `npm run start`: serve the built app.
+- `npm run preview`: preview the built frontend locally.
+- `npm run worker:dev`: run the Cloudflare Worker API locally.
+- `npm run worker:deploy`: deploy the Cloudflare Worker API.
+- `npm run deploy:pages`: deploy `dist/` to Cloudflare Pages.
 - `npm run lint`: run ESLint across the repository.
 - `npm run typecheck`: run TypeScript in no-emit mode.
 
@@ -39,7 +43,7 @@ Use TypeScript for all new code. Prefer functional React components. Keep sectio
 - Do not fix symptoms before identifying the root cause.
 - Fix issues at the source of truth, not at a downstream consumer.
 - Avoid child-layer compensation such as defensive fallbacks, duplicated logic, or UI-only patches that hide a bad upstream contract.
-- Research full flows before editing: `route -> page -> feature section -> shared utility/content -> assets/config`.
+- Research full flows before editing: `entrypoint -> feature section -> shared utility/content -> assets/config -> worker API` when relevant.
 - Diagnose by layers: data contracts, business rules, rendering state, async/timing, integration boundaries, and deployment/runtime config.
 - If a bug appears in a child component, inspect the owner feature or page composition first.
 - When changing a mechanic, align all directly coupled layers, including content constants, types, props, loading/error states, and metadata.
@@ -60,5 +64,5 @@ Keep commit messages short, imperative, and specific, for example `Refine lead f
 ## Configuration & Deployment Notes
 - Do not commit secrets.
 - Use `.env.example` as the template for local environment variables.
-- Ignore generated output such as `.next/`, `node_modules/`, and `tsconfig.tsbuildinfo`.
-- `wrangler.jsonc` is present, so treat Cloudflare/Wrangler configuration as part of the deploy surface when changing runtime or hosting behavior.
+- Ignore generated output such as `dist/`, `node_modules/`, and `tsconfig.tsbuildinfo`.
+- Frontend deploy target is Cloudflare Pages; backend deploy target is Cloudflare Worker (`worker/wrangler.jsonc`).

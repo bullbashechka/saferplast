@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Image } from "@/components/ui/image";
 
 import { workProcessContent } from "@/features/landing/work-process-content";
 

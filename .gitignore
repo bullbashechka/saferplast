@@ -5,6 +5,7 @@ node_modules
 .cloudflare
 .vercel
 coverage
+dist
 *.log
 .env
 .env.local

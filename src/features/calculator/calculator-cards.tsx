@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { Image } from "@/components/ui/image";
 import { useState } from "react";
 
 import { calculatorSectionContent } from "@/features/calculator/calculator-content";

@@ -9,7 +9,7 @@ import { TestimonialsSection } from "@/features/landing/testimonials-section";
 import { WorkProcessSection } from "@/features/landing/work-process-section";
 import { LeadFormSection } from "@/features/lead-form/lead-form-section";
 
-export default function HomePage() {
+export default function App() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[rgba(250,254,255,1)] text-slate-900">
       <FirstScreen />

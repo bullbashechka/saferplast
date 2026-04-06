@@ -1,7 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
+import { Image } from "@/components/ui/image";
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
@@ -64,7 +63,7 @@ function DesktopHeaderActionButton({
 export function DesktopHeaderBrandNav({ navigationLinks }: DesktopHeaderBrandNavProps) {
   return (
     <div className="flex min-w-0 items-start gap-2.5 md:gap-5 min-[1025px]:gap-[3rem]">
-      <Link aria-label="Saferplast" className="block w-[6rem] shrink-0 md:w-[9rem] min-[1025px]:w-[11.1875rem]" href="/">
+      <a aria-label="Saferplast" className="block w-[6rem] shrink-0 md:w-[9rem] min-[1025px]:w-[11.1875rem]" href="/">
         <Image
           alt="Saferplast"
           className="h-auto w-full object-contain"
@@ -74,7 +73,7 @@ export function DesktopHeaderBrandNav({ navigationLinks }: DesktopHeaderBrandNav
           unoptimized
           width={179}
         />
-      </Link>
+      </a>
 
       <nav
         aria-label="Основная навигация"
@@ -135,7 +134,7 @@ export function SiteHeader({ cityLabel, navigationLinks, phoneHref }: SiteHeader
   return (
     <header className="relative py-1">
       <div className="flex items-center justify-between gap-3">
-        <Link aria-label="Saferplast" className="block h-[2.8125rem] w-[5.5rem] shrink-0" href="/">
+        <a aria-label="Saferplast" className="block h-[2.8125rem] w-[5.5rem] shrink-0" href="/">
           <Image
             alt="Saferplast"
             className="h-[2.8125rem] w-[5.5rem] object-contain"
@@ -145,7 +144,7 @@ export function SiteHeader({ cityLabel, navigationLinks, phoneHref }: SiteHeader
             unoptimized
             width={179}
           />
-        </Link>
+        </a>
 
         <button
           aria-controls="mobile-header-navigation"

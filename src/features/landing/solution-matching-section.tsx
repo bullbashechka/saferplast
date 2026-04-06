@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Image } from "@/components/ui/image";
 
 import { solutionMatchingContent } from "@/features/landing/solution-matching-content";
 import type {

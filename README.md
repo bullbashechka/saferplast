@@ -1,36 +1,36 @@
 # Saferplast Main
 
-Стартовый каркас лендинга для пластиковых окон на `Next.js + TypeScript + Tailwind CSS`.
+Landing-page project on `React 19 + Vite + TypeScript + Tailwind CSS`.
 
-## Структура
+## Architecture
 
-- `src/app` - App Router, layout и страницы.
-- `src/features/landing` - секции лендинга.
-- `src/features/calculator` - калькулятор стоимости.
-- `src/features/lead-form` - форма заявки.
-- `src/components` - переиспользуемые UI-компоненты.
-- `src/lib` - конфиги и утилиты.
-- `src/types` - общие типы.
-- `public` - изображения, иконки и статические файлы.
-- `docs` - архитектурные заметки, дизайн-материалы и handoff-планы.
-- `scripts` - вспомогательные скрипты проекта.
+- Frontend: Cloudflare Pages (`*.pages.dev`)
+- API (lead form): Cloudflare Worker (`*.workers.dev`)
+- Lead endpoint: `POST /api/lead`
 
-## Команды
+## Scripts
 
-- `npm run dev` - локальный dev-сервер.
-- `npm run build` - production build.
-- `npm run start` - запуск production-сборки.
-- `npm run lint` - проверка ESLint.
-- `npm run typecheck` - проверка TypeScript без emit.
+- `npm run dev` - Vite dev server
+- `npm run build` - production build
+- `npm run preview` - preview built frontend
+- `npm run lint` - ESLint
+- `npm run typecheck` - TypeScript no-emit check
+- `npm run deploy:pages` - deploy frontend `dist` to Cloudflare Pages
+- `npm run worker:dev` - run API worker locally
+- `npm run worker:deploy` - deploy API worker
 
-## Быстрый ориентир
+## Environment
 
-- Сохранённый план по следующему блоку FAQ: `docs/faq-section-plan.md`
-- Базовые архитектурные заметки: `docs/architecture.md`
-- Материалы по визуальной системе: `docs/DESIGN_SYSTEM.md`
+Frontend (`.env`):
 
-## Дальше
+- `VITE_LEAD_API_URL` - full worker endpoint URL, e.g. `https://saferplast-api.workers.dev/api/lead`
 
-1. Реализовать секцию FAQ по плану из `docs/faq-section-plan.md`.
-2. Продолжить наполнение лендинга и связанные UI-блоки по feature-структуре.
-3. Держать `lint` и `typecheck` зелёными после каждого изменения.
+Worker secrets:
+
+- `TELEGRAM_BOT_TOKEN`
+- `TELEGRAM_CHAT_ID`
+
+## Notes
+
+- `public/robots.txt` and `public/sitemap.xml` are static and should be updated when production domain changes.
+- API CORS allows `localhost:5173` and `*.pages.dev`.

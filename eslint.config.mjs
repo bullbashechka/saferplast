@@ -1,13 +1,53 @@
-import { FlatCompat } from "@eslint/eslintrc";
-import { defineConfig, globalIgnores } from "eslint/config";
-import { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-
-const compat = new FlatCompat({
-  baseDirectory: dirname(fileURLToPath(import.meta.url)),
-});
+import js from "@eslint/js";
+import tsParser from "@typescript-eslint/parser";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+import reactHooks from "eslint-plugin-react-hooks";
+import reactRefresh from "eslint-plugin-react-refresh";
+import { defineConfig } from "eslint/config";
 
 export default defineConfig([
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-  globalIgnores([".next/**", ".open-next/**", "out/**", "coverage/**", "next-env.d.ts"]),
+  {
+    ignores: [
+      "dist/**",
+      "out/**",
+      "coverage/**",
+      "worker/.wrangler/**",
+    ],
+  },
+  js.configs.recommended,
+  {
+    files: ["**/*.{js,mjs,cjs}"],
+    rules: {
+      "no-undef": "off",
+    },
+  },
+  {
+    files: ["**/*.{ts,tsx}"],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+      },
+      globals: {
+        window: "readonly",
+        document: "readonly",
+        fetch: "readonly",
+        console: "readonly",
+        process: "readonly",
+      },
+    },
+    plugins: {
+      "@typescript-eslint": tsPlugin,
+      "react-hooks": reactHooks,
+      "react-refresh": reactRefresh,
+    },
+    rules: {
+      ...tsPlugin.configs.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
+      "no-undef": "off",
+      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+      "@typescript-eslint/no-explicit-any": "off",
+    },
+  },
 ]);

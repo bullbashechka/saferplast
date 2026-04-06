@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Image } from "@/components/ui/image";
 
 import type { FirstScreenContent } from "@/features/landing/first-screen-content";
 import {

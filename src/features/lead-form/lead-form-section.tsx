@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { Image } from "@/components/ui/image";
 import { useState } from "react";
 
 import { Checkbox } from "@/components/ui/checkbox";
@@ -74,6 +74,7 @@ export function LeadFormSection() {
   const { consents, decorativeLabels, fields, messengersLabel, submitLabel, subtitle, taskMaxLength, title } =
     leadFormContent;
   const { instagramHref, telegramHref, whatsappHref } = firstScreenContent;
+  const leadApiUrl = import.meta.env.VITE_LEAD_API_URL ?? "";
   const [nameValue, setNameValue] = useState("");
   const [taskValue, setTaskValue] = useState("");
   const [phoneValue, setPhoneValue] = useState("");
@@ -90,6 +91,11 @@ export function LeadFormSection() {
     setSubmitMessage(null);
     setSubmitError(null);
 
+    if (!leadApiUrl) {
+      setSubmitError("Не настроен адрес API для отправки заявки.");
+      return;
+    }
+
     const payload: LeadFormPayload = {
       name: nameValue.trim(),
       phone: phoneValue.trim(),
@@ -101,7 +107,7 @@ export function LeadFormSection() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/lead", {
+      const response = await fetch(leadApiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Image } from "@/components/ui/image";
 
 const rightProofImageSrc = encodeURI(
   "/images/webp/glass-broken-from- house-by-accident- man-checking- repair.webp",
