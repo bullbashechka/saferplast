@@ -55,7 +55,7 @@ export const firstScreenContent: FirstScreenContent = {
   cityLabel: "г. Караганда",
   instagramHref: "https://www.instagram.com/saferplast.kz/",
   whatsappHref: "https://wa.me/77478041022",
-  telegramHref: "https://t.me/+77478041022",
+  telegramHref: "https://t.me/+77001500294",
   headerNavigationLinks: [
     { href: "#projects", label: "Наши работы" },
     { href: "#solution-matching", label: "Подобрать решение" },
