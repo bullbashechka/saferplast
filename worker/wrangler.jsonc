@@ -3,5 +3,11 @@
   "name": "saferplast-api",
   "main": "src/index.ts",
   "compatibility_date": "2026-04-06",
-  "compatibility_flags": ["nodejs_compat"]
+  "compatibility_flags": ["nodejs_compat"],
+  "kv_namespaces": [
+    {
+      "binding": "RATE_LIMIT_KV",
+      "id": "REPLACE_WITH_KV_NAMESPACE_ID"
+    }
+  ]
 }

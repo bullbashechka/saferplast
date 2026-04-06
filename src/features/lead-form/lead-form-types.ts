@@ -3,5 +3,6 @@ export type LeadFormPayload = {
   phone: string;
   task: string;
   consentsAccepted: boolean;
+  turnstileToken: string;
   source?: string;
 };

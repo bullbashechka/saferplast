@@ -1,7 +1,7 @@
 "use client";
 
 import { Image } from "@/components/ui/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
@@ -14,6 +14,36 @@ const PHONE_PREFIX = "+7";
 const EMPTY_CONSENTS = [false, false];
 const SUCCESS_MESSAGE = "Заявка отправлена. Мы свяжемся с вами в ближайшее время.";
 const ERROR_MESSAGE = "Не удалось отправить заявку. Попробуйте еще раз.";
+const TURNSTILE_SCRIPT_ID = "cf-turnstile-script";
+const TURNSTILE_NOT_READY_ERROR = "Подтвердите, что вы не робот.";
+
+function ensureTurnstileScript() {
+  return new Promise<void>((resolve, reject) => {
+    if (window.turnstile) {
+      resolve();
+      return;
+    }
+
+    const existingScript = document.getElementById(TURNSTILE_SCRIPT_ID) as HTMLScriptElement | null;
+
+    if (existingScript) {
+      existingScript.addEventListener("load", () => resolve(), { once: true });
+      existingScript.addEventListener("error", () => reject(new Error("Turnstile script failed to load.")), {
+        once: true,
+      });
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.id = TURNSTILE_SCRIPT_ID;
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+    script.async = true;
+    script.defer = true;
+    script.addEventListener("load", () => resolve(), { once: true });
+    script.addEventListener("error", () => reject(new Error("Turnstile script failed to load.")), { once: true });
+    document.head.appendChild(script);
+  });
+}
 
 function formatPhoneValue(rawValue: string) {
   const digits = rawValue.replace(/\D/g, "");
@@ -75,15 +105,82 @@ export function LeadFormSection() {
     leadFormContent;
   const { instagramHref, telegramHref, whatsappHref } = firstScreenContent;
   const leadApiUrl = import.meta.env.VITE_LEAD_API_URL ?? "";
+  const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY ?? "";
+
+  const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
+  const turnstileWidgetIdRef = useRef<string | null>(null);
+
   const [nameValue, setNameValue] = useState("");
   const [taskValue, setTaskValue] = useState("");
   const [phoneValue, setPhoneValue] = useState("");
   const [consentValues, setConsentValues] = useState<boolean[]>(EMPTY_CONSENTS);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [retryAfterSeconds, setRetryAfterSeconds] = useState(0);
   const [submitMessage, setSubmitMessage] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
+
   const remainingTaskSymbols = taskMaxLength - taskValue.length;
   const allConsentsAccepted = consentValues.every(Boolean);
+  const isRateLimited = retryAfterSeconds > 0;
+  const isSubmitDisabled = isSubmitting || isRateLimited || !turnstileToken || !turnstileSiteKey;
+
+  useEffect(() => {
+    if (!turnstileSiteKey || !turnstileContainerRef.current || turnstileWidgetIdRef.current) {
+      return;
+    }
+
+    let isMounted = true;
+
+    ensureTurnstileScript()
+      .then(() => {
+        if (!isMounted || !window.turnstile || !turnstileContainerRef.current) {
+          return;
+        }
+
+        turnstileWidgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
+          callback: (token) => {
+            setSubmitError(null);
+            setTurnstileToken(token);
+          },
+          "error-callback": () => {
+            setTurnstileToken(null);
+            setSubmitError("Проверка безопасности временно недоступна. Попробуйте еще раз.");
+          },
+          "expired-callback": () => {
+            setTurnstileToken(null);
+          },
+          sitekey: turnstileSiteKey,
+          size: "flexible",
+          theme: "light",
+        });
+      })
+      .catch(() => {
+        if (isMounted) {
+          setSubmitError("Не удалось загрузить проверку безопасности. Обновите страницу и попробуйте снова.");
+        }
+      });
+
+    return () => {
+      isMounted = false;
+      if (turnstileWidgetIdRef.current && window.turnstile) {
+        window.turnstile.remove(turnstileWidgetIdRef.current);
+        turnstileWidgetIdRef.current = null;
+      }
+    };
+  }, [turnstileSiteKey]);
+
+  useEffect(() => {
+    if (!isRateLimited) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setRetryAfterSeconds((current) => (current > 0 ? current - 1 : 0));
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, [isRateLimited]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -96,11 +193,17 @@ export function LeadFormSection() {
       return;
     }
 
+    if (!turnstileSiteKey || !turnstileToken) {
+      setSubmitError(TURNSTILE_NOT_READY_ERROR);
+      return;
+    }
+
     const payload: LeadFormPayload = {
       name: nameValue.trim(),
       phone: phoneValue.trim(),
       task: taskValue.trim(),
       consentsAccepted: allConsentsAccepted,
+      turnstileToken,
       source: typeof window !== "undefined" ? window.location.href : undefined,
     };
 
@@ -116,7 +219,10 @@ export function LeadFormSection() {
       });
 
       if (!response.ok) {
-        const body = (await response.json().catch(() => null)) as { error?: string } | null;
+        const body = (await response.json().catch(() => null)) as { error?: string; retryAfterSec?: number } | null;
+        if (response.status === 429) {
+          setRetryAfterSeconds(body?.retryAfterSec ?? 60);
+        }
         throw new Error(body?.error || ERROR_MESSAGE);
       }
 
@@ -124,6 +230,11 @@ export function LeadFormSection() {
       setPhoneValue("");
       setTaskValue("");
       setConsentValues([...EMPTY_CONSENTS]);
+      setRetryAfterSeconds(0);
+      setTurnstileToken(null);
+      if (turnstileWidgetIdRef.current && window.turnstile) {
+        window.turnstile.reset(turnstileWidgetIdRef.current);
+      }
       setSubmitMessage(SUCCESS_MESSAGE);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : ERROR_MESSAGE;
@@ -232,7 +343,7 @@ export function LeadFormSection() {
                               onClick={(event) => event.stopPropagation()}
                               target="_blank"
                             >
-                              Политикой конфиденцальности
+                              Политикой конфиденциальности
                             </a>
                           </>
                         ) : (
@@ -243,12 +354,22 @@ export function LeadFormSection() {
                   ))}
                 </FieldGroup>
 
+                {turnstileSiteKey ? (
+                  <div className="w-full overflow-hidden rounded-[10px] bg-white/5 p-2">
+                    <div ref={turnstileContainerRef} />
+                  </div>
+                ) : (
+                  <p className="text-center font-body text-[11px] leading-[1.2] text-[#ffd7d7] md:text-[12px] min-[1025px]:text-[13px]">
+                    Не настроен Turnstile Site Key.
+                  </p>
+                )}
+
                 <button
                   className="flex h-[42px] items-center justify-center gap-[10px] rounded-[10px] bg-[#1E1E1E] px-[20px] py-[12px] font-body text-[14px] font-medium leading-[1] text-white transition-colors hover:bg-[#111111] disabled:cursor-not-allowed disabled:opacity-70 md:h-[52px] md:gap-4 md:rounded-[15px] md:px-[54px] md:py-[16px] md:text-[19px] min-[1025px]:h-[54px] min-[1025px]:gap-5 min-[1025px]:px-[62px] min-[1025px]:py-[17px] min-[1025px]:text-[20px]"
-                  disabled={isSubmitting}
+                  disabled={isSubmitDisabled}
                   type="submit"
                 >
-                  <span>{isSubmitting ? "Отправляем..." : submitLabel}</span>
+                  <span>{isSubmitting ? "Отправляем..." : isRateLimited ? `Повторите через ${retryAfterSeconds} сек.` : submitLabel}</span>
                   <Image
                     alt=""
                     aria-hidden="true"
