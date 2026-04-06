@@ -19,7 +19,7 @@ function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
   const mobileAvailabilityLabel = availabilityLabel.replace(" ежедневно", "");
 
   return (
-    <article className="mx-auto flex h-[8.75rem] w-full max-w-[18.8125rem] flex-col rounded-[1.25rem] border border-[#004B62] bg-[#004B62] p-[0.625rem] text-white shadow-[0_16px_40px_rgba(0,75,98,0.18)] md:mx-0 md:h-[9.75rem] md:max-w-none md:w-[13.5rem] md:p-3.5 min-[1025px]:h-auto min-[1025px]:min-h-[11.1875rem] min-[1025px]:w-[17.8125rem] min-[1025px]:p-4">
+    <article className="mx-auto flex h-[8.75rem] w-full max-w-[18.8125rem] flex-col rounded-[1.25rem] border border-[#004B62] bg-[#004B62] p-[0.625rem] text-white shadow-[0_16px_40px_rgba(0,75,98,0.18)] md:mx-0 md:h-auto md:min-h-[9.75rem] md:max-w-none md:w-[13.5rem] md:p-3.5 min-[1025px]:h-auto min-[1025px]:min-h-[11.1875rem] min-[1025px]:w-[17.8125rem] min-[1025px]:p-4">
       <div className="flex flex-1 flex-col justify-between gap-2 md:gap-3 min-[1025px]:gap-4">
         <div className="w-fit rounded-t-[0.625rem] rounded-br-[0.625rem] bg-white px-3 py-2 md:px-3 md:py-2 min-[1025px]:px-4 min-[1025px]:py-[0.625rem]">
           <p className="text-[0.75rem] leading-[1] text-[#242424] md:text-[0.75rem] min-[1025px]:text-[0.875rem]">
@@ -68,7 +68,7 @@ function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
 
 function ServiceCard({ cta, description }: ServiceCardProps) {
   return (
-    <article className="mx-auto flex h-[6.3125rem] w-full max-w-[19.0625rem] flex-col gap-[0.4375rem] rounded-[1.25rem] bg-white p-[0.625rem] text-[#242424] shadow-[0_16px_40px_rgba(0,0,0,0.08)] md:mx-0 md:h-[9.75rem] md:max-w-none md:w-[13.5rem] md:justify-between md:gap-3 md:p-3.5 min-[1025px]:h-auto min-[1025px]:min-h-[11.1875rem] min-[1025px]:w-[17.8125rem] min-[1025px]:gap-[1.625rem] min-[1025px]:p-4">
+    <article className="mx-auto flex h-[6.3125rem] w-full max-w-[19.0625rem] flex-col gap-[0.4375rem] rounded-[1.25rem] bg-white p-[0.625rem] text-[#242424] shadow-[0_16px_40px_rgba(0,0,0,0.08)] md:mx-0 md:h-auto md:min-h-[9.75rem] md:max-w-none md:w-[13.5rem] md:justify-between md:gap-3 md:p-3.5 min-[1025px]:h-auto min-[1025px]:min-h-[11.1875rem] min-[1025px]:w-[17.8125rem] min-[1025px]:gap-[1.625rem] min-[1025px]:p-4">
       <p className="w-full font-body text-[0.75rem] font-normal leading-[1] tracking-[0] md:text-[0.75rem] min-[1025px]:text-[1rem]">
         {description}
       </p>
