@@ -2,7 +2,7 @@ import { Image } from "@/components/ui/image";
 
 import { siteFooterContent } from "@/features/landing/site-footer-content";
 
-const legalLinkHrefs = ["/privacy", "/data-processing-policy", "/public-offer"] as const;
+const legalLinkHrefs = ["/privacy", "/data-processing-policy"] as const;
 
 function LegalItem({ item, index }: { item: string; index: number }) {
   const href = legalLinkHrefs[index];
@@ -30,6 +30,7 @@ export function SiteFooter() {
     telegramHref,
     whatsappHref,
   } = siteFooterContent;
+  const visibleLegalItems = legalItems.slice(0, 2);
 
   return (
     <footer
@@ -116,7 +117,7 @@ export function SiteFooter() {
           </div>
 
           <div className="mt-[22px] border-t border-[#d8e6eb] pt-[14px]">
-            {legalItems.map((item, index) => (
+            {visibleLegalItems.map((item, index) => (
               <p
                 key={item}
                 className={`text-center font-body text-[11px] font-normal leading-[1] text-[#242424] ${
@@ -213,7 +214,7 @@ export function SiteFooter() {
 
           <div className="mt-8 border-t border-[#d8e6eb] pt-6 md:mt-9 min-[1025px]:mt-10">
             <div className="flex flex-nowrap items-center justify-center gap-8 text-center">
-              {legalItems.map((item, index) => (
+              {visibleLegalItems.map((item, index) => (
                 <p key={item} className="font-body text-[0.9375rem] font-normal leading-[1] tracking-[0] text-[#242424] min-[1025px]:text-[1rem]">
                   <LegalItem index={index} item={item} />
                 </p>

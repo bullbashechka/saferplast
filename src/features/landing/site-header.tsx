@@ -28,6 +28,10 @@ type DesktopHeaderContactActionsProps = {
   phoneLabel: string;
 };
 
+const karagandaAddressLabel = "Караганда, Голубые пруды 21";
+const karaganda2gisHref =
+  "https://2gis.kz/karaganda/search/%D0%9A%D0%B0%D1%80%D0%B0%D0%B3%D0%B0%D0%BD%D0%B4%D0%B0%2C%20%D0%93%D0%BE%D0%BB%D1%83%D0%B1%D1%8B%D0%B5%20%D0%BF%D1%80%D1%83%D0%B4%D1%8B%2021/geo/11822584677057270/73.194027%2C49.835986?m=73.194956%2C49.836587%2F17.75%2Fr%2F-5.72";
+
 function DesktopHeaderActionButton({
   children,
   className,
@@ -117,7 +121,8 @@ export function DesktopHeaderContactActions({
 
       <DesktopHeaderActionButton
         className="w-[8.75rem] justify-start gap-2 md:w-[12rem] min-[1025px]:w-[14.8125rem]"
-        isLink={false}
+        href={karaganda2gisHref}
+        openInNewTab
       >
         <Image alt="" aria-hidden="true" className="relative z-10 shrink-0" height={16} src="/icons/location.svg" width={16} />
         <span className="relative z-10 truncate whitespace-nowrap font-body text-[0.8125rem] font-medium leading-[1] tracking-[0] md:text-[1rem] min-[1025px]:text-[1.25rem]">
@@ -169,12 +174,18 @@ export function SiteHeader({ cityLabel, navigationLinks, phoneHref }: SiteHeader
           <Image alt="" aria-hidden="true" className="relative z-10" height={14} src="/icons/phone.svg" width={14} />
         </a>
 
-        <div className="liquid-glass-strong liquid-glass-soft flex h-[2.125rem] w-[7.5rem] shrink-0 items-center gap-1.5 rounded-[15px] px-[0.5625rem] py-[0.5625rem]">
+        <a
+          aria-label={karagandaAddressLabel}
+          className="liquid-glass-strong liquid-glass-soft flex h-[2.125rem] w-[7.5rem] shrink-0 items-center gap-1.5 rounded-[15px] px-[0.5625rem] py-[0.5625rem]"
+          href={karaganda2gisHref}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           <Image alt="" aria-hidden="true" className="relative z-10 shrink-0" height={14} src="/icons/location.svg" width={14} />
           <span className="relative z-10 truncate whitespace-nowrap font-body text-[0.75rem] font-medium leading-[1] tracking-[0]">
             {cityLabel}
           </span>
-        </div>
+        </a>
       </div>
 
       {isMobileMenuOpen ? (

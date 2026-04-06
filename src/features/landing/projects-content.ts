@@ -36,8 +36,8 @@ export const projectsContent: ProjectsContent = {
       objectPositionClassName: "object-center",
     },
     middleBottom: {
-      alt: "Фурнитура и ручка пластикового окна крупным планом",
-      src: "/images/webp/ruchwork.webp",
+      alt: "Застекление жилого дома",
+      src: "/images/original/karaganda-golubye-prudy-21.png",
       objectPositionClassName: "object-center",
     },
     right: {
