@@ -1,3 +1,5 @@
+import { firstScreenContent } from "@/features/landing/first-screen-content";
+
 export type ProjectsImage = {
   alt: string;
   src: `/images/${string}`;
@@ -8,7 +10,7 @@ export type ProjectsContent = {
   title: string;
   subtitle: string;
   ctaLabel: string;
-  ctaHref: "#lead-form";
+  ctaHref: string;
   images: {
     left: ProjectsImage;
     middleTop: ProjectsImage;
@@ -20,8 +22,8 @@ export type ProjectsContent = {
 export const projectsContent: ProjectsContent = {
   title: "Наши работы",
   subtitle: "Показываем реальные объекты, а не шаблонные картинки",
-  ctaLabel: "Получить консультацию",
-  ctaHref: "#lead-form",
+  ctaLabel: "Смотреть работы в Instagram",
+  ctaHref: firstScreenContent.instagramHref,
   images: {
     left: {
       alt: "Установленное белое окно с широким подоконником",

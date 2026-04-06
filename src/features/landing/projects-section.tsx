@@ -137,6 +137,8 @@ export function ProjectsSection() {
           <a
             className="mx-auto mt-4 flex h-[38px] w-[244px] items-center justify-center gap-[14px] rounded-[10px] border border-[#004B62] px-[32px] py-[12px] text-center font-['Montserrat'] text-[14px] font-medium leading-[1] tracking-[0] text-[#004B62] transition-colors hover:bg-[#004B62] hover:text-white"
             href={ctaHref}
+            rel="noopener noreferrer"
+            target="_blank"
           >
             {ctaLabel}
           </a>
@@ -195,6 +197,8 @@ export function ProjectsSection() {
             <a
               className="inline-flex h-[var(--projects-cta-height)] w-full items-center justify-center whitespace-nowrap rounded-[15px] border border-[#004B62] px-[4.125rem] text-center text-[1.1875rem] font-medium leading-[1] text-[#004B62] transition-colors hover:bg-[#004B62] hover:text-white min-[1025px]:text-[1.25rem]"
               href={ctaHref}
+              rel="noopener noreferrer"
+              target="_blank"
             >
               {ctaLabel}
             </a>

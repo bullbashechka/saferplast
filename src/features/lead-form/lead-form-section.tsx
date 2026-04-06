@@ -248,6 +248,8 @@ export function LeadFormSection() {
                 aria-label="Telegram"
                 className="flex items-center justify-center transition-transform hover:-translate-y-0.5"
                 href={telegramHref}
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 <Image
                   alt=""
@@ -262,6 +264,8 @@ export function LeadFormSection() {
                 aria-label="Instagram"
                 className="flex items-center justify-center transition-transform hover:-translate-y-0.5"
                 href={instagramHref}
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 <Image
                   alt=""
@@ -276,6 +280,8 @@ export function LeadFormSection() {
                 aria-label="WhatsApp"
                 className="flex items-center justify-center transition-transform hover:-translate-y-0.5"
                 href={whatsappHref}
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 <Image
                   alt=""

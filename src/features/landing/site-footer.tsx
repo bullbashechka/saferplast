@@ -62,6 +62,8 @@ export function SiteFooter() {
               <a
                 className="inline-flex items-center gap-[11px] whitespace-nowrap font-body text-[14px] font-medium leading-[1] text-[#242424] transition-colors hover:text-[#004B62]"
                 href={phoneHref}
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 <Image alt="" aria-hidden="true" className="h-4 w-4" height={16} src="/icons/phone.svg" width={16} />
                 <span>{phoneLabel}</span>
@@ -72,7 +74,7 @@ export function SiteFooter() {
                   aria-label="Telegram"
                   className="flex items-center justify-center transition-transform hover:-translate-y-0.5"
                   href={telegramHref}
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   <Image alt="" aria-hidden="true" className="h-[28px] w-[28px]" height={28} src="/icons/teleg.svg" width={28} />
@@ -81,7 +83,7 @@ export function SiteFooter() {
                   aria-label="Instagram"
                   className="flex items-center justify-center transition-transform hover:-translate-y-0.5"
                   href={instagramHref}
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   <Image alt="" aria-hidden="true" className="h-[28px] w-[28px]" height={28} src="/icons/instagram.svg" width={28} />
@@ -90,7 +92,7 @@ export function SiteFooter() {
                   aria-label="WhatsApp"
                   className="flex items-center justify-center transition-transform hover:-translate-y-0.5"
                   href={whatsappHref}
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   <Image alt="" aria-hidden="true" className="h-[28px] w-[28px]" height={28} src="/icons/whats.svg" width={28} />
@@ -155,6 +157,8 @@ export function SiteFooter() {
                 <a
                   className="inline-flex items-center gap-3 font-body text-[1.1875rem] font-medium leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62] min-[1025px]:text-[1.25rem]"
                   href={phoneHref}
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
                   <Image alt="" aria-hidden="true" height={18} src="/icons/phone.svg" width={18} />
                   <span>{phoneLabel}</span>
@@ -165,7 +169,7 @@ export function SiteFooter() {
                     aria-label="Telegram"
                     className="flex items-center justify-center transition-transform hover:-translate-y-0.5"
                     href={telegramHref}
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     target="_blank"
                   >
                     <Image alt="" aria-hidden="true" height={38} src="/icons/teleg.svg" width={38} />
@@ -174,7 +178,7 @@ export function SiteFooter() {
                     aria-label="Instagram"
                     className="flex items-center justify-center transition-transform hover:-translate-y-0.5"
                     href={instagramHref}
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     target="_blank"
                   >
                     <Image alt="" aria-hidden="true" height={38} src="/icons/instagram.svg" width={38} />
@@ -183,7 +187,7 @@ export function SiteFooter() {
                     aria-label="WhatsApp"
                     className="flex items-center justify-center transition-transform hover:-translate-y-0.5"
                     href={whatsappHref}
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     target="_blank"
                   >
                     <Image alt="" aria-hidden="true" height={38} src="/icons/whats.svg" width={38} />

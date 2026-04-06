@@ -34,18 +34,25 @@ function DesktopHeaderActionButton({
   className,
   href,
   isLink = true,
+  openInNewTab = false,
 }: {
   children: React.ReactNode;
   className?: string;
   href?: string;
   isLink?: boolean;
+  openInNewTab?: boolean;
 }) {
   const baseClassName =
     "liquid-glass-strong liquid-glass-soft flex h-10 min-w-0 items-center rounded-[15px] px-3 py-3 md:h-11 md:px-4 md:py-3 min-[1025px]:h-12 min-[1025px]:px-5 min-[1025px]:py-[0.875rem]";
 
   if (isLink && href) {
     return (
-      <a className={cn(baseClassName, className)} href={href}>
+      <a
+        className={cn(baseClassName, className)}
+        href={href}
+        rel={openInNewTab ? "noopener noreferrer" : undefined}
+        target={openInNewTab ? "_blank" : undefined}
+      >
         {children}
       </a>
     );
@@ -101,6 +108,7 @@ export function DesktopHeaderContactActions({
       <DesktopHeaderActionButton
         className="w-[8.75rem] justify-start gap-2 md:w-[12rem] min-[1025px]:w-[14.8125rem]"
         href={phoneHref}
+        openInNewTab
       >
         <Image alt="" aria-hidden="true" className="relative z-10 shrink-0" height={16} src="/icons/phone.svg" width={16} />
         <span className="relative z-10 whitespace-nowrap font-body text-[0.8125rem] font-medium leading-[1] tracking-[0] md:text-[1rem] min-[1025px]:text-[1.25rem]">
@@ -156,6 +164,8 @@ export function SiteHeader({ cityLabel, navigationLinks, phoneHref }: SiteHeader
           aria-label="Позвонить"
           className="liquid-glass-strong liquid-glass-soft flex h-[2.125rem] w-[2.125rem] shrink-0 items-center justify-center rounded-[15px] p-[0.5625rem]"
           href={phoneHref}
+          rel="noopener noreferrer"
+          target="_blank"
         >
           <Image alt="" aria-hidden="true" className="relative z-10" height={14} src="/icons/phone.svg" width={14} />
         </a>
