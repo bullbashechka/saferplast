@@ -43,6 +43,9 @@ const MAX_TASK_LENGTH = 300;
 const MIN_PHONE_DIGITS = 11;
 const RATE_LIMIT_MAX_ATTEMPTS = 3;
 const RATE_LIMIT_WINDOW_SEC = 10 * 60;
+const NO_STORE_HEADERS = {
+  "Cache-Control": "no-store",
+};
 
 function getAllowedOrigin(origin: string | null) {
   if (!origin) {
@@ -239,6 +242,7 @@ function jsonResponse(
     status,
     headers: {
       "Content-Type": "application/json",
+      ...NO_STORE_HEADERS,
       ...corsHeaders,
       ...extraHeaders,
     },
@@ -251,17 +255,29 @@ export default {
     const corsHeaders = buildCorsHeaders(origin);
 
     if (!corsHeaders) {
-      return new Response("Origin is not allowed.", { status: 403 });
+      return new Response("Origin is not allowed.", { status: 403, headers: NO_STORE_HEADERS });
     }
 
     if (request.method === "OPTIONS") {
-      return new Response(null, { status: 204, headers: corsHeaders });
+      return new Response(null, {
+        status: 204,
+        headers: {
+          ...NO_STORE_HEADERS,
+          ...corsHeaders,
+        },
+      });
     }
 
     const url = new URL(request.url);
 
     if (request.method !== "POST" || url.pathname !== "/api/lead") {
-      return new Response("Not found", { status: 404, headers: corsHeaders });
+      return new Response("Not found", {
+        status: 404,
+        headers: {
+          ...NO_STORE_HEADERS,
+          ...corsHeaders,
+        },
+      });
     }
 
     if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) {
