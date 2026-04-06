@@ -17,7 +17,7 @@ export type SiteFooterContent = {
   whatsappHref: string;
 };
 
-const { phoneHref, phoneLabel, telegramHref, whatsappHref } = firstScreenContent;
+const { instagramHref, phoneHref, phoneLabel, telegramHref, whatsappHref } = firstScreenContent;
 
 export const siteFooterContent: SiteFooterContent = {
   contactsTitle: "Контакты",
@@ -29,7 +29,7 @@ export const siteFooterContent: SiteFooterContent = {
     { href: "#solution-matching", label: "подобрать решение" },
     { href: "#contacts", label: "контакты" },
   ],
-  instagramHref: "#",
+  instagramHref,
   phoneHref,
   phoneLabel,
   telegramHref,

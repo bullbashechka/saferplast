@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
+import { firstScreenContent } from "@/features/landing/first-screen-content";
 import type { DecorativeLabel } from "@/features/lead-form/lead-form-content";
 import { leadFormContent } from "@/features/lead-form/lead-form-content";
 import type { LeadFormPayload } from "@/features/lead-form/lead-form-types";
@@ -72,6 +73,7 @@ function DecorativeColumn({
 export function LeadFormSection() {
   const { consents, decorativeLabels, fields, messengersLabel, submitLabel, subtitle, taskMaxLength, title } =
     leadFormContent;
+  const { instagramHref, telegramHref, whatsappHref } = firstScreenContent;
   const [nameValue, setNameValue] = useState("");
   const [taskValue, setTaskValue] = useState("");
   const [phoneValue, setPhoneValue] = useState("");
@@ -245,7 +247,7 @@ export function LeadFormSection() {
               <a
                 aria-label="Telegram"
                 className="flex items-center justify-center transition-transform hover:-translate-y-0.5"
-                href="#"
+                href={telegramHref}
               >
                 <Image
                   alt=""
@@ -259,7 +261,7 @@ export function LeadFormSection() {
               <a
                 aria-label="Instagram"
                 className="flex items-center justify-center transition-transform hover:-translate-y-0.5"
-                href="#"
+                href={instagramHref}
               >
                 <Image
                   alt=""
@@ -273,7 +275,7 @@ export function LeadFormSection() {
               <a
                 aria-label="WhatsApp"
                 className="flex items-center justify-center transition-transform hover:-translate-y-0.5"
-                href="#"
+                href={whatsappHref}
               >
                 <Image
                   alt=""

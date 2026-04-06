@@ -26,6 +26,7 @@ export type FirstScreenContent = {
   phoneHref: string;
   phoneLabel: string;
   cityLabel: string;
+  instagramHref: string;
   whatsappHref: string;
   telegramHref: string;
   headerNavigationLinks: NavigationLink[];
@@ -49,10 +50,11 @@ export const firstScreenContent: FirstScreenContent = {
       href: "#lead-form",
     },
   },
-  phoneHref: "tel:+77079999999",
-  phoneLabel: "+77079999999",
+  phoneHref: "tel:+77478041022",
+  phoneLabel: "+77478041022",
   cityLabel: "г. Караганда",
-  whatsappHref: "https://wa.me/77079999999",
+  instagramHref: "https://www.instagram.com/saferplast.kz/",
+  whatsappHref: "https://wa.me/77478041022",
   telegramHref: "https://t.me/saferplast",
   headerNavigationLinks: [
     { href: "#projects", label: "Наши работы" },
