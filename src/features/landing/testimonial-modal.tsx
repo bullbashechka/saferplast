@@ -51,7 +51,7 @@ export function TestimonialModal({ isOpen, onClose, testimonial }: TestimonialMo
       <div
         aria-labelledby="testimonial-modal-title"
         aria-modal="true"
-        className="w-full max-w-[42rem] rounded-[1.25rem] bg-[rgba(250,254,255,1)] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.2)]"
+        className="w-full max-w-[42rem] rounded-[1.25rem] bg-[rgba(250,254,255,1)] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.2)] md:max-w-[52rem] md:p-8"
         onClick={(event) => event.stopPropagation()}
         role="dialog"
       >
@@ -59,18 +59,18 @@ export function TestimonialModal({ isOpen, onClose, testimonial }: TestimonialMo
           <div>
             <h3
               id="testimonial-modal-title"
-              className="font-display text-[1.25rem] font-normal leading-[1] text-[#004B62]"
+              className="font-display text-[1.25rem] font-normal leading-[1] text-[#004B62] md:text-[1.75rem]"
             >
               {testimonial.name}
             </h3>
-            <p className="mt-2 font-body text-[0.8125rem] font-medium leading-[1.2] text-[#242424]">
+            <p className="mt-2 font-body text-[0.8125rem] font-medium leading-[1.2] text-[#242424] md:text-[1rem]">
               {testimonial.service}
             </p>
           </div>
 
           <button
             aria-label="Закрыть полный отзыв"
-            className="rounded-md p-1 text-[1.75rem] leading-none text-[#004B62] transition-colors hover:bg-[#e8f2f5]"
+            className="rounded-md p-1 text-[1.75rem] leading-none text-[#004B62] transition-colors hover:bg-[#e8f2f5] md:text-[2.125rem]"
             onClick={onClose}
             type="button"
           >
@@ -78,10 +78,11 @@ export function TestimonialModal({ isOpen, onClose, testimonial }: TestimonialMo
           </button>
         </div>
 
-        <p className="mt-4 max-h-[60vh] overflow-y-auto pr-2 text-[0.875rem] font-normal leading-[1.4] text-[#242424]">
+        <p className="mt-4 max-h-[60vh] overflow-y-auto pr-2 text-[0.875rem] font-normal leading-[1.4] text-[#242424] md:mt-5 md:text-[1.0625rem] md:leading-[1.55]">
           {testimonial.review}
         </p>
       </div>
     </div>
   );
 }
+
