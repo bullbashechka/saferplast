@@ -331,7 +331,7 @@ export function LeadFormSection() {
                               onClick={(event) => event.stopPropagation()}
                               target="_blank"
                             >
-                              обработку персональных данных
+                              обработку персональных данных для связи по заявке
                             </a>
                           </>
                         ) : index === 1 ? (
