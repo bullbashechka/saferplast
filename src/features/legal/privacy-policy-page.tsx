@@ -1,9 +1,8 @@
-const companyDetails = {
+﻿const companyDetails = {
   companyName: "[Укажите наименование компании / ИП]",
-  binOrIin: "[Укажите БИН или ИИН]",
-  address: "[Укажите юридический адрес]",
-  email: "[Укажите контактный email]",
-  phone: "[Укажите контактный телефон]",
+  binOrIin: "860713350477",
+  address: "г Темиртау горка дружбы 32 кв 45 тел 87004450595",
+  phone: "+77478041022 (Telegram, WhatsApp)",
   website: "https://[ваш-домен].kz",
   effectiveDate: "[Укажите дату вступления в силу]",
 };
@@ -32,7 +31,7 @@ export function PrivacyPolicyPage() {
             <h2 className="font-semibold text-[#004B62]">1. Оператор персональных данных</h2>
             <p className="mt-2">
               Оператор: {companyDetails.companyName}, БИН/ИИН: {companyDetails.binOrIin}, адрес: {companyDetails.address}
-              , email: {companyDetails.email}, телефон: {companyDetails.phone}.
+              , телефон: {companyDetails.phone}.
             </p>
           </div>
 
@@ -76,7 +75,7 @@ export function PrivacyPolicyPage() {
             <h2 className="font-semibold text-[#004B62]">6. Срок хранения данных</h2>
             <p className="mt-2">
               Персональные данные хранятся не дольше, чем это необходимо для достижения целей обработки, либо в течение
-              срока, установленного законодательством Республики Казахстан.
+              срока, установленного законодательством � еспублики Казахстан.
             </p>
           </div>
 
@@ -93,7 +92,7 @@ export function PrivacyPolicyPage() {
             <h2 className="font-semibold text-[#004B62]">8. Отзыв согласия и обращения</h2>
             <p className="mt-2">
               Для отзыва согласия или по вопросам обработки данных пользователь может обратиться по контактам:
-              {` ${companyDetails.email}, ${companyDetails.phone}.`}
+              {` ${companyDetails.phone}.`}
             </p>
           </div>
 
@@ -110,3 +109,6 @@ export function PrivacyPolicyPage() {
     </main>
   );
 }
+
+
+

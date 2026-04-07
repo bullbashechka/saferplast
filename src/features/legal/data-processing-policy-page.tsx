@@ -1,9 +1,8 @@
-const companyDetails = {
+﻿const companyDetails = {
   companyName: "[Укажите наименование компании / ИП]",
-  binOrIin: "[Укажите БИН или ИИН]",
-  address: "[Укажите юридический адрес]",
-  email: "[Укажите контактный email]",
-  phone: "[Укажите контактный телефон]",
+  binOrIin: "860713350477",
+  address: "г Темиртау горка дружбы 32 кв 45 тел 87004450595",
+  phone: "+77478041022 (Telegram, WhatsApp)",
   website: "https://[ваш-домен].kz",
   effectiveDate: "[Укажите дату вступления в силу]",
 };
@@ -32,7 +31,7 @@ export function DataProcessingPolicyPage() {
             <h2 className="font-semibold text-[#004B62]">1. Оператор и контактные данные</h2>
             <p className="mt-2">
               Оператор персональных данных: {companyDetails.companyName}, БИН/ИИН: {companyDetails.binOrIin}, адрес:
-              {` ${companyDetails.address}`}, email: {companyDetails.email}, телефон: {companyDetails.phone}.
+              {` ${companyDetails.address}`}, телефон: {companyDetails.phone}.
             </p>
           </div>
 
@@ -60,7 +59,7 @@ export function DataProcessingPolicyPage() {
             <h2 className="font-semibold text-[#004B62]">4. Правовые основания</h2>
             <p className="mt-2">
               Обработка персональных данных осуществляется на основании согласия субъекта персональных данных, а также в
-              иных случаях, предусмотренных законодательством Республики Казахстан.
+              иных случаях, предусмотренных законодательством � еспублики Казахстан.
             </p>
           </div>
 
@@ -110,7 +109,7 @@ export function DataProcessingPolicyPage() {
             <h2 className="font-semibold text-[#004B62]">10. Контакты по вопросам обработки данных</h2>
             <p className="mt-2">
               По вопросам обработки персональных данных и для отзыва согласия вы можете обратиться:
-              {` ${companyDetails.email}, ${companyDetails.phone}.`}
+              {` ${companyDetails.phone}.`}
             </p>
           </div>
         </section>
@@ -120,3 +119,5 @@ export function DataProcessingPolicyPage() {
     </main>
   );
 }
+
+

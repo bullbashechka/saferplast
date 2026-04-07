@@ -1,9 +1,8 @@
-const offerDetails = {
+﻿const offerDetails = {
   companyName: "[Укажите наименование компании / ИП]",
-  binOrIin: "[Укажите БИН или ИИН]",
-  address: "[Укажите юридический адрес]",
-  email: "[Укажите контактный email]",
-  phone: "[Укажите контактный телефон]",
+  binOrIin: "860713350477",
+  address: "г Темиртау горка дружбы 32 кв 45 тел 87004450595",
+  phone: "+77478041022 (Telegram, WhatsApp)",
   website: "https://[ваш-домен].kz",
   effectiveDate: "[Укажите дату вступления в силу]",
 };
@@ -71,7 +70,7 @@ export function PublicOfferPage() {
           <div>
             <h2 className="font-semibold text-[#004B62]">6. Ответственность сторон</h2>
             <p className="mt-2">
-              Стороны несут ответственность в соответствии с законодательством Республики Казахстан и условиями
+              Стороны несут ответственность в соответствии с законодательством � еспублики Казахстан и условиями
               согласованного заказа.
             </p>
           </div>
@@ -93,10 +92,9 @@ export function PublicOfferPage() {
           </div>
 
           <div>
-            <h2 className="font-semibold text-[#004B62]">9. Реквизиты исполнителя</h2>
+            <h2 className="font-semibold text-[#004B62]">9. � еквизиты исполнителя</h2>
             <p className="mt-2">
-              {offerDetails.companyName}, БИН/ИИН: {offerDetails.binOrIin}, адрес: {offerDetails.address}, email:
-              {` ${offerDetails.email}`}, телефон: {offerDetails.phone}.
+              {offerDetails.companyName}, БИН/ИИН: {offerDetails.binOrIin}, адрес: {offerDetails.address}, телефон: {offerDetails.phone}.
             </p>
           </div>
         </section>
@@ -106,3 +104,6 @@ export function PublicOfferPage() {
     </main>
   );
 }
+
+
+
