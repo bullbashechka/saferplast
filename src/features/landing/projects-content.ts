@@ -1,4 +1,4 @@
-import { firstScreenContent } from "@/features/landing/first-screen-content";
+﻿import { firstScreenContent } from "@/features/landing/first-screen-content";
 
 export type ProjectsImage = {
   alt: string;
@@ -21,12 +21,12 @@ export type ProjectsContent = {
 
 export const projectsContent: ProjectsContent = {
   title: "Наши работы",
-  subtitle: "Показываем реальные объекты, а не шаблонные картинки",
+  subtitle: "Показываем реальные объекты в Караганде и области",
   ctaLabel: "Смотреть работы в Instagram",
   ctaHref: firstScreenContent.instagramHref,
   images: {
     left: {
-      alt: "Установленное белое окно с широким подоконником",
+      alt: "Установленное белое окно ПВХ с широким подоконником",
       src: "/images/webp/windowwork.webp",
       objectPositionClassName: "object-center",
     },
@@ -36,12 +36,12 @@ export const projectsContent: ProjectsContent = {
       objectPositionClassName: "object-center",
     },
     middleBottom: {
-      alt: "Застекление жилого дома",
+      alt: "Остекление частного дома в Карагандинской области",
       src: "/images/original/karaganda-golubye-prudy-21.png",
       objectPositionClassName: "object-center",
     },
     right: {
-      alt: "Темная стеклянная дверь в облицованном помещении",
+      alt: "Стеклянная входная дверь после установки",
       src: "/images/webp/doorwork.webp",
       objectPositionClassName: "object-top",
     },

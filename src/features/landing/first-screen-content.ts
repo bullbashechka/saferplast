@@ -1,4 +1,4 @@
-export type NavigationLink = {
+﻿export type NavigationLink = {
   href: string;
   label: string;
 };
@@ -35,7 +35,7 @@ export type FirstScreenContent = {
 export const firstScreenContent: FirstScreenContent = {
   headline: "Окна, двери и балконы из ПВХ и алюминия напрямую от производителя",
   supportCard: {
-    availabilityLabel: "Мы на связи 09:00 до 18:00 ежедневно",
+    availabilityLabel: "Мы на связи с 09:00 до 18:00 ежедневно",
     namesLabel: "Шамиль и Хусейн",
     cta: {
       label: "Получить расчет",
@@ -44,7 +44,7 @@ export const firstScreenContent: FirstScreenContent = {
   },
   serviceCard: {
     description:
-      "Изготовление, монтаж и ремонт окон, дверей и балконов в Караганде. Бесплатный замер и примерный расчет.",
+      "Изготовление, монтаж и ремонт окон, дверей и балконов в Караганде и области. Бесплатный замер и предварительный расчет.",
     cta: {
       label: "Бесплатный замер",
       href: "#lead-form",

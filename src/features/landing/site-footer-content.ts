@@ -1,4 +1,4 @@
-import { firstScreenContent } from "@/features/landing/first-screen-content";
+﻿import { firstScreenContent } from "@/features/landing/first-screen-content";
 
 export type SiteFooterLink = {
   href: string;
@@ -21,7 +21,7 @@ const { instagramHref, phoneHref, phoneLabel, telegramHref, whatsappHref } = fir
 
 export const siteFooterContent: SiteFooterContent = {
   contactsTitle: "Контакты",
-  contactsDescription: "Срочный заказ? Позвоните или напишите нам. Мы на связи с 09:00 до 18:00",
+  contactsDescription: "Срочный заказ? Позвоните или напишите нам. Мы на связи с 09:00 до 18:00.",
   navigationLinks: [
     { href: "#top", label: "главная" },
     { href: "#projects", label: "наши работы" },

@@ -6,6 +6,7 @@ import App from "@/App";
 import { DataProcessingPolicyPage } from "@/features/legal/data-processing-policy-page";
 import { PublicOfferPage } from "@/features/legal/public-offer-page";
 import { PrivacyPolicyPage } from "@/features/legal/privacy-policy-page";
+import { GeoServicePage } from "@/features/seo/geo-service-page";
 import "@/styles/globals.css";
 
 const rootElement = document.getElementById("root");
@@ -22,6 +23,15 @@ createRoot(rootElement).render(
         <Route element={<PrivacyPolicyPage />} path="/privacy" />
         <Route element={<DataProcessingPolicyPage />} path="/data-processing-policy" />
         <Route element={<PublicOfferPage />} path="/public-offer" />
+        <Route element={<GeoServicePage cityKey="karaganda" />} path="/karaganda" />
+        <Route element={<GeoServicePage cityKey="temirtau" />} path="/temirtau" />
+        <Route element={<GeoServicePage cityKey="shakhtinsk" />} path="/shakhtinsk" />
+        <Route element={<GeoServicePage cityKey="saran" />} path="/saran" />
+        <Route element={<GeoServicePage cityKey="abay" />} path="/abay" />
+        <Route
+          element={<GeoServicePage cityKey="karaganda-districts" />}
+          path="/karaganda/maykuduk-prishakhtinsk"
+        />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
