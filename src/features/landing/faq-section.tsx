@@ -12,7 +12,7 @@ export function FaqSection() {
   return (
     <section
       aria-labelledby={`${sectionId}-title`}
-      className="bg-[rgba(250,254,255,1)] px-[10px] pb-16 pt-[46px] md:mt-[120px] md:px-5 md:pt-0 min-[1025px]:px-8"
+      className="bg-[rgba(250,254,255,1)] px-[10px] pt-[46px] md:mt-[120px] md:px-5 md:pt-0 min-[1025px]:px-8"
     >
       <div className="mx-auto w-full max-w-[300px] md:max-w-content">
         <div className="mx-auto w-full max-w-[300px] md:max-w-[954px]">
