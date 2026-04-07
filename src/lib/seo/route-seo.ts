@@ -27,6 +27,7 @@ export const homeSeo: RouteSeoConfig = {
       addressCountry: "KZ",
       addressRegion: "Карагандинская область",
       addressLocality: "Караганда",
+      streetAddress: "мкр. Голубые пруды, 21",
     },
     areaServed: ["Караганда", "Темиртау", "Шахтинск", "Сарань", "Абай", "Майкудук", "Пришахтинск"],
     serviceType: ["Окна ПВХ", "Остекление балконов", "Ремонт окон"],
@@ -87,6 +88,7 @@ export function getGeoPageSeo(page: GeoPage): RouteSeoConfig {
         "@type": "PostalAddress",
         addressCountry: "KZ",
         addressLocality: "Караганда",
+        streetAddress: "мкр. Голубые пруды, 21",
       },
       areaServed: page.areaServed.map((area) => ({
         "@type": "City",

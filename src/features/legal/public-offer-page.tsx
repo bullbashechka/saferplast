@@ -4,7 +4,8 @@ import { legalSeoByPath } from "@/lib/seo/route-seo";
 const offerDetails = {
   companyName: "ИП АБДИКАРИМОВ К.К.",
   binOrIin: "860713350477",
-  address: "г. Темиртау, мкр. Горка Дружбы, д. 32, кв 45, тел 87004450595",
+  legalAddress: "г. Темиртау, мкр. Горка Дружбы, д. 32, кв 45",
+  actualAddress: "г. Караганда, мкр. Голубые пруды, 21",
   phone: "+77478041022 (Telegram, WhatsApp)",
   website: "https://saferplast.pages.dev/",
   effectiveDate: "7 апреля 2026",
@@ -104,8 +105,8 @@ export function PublicOfferPage() {
           <div>
             <h2 className="font-semibold text-[#004B62]">9. Реквизиты исполнителя</h2>
             <p className="mt-2">
-              {offerDetails.companyName}, БИН/ИИН: {offerDetails.binOrIin}, адрес: {offerDetails.address}, телефон:{" "}
-              {offerDetails.phone}.
+              {offerDetails.companyName}, БИН/ИИН: {offerDetails.binOrIin}, юр. адрес: {offerDetails.legalAddress},
+              фактический адрес: {offerDetails.actualAddress}, телефон: {offerDetails.phone}.
             </p>
           </div>
         </section>

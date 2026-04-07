@@ -5,6 +5,7 @@ const distDir = path.resolve("dist");
 const templatePath = path.join(distDir, "index.html");
 const siteUrl = (process.env.VITE_SITE_URL ?? "https://saferplast.pages.dev").replace(/\/$/, "");
 const ogImageUrl = `${siteUrl}/images/original/logo.png`;
+
 const localBusinessJsonLd = (url) => ({
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -15,6 +16,7 @@ const localBusinessJsonLd = (url) => ({
     "@type": "PostalAddress",
     addressCountry: "KZ",
     addressLocality: "Караганда",
+    streetAddress: "мкр. Голубые пруды, 21",
   },
 });
 
@@ -35,6 +37,7 @@ const routes = [
         addressCountry: "KZ",
         addressRegion: "Карагандинская область",
         addressLocality: "Караганда",
+        streetAddress: "мкр. Голубые пруды, 21",
       },
       areaServed: ["Караганда", "Темиртау", "Шахтинск", "Сарань", "Абай", "Майкудук", "Пришахтинск"],
       serviceType: ["Окна ПВХ", "Остекление балконов", "Ремонт окон"],
@@ -148,7 +151,9 @@ function replaceJsonLd(html, jsonLd) {
   }
 
   const nextScript = `<script id="seo-json-ld" type="application/ld+json">${content}</script>`;
-  return scriptPattern.test(html) ? html.replace(scriptPattern, nextScript) : html.replace("</head>", `    ${nextScript}\n  </head>`);
+  return scriptPattern.test(html)
+    ? html.replace(scriptPattern, nextScript)
+    : html.replace("</head>", `    ${nextScript}\n  </head>`);
 }
 
 function renderRouteHtml(templateHtml, route) {
