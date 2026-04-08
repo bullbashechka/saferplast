@@ -2,7 +2,6 @@ import { SeoMeta } from "@/components/seo/seo-meta";
 import { AdvantagesSection } from "@/features/landing/advantages-section";
 import { FaqSection } from "@/features/landing/faq-section";
 import { FirstScreen } from "@/features/landing/first-screen";
-import { GeoCoverageSection } from "@/features/landing/geo-coverage-section";
 import { ProofSection } from "@/features/landing/proof-section";
 import { ProjectsSection } from "@/features/landing/projects-section";
 import { SiteFooter } from "@/features/landing/site-footer";
@@ -28,7 +27,6 @@ export default function App() {
       <WorkProcessSection />
       <ProjectsSection />
       <TestimonialsSection />
-      <GeoCoverageSection />
       <FaqSection />
       <LeadFormSection />
       <SiteFooter />
