@@ -8,7 +8,7 @@ export type RouteSeoConfig = {
   title: string;
 };
 
-const SITE_URL = (import.meta.env.VITE_SITE_URL ?? "https://saferplast.pages.dev").replace(/\/$/, "");
+const SITE_URL = (import.meta.env.VITE_SITE_URL ?? "https://saferplast-main.pages.dev").replace(/\/$/, "");
 
 export const defaultOgImagePath = "/images/original/logo.png";
 

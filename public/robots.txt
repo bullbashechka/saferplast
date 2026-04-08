@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://saferplast.pages.dev/sitemap.xml
+Sitemap: https://saferplast-main.pages.dev/sitemap.xml

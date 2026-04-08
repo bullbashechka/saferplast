@@ -7,7 +7,7 @@ const companyDetails = {
   legalAddress: "г. Темиртау, мкр. Горка Дружбы, д. 32, кв 45",
   actualAddress: "г. Караганда, мкр. Голубые пруды, 21",
   phone: "+77478041022 (Telegram, WhatsApp)",
-  website: "https://saferplast.pages.dev/",
+  website: "https://saferplast-main.pages.dev/",
   effectiveDate: "7 апреля 2026",
 };
 

@@ -11,7 +11,7 @@ type SeoMetaProps = {
   robots?: string;
 };
 
-const SITE_URL = (import.meta.env.VITE_SITE_URL ?? "https://saferplast.pages.dev").replace(/\/$/, "");
+const SITE_URL = (import.meta.env.VITE_SITE_URL ?? "https://saferplast-main.pages.dev").replace(/\/$/, "");
 const TWITTER_CARD = "summary";
 const DEFAULT_OG_IMAGE_PATH = "/images/original/logo.png";
 const DEFAULT_OG_IMAGE_ALT = "Saferplast";
