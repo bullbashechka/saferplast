@@ -3,7 +3,7 @@ import path from "node:path";
 
 const distDir = path.resolve("dist");
 const templatePath = path.join(distDir, "index.html");
-const siteUrl = (process.env.VITE_SITE_URL ?? "https://saferplast.pages.dev").replace(/\/$/, "");
+const siteUrl = (process.env.VITE_SITE_URL ?? "https://saferplast-main.pages.dev").replace(/\/$/, "");
 const ogImageUrl = `${siteUrl}/images/original/logo.png`;
 
 const localBusinessJsonLd = (url) => ({
