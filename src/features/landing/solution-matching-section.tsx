@@ -125,7 +125,7 @@ function SolutionCard({
 
 function MobileSolutionCard({ card }: { card: SolutionMatchingCard }) {
   return (
-    <article className="relative mx-auto flex h-[96px] w-[300px] gap-[12px] rounded-[10px] bg-[#E6F0F2] p-[5px]">
+    <article className="landing-mobile-card relative mx-auto flex h-[96px] gap-[12px] rounded-[10px] bg-[#E6F0F2] p-[5px]">
       <div className="relative h-[86px] w-[80px] shrink-0 overflow-hidden rounded-[5px]">
         <Image
           alt={card.title}
@@ -169,9 +169,9 @@ export function SolutionMatchingSection() {
     <section
       id="solution-matching"
       aria-labelledby="solution-matching-title"
-      className="mt-[20px] bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-0 md:mt-[120px] md:px-5 min-[1025px]:px-8"
+      className="mt-[20px] bg-[rgba(250,254,255,1)] px-[var(--landing-mobile-shell-x)] pb-0 pt-0 md:mt-[120px] md:px-5 min-[1025px]:px-8"
     >
-      <div className="mx-auto w-full max-w-[300px] md:max-w-content">
+      <div className="landing-mobile-shell mx-auto md:max-w-content">
         <h2
           id="solution-matching-title"
           className="font-['Sansation'] text-center text-[20px] font-normal leading-[1] tracking-[0] text-[hsla(194,100%,19%,1)] md:font-display md:text-[43px] min-[1025px]:text-[44px]"
@@ -179,7 +179,7 @@ export function SolutionMatchingSection() {
           {section.heading}
         </h2>
         <p
-          className="mx-auto mt-[10px] max-w-[300px] text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[hsla(0,0%,14%,1)] md:mt-4 md:max-w-[51rem] md:font-body md:text-[15px] min-[1025px]:text-[16px]"
+          className="mx-auto mt-[10px] max-w-full text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[hsla(0,0%,14%,1)] md:mt-4 md:max-w-[51rem] md:font-body md:text-[15px] min-[1025px]:text-[16px]"
         >
           {section.subtitle}
         </p>
@@ -191,7 +191,7 @@ export function SolutionMatchingSection() {
         </div>
 
         <a
-          className="mx-auto mt-[26px] flex h-[38px] w-[215px] items-center justify-center gap-[14px] rounded-[10px] bg-[#004B62] px-[39px] py-[12px] text-center font-['Montserrat'] text-[14px] font-medium leading-[1] tracking-[0] text-white transition-colors hover:bg-[#00384a] md:hidden"
+          className="landing-mobile-cta mx-auto mt-[26px] flex h-[38px] items-center justify-center gap-[14px] rounded-[10px] bg-[#004B62] px-[39px] py-[12px] text-center font-['Montserrat'] text-[14px] font-medium leading-[1] tracking-[0] text-white transition-colors hover:bg-[#00384a] md:hidden"
           href="#lead-form"
         >
           Узнать подробнее

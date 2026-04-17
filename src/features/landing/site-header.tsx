@@ -139,10 +139,10 @@ export function SiteHeader({ cityLabel, navigationLinks, phoneHref }: SiteHeader
   return (
     <header className="relative py-1">
       <div className="flex items-center justify-between gap-3">
-        <a aria-label="Saferplast" className="block h-[2.8125rem] w-[5.5rem] shrink-0" href="/">
+        <a aria-label="Saferplast" className="block h-[2.8125rem] w-[clamp(5.5rem,4.9286rem+2.8571vw,6.4375rem)] shrink-0" href="/">
           <Image
             alt="Saferplast"
-            className="h-[2.8125rem] w-[5.5rem] object-contain"
+            className="h-[2.8125rem] w-[clamp(5.5rem,4.9286rem+2.8571vw,6.4375rem)] object-contain"
             height={92}
             priority
             src="/images/original/logo.png"
@@ -155,7 +155,7 @@ export function SiteHeader({ cityLabel, navigationLinks, phoneHref }: SiteHeader
           aria-controls="mobile-header-navigation"
           aria-expanded={isMobileMenuOpen}
           aria-label="Открыть меню"
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[0.9375rem] bg-[rgba(250,254,255,0.36)] transition-colors hover:bg-[rgba(250,254,255,0.8)]"
+          className="flex h-[clamp(3rem,2.8095rem+0.9524vw,3.3125rem)] w-[clamp(3rem,2.8095rem+0.9524vw,3.3125rem)] shrink-0 items-center justify-center rounded-[0.9375rem] bg-[rgba(250,254,255,0.36)] transition-colors hover:bg-[rgba(250,254,255,0.8)]"
           onClick={() => setIsMobileMenuOpen((value) => !value)}
           type="button"
         >
@@ -166,7 +166,7 @@ export function SiteHeader({ cityLabel, navigationLinks, phoneHref }: SiteHeader
       <div className="mt-3 flex w-full items-center justify-start gap-[0.625rem]">
         <a
           aria-label="Позвонить"
-          className="liquid-glass-strong liquid-glass-soft flex h-[2.125rem] w-[2.125rem] shrink-0 items-center justify-center rounded-[15px] p-[0.5625rem]"
+          className="liquid-glass-strong liquid-glass-soft flex h-[clamp(2.125rem,1.9345rem+0.9524vw,2.4375rem)] w-[clamp(2.125rem,1.9345rem+0.9524vw,2.4375rem)] shrink-0 items-center justify-center rounded-[15px] p-[0.5625rem]"
           href={phoneHref}
           rel="noopener noreferrer"
           target="_blank"
@@ -176,7 +176,7 @@ export function SiteHeader({ cityLabel, navigationLinks, phoneHref }: SiteHeader
 
         <a
           aria-label={karagandaAddressLabel}
-          className="liquid-glass-strong liquid-glass-soft flex h-[2.125rem] w-[7.5rem] shrink-0 items-center gap-1.5 rounded-[15px] px-[0.5625rem] py-[0.5625rem]"
+          className="liquid-glass-strong liquid-glass-soft flex h-[clamp(2.125rem,1.9345rem+0.9524vw,2.4375rem)] w-[clamp(7.5rem,6.3571rem+5.7143vw,9.375rem)] shrink-0 items-center gap-1.5 rounded-[15px] px-[0.5625rem] py-[0.5625rem]"
           href={karaganda2gisHref}
           rel="noopener noreferrer"
           target="_blank"

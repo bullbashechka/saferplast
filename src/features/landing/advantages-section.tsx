@@ -36,7 +36,7 @@ function getCardClassNames(card: AdvantagesCard) {
 
 function MobileAdvantagesCard({ card }: { card: AdvantagesCard }) {
   const { baseClassName, isDark, titleClassName } = getCardClassNames(card);
-  const mobileCardClassName = `relative flex h-[5.5rem] w-full max-w-[18.75rem] flex-col justify-center rounded-[10px] px-[10px] py-3 ${baseClassName}`;
+  const mobileCardClassName = `landing-mobile-card relative flex h-[5.5rem] flex-col justify-center rounded-[10px] px-[10px] py-3 ${baseClassName}`;
   const titleSpacingClassName = isDark ? "mt-3" : "mt-2.5";
 
   if (card.href) {
@@ -145,8 +145,8 @@ export function AdvantagesSection() {
       aria-label={advantagesSectionContent.title}
       className="relative z-10 -mt-[5.3125rem] rounded-t-[1.875rem] bg-[rgba(250,254,255,1)] pb-0 pt-8 md:mt-[120px] md:pt-0 xl:rounded-t-none"
     >
-      <div className="mx-auto max-w-[90rem] px-[10px] md:px-5 min-[1025px]:px-8 xl:w-[90rem] xl:max-w-none xl:px-[7.5rem]">
-        <div className="mx-auto flex max-w-[18.75rem] flex-col items-center md:hidden">
+      <div className="mx-auto max-w-[90rem] px-[var(--landing-mobile-shell-x)] md:px-5 min-[1025px]:px-8 xl:w-[90rem] xl:max-w-none xl:px-[7.5rem]">
+        <div className="landing-mobile-shell mx-auto flex flex-col items-center md:hidden">
           <h2 className="text-center font-display text-[1.25rem] font-normal leading-[1] text-[#004B62]">
             {advantagesSectionContent.title}
           </h2>

@@ -121,21 +121,21 @@ export function ProjectsSection() {
     <section
       id="projects"
       aria-label="Наши работы"
-      className="bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-[60px] md:mt-[120px] md:px-5 md:pt-0 min-[1025px]:px-8"
+      className="bg-[rgba(250,254,255,1)] px-[var(--landing-mobile-shell-x)] pb-0 pt-[60px] md:mt-[120px] md:px-5 md:pt-0 min-[1025px]:px-8"
     >
-      <div className="mx-auto w-full max-w-[300px] md:max-w-[1201px]">
+      <div className="landing-mobile-shell mx-auto md:max-w-[1201px]">
         <div className="md:hidden">
           <h2 className="text-center font-['Sansation'] text-[20px] font-normal leading-[1] tracking-[0] text-[#004B62]">
             {title}
           </h2>
-          <p className="mx-auto mt-[10px] max-w-[300px] text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[#000000]">
+          <p className="mx-auto mt-[10px] max-w-full text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[#000000]">
             {subtitle}
           </p>
 
           <MobileProjectsSlider images={mobileImages} />
 
           <a
-            className="mx-auto mt-4 flex h-[38px] w-[244px] items-center justify-center gap-[14px] rounded-[10px] border border-[#004B62] px-[32px] py-[12px] text-center font-['Montserrat'] text-[14px] font-medium leading-[1] tracking-[0] text-[#004B62] transition-colors hover:bg-[#004B62] hover:text-white"
+            className="landing-mobile-cta mx-auto mt-4 flex h-[38px] items-center justify-center gap-[14px] rounded-[10px] border border-[#004B62] px-[32px] py-[12px] text-center font-['Montserrat'] text-[14px] font-medium leading-[1] tracking-[0] text-[#004B62] transition-colors hover:bg-[#004B62] hover:text-white"
             href={ctaHref}
             rel="noopener noreferrer"
             target="_blank"

@@ -56,17 +56,17 @@ function MobileWorkProcessCard({
   imageSrc: `/images/${string}`;
 }) {
   return (
-    <article className="relative mx-auto h-[151px] w-[300px] overflow-hidden rounded-[10px] bg-[#d9e5ea]">
+    <article className="landing-mobile-card relative mx-auto h-[151px] overflow-hidden rounded-[10px] bg-[#d9e5ea]">
       <Image
         alt={titleLines.join(" ")}
         className="object-cover"
         fill
-        sizes="300px"
+        sizes="(max-width: 1024px) 100vw, 300px"
         src={imageSrc}
       />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,75,98,0.12)_0%,rgba(0,0,0,0.18)_100%)]" />
 
-      <div className="absolute left-[7px] top-[7px] h-[51px] w-[284px]">
+      <div className="absolute left-[7px] right-[7px] top-[7px] h-[51px]">
         <div className="liquid-glass-strong flex h-full w-full items-center gap-[25px] rounded-[10px] p-[5px]">
           <div className="relative h-[41px] w-[43px] shrink-0">
             <Image alt="" aria-hidden="true" fill src="/icons/square.svg" />
@@ -92,16 +92,16 @@ export function WorkProcessSection() {
   return (
     <section
       aria-labelledby="work-process-title"
-      className="bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-[60px] md:mt-[120px] md:px-5 md:pt-0 min-[1025px]:px-8"
+      className="bg-[rgba(250,254,255,1)] px-[var(--landing-mobile-shell-x)] pb-0 pt-[60px] md:mt-[120px] md:px-5 md:pt-0 min-[1025px]:px-8"
     >
-      <div className="mx-auto w-full max-w-[300px] md:max-w-content">
+      <div className="landing-mobile-shell mx-auto md:max-w-content">
         <h2
           id="work-process-title"
           className="text-center font-['Sansation'] text-[20px] font-normal leading-[1] tracking-[0] text-[#004B62] md:font-sans md:text-[2.4375rem] md:font-medium min-[1025px]:text-[2.5rem]"
         >
           {workProcessContent.title}
         </h2>
-        <p className="mx-auto mt-[10px] max-w-[300px] text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[#242424] md:mt-4 md:max-w-[30.125rem] md:font-sans md:text-[0.9375rem] min-[1025px]:text-[1rem]">
+        <p className="mx-auto mt-[10px] max-w-full text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[#242424] md:mt-4 md:max-w-[30.125rem] md:font-sans md:text-[0.9375rem] min-[1025px]:text-[1rem]">
           {workProcessContent.subtitle}
         </p>
 

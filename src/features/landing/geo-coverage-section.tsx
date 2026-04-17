@@ -2,8 +2,8 @@ import { geoPages } from "@/features/seo/geo-pages-content";
 
 export function GeoCoverageSection() {
   return (
-    <section className="bg-[rgba(250,254,255,1)] px-[10px] pt-[46px] md:mt-[120px] md:px-5 md:pt-0 min-[1025px]:px-8">
-      <div className="mx-auto w-full max-w-[300px] md:max-w-content">
+    <section className="bg-[rgba(250,254,255,1)] px-[var(--landing-mobile-shell-x)] pt-[46px] md:mt-[120px] md:px-5 md:pt-0 min-[1025px]:px-8">
+      <div className="landing-mobile-shell mx-auto md:max-w-content">
         <div className="mx-auto w-full max-w-[900px]">
           <h2 className="text-center font-display text-[20px] font-normal leading-[1] text-[#004B62] md:text-[43px] min-[1025px]:text-[44px]">
             География работ

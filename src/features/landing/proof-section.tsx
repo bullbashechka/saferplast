@@ -17,30 +17,30 @@ export function ProofSection() {
       aria-labelledby="proof-title"
       className="mt-[50px] bg-[rgba(250,254,255,1)] pb-10 md:mt-[77px] md:pb-14"
     >
-      <div className="mx-auto max-w-[90rem] px-[10px] md:px-5 min-[1025px]:px-8 xl:w-[90rem] xl:max-w-none xl:px-[7.5rem]">
+      <div className="mx-auto max-w-[90rem] px-[var(--landing-mobile-shell-x)] md:px-5 min-[1025px]:px-8 xl:w-[90rem] xl:max-w-none xl:px-[7.5rem]">
         <h2 id="proof-title" className="sr-only">
           Опыт, аккуратность и контроль
         </h2>
 
-        <div className="mx-auto w-fit md:hidden">
-          <article className="relative h-[369px] w-[300px] overflow-hidden rounded-[20px] bg-[#d9e5ea]">
+        <div className="mx-auto md:hidden">
+          <article className="landing-mobile-card relative h-[369px] overflow-hidden rounded-[20px] bg-[#d9e5ea]">
             <Image
               alt="Сотрудник Saferplast на производстве"
               className="object-cover"
               fill
-              sizes="300px"
+              sizes="(max-width: 1024px) 100vw, 300px"
               src="/images/webp/male-worker-factory.webp"
             />
             <div className="absolute inset-0 bg-[hsla(0,0%,0%,0.2)]" />
 
-            <div className="liquid-glass-strong liquid-glass-soft absolute left-[10px] top-[200px] flex h-[159px] w-[280px] flex-col items-start rounded-[10px] p-[15px]">
+            <div className="liquid-glass-strong liquid-glass-soft absolute left-[10px] right-[10px] top-[200px] flex h-[159px] flex-col items-start rounded-[10px] p-[15px]">
               <div className="relative z-10 flex h-full w-full flex-col justify-between">
-                <p className="mx-auto h-20 w-[250px] max-w-full font-display text-[20px] font-normal leading-[1] tracking-[0] text-white">
+                <p className="landing-mobile-tight mx-auto h-20 max-w-full font-display text-[20px] font-normal leading-[1] tracking-[0] text-white">
                   {proofSectionCtaCopy}
                 </p>
 
                 <a
-                  className="mx-auto inline-flex h-[38px] w-[258px] shrink-0 items-center justify-center gap-[14px] rounded-[10px] bg-[#004B62] px-[39px] py-3 text-center font-body text-[14px] font-medium leading-[1] text-white transition-colors hover:bg-[#00384a]"
+                  className="landing-mobile-cta mx-auto inline-flex h-[38px] shrink-0 items-center justify-center gap-[14px] rounded-[10px] bg-[#004B62] px-[39px] py-3 text-center font-body text-[14px] font-medium leading-[1] text-white transition-colors hover:bg-[#00384a]"
                   href="#lead-form"
                 >
                   Получить консультацию

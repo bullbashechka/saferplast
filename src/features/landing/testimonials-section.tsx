@@ -27,7 +27,7 @@ function createMobileTestimonialSlides(items: readonly Testimonial[], size: numb
 
 const mobileTestimonialSlides = createMobileTestimonialSlides(
   testimonialsContent.items,
-  2,
+  1,
 );
 
 function MobileTestimonialCard({
@@ -38,7 +38,7 @@ function MobileTestimonialCard({
   onOpen: (testimonial: Testimonial) => void;
 }) {
   return (
-    <Card className="h-[150px] rounded-[15px] border border-[#FAFEFF] bg-[#E6F0F2] shadow-none">
+    <Card className="mx-[30px] h-[150px] rounded-[15px] border border-[#FAFEFF] bg-[#E6F0F2] shadow-none">
       <div className="flex h-full select-none flex-col gap-[5px] px-[10px] pb-[10px] pt-[10px] text-left">
         <h3 className="truncate font-body text-[14px] font-medium leading-[1] text-[#004B62]">
           {testimonial.name}
@@ -46,11 +46,11 @@ function MobileTestimonialCard({
         <p className="truncate font-body text-[11px] font-medium leading-[1] text-[#242424]">
           {testimonial.service}
         </p>
-        <p className="min-h-0 flex-1 overflow-hidden font-body text-[10px] font-normal leading-[1.2] text-[#242424] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
+        <p className="min-h-0 flex-1 overflow-hidden font-body text-[11px] font-normal leading-[1.2] text-[#242424] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
           {testimonial.review}
         </p>
         <button
-          className="inline-flex w-fit items-center text-[10px] font-medium leading-[1] text-[#004B62] transition-colors hover:text-[#00384a]"
+          className="inline-flex w-fit items-center text-[11px] font-medium leading-[1] text-[#004B62] transition-colors hover:text-[#00384a]"
           onClick={() => onOpen(testimonial)}
           type="button"
         >
@@ -123,9 +123,9 @@ export function TestimonialsSection() {
     <section
       id="testimonials"
       aria-labelledby="testimonials-title"
-      className="bg-[rgba(250,254,255,1)] px-[10px] pb-0 pt-[60px] md:mt-[120px] md:px-5 md:pt-0 min-[1025px]:px-8"
+      className="bg-[rgba(250,254,255,1)] px-[var(--landing-mobile-shell-x)] pb-0 pt-[60px] md:mt-[120px] md:px-5 md:pt-0 min-[1025px]:px-8"
     >
-      <div className="mx-auto w-full max-w-[300px] md:max-w-[1201px]">
+      <div className="landing-mobile-shell mx-auto md:max-w-[1201px]">
         <h2
           id="testimonials-title"
           className="text-center font-['Sansation'] text-[20px] font-normal leading-[1] tracking-[0] text-[#004B62] md:font-display md:text-[43px] min-[1025px]:text-[44px]"
@@ -142,7 +142,7 @@ export function TestimonialsSection() {
                   className="min-w-0 shrink-0 grow-0 basis-full"
                   key={`mobile-testimonials-slide-${slideIndex}`}
                 >
-                  <div className="grid grid-cols-2 gap-[10px]">
+                  <div className="grid grid-cols-1 gap-[10px]">
                     {slide.map((testimonial) => (
                       <MobileTestimonialCard
                         key={`${testimonial.name}-${testimonial.service}`}
