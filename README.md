@@ -2,6 +2,24 @@
 
 Landing-page project on `React 19 + Vite + TypeScript + Tailwind CSS`.
 
+## Quick Start
+
+Run from the project root:
+
+```bash
+npm install
+npm run dev
+```
+
+If your PowerShell profile restricts `npm` command execution, use:
+
+```powershell
+npm.cmd install
+npm.cmd run dev
+```
+
+Then open the local URL from terminal output (usually `http://localhost:5173`).
+
 ## Architecture
 
 - Frontend: Cloudflare Pages (`*.pages.dev`)
