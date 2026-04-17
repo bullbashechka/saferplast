@@ -100,13 +100,13 @@ export function HeroSection({
   return (
     <section aria-label="Первый экран" className="mt-0">
       <div className="md:hidden">
-        <div className="relative z-10 min-h-[32.5rem] overflow-hidden rounded-b-[1.875rem] bg-[#d9e5ea]">
+        <div className="relative z-10 min-h-[30.5rem] overflow-hidden rounded-b-[1.875rem] bg-[#d9e5ea]">
           <div
             aria-hidden="true"
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: "url('/images/original/fontheroleftside.png')" }}
           />
-          <div className="relative z-10 px-[var(--landing-mobile-shell-x)] pb-6 pt-4">
+          <div className="relative z-10 px-[var(--landing-mobile-shell-x)] pb-4 pt-3">
             <SiteHeader
               cityLabel={cityLabel}
               navigationLinks={headerNavigationLinks}
@@ -114,7 +114,7 @@ export function HeroSection({
               phoneLabel={phoneLabel}
             />
 
-            <h1 className="landing-mobile-tight mx-auto mt-8 max-w-full text-center font-display text-[1.3125rem] font-normal leading-[1] text-[#004B62]">
+            <h1 className="landing-mobile-tight mx-auto mt-6 max-w-full text-center font-display text-[1.3125rem] font-normal leading-[1] text-[#004B62]">
               {mobileHeadlineLines.map((line) => (
                 <span className="block" key={line}>
                   {line}
@@ -122,18 +122,21 @@ export function HeroSection({
               ))}
             </h1>
 
-            <div className="mt-8 grid justify-items-center gap-4">
+            <div className="mt-6 grid justify-items-center gap-3">
               <SupportCard {...supportCard} />
               <ServiceCard {...serviceCard} />
             </div>
           </div>
         </div>
 
-        <div className="relative z-0 -mt-[5.3125rem] aspect-[588/759] overflow-hidden rounded-[1.875rem] bg-[#d9e5ea]">
+        <div className="relative z-0 -mt-[4rem] aspect-[588/640] overflow-hidden rounded-[1.875rem] bg-[#d9e5ea]">
           <div
             aria-hidden="true"
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/original/fontherorightside.png')" }}
+            style={{
+              backgroundImage: "url('/images/original/fontherorightside.png')",
+              backgroundPosition: "center top 7px",
+            }}
           />
         </div>
       </div>
