@@ -39,18 +39,18 @@ function MobileTestimonialCard({
 }) {
   return (
     <Card className="mx-[10px] h-[150px] rounded-[15px] border border-[#FAFEFF] bg-[#E6F0F2] shadow-none">
-      <div className="flex h-full select-none flex-col gap-[5px] px-[10px] pb-[10px] pt-[10px] text-left">
+      <div className="flex h-full select-none flex-col px-[10px] pb-[10px] pt-[10px] text-left">
         <h3 className="truncate font-['Sansation'] text-[18px] font-normal leading-[1] text-[#004B62]">
           {testimonial.name}
         </h3>
-        <p className="truncate font-['Montserrat'] text-[14px] font-medium leading-[1] text-[#242424]">
+        <p className="mt-[12px] truncate font-['Montserrat'] text-[14px] font-medium leading-[1] text-[#242424]">
           {testimonial.service}
         </p>
-        <p className="min-h-0 flex-1 overflow-hidden font-['Montserrat'] text-[12px] font-normal leading-[1] text-[#242424] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
+        <p className="mt-[22px] min-h-0 flex-1 overflow-hidden font-['Montserrat'] text-[12px] font-normal leading-[1] text-[#242424] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
           {testimonial.review}
         </p>
         <button
-          className="inline-flex w-fit items-center text-[11px] font-medium leading-[1] text-[#004B62] transition-colors hover:text-[#00384a]"
+          className="mt-2 inline-flex w-fit items-center text-[11px] font-medium leading-[1] text-[#004B62] transition-colors hover:text-[#00384a]"
           onClick={() => onOpen(testimonial)}
           type="button"
         >
@@ -70,18 +70,18 @@ function DesktopTestimonialCard({
 }) {
   return (
     <Card className="h-[228px] rounded-[20px] border-0 bg-[#E6F0F2] shadow-none min-[1025px]:h-[240px]">
-      <div className="flex h-full select-none flex-col gap-4 px-8 pb-7 pr-6 pt-8 text-left min-[1025px]:gap-[18px] min-[1025px]:px-[40px] min-[1025px]:pb-[32px] min-[1025px]:pr-[30px] min-[1025px]:pt-[40px]">
+      <div className="flex h-full select-none flex-col px-8 pb-7 pr-6 pt-8 text-left min-[1025px]:px-[40px] min-[1025px]:pb-[32px] min-[1025px]:pr-[30px] min-[1025px]:pt-[40px]">
         <h3 className="font-body text-[29px] font-medium leading-[1] text-[#004B62] min-[1025px]:text-[30px]">
           {testimonial.name}
         </h3>
-        <p className="font-body text-[0.9375rem] font-medium leading-[1] text-[#242424] min-[1025px]:text-[1rem]">
+        <p className="mt-[12px] font-body text-[0.9375rem] font-medium leading-[1] text-[#242424] min-[1025px]:text-[1rem]">
           {testimonial.service}
         </p>
-        <p className="min-h-0 flex-1 overflow-hidden text-[0.9375rem] font-normal leading-[1.35] text-[#242424] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:4] min-[1025px]:text-[1rem]">
+        <p className="mt-[22px] min-h-0 flex-1 overflow-hidden text-[0.9375rem] font-normal leading-[1.35] text-[#242424] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:4] min-[1025px]:text-[1rem]">
           {testimonial.review}
         </p>
         <button
-          className="inline-flex w-fit items-center text-[0.9375rem] font-medium leading-[1] text-[#004B62] transition-colors hover:text-[#00384a] min-[1025px]:text-[1rem]"
+          className="mt-2 inline-flex w-fit items-center text-[0.9375rem] font-medium leading-[1] text-[#004B62] transition-colors hover:text-[#00384a] min-[1025px]:text-[1rem]"
           onClick={() => onOpen(testimonial)}
           type="button"
         >

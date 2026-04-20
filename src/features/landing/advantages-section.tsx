@@ -1,4 +1,5 @@
 import { Image } from "@/components/ui/image";
+import { PageEnter, ScrollReveal } from "@/components/ui/reveal";
 
 import {
   advantagesSectionContent,
@@ -147,54 +148,64 @@ export function AdvantagesSection() {
     >
       <div className="mx-auto max-w-[90rem] px-[var(--landing-mobile-shell-x)] md:px-5 min-[1025px]:px-8 xl:w-[90rem] xl:max-w-none xl:px-[7.5rem]">
         <div className="landing-mobile-shell mx-auto flex flex-col items-center md:hidden">
-          <h2 className="text-center font-display text-[1.25rem] font-normal leading-[1] text-[#004B62]">
-            {advantagesSectionContent.title}
-          </h2>
-          <p className="mt-3 text-center font-body text-[0.75rem] font-normal leading-[1] text-[#242424]">
-            {advantagesSectionContent.mobileSubtitleLines.map((line) => (
-              <span className="block" key={line}>
-                {line}
-              </span>
-            ))}
-          </p>
+          <PageEnter delayMs={140}>
+            <h2 className="text-center font-display text-[1.25rem] font-normal leading-[1] text-[#004B62]">
+              {advantagesSectionContent.title}
+            </h2>
+            <p className="mt-3 text-center font-body text-[0.75rem] font-normal leading-[1] text-[#242424]">
+              {advantagesSectionContent.mobileSubtitleLines.map((line) => (
+                <span className="block" key={line}>
+                  {line}
+                </span>
+              ))}
+            </p>
+          </PageEnter>
 
-          {imageCard ? (
-            <div className="mt-5 flex h-[11.5625rem] w-[16.4375rem] items-center justify-center">
-              <Image
-                alt="Saferplast"
-                className="h-auto w-full object-contain"
-                height={185}
-                src="/images/original/logo.png"
-                unoptimized
-                width={263}
-              />
+          <ScrollReveal>
+            {imageCard ? (
+              <div className="mt-5 flex h-[11.5625rem] w-[16.4375rem] items-center justify-center">
+                <Image
+                  alt="Saferplast"
+                  className="h-auto w-full object-contain"
+                  height={185}
+                  src="/images/original/logo.png"
+                  unoptimized
+                  width={263}
+                />
+              </div>
+            ) : null}
+          </ScrollReveal>
+
+          <ScrollReveal className="mt-5 w-full">
+            <div className="grid w-full gap-3">
+              {mobileCards.map((card) => (
+                <MobileAdvantagesCard card={card} key={card.title} />
+              ))}
             </div>
-          ) : null}
-
-          <div className="mt-5 grid w-full gap-3">
-            {mobileCards.map((card) => (
-              <MobileAdvantagesCard card={card} key={card.title} />
-            ))}
-          </div>
+          </ScrollReveal>
         </div>
 
         <div className="hidden md:block">
-          <h2 className="text-center font-display text-[2.6875rem] font-normal leading-[1] text-[#004B62] min-[1025px]:text-[2.75rem]">
-            {advantagesSectionContent.title}
-          </h2>
-          <p className="mx-auto mt-4 max-w-[40rem] text-center text-[0.9375rem] leading-[1.2] text-[#242424] min-[1025px]:text-[1rem]">
-            {advantagesSectionContent.subtitle}
-          </p>
+          <PageEnter delayMs={140}>
+            <h2 className="text-center font-display text-[2.6875rem] font-normal leading-[1] text-[#004B62] min-[1025px]:text-[2.75rem]">
+              {advantagesSectionContent.title}
+            </h2>
+            <p className="mx-auto mt-4 max-w-[40rem] text-center text-[0.9375rem] leading-[1.2] text-[#242424] min-[1025px]:text-[1rem]">
+              {advantagesSectionContent.subtitle}
+            </p>
+          </PageEnter>
 
-          <div className="mt-8 grid md:grid-cols-4 md:grid-rows-[12.25rem_12.25rem] md:gap-4 min-[1025px]:mt-10 min-[1025px]:grid-rows-[13.125rem_13.125rem] min-[1025px]:gap-5 xl:grid-cols-[17.8125rem_17.8125rem_17.6875rem_17.8125rem]">
-            {advantagesSectionContent.cards.map((card, index) => (
-              <DesktopAdvantagesCard
-                card={card}
-                index={index}
-                key={card.title ?? `image-card-${index}`}
-              />
-            ))}
-          </div>
+          <ScrollReveal className="mt-8 min-[1025px]:mt-10">
+            <div className="grid md:grid-cols-4 md:grid-rows-[12.25rem_12.25rem] md:gap-4 min-[1025px]:grid-rows-[13.125rem_13.125rem] min-[1025px]:gap-5 xl:grid-cols-[17.8125rem_17.8125rem_17.6875rem_17.8125rem]">
+              {advantagesSectionContent.cards.map((card, index) => (
+                <DesktopAdvantagesCard
+                  card={card}
+                  index={index}
+                  key={card.title ?? `image-card-${index}`}
+                />
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

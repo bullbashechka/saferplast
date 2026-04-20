@@ -1,4 +1,5 @@
 import { SeoMeta } from "@/components/seo/seo-meta";
+import { ScrollReveal } from "@/components/ui/reveal";
 import { AdvantagesSection } from "@/features/landing/advantages-section";
 import { FaqSection } from "@/features/landing/faq-section";
 import { FirstScreen } from "@/features/landing/first-screen";
@@ -13,7 +14,7 @@ import { homeSeo } from "@/lib/seo/route-seo";
 
 export default function App() {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[rgba(250,254,255,1)] text-slate-900">
+    <main className="min-h-screen bg-[rgba(250,254,255,1)] text-slate-900">
       <SeoMeta
         canonicalPath={homeSeo.canonicalPath}
         description={homeSeo.description}
@@ -22,14 +23,30 @@ export default function App() {
       />
       <FirstScreen />
       <AdvantagesSection />
-      <ProofSection />
-      <SolutionMatchingSection />
-      <WorkProcessSection />
-      <ProjectsSection />
-      <TestimonialsSection />
-      <FaqSection />
-      <LeadFormSection />
-      <SiteFooter />
+      <ScrollReveal>
+        <ProofSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <SolutionMatchingSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <WorkProcessSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ProjectsSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <TestimonialsSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <FaqSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <LeadFormSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <SiteFooter />
+      </ScrollReveal>
     </main>
   );
 }
