@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { Image } from "@/components/ui/image";
 import { useEffect, useRef, useState } from "react";
@@ -12,10 +12,10 @@ import type { LeadFormPayload } from "@/features/lead-form/lead-form-types";
 
 const PHONE_PREFIX = "+7";
 const EMPTY_CONSENTS = [false, false];
-const SUCCESS_MESSAGE = "Р—Р°СЏРІРєР° РѕС‚РїСЂР°РІР»РµРЅР°. РњС‹ СЃРІСЏР¶РµРјСЃСЏ СЃ РІР°РјРё РІ Р±Р»РёР¶Р°Р№С€РµРµ РІСЂРµРјСЏ.";
-const ERROR_MESSAGE = "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РїСЂР°РІРёС‚СЊ Р·Р°СЏРІРєСѓ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.";
+const SUCCESS_MESSAGE = "Заявка отправлена. Мы свяжемся с вами в ближайшее время.";
+const ERROR_MESSAGE = "Не удалось отправить заявку. Попробуйте еще раз.";
 const TURNSTILE_SCRIPT_ID = "cf-turnstile-script";
-const TURNSTILE_NOT_READY_ERROR = "РџРѕРґС‚РІРµСЂРґРёС‚Рµ, С‡С‚Рѕ РІС‹ РЅРµ СЂРѕР±РѕС‚.";
+const TURNSTILE_NOT_READY_ERROR = "Подтвердите, что вы не робот.";
 const TURNSTILE_BASE_WIDTH = 300;
 const TURNSTILE_BASE_HEIGHT = 65;
 
@@ -149,7 +149,7 @@ export function LeadFormSection() {
           },
           "error-callback": () => {
             setTurnstileToken(null);
-            setSubmitError("РџСЂРѕРІРµСЂРєР° Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё РІСЂРµРјРµРЅРЅРѕ РЅРµРґРѕСЃС‚СѓРїРЅР°. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.");
+            setSubmitError("Проверка безопасности временно недоступна. Попробуйте еще раз.");
           },
           "expired-callback": () => {
             setTurnstileToken(null);
@@ -161,7 +161,7 @@ export function LeadFormSection() {
       })
       .catch(() => {
         if (isMounted) {
-          setSubmitError("РќРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ РїСЂРѕРІРµСЂРєСѓ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё. РћР±РЅРѕРІРёС‚Рµ СЃС‚СЂР°РЅРёС†Сѓ Рё РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°.");
+          setSubmitError("Не удалось загрузить проверку безопасности. Обновите страницу и попробуйте снова.");
         }
       });
 
@@ -213,7 +213,7 @@ export function LeadFormSection() {
     setSubmitError(null);
 
     if (!leadApiUrl) {
-      setSubmitError("РќРµ РЅР°СЃС‚СЂРѕРµРЅ Р°РґСЂРµСЃ API РґР»СЏ РѕС‚РїСЂР°РІРєРё Р·Р°СЏРІРєРё.");
+      setSubmitError("Не настроен адрес API для отправки заявки.");
       return;
     }
 
@@ -285,7 +285,7 @@ export function LeadFormSection() {
         <div className="mt-[20px] grid items-start gap-[15px] md:mt-10 md:grid-cols-[minmax(0,1fr)_minmax(320px,360px)_minmax(0,1fr)] md:gap-[2.5rem] min-[1025px]:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] min-[1025px]:gap-[3rem]">
           <DecorativeColumn items={decorativeLabels.left} side="left" />
 
-          <div className="mx-auto w-full max-w-[300px] md:max-w-[360px] min-[1025px]:max-w-[387px]">
+          <div className="mx-auto w-full max-w-[350px] md:max-w-[360px] min-[1025px]:max-w-[387px]">
             <div className="min-h-[337px] rounded-[20px] bg-[#004B62] p-[15px] shadow-[0_0_16.3px_rgba(0,75,98,0.62)] md:p-8 min-[1025px]:p-10">
               <form className="grid gap-[10px] md:gap-5 min-[1025px]:gap-[26px]" onSubmit={handleSubmit}>
                 <input
@@ -348,26 +348,26 @@ export function LeadFormSection() {
                       >
                         {index === 0 ? (
                           <>
-                            РЇ РґР°СЋ СЃРѕРіР»Р°СЃРёРµ РЅР°{" "}
+                            Я даю согласие на{" "}
                             <a
                               className="underline decoration-white/70 underline-offset-2 hover:text-white"
                               href="/data-processing-policy"
                               onClick={(event) => event.stopPropagation()}
                               target="_blank"
                             >
-                              РѕР±СЂР°Р±РѕС‚РєСѓ РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹С… РґР°РЅРЅС‹С… РґР»СЏ СЃРІСЏР·Рё РїРѕ Р·Р°СЏРІРєРµ
+                              обработку персональных данных для связи по заявке
                             </a>
                           </>
                         ) : index === 1 ? (
                           <>
-                            РЇ РѕР·РЅР°РєРѕРјР»РµРЅ(Р°) СЃ{" "}
+                            Я ознакомлен(а) с{" "}
                             <a
                               className="underline decoration-white/70 underline-offset-2 hover:text-white"
                               href="/privacy"
                               onClick={(event) => event.stopPropagation()}
                               target="_blank"
                             >
-                              РџРѕР»РёС‚РёРєРѕР№ РєРѕРЅС„РёРґРµРЅС†РёР°Р»СЊРЅРѕСЃС‚Рё
+                              Политикой конфиденциальности
                             </a>
                           </>
                         ) : (
@@ -399,7 +399,7 @@ export function LeadFormSection() {
                   </div>
                 ) : (
                   <p className="text-center font-body text-[11px] leading-[1.2] text-[#ffd7d7] md:text-[12px] min-[1025px]:text-[13px]">
-                    РќРµ РЅР°СЃС‚СЂРѕРµРЅ Turnstile Site Key.
+                    Не настроен Turnstile Site Key.
                   </p>
                 )}
 
@@ -408,7 +408,7 @@ export function LeadFormSection() {
                   disabled={isSubmitDisabled}
                   type="submit"
                 >
-                  <span>{isSubmitting ? "РћС‚РїСЂР°РІР»СЏРµРј..." : isRateLimited ? `РџРѕРІС‚РѕСЂРёС‚Рµ С‡РµСЂРµР· ${retryAfterSeconds} СЃРµРє.` : submitLabel}</span>
+                  <span>{isSubmitting ? "Отправляем..." : isRateLimited ? `Повторите через ${retryAfterSeconds} сек.` : submitLabel}</span>
                   <Image
                     alt=""
                     aria-hidden="true"
