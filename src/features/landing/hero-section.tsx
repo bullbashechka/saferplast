@@ -135,7 +135,7 @@ export function HeroSection({
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage: "url('/images/original/fontherorightside.png')",
-              backgroundPosition: "center top 18px",
+              backgroundPosition: "center 70%",
             }}
           />
         </div>
