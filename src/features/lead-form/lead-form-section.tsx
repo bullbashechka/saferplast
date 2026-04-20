@@ -115,7 +115,8 @@ export function LeadFormSection() {
   const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
   const turnstileWrapperRef = useRef<HTMLDivElement | null>(null);
   const turnstileWidgetIdRef = useRef<string | null>(null);
-  const decorativeColumnsRef = useRef<HTMLDivElement | null>(null);
+  const leadFormSectionRef = useRef<HTMLElement | null>(null);
+  const revealTimerRef = useRef<number | null>(null);
 
   const [nameValue, setNameValue] = useState("");
   const [taskValue, setTaskValue] = useState("");
@@ -212,9 +213,9 @@ export function LeadFormSection() {
   }, []);
 
   useEffect(() => {
-    const container = decorativeColumnsRef.current;
+    const section = leadFormSectionRef.current;
 
-    if (!container || decorativeBlocksRevealed) {
+    if (!section || decorativeBlocksRevealed) {
       return;
     }
 
@@ -228,21 +229,38 @@ export function LeadFormSection() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) {
+          if (revealTimerRef.current !== null) {
+            window.clearTimeout(revealTimerRef.current);
+            revealTimerRef.current = null;
+          }
           return;
         }
 
-        setDecorativeBlocksRevealed(true);
-        observer.disconnect();
+        if (revealTimerRef.current !== null) {
+          return;
+        }
+
+        revealTimerRef.current = window.setTimeout(() => {
+          setDecorativeBlocksRevealed(true);
+          observer.disconnect();
+          revealTimerRef.current = null;
+        }, 1000);
       },
       {
-        threshold: 0.2,
+        threshold: 0.25,
         rootMargin: "0px 0px -10% 0px",
       },
     );
 
-    observer.observe(container);
+    observer.observe(section);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (revealTimerRef.current !== null) {
+        window.clearTimeout(revealTimerRef.current);
+        revealTimerRef.current = null;
+      }
+    };
   }, [decorativeBlocksRevealed]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -312,7 +330,11 @@ export function LeadFormSection() {
   }
 
   return (
-    <section id="lead-form" className="bg-[rgba(250,254,255,1)] pb-16 pt-[60px] md:mt-[120px] md:pt-0">
+    <section
+      className="bg-[rgba(250,254,255,1)] pb-16 pt-[60px] md:mt-[120px] md:pt-0"
+      id="lead-form"
+      ref={leadFormSectionRef}
+    >
       <div className="mx-auto w-full max-w-[1440px] px-[10px] md:px-4 min-[1025px]:px-[20px] min-[1025px]:pl-[21px]">
         <h2 className="mx-auto w-full max-w-[300px] text-center font-display text-[20px] font-normal leading-[1] text-[#004B62] md:max-w-[61rem] md:text-[43px] min-[1025px]:text-[44px]">
           {title}
@@ -321,10 +343,7 @@ export function LeadFormSection() {
           {subtitle}
         </p>
 
-        <div
-          className="mt-[20px] grid items-start gap-[15px] md:mt-10 md:grid-cols-[minmax(0,1fr)_minmax(320px,360px)_minmax(0,1fr)] md:gap-[2.5rem] min-[1025px]:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] min-[1025px]:gap-[3rem]"
-          ref={decorativeColumnsRef}
-        >
+        <div className="mt-[20px] grid items-start gap-[15px] md:mt-10 md:grid-cols-[minmax(0,1fr)_minmax(320px,360px)_minmax(0,1fr)] md:gap-[2.5rem] min-[1025px]:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] min-[1025px]:gap-[3rem]">
           <DecorativeColumn isVisible={decorativeBlocksRevealed} items={decorativeLabels.left} side="left" />
 
           <div className="mx-auto w-full max-w-[350px] md:max-w-[360px] min-[1025px]:max-w-[387px]">
@@ -477,7 +496,7 @@ export function LeadFormSection() {
             <p className="mt-[15px] text-center font-body text-[12px] font-normal leading-[1] text-black md:mt-[19px] md:text-[0.9375rem] min-[1025px]:text-[1rem]">
               {messengersLabel}
             </p>
-            <div className="mt-[10px] flex items-center justify-center gap-[15px] md:mt-4 md:gap-5">
+            <div className="mt-[20px] flex items-center justify-center gap-[15px] md:mt-4 md:gap-5">
               <a
                 aria-label="Telegram"
                 className="flex items-center justify-center transition-transform hover:-translate-y-0.5"

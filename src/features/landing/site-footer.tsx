@@ -36,7 +36,7 @@ export function SiteFooter() {
     <footer
       id="contacts"
       aria-label={contactsTitle}
-      className="bg-[rgba(250,254,255,1)] px-[var(--landing-mobile-shell-x)] pb-10 pt-14 md:px-5 md:pb-12 md:pt-20 min-[1025px]:px-8"
+      className="bg-[rgba(250,254,255,1)] px-[var(--landing-mobile-shell-x)] pb-10 pt-[20px] md:px-5 md:pb-12 md:pt-[20px] min-[1025px]:px-8"
     >
       <div className="landing-mobile-shell mx-auto md:max-w-[1201px]">
         <div className="md:hidden flex flex-col">
