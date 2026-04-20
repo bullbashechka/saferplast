@@ -39,8 +39,8 @@ export function SiteFooter() {
       className="bg-[rgba(250,254,255,1)] px-[var(--landing-mobile-shell-x)] pb-10 pt-14 md:px-5 md:pb-12 md:pt-20 min-[1025px]:px-8"
     >
       <div className="landing-mobile-shell mx-auto md:max-w-[1201px]">
-        <div className="md:hidden">
-          <div className="grid grid-cols-[1fr_auto] items-start gap-[16px]">
+        <div className="md:hidden flex flex-col">
+          <div className="order-1 mt-[24px] grid grid-cols-[1fr_auto] items-start gap-[16px]">
             <nav aria-label="Навигация в подвале">
               <ul className="grid gap-[1px]">
                 {navigationLinks.map((link) => (
@@ -68,7 +68,7 @@ export function SiteFooter() {
             </a>
           </div>
 
-          <div className="mt-[24px]">
+          <div className="order-0">
             <h2 className="font-display text-[20px] font-normal leading-[1] text-[#004B62]">{contactsTitle}</h2>
             <p className="mt-[10px] max-w-[230px] font-body text-[12px] font-normal leading-[1.15] text-[#242424]">
               {contactsDescription}
@@ -116,7 +116,7 @@ export function SiteFooter() {
             </div>
           </div>
 
-          <div className="mt-[22px] border-t border-[#d8e6eb] pt-[14px]">
+          <div className="order-2 mt-[22px] border-t border-[#d8e6eb] pt-[14px]">
             {visibleLegalItems.map((item, index) => (
               <p
                 key={item}
