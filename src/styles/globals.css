@@ -153,10 +153,10 @@
   --landing-mobile-cta-max: 23rem;
   --projects-mobile-carousel-width: 25.3125rem;
   --projects-mobile-carousel-height: 17.1875rem;
-  --projects-mobile-slide-width: 21rem;
+  --projects-mobile-slide-width: 16.1875rem;
   --projects-mobile-slide-gap: clamp(0.75rem, 0.368rem + 1.91vw, 1.0625rem);
   --projects-mobile-card-height: 10.5625rem;
-  --projects-mobile-card-active-width-offset: 0.9375rem;
+  --projects-mobile-card-active-width: clamp(16.5rem, calc(74vw + 1.5rem), 23rem);
 }
 
 html {
@@ -344,10 +344,7 @@ a {
 }
 
 .projects-mobile-carousel__slide.is-snapped .projects-mobile-carousel__card {
-  width: calc(
-    min(var(--projects-mobile-slide-width), calc(100vw - (var(--landing-mobile-shell-x) * 4))) -
-      var(--projects-mobile-card-active-width-offset)
-  );
+  width: var(--projects-mobile-card-active-width);
   height: var(--projects-mobile-carousel-height);
   margin-top: 0;
   opacity: 1;

@@ -52,7 +52,7 @@ function MobileProjectSlide({
         alt={alt}
         className={`object-cover ${objectPositionClassName}`}
         fill
-        sizes="(max-width: 767px) 100vw, 244px"
+        sizes="(max-width: 767px) 100vw, 320px"
         src={src}
       />
     </article>

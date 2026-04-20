@@ -38,15 +38,15 @@ function MobileTestimonialCard({
   onOpen: (testimonial: Testimonial) => void;
 }) {
   return (
-    <Card className="mx-[30px] h-[150px] rounded-[15px] border border-[#FAFEFF] bg-[#E6F0F2] shadow-none">
+    <Card className="mx-[10px] h-[150px] rounded-[15px] border border-[#FAFEFF] bg-[#E6F0F2] shadow-none">
       <div className="flex h-full select-none flex-col gap-[5px] px-[10px] pb-[10px] pt-[10px] text-left">
-        <h3 className="truncate font-body text-[14px] font-medium leading-[1] text-[#004B62]">
+        <h3 className="truncate font-['Sansation'] text-[18px] font-normal leading-[1] text-[#004B62]">
           {testimonial.name}
         </h3>
-        <p className="truncate font-body text-[11px] font-medium leading-[1] text-[#242424]">
+        <p className="truncate font-['Montserrat'] text-[14px] font-medium leading-[1] text-[#242424]">
           {testimonial.service}
         </p>
-        <p className="min-h-0 flex-1 overflow-hidden font-body text-[11px] font-normal leading-[1.2] text-[#242424] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
+        <p className="min-h-0 flex-1 overflow-hidden font-['Montserrat'] text-[12px] font-normal leading-[1] text-[#242424] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
           {testimonial.review}
         </p>
         <button
