@@ -36,8 +36,8 @@ function getCardClassNames(card: AdvantagesCard) {
 
 function MobileAdvantagesCard({ card }: { card: AdvantagesCard }) {
   const { baseClassName, isDark, titleClassName } = getCardClassNames(card);
-  const mobileCardClassName = `landing-mobile-card relative flex h-[5.5rem] flex-col justify-center rounded-[10px] px-[10px] py-3 ${baseClassName}`;
-  const titleSpacingClassName = isDark ? "mt-3" : "mt-2.5";
+  const mobileCardClassName = `landing-mobile-card relative flex h-[100px] w-[300px] flex-col justify-between rounded-[10px] p-[20px] ${baseClassName}`;
+  const titleSpacingClassName = "mt-0";
 
   if (card.href) {
     return (
@@ -45,10 +45,10 @@ function MobileAdvantagesCard({ card }: { card: AdvantagesCard }) {
         className={`${mobileCardClassName} transition-colors hover:bg-[#00384a]`}
         href={card.href}
       >
-        <h3 className={`max-w-[16rem] whitespace-nowrap font-display text-[0.9375rem] font-normal leading-[1] tracking-[-0.01em] ${titleClassName}`}>
+        <h3 className={`max-w-[16rem] whitespace-nowrap font-['Sansation'] text-[18px] font-normal leading-[1] tracking-[0] ${titleClassName}`}>
           {card.title}
         </h3>
-        <p className={`${titleSpacingClassName} max-w-[14.875rem] font-body text-[0.75rem] font-normal leading-[1]`}>
+        <p className={`${titleSpacingClassName} max-w-[14.875rem] font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0]`}>
           {card.description}
         </p>
         {isDark ? <span className="absolute right-4 top-4 text-[1rem] leading-none">&rarr;</span> : null}
@@ -58,10 +58,10 @@ function MobileAdvantagesCard({ card }: { card: AdvantagesCard }) {
 
   return (
     <article className={mobileCardClassName}>
-      <h3 className={`max-w-[16rem] whitespace-nowrap font-display text-[0.9375rem] font-normal leading-[1] tracking-[-0.01em] ${titleClassName}`}>
+      <h3 className={`max-w-[16rem] whitespace-nowrap font-['Sansation'] text-[18px] font-normal leading-[1] tracking-[0] ${titleClassName}`}>
         {card.title}
       </h3>
-      <p className={`${titleSpacingClassName} max-w-[14.875rem] font-body text-[0.75rem] font-normal leading-[1]`}>
+      <p className={`${titleSpacingClassName} max-w-[14.875rem] font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0]`}>
         {card.description}
       </p>
     </article>
