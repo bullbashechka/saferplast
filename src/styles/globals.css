@@ -374,6 +374,26 @@ a {
   transform: none;
 }
 
+.decorative-chip-reveal {
+  opacity: 0;
+  transition:
+    transform 580ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 580ms ease;
+}
+
+.decorative-chip-reveal--left {
+  transform: translate3d(-22px, 0, 0);
+}
+
+.decorative-chip-reveal--right {
+  transform: translate3d(22px, 0, 0);
+}
+
+.decorative-chip-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 @keyframes page-enter {
   from {
     opacity: 0;
@@ -389,7 +409,9 @@ a {
 @media (prefers-reduced-motion: reduce) {
   .page-enter-reveal,
   .scroll-reveal,
-  .scroll-reveal.is-visible {
+  .scroll-reveal.is-visible,
+  .decorative-chip-reveal,
+  .decorative-chip-reveal.is-visible {
     opacity: 1;
     transform: none;
     transition: none;

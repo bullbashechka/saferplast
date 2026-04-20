@@ -72,18 +72,20 @@ function formatPhoneValue(rawValue: string) {
 }
 
 function DecorativeColumn({
+  isVisible,
   items,
   side,
 }: Readonly<{
+  isVisible: boolean;
   items: readonly DecorativeLabel[];
   side: "left" | "right";
 }>) {
   return (
     <div className="hidden w-full md:grid md:gap-[60px] min-[1025px]:gap-[80px]">
-      {items.map((item) => (
+      {items.map((item, index) => (
         <div
           key={item.label}
-          className={`flex min-h-[38px] w-fit items-center whitespace-nowrap rounded-[11px] border border-[#004B62] px-4 py-2 text-[0.8125rem] font-normal leading-[1] text-[#004B62] shadow-[0_0_19.9px_rgba(0,75,98,0.41)] md:min-h-[42px] md:px-[18px] md:py-3 md:text-[0.9375rem] min-[1025px]:min-h-[44px] min-[1025px]:px-[21px] min-[1025px]:text-[1rem] ${
+          className={`decorative-chip-reveal ${side === "left" ? "decorative-chip-reveal--left" : "decorative-chip-reveal--right"} ${isVisible ? "is-visible" : ""} flex min-h-[38px] w-fit items-center whitespace-nowrap rounded-[11px] border border-[#004B62] px-4 py-2 text-[0.8125rem] font-normal leading-[1] text-[#004B62] shadow-[0_0_19.9px_rgba(0,75,98,0.41)] md:min-h-[42px] md:px-[18px] md:py-3 md:text-[0.9375rem] min-[1025px]:min-h-[44px] min-[1025px]:px-[21px] min-[1025px]:text-[1rem] ${
             side === "right" ? "bg-[hsla(190,32%,93%,1)]" : ""
           } ${
             side === "left"
@@ -94,6 +96,7 @@ function DecorativeColumn({
                 ? "justify-self-end"
                 : "justify-self-start"
           }`}
+          style={{ transitionDelay: `${index * 90}ms` }}
         >
           {item.label}
         </div>
@@ -112,6 +115,7 @@ export function LeadFormSection() {
   const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
   const turnstileWrapperRef = useRef<HTMLDivElement | null>(null);
   const turnstileWidgetIdRef = useRef<string | null>(null);
+  const decorativeColumnsRef = useRef<HTMLDivElement | null>(null);
 
   const [nameValue, setNameValue] = useState("");
   const [taskValue, setTaskValue] = useState("");
@@ -123,6 +127,7 @@ export function LeadFormSection() {
   const [submitMessage, setSubmitMessage] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [turnstileScale, setTurnstileScale] = useState(1);
+  const [decorativeBlocksRevealed, setDecorativeBlocksRevealed] = useState(false);
 
   const remainingTaskSymbols = taskMaxLength - taskValue.length;
   const allConsentsAccepted = consentValues.every(Boolean);
@@ -206,6 +211,40 @@ export function LeadFormSection() {
     };
   }, []);
 
+  useEffect(() => {
+    const container = decorativeColumnsRef.current;
+
+    if (!container || decorativeBlocksRevealed) {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    if (mediaQuery.matches) {
+      setDecorativeBlocksRevealed(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        setDecorativeBlocksRevealed(true);
+        observer.disconnect();
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -10% 0px",
+      },
+    );
+
+    observer.observe(container);
+
+    return () => observer.disconnect();
+  }, [decorativeBlocksRevealed]);
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -282,8 +321,11 @@ export function LeadFormSection() {
           {subtitle}
         </p>
 
-        <div className="mt-[20px] grid items-start gap-[15px] md:mt-10 md:grid-cols-[minmax(0,1fr)_minmax(320px,360px)_minmax(0,1fr)] md:gap-[2.5rem] min-[1025px]:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] min-[1025px]:gap-[3rem]">
-          <DecorativeColumn items={decorativeLabels.left} side="left" />
+        <div
+          className="mt-[20px] grid items-start gap-[15px] md:mt-10 md:grid-cols-[minmax(0,1fr)_minmax(320px,360px)_minmax(0,1fr)] md:gap-[2.5rem] min-[1025px]:grid-cols-[minmax(0,1fr)_minmax(320px,387px)_minmax(0,1fr)] min-[1025px]:gap-[3rem]"
+          ref={decorativeColumnsRef}
+        >
+          <DecorativeColumn isVisible={decorativeBlocksRevealed} items={decorativeLabels.left} side="left" />
 
           <div className="mx-auto w-full max-w-[350px] md:max-w-[360px] min-[1025px]:max-w-[387px]">
             <div className="min-h-[337px] rounded-[20px] bg-[#004B62] p-[15px] shadow-[0_0_16.3px_rgba(0,75,98,0.62)] md:p-8 min-[1025px]:p-10">
@@ -487,7 +529,7 @@ export function LeadFormSection() {
             </div>
           </div>
 
-          <DecorativeColumn items={decorativeLabels.right} side="right" />
+          <DecorativeColumn isVisible={decorativeBlocksRevealed} items={decorativeLabels.right} side="right" />
         </div>
       </div>
     </section>
