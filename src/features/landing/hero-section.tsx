@@ -129,13 +129,13 @@ export function HeroSection({
           </div>
         </div>
 
-        <div className="relative z-0 -mt-[4rem] aspect-[588/640] overflow-hidden rounded-[1.875rem] bg-[#d9e5ea]">
+        <div className="relative z-0 -mt-[8rem] aspect-[588/640] overflow-hidden rounded-[1.875rem] bg-[#d9e5ea]">
           <div
             aria-hidden="true"
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage: "url('/images/original/fontherorightside.png')",
-              backgroundPosition: "center top 7px",
+              backgroundPosition: "center top 18px",
             }}
           />
         </div>
