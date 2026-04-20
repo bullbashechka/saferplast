@@ -58,7 +58,7 @@ export function FaqSection() {
                           src="/icons/arrow.svg"
                           width={12}
                         />
-                        <span className="min-w-0 flex-1 overflow-hidden font-display text-[15px] font-normal leading-[1] text-[#004B62] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
+                        <span className="min-w-0 flex-1 overflow-hidden font-['Sansation'] text-[18px] font-normal leading-[1] text-[#004B62] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
                           {item.question}
                         </span>
                       </button>
@@ -76,7 +76,7 @@ export function FaqSection() {
                       }}
                     >
                       <div className="min-h-0 overflow-hidden pb-[12px] pl-[20px] pr-0">
-                        <p className="font-body text-[10px] font-normal leading-[1.15] text-[#242424]">
+                        <p className="font-['Montserrat'] text-[13px] font-normal leading-[1] text-[#242424]">
                           {item.answer}
                         </p>
                       </div>
