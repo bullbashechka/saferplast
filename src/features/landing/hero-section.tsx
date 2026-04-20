@@ -134,7 +134,7 @@ export function HeroSection({
             aria-hidden="true"
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: "url('/images/original/fontherorightside.png')",
+              backgroundImage: "url('/images/versioned/fontherorightside.v2.webp')",
               backgroundPosition: "center 70%",
             }}
           />
@@ -171,7 +171,7 @@ export function HeroSection({
           <div
             aria-hidden="true"
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/original/fontherorightside.png')" }}
+            style={{ backgroundImage: "url('/images/versioned/fontherorightside.v2.webp')" }}
           />
 
           <div className="relative z-10 flex h-full flex-col px-4 pt-5 md:px-6 md:pt-6 min-[1025px]:px-8 min-[1025px]:pt-[1.625rem]">

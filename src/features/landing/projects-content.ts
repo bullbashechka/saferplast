@@ -37,12 +37,12 @@ export const projectsContent: ProjectsContent = {
     },
     middleBottom: {
       alt: "Остекление частного дома в Карагандинской области",
-      src: "/images/original/Gemini_Generated_Image_xulsukxulsukxuls.png",
+      src: "/images/versioned/gemini-house.v2.webp",
       objectPositionClassName: "object-center",
     },
     right: {
       alt: "Стеклянная входная дверь после установки",
-      src: "/images/original/Doorblack.png",
+      src: "/images/versioned/doorblack.v2.webp",
       objectPositionClassName: "object-top",
     },
   },

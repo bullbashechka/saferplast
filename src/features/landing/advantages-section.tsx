@@ -89,7 +89,7 @@ function DesktopAdvantagesCard({ card, index }: { card: AdvantagesCard; index: n
             alt="Saferplast"
             className="h-auto w-[22rem] min-[1025px]:w-[26.875rem]"
             height={300}
-            src="/images/original/logo.png"
+            src="/images/versioned/logo.v2.webp"
             unoptimized
             width={430}
           />
@@ -168,7 +168,7 @@ export function AdvantagesSection() {
                   alt="Saferplast"
                   className="h-auto w-full object-contain"
                   height={185}
-                  src="/images/original/logo.png"
+                  src="/images/versioned/logo.v2.webp"
                   unoptimized
                   width={263}
                 />
