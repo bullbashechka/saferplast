@@ -26,14 +26,17 @@ export function ProofSection() {
           <article className="landing-mobile-card relative h-[369px] overflow-hidden rounded-[20px] bg-[#d9e5ea]">
             <Image
               alt="Сотрудник Saferplast на производстве"
-              className="object-cover"
+              className="rounded-[20px] object-cover"
               fill
               sizes="(max-width: 1024px) 100vw, 300px"
               src="/images/webp/male-worker-factory.webp"
             />
             <div className="absolute inset-0 bg-[hsla(0,0%,0%,0.2)]" />
 
-            <div className="liquid-glass-strong liquid-glass-soft absolute left-[10px] right-[10px] top-[200px] flex h-[159px] flex-col items-start rounded-[10px] p-[15px]">
+            <div
+              className="liquid-glass-strong liquid-glass-soft absolute left-1/2 top-[200px] flex h-[159px] -translate-x-1/2 flex-col items-start rounded-[10px] p-[15px]"
+              style={{ width: "clamp(280px, calc(100vw - 40px), 420px)" }}
+            >
               <div className="relative z-10 flex h-full w-full flex-col justify-between">
                 <p className="landing-mobile-tight mx-auto h-20 max-w-full font-display text-[20px] font-normal leading-[1] tracking-[0] text-white">
                   {proofSectionCtaCopy}
