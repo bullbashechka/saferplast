@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Image } from "@/components/ui/image";
 import { useEffect, useRef, useState } from "react";
@@ -12,10 +12,12 @@ import type { LeadFormPayload } from "@/features/lead-form/lead-form-types";
 
 const PHONE_PREFIX = "+7";
 const EMPTY_CONSENTS = [false, false];
-const SUCCESS_MESSAGE = "Заявка отправлена. Мы свяжемся с вами в ближайшее время.";
-const ERROR_MESSAGE = "Не удалось отправить заявку. Попробуйте еще раз.";
+const SUCCESS_MESSAGE = "Р—Р°СЏРІРєР° РѕС‚РїСЂР°РІР»РµРЅР°. РњС‹ СЃРІСЏР¶РµРјСЃСЏ СЃ РІР°РјРё РІ Р±Р»РёР¶Р°Р№С€РµРµ РІСЂРµРјСЏ.";
+const ERROR_MESSAGE = "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РїСЂР°РІРёС‚СЊ Р·Р°СЏРІРєСѓ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.";
 const TURNSTILE_SCRIPT_ID = "cf-turnstile-script";
-const TURNSTILE_NOT_READY_ERROR = "Подтвердите, что вы не робот.";
+const TURNSTILE_NOT_READY_ERROR = "РџРѕРґС‚РІРµСЂРґРёС‚Рµ, С‡С‚Рѕ РІС‹ РЅРµ СЂРѕР±РѕС‚.";
+const TURNSTILE_BASE_WIDTH = 300;
+const TURNSTILE_BASE_HEIGHT = 65;
 
 function ensureTurnstileScript() {
   return new Promise<void>((resolve, reject) => {
@@ -108,6 +110,7 @@ export function LeadFormSection() {
   const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY ?? "";
 
   const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
+  const turnstileWrapperRef = useRef<HTMLDivElement | null>(null);
   const turnstileWidgetIdRef = useRef<string | null>(null);
 
   const [nameValue, setNameValue] = useState("");
@@ -119,6 +122,7 @@ export function LeadFormSection() {
   const [retryAfterSeconds, setRetryAfterSeconds] = useState(0);
   const [submitMessage, setSubmitMessage] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [turnstileScale, setTurnstileScale] = useState(1);
 
   const remainingTaskSymbols = taskMaxLength - taskValue.length;
   const allConsentsAccepted = consentValues.every(Boolean);
@@ -145,19 +149,19 @@ export function LeadFormSection() {
           },
           "error-callback": () => {
             setTurnstileToken(null);
-            setSubmitError("Проверка безопасности временно недоступна. Попробуйте еще раз.");
+            setSubmitError("РџСЂРѕРІРµСЂРєР° Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё РІСЂРµРјРµРЅРЅРѕ РЅРµРґРѕСЃС‚СѓРїРЅР°. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.");
           },
           "expired-callback": () => {
             setTurnstileToken(null);
           },
           sitekey: turnstileSiteKey,
-          size: "flexible",
+          size: "normal",
           theme: "light",
         });
       })
       .catch(() => {
         if (isMounted) {
-          setSubmitError("Не удалось загрузить проверку безопасности. Обновите страницу и попробуйте снова.");
+          setSubmitError("РќРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ РїСЂРѕРІРµСЂРєСѓ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё. РћР±РЅРѕРІРёС‚Рµ СЃС‚СЂР°РЅРёС†Сѓ Рё РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°.");
         }
       });
 
@@ -181,6 +185,26 @@ export function LeadFormSection() {
 
     return () => window.clearInterval(timer);
   }, [isRateLimited]);
+  useEffect(() => {
+    const wrapper = turnstileWrapperRef.current;
+
+    if (!wrapper) {
+      return;
+    }
+
+    const updateTurnstileScale = () => {
+      const availableWidth = wrapper.clientWidth;
+      const nextScale = Math.min(1, availableWidth / TURNSTILE_BASE_WIDTH);
+      setTurnstileScale(nextScale);
+    };
+
+    updateTurnstileScale();
+    window.addEventListener("resize", updateTurnstileScale);
+
+    return () => {
+      window.removeEventListener("resize", updateTurnstileScale);
+    };
+  }, []);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -189,7 +213,7 @@ export function LeadFormSection() {
     setSubmitError(null);
 
     if (!leadApiUrl) {
-      setSubmitError("Не настроен адрес API для отправки заявки.");
+      setSubmitError("РќРµ РЅР°СЃС‚СЂРѕРµРЅ Р°РґСЂРµСЃ API РґР»СЏ РѕС‚РїСЂР°РІРєРё Р·Р°СЏРІРєРё.");
       return;
     }
 
@@ -324,26 +348,26 @@ export function LeadFormSection() {
                       >
                         {index === 0 ? (
                           <>
-                            Я даю согласие на{" "}
+                            РЇ РґР°СЋ СЃРѕРіР»Р°СЃРёРµ РЅР°{" "}
                             <a
                               className="underline decoration-white/70 underline-offset-2 hover:text-white"
                               href="/data-processing-policy"
                               onClick={(event) => event.stopPropagation()}
                               target="_blank"
                             >
-                              обработку персональных данных для связи по заявке
+                              РѕР±СЂР°Р±РѕС‚РєСѓ РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹С… РґР°РЅРЅС‹С… РґР»СЏ СЃРІСЏР·Рё РїРѕ Р·Р°СЏРІРєРµ
                             </a>
                           </>
                         ) : index === 1 ? (
                           <>
-                            Я ознакомлен(а) с{" "}
+                            РЇ РѕР·РЅР°РєРѕРјР»РµРЅ(Р°) СЃ{" "}
                             <a
                               className="underline decoration-white/70 underline-offset-2 hover:text-white"
                               href="/privacy"
                               onClick={(event) => event.stopPropagation()}
                               target="_blank"
                             >
-                              Политикой конфиденциальности
+                              РџРѕР»РёС‚РёРєРѕР№ РєРѕРЅС„РёРґРµРЅС†РёР°Р»СЊРЅРѕСЃС‚Рё
                             </a>
                           </>
                         ) : (
@@ -355,12 +379,27 @@ export function LeadFormSection() {
                 </FieldGroup>
 
                 {turnstileSiteKey ? (
-                  <div className="w-full overflow-hidden rounded-[10px] bg-white/5 p-2">
-                    <div ref={turnstileContainerRef} />
+                  <div className="w-full overflow-hidden rounded-[10px] bg-white/5 p-0 md:p-1.5">
+                    <div
+                      className="mx-auto"
+                      ref={turnstileWrapperRef}
+                      style={{ height: `${TURNSTILE_BASE_HEIGHT * turnstileScale}px`, maxWidth: TURNSTILE_BASE_WIDTH }}
+                    >
+                      <div
+                        style={{
+                          height: TURNSTILE_BASE_HEIGHT,
+                          transform: `scale(${turnstileScale})`,
+                          transformOrigin: "left top",
+                          width: TURNSTILE_BASE_WIDTH,
+                        }}
+                      >
+                        <div ref={turnstileContainerRef} />
+                      </div>
+                    </div>
                   </div>
                 ) : (
                   <p className="text-center font-body text-[11px] leading-[1.2] text-[#ffd7d7] md:text-[12px] min-[1025px]:text-[13px]">
-                    Не настроен Turnstile Site Key.
+                    РќРµ РЅР°СЃС‚СЂРѕРµРЅ Turnstile Site Key.
                   </p>
                 )}
 
@@ -369,7 +408,7 @@ export function LeadFormSection() {
                   disabled={isSubmitDisabled}
                   type="submit"
                 >
-                  <span>{isSubmitting ? "Отправляем..." : isRateLimited ? `Повторите через ${retryAfterSeconds} сек.` : submitLabel}</span>
+                  <span>{isSubmitting ? "РћС‚РїСЂР°РІР»СЏРµРј..." : isRateLimited ? `РџРѕРІС‚РѕСЂРёС‚Рµ С‡РµСЂРµР· ${retryAfterSeconds} СЃРµРє.` : submitLabel}</span>
                   <Image
                     alt=""
                     aria-hidden="true"
@@ -454,3 +493,5 @@ export function LeadFormSection() {
     </section>
   );
 }
+
+
