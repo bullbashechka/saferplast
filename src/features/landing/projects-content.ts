@@ -37,12 +37,12 @@ export const projectsContent: ProjectsContent = {
     },
     middleBottom: {
       alt: "Остекление частного дома в Карагандинской области",
-      src: "/images/original/karaganda-golubye-prudy-21.png",
+      src: "/images/original/Gemini_Generated_Image_xulsukxulsukxuls.png",
       objectPositionClassName: "object-center",
     },
     right: {
       alt: "Стеклянная входная дверь после установки",
-      src: "/images/webp/doorwork.webp",
+      src: "/images/original/Doorblack.png",
       objectPositionClassName: "object-top",
     },
   },
