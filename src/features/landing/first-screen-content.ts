@@ -51,7 +51,7 @@ export const firstScreenContent: FirstScreenContent = {
     },
   },
   phoneHref: "tel:+77478041022",
-  phoneLabel: "+77478041022",
+  phoneLabel: "+7 (747) 804-10-22",
   cityLabel: "г. Караганда",
   instagramHref: "https://www.instagram.com/saferplast.kz/",
   whatsappHref: "https://wa.me/77478041022",
