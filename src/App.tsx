@@ -6,9 +6,11 @@ import { FirstScreen } from "@/features/landing/first-screen";
 import { ProofSection } from "@/features/landing/proof-section";
 import { ProjectsSection } from "@/features/landing/projects-section";
 import { SiteFooter } from "@/features/landing/site-footer";
+import { StickyDesktopHeader } from "@/features/landing/site-header";
 import { SolutionMatchingSection } from "@/features/landing/solution-matching-section";
 import { TestimonialsSection } from "@/features/landing/testimonials-section";
 import { WorkProcessSection } from "@/features/landing/work-process-section";
+import { firstScreenContent } from "@/features/landing/first-screen-content";
 import { LeadFormSection } from "@/features/lead-form/lead-form-section";
 import { homeSeo } from "@/lib/seo/route-seo";
 
@@ -20,6 +22,11 @@ export default function App() {
         description={homeSeo.description}
         jsonLd={homeSeo.jsonLd}
         title={homeSeo.title}
+      />
+      <StickyDesktopHeader
+        cityLabel={firstScreenContent.cityLabel}
+        navigationLinks={firstScreenContent.headerNavigationLinks}
+        phoneHref={firstScreenContent.phoneHref}
       />
       <FirstScreen />
       <AdvantagesSection />

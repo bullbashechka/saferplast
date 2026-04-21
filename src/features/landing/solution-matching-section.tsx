@@ -111,9 +111,9 @@ function SolutionCard({
         <a
           className={`${card.typography.ctaClassName} ${
             card.row === "top"
-              ? "absolute bottom-4 left-4 right-4 md:bottom-[30px] md:left-[24px] md:right-[120px] min-[1025px]:bottom-[38px] min-[1025px]:left-[30px] xl:right-[197px]"
-              : "absolute bottom-4 left-4 right-4 md:bottom-[24px] md:left-[24px] md:right-[220px] min-[1025px]:bottom-[32px] min-[1025px]:left-[30px] xl:right-[400px]"
-          } text-[#004B62]`}
+              ? "absolute bottom-4 left-4 right-4 md:bottom-[30px] md:left-[24px] md:right-auto min-[1025px]:bottom-[38px] min-[1025px]:left-[30px] min-[1025px]:right-auto xl:right-auto"
+              : "absolute bottom-4 left-4 right-4 md:bottom-[24px] md:left-[24px] md:right-auto min-[1025px]:bottom-[32px] min-[1025px]:left-[30px] min-[1025px]:right-auto xl:right-auto"
+          } inline-flex w-max whitespace-nowrap text-[#004B62]`}
           href={card.ctaHref}
         >
           {card.ctaLabel}

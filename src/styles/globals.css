@@ -157,6 +157,7 @@
   --projects-mobile-slide-gap: clamp(0.75rem, 0.368rem + 1.91vw, 1.0625rem);
   --projects-mobile-card-height: 10.5625rem;
   --projects-mobile-card-active-width: clamp(16.5rem, calc(74vw + 1.5rem), 23rem);
+  --sticky-header-top: 0px;
 }
 
 html {

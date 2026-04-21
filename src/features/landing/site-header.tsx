@@ -1,7 +1,7 @@
 "use client";
 
 import { Image } from "@/components/ui/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -26,6 +26,12 @@ type DesktopHeaderContactActionsProps = {
   className?: string;
   phoneHref: string;
   phoneLabel: string;
+};
+
+type StickyDesktopHeaderProps = {
+  cityLabel: string;
+  navigationLinks: NavigationLink[];
+  phoneHref: string;
 };
 
 const karagandaAddressLabel = "Караганда, Голубые пруды 21";
@@ -129,6 +135,127 @@ export function DesktopHeaderContactActions({
           {cityLabel}
         </span>
       </DesktopHeaderActionButton>
+    </div>
+  );
+}
+
+export function StickyDesktopHeader({
+  cityLabel,
+  navigationLinks,
+  phoneHref,
+}: StickyDesktopHeaderProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    let rafId = 0;
+
+    const updateStickyHeaderState = () => {
+      const viewportTop = Math.max(window.visualViewport?.offsetTop ?? 0, 0);
+      root.style.setProperty("--sticky-header-top", `${Math.round(viewportTop)}px`);
+      setIsVisible(window.scrollY > 8);
+    };
+
+    const scheduleViewportTopUpdate = () => {
+      if (rafId) {
+        return;
+      }
+
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0;
+        updateStickyHeaderState();
+      });
+    };
+
+    updateStickyHeaderState();
+
+    const visualViewport = window.visualViewport;
+    window.addEventListener("scroll", scheduleViewportTopUpdate, { passive: true });
+    window.addEventListener("resize", scheduleViewportTopUpdate);
+    window.addEventListener("orientationchange", scheduleViewportTopUpdate);
+    visualViewport?.addEventListener("resize", scheduleViewportTopUpdate);
+    visualViewport?.addEventListener("scroll", scheduleViewportTopUpdate);
+
+    const resizeObserver = new ResizeObserver(scheduleViewportTopUpdate);
+    if (containerRef.current) {
+      resizeObserver.observe(containerRef.current);
+    }
+
+    return () => {
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+      window.removeEventListener("scroll", scheduleViewportTopUpdate);
+      window.removeEventListener("resize", scheduleViewportTopUpdate);
+      window.removeEventListener("orientationchange", scheduleViewportTopUpdate);
+      visualViewport?.removeEventListener("resize", scheduleViewportTopUpdate);
+      visualViewport?.removeEventListener("scroll", scheduleViewportTopUpdate);
+      resizeObserver.disconnect();
+      root.style.setProperty("--sticky-header-top", "0px");
+    };
+  }, []);
+
+  return (
+    <div
+      className={cn(
+        "pointer-events-none sticky z-40 hidden h-0 transition-all duration-180 ease-[cubic-bezier(0.22,1,0.36,1)] md:block",
+        isVisible ? "translate-y-0 opacity-100" : "-translate-y-1 opacity-0",
+      )}
+      ref={containerRef}
+      style={{ top: "var(--sticky-header-top, 0px)" }}
+    >
+      <div className="mx-auto w-full max-w-[1440px] px-4 pt-3 md:px-4 min-[1025px]:px-[20px] min-[1025px]:pl-[21px]">
+        <div className="liquid-glass-strong liquid-glass-soft pointer-events-auto flex h-[4.25rem] items-center justify-between overflow-hidden rounded-[1.25rem] border-[#88a8b3] bg-[rgba(164,194,205,0.9)] px-3 md:px-4 min-[1025px]:h-[4.5rem] min-[1025px]:px-6">
+          <a aria-label="Saferplast" className="block w-[5.75rem] shrink-0 min-[1025px]:w-[8rem]" href="/">
+            <Image
+              alt="Saferplast"
+              className="h-auto w-full object-contain"
+              height={92}
+              src="/images/versioned/logo.v2.webp"
+              unoptimized
+              width={179}
+            />
+          </a>
+
+          <nav aria-label="РћСЃРЅРѕРІРЅР°СЏ РЅР°РІРёРіР°С†РёСЏ" className="mx-2 min-w-0 flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <ul className="flex min-w-max items-center justify-start gap-3 pr-1 min-[1025px]:justify-center min-[1025px]:gap-8">
+              {navigationLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    className="block whitespace-nowrap font-body text-[0.75rem] font-normal leading-[1] tracking-[0] text-[#1d323a] transition-colors hover:text-[#004B62] min-[1025px]:text-[1rem]"
+                    href={link.href}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="flex shrink-0 items-center gap-2 min-[1025px]:gap-3">
+            <a
+              aria-label="РџРѕР·РІРѕРЅРёС‚СЊ"
+              className="liquid-glass-strong liquid-glass-soft flex h-[2.25rem] w-[2.25rem] items-center justify-center rounded-[0.875rem] min-[1025px]:h-10 min-[1025px]:w-10"
+              href={phoneHref}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Image alt="" aria-hidden="true" height={16} src="/icons/phone.svg" width={16} />
+            </a>
+
+            <a
+              aria-label={cityLabel}
+              className="liquid-glass-strong liquid-glass-soft flex h-[2.25rem] w-[2.25rem] items-center justify-center rounded-[0.875rem] min-[1025px]:h-10 min-[1025px]:w-10"
+              href={karaganda2gisHref}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Image alt="" aria-hidden="true" height={16} src="/icons/location.svg" width={16} />
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
