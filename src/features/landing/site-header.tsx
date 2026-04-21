@@ -199,14 +199,17 @@ export function StickyDesktopHeader({
   return (
     <div
       className={cn(
-        "pointer-events-none sticky z-40 hidden h-0 transition-all duration-180 ease-[cubic-bezier(0.22,1,0.36,1)] md:block",
-        isVisible ? "translate-y-0 opacity-100" : "-translate-y-1 opacity-0",
+        "sticky z-40 hidden h-0 transition-all duration-180 ease-[cubic-bezier(0.22,1,0.36,1)] md:block",
+        isVisible
+          ? "pointer-events-auto visible translate-y-0 opacity-100"
+          : "pointer-events-none invisible -translate-y-1 opacity-0",
       )}
+      aria-hidden={!isVisible}
       ref={containerRef}
       style={{ top: "var(--sticky-header-top, 0px)" }}
     >
       <div className="mx-auto w-full max-w-[1440px] px-4 pt-3 md:px-4 min-[1025px]:px-[20px] min-[1025px]:pl-[21px]">
-        <div className="liquid-glass-strong liquid-glass-soft pointer-events-auto flex h-[4.25rem] items-center justify-between overflow-hidden rounded-[1.25rem] border-[#88a8b3] bg-[rgba(164,194,205,0.9)] px-3 md:px-4 min-[1025px]:h-[4.5rem] min-[1025px]:px-6">
+        <div className="liquid-glass-strong liquid-glass-soft flex h-[4.25rem] items-center justify-between overflow-hidden rounded-[1.25rem] border-[#88a8b3] bg-[rgba(164,194,205,0.9)] px-3 md:px-4 min-[1025px]:h-[4.5rem] min-[1025px]:px-6">
           <a aria-label="Saferplast" className="block w-[5.75rem] shrink-0 min-[1025px]:w-[8rem]" href="/">
             <Image
               alt="Saferplast"

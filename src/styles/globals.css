@@ -158,10 +158,18 @@
   --projects-mobile-card-height: 10.5625rem;
   --projects-mobile-card-active-width: clamp(16.5rem, calc(74vw + 1.5rem), 23rem);
   --sticky-header-top: 0px;
+  --desktop-anchor-offset: 0px;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+#projects,
+#solution-matching,
+#testimonials,
+#contacts {
+  scroll-margin-top: var(--desktop-anchor-offset);
 }
 
 body {
@@ -360,6 +368,18 @@ a {
   opacity: 1;
   transform: translate3d(0, 26px, 0) scale(0.985);
   animation: page-enter 760ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --desktop-anchor-offset: 6rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  :root {
+    --desktop-anchor-offset: 6.25rem;
+  }
 }
 
 .scroll-reveal {
