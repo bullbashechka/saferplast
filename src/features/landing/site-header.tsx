@@ -72,7 +72,7 @@ function DesktopHeaderActionButton({
 
 export function DesktopHeaderBrandNav({ navigationLinks }: DesktopHeaderBrandNavProps) {
   return (
-    <div className="flex min-w-0 items-start gap-2.5 md:gap-5 min-[1025px]:gap-[3rem]">
+    <div className="flex min-w-0 items-center gap-2.5 md:gap-5 min-[1025px]:gap-[3rem]">
       <a aria-label="Saferplast" className="block w-[6rem] shrink-0 md:w-[9rem] min-[1025px]:w-[11.1875rem]" href="/">
         <Image
           alt="Saferplast"
@@ -93,7 +93,7 @@ export function DesktopHeaderBrandNav({ navigationLinks }: DesktopHeaderBrandNav
           {navigationLinks.map((link) => (
             <li key={link.href}>
               <a
-                className="block whitespace-nowrap font-body text-[0.6875rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62] md:text-[0.875rem] min-[1025px]:text-[1rem]"
+                className="block whitespace-nowrap font-body text-[0.6875rem] font-normal leading-[1] tracking-[0] text-[#004B62] transition-colors hover:text-[#242424] md:text-[0.875rem] min-[1025px]:text-[1rem]"
                 href={link.href}
               >
                 {link.label}
@@ -226,7 +226,7 @@ export function StickyDesktopHeader({
               {navigationLinks.map((link) => (
                 <li key={link.href}>
                   <a
-                    className="block whitespace-nowrap font-body text-[0.75rem] font-normal leading-[1] tracking-[0] text-[#1d323a] transition-colors hover:text-[#004B62] min-[1025px]:text-[1rem]"
+                    className="block whitespace-nowrap font-body text-[0.75rem] font-normal leading-[1] tracking-[0] text-[#004B62] transition-colors hover:text-[#242424] min-[1025px]:text-[1rem]"
                     href={link.href}
                   >
                     {link.label}
@@ -328,7 +328,7 @@ export function SiteHeader({ cityLabel, navigationLinks, phoneHref }: SiteHeader
             {navigationLinks.map((link) => (
               <li key={link.href}>
                 <a
-                  className="block whitespace-nowrap font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#242424] transition-colors hover:text-[#004B62]"
+                  className="block whitespace-nowrap font-body text-[1rem] font-normal leading-[1] tracking-[0] text-[#004B62] transition-colors hover:text-[#242424]"
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
