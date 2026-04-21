@@ -146,7 +146,7 @@ export function AdvantagesSection() {
       aria-label={advantagesSectionContent.title}
       className="relative z-10 -mt-[5.3125rem] rounded-t-[1.875rem] bg-[rgba(250,254,255,1)] pb-0 pt-8 md:mt-[120px] md:pt-0 xl:rounded-t-none"
     >
-      <div className="mx-auto max-w-[90rem] px-[var(--landing-mobile-shell-x)] md:px-5 min-[1025px]:px-8 xl:w-[90rem] xl:max-w-none xl:px-[7.5rem]">
+      <div className="mx-auto max-w-[90rem] px-[var(--landing-mobile-shell-x)] md:px-5 min-[1025px]:px-8 min-[1440px]:w-[90rem] min-[1440px]:max-w-none min-[1440px]:px-[7.5rem]">
         <div className="landing-mobile-shell mx-auto flex flex-col items-center md:hidden">
           <PageEnter delayMs={140}>
             <h2 className="text-center font-display text-[1.25rem] font-normal leading-[1] text-[#004B62]">

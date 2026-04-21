@@ -17,7 +17,7 @@ export function ProofSection() {
       aria-labelledby="proof-title"
       className="mt-[50px] bg-[rgba(250,254,255,1)] pb-10 md:mt-[77px] md:pb-14"
     >
-      <div className="mx-auto max-w-[90rem] px-[var(--landing-mobile-shell-x)] md:px-5 min-[1025px]:px-8 xl:w-[90rem] xl:max-w-none xl:px-[7.5rem]">
+      <div className="mx-auto max-w-[90rem] px-[var(--landing-mobile-shell-x)] md:px-5 min-[1025px]:px-8 min-[1440px]:w-[90rem] min-[1440px]:max-w-none min-[1440px]:px-[7.5rem]">
         <h2 id="proof-title" className="sr-only">
           Опыт, аккуратность и контроль
         </h2>
