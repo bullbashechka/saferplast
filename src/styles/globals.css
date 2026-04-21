@@ -357,7 +357,7 @@ a {
 }
 
 .page-enter-reveal {
-  opacity: 0;
+  opacity: 1;
   transform: translate3d(0, 26px, 0) scale(0.985);
   animation: page-enter 760ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
