@@ -11,10 +11,13 @@ function DesktopWorkProcessCard({
   titleLines: readonly string[];
   imageSrc: `/images/${string}`;
 }) {
+  const desktopTitleLines =
+    step === "2" ? (["Расчет", "Подбор решения"] as const) : titleLines;
+
   return (
     <article className="relative h-[18.75rem] overflow-hidden rounded-[20px] bg-[#d9e5ea] min-[1025px]:h-[20.5625rem]">
       <Image
-        alt={titleLines.join(" ")}
+        alt={desktopTitleLines.join(" ")}
         className="object-cover"
         fill
         sizes="(max-width: 767px) 100vw, (max-width: 1024px) 33vw, 387px"
@@ -33,7 +36,7 @@ function DesktopWorkProcessCard({
             </div>
 
             <h3 className="flex min-h-[3.75rem] min-w-0 max-w-[16rem] flex-1 flex-col justify-between gap-0 pl-[5px] text-[1.4375rem] font-medium leading-[1] text-[#004B62] min-[1025px]:h-[55px] min-[1025px]:text-[1.5rem]">
-              {titleLines.map((line, index) => (
+              {desktopTitleLines.map((line, index) => (
                 <span className={`${index === 1 ? "whitespace-nowrap" : ""} block`} key={line}>
                   {line}
                 </span>
