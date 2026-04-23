@@ -31,7 +31,7 @@ export const workProcessContent: WorkProcessContent = {
       id: "installation",
       step: "3",
       titleLines: ["Монтаж / ремонт", "Сдача работы"],
-      imageSrc: "/images/webp/mother.webp",
+      imageSrc: "/images/original/kidsrun.jpg",
     },
   ],
 };
