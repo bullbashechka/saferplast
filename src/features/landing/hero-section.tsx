@@ -68,7 +68,7 @@ function SupportCard({ availabilityLabel, cta, namesLabel }: SupportCardProps) {
 
 function ServiceCard({ cta, description }: ServiceCardProps) {
   return (
-    <article className="landing-mobile-card mx-auto flex h-[6.3125rem] flex-col gap-[0.4375rem] rounded-[1.25rem] bg-white p-[0.625rem] text-[#242424] shadow-[0_16px_40px_rgba(0,0,0,0.08)] md:mx-0 md:h-auto md:min-h-[9.75rem] md:max-w-none md:w-[13.5rem] md:justify-between md:gap-3 md:p-3.5 min-[1025px]:h-auto min-[1025px]:min-h-[11.1875rem] min-[1025px]:w-[17.8125rem] min-[1025px]:gap-[1.625rem] min-[1025px]:p-4">
+    <article className="landing-mobile-card mx-auto flex h-[6.3125rem] flex-col gap-[0.4375rem] rounded-[1.25rem] bg-white p-[0.625rem] text-[#242424] shadow-[0_16px_40px_rgba(0,0,0,0.08)] md:mx-0 md:h-auto md:min-h-[9.75rem] md:max-w-none md:w-[13.5rem] md:justify-between md:gap-3 md:p-3.5 min-[1025px]:h-auto min-[1025px]:min-h-[11.1875rem] min-[1025px]:w-[325px] min-[1025px]:gap-[1.625rem] min-[1025px]:p-4">
       <p className="w-full font-body text-[13px] font-normal leading-[1] tracking-[0] md:text-[0.75rem] min-[1025px]:text-[1rem]">
         {description}
       </p>

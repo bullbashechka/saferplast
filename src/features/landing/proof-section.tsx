@@ -74,7 +74,7 @@ export function ProofSection() {
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,hsla(0,0%,0%,0.37)_0%,hsla(0,0%,0%,0.37)_100%)]" />
 
-            <div className="liquid-glass-strong liquid-glass-soft absolute left-[24px] right-[24px] top-[24px] flex min-h-[236px] flex-col rounded-[15px] p-[15px] min-[1025px]:left-[40px] min-[1025px]:right-auto min-[1025px]:top-[45px] min-[1025px]:h-[269px] min-[1025px]:w-[678px]">
+            <div className="liquid-glass-strong liquid-glass-soft absolute left-[24px] right-[24px] top-[24px] flex min-h-[236px] flex-col rounded-[15px] p-[15px] min-[1025px]:left-1/2 min-[1025px]:right-auto min-[1025px]:top-[45px] min-[1025px]:h-[269px] min-[1025px]:w-[678px] min-[1025px]:-translate-x-1/2">
               <div className="relative z-10 h-full w-full">
                 <p className="max-w-[648px] font-display text-[43px] font-normal leading-[1] tracking-[0] text-white min-[1025px]:text-[44px]">
                   {desktopProofSectionCtaLines.map((line, index) => (

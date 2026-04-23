@@ -16,7 +16,7 @@ export const solutionMatchingContent = {
         row: "top",
         title: "Дует, шумно, холодно",
         subtitle: "Замена окон, стеклопакетов или регулировка",
-        imageSrc: "/images/versioned/frozen-first-card.v2.webp",
+        imageSrc: "/images/original/coldwindow.jpg",
         ctaLabel: "Узнать подробнее",
         ctaHref: "#lead-form",
         geometry: {

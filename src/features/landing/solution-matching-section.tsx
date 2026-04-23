@@ -10,8 +10,6 @@ type SolutionMatchingCard =
   | SolutionMatchingTopCard
   | SolutionMatchingBottomCard;
 
-const COLD_NOISE_OVERLAY_CLASS =
-  "bg-[linear-gradient(360deg,rgba(255,255,255,0.6)_0%,rgba(255,255,255,0)_100%)]";
 const TOP_OVERLAY_CLASS =
   "bg-[linear-gradient(360deg,rgba(255,255,255,0.69)_0%,rgba(255,255,255,0)_100%)]";
 const SECOND_TOP_OVERLAY_CLASS =
@@ -37,7 +35,7 @@ function SolutionCard({
   const overlayClassName =
     card.row === "top"
       ? card.id === "cold-noise"
-        ? COLD_NOISE_OVERLAY_CLASS
+        ? TOP_OVERLAY_CLASS
         : card.id === "balcony-turnkey"
           ? SECOND_TOP_OVERLAY_CLASS
           : card.id === "broken-window-door"
@@ -56,7 +54,7 @@ function SolutionCard({
       <Image
         alt={card.title}
         className={`rounded-[20px] object-cover ${
-          card.id === "cold-noise" ? "opacity-[0.32]" : card.id === "broken-window-door" ? "opacity-[0.7]" : ""
+          card.id === "cold-noise" ? "opacity-[0.82]" : card.id === "broken-window-door" ? "opacity-[0.7]" : ""
         }`}
         fill
         sizes={
@@ -72,20 +70,6 @@ function SolutionCard({
           className={`absolute inset-0 rounded-[20px] ${overlayClassName}`}
           style={officeCommercialOverlayStyle}
         />
-      ) : null}
-
-      {card.id === "cold-noise" ? (
-        <div className="pointer-events-none absolute bottom-0 right-0 z-[1]">
-          <Image
-            alt=""
-            aria-hidden="true"
-            className="block h-auto w-[9rem] md:w-[10rem] min-[1025px]:w-auto"
-            height={292}
-            src="/images/webp/freezing-wooman.webp"
-            style={{ height: "auto" }}
-            width={184}
-          />
-        </div>
       ) : null}
 
       <div className="relative z-10 flex h-full flex-col">
@@ -129,25 +113,12 @@ function MobileSolutionCard({ card }: { card: SolutionMatchingCard }) {
       <div className="relative h-[86px] w-[80px] shrink-0 overflow-hidden rounded-[5px]">
         <Image
           alt={card.title}
-          className={`object-cover ${card.id === "cold-noise" ? "opacity-[0.53]" : ""}`}
+          className={card.id === "cold-noise" ? "object-cover opacity-[0.82]" : "object-cover"}
           fill
           sizes="80px"
           src={card.imageSrc}
         />
       </div>
-
-      {card.id === "cold-noise" ? (
-        <div className="pointer-events-none absolute left-[15px] top-[-10px] z-10 h-[100px] w-[63px]">
-          <Image
-            alt=""
-            aria-hidden="true"
-            className="object-contain"
-            fill
-            sizes="63px"
-            src="/images/webp/freezing-wooman.webp"
-          />
-        </div>
-      ) : null}
 
       <div className="flex min-w-0 flex-1 flex-col justify-center gap-[6px]">
         <h3 className="font-['Sansation'] text-[18px] font-normal leading-[1] tracking-[0] text-[#004B62]">

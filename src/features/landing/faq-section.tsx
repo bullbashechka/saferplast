@@ -34,9 +34,9 @@ export function FaqSection() {
               return (
                 <div className="min-w-0" key={item.question}>
                   <article
-                    className={`grid w-full max-w-full overflow-hidden rounded-[10px] border border-[#d8e6eb] bg-white px-[15px] shadow-[0_2px_10px_rgba(0,75,98,0.04)] transition-[min-height] duration-300 ease-out md:hidden ${
+                    className={`grid w-full max-w-full overflow-hidden rounded-[10px] border border-[#d8e6eb] px-[15px] shadow-[0_2px_10px_rgba(0,75,98,0.04)] transition-[min-height,background-color] duration-300 ease-out md:hidden ${
                       isActive ? "min-h-[104px]" : "min-h-[72px]"
-                    }`}
+                    } ${isActive ? "bg-[hsla(190,32%,93%,1)]" : "bg-white"}`}
                     style={{ gridTemplateRows: isActive ? "72px 1fr" : "72px 0fr" }}
                   >
                     <div className="flex h-[72px] items-center">
@@ -84,9 +84,9 @@ export function FaqSection() {
                   </article>
 
                   <article
-                    className={`hidden rounded-[18px] border border-[#d8e6eb] bg-white px-[18px] shadow-[0_2px_10px_rgba(0,75,98,0.04)] transition-[min-height] duration-300 ease-out md:grid min-[1025px]:rounded-[20px] min-[1025px]:px-5 ${
+                    className={`hidden rounded-[18px] border border-[#d8e6eb] px-[18px] shadow-[0_2px_10px_rgba(0,75,98,0.04)] transition-[min-height,background-color] duration-300 ease-out md:grid min-[1025px]:rounded-[20px] min-[1025px]:px-5 ${
                       isActive ? "md:min-h-[132px] min-[1025px]:min-h-[137px]" : "md:min-h-[92px] min-[1025px]:min-h-[95px]"
-                    }`}
+                    } ${isActive ? "bg-[hsla(190,32%,93%,1)]" : "bg-white"}`}
                     style={{ gridTemplateRows: isActive ? "95px 1fr" : "95px 0fr" }}
                   >
                     <div className="flex h-[95px] items-center">
