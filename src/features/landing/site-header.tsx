@@ -221,7 +221,7 @@ export function StickyDesktopHeader({
             />
           </a>
 
-          <nav aria-label="РћСЃРЅРѕРІРЅР°СЏ РЅР°РІРёРіР°С†РёСЏ" className="mx-2 min-w-0 flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <nav aria-label="Основная навигация" className="mx-2 min-w-0 flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             <ul className="flex min-w-max items-center justify-start gap-3 pr-1 min-[1025px]:justify-center min-[1025px]:gap-8">
               {navigationLinks.map((link) => (
                 <li key={link.href}>
@@ -238,7 +238,7 @@ export function StickyDesktopHeader({
 
           <div className="flex shrink-0 items-center gap-2 min-[1025px]:gap-3">
             <a
-              aria-label="РџРѕР·РІРѕРЅРёС‚СЊ"
+              aria-label="Позвонить"
               className="liquid-glass-strong liquid-glass-soft flex h-[2.25rem] w-[2.25rem] items-center justify-center rounded-[0.875rem] min-[1025px]:h-10 min-[1025px]:w-10"
               href={phoneHref}
               rel="noopener noreferrer"

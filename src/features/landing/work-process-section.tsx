@@ -18,7 +18,7 @@ function DesktopWorkProcessCard({
   const desktopImageSrc = id === "installation" ? "/images/original/kidsrun.jpg" : imageSrc;
 
   return (
-    <article className="relative h-[18.75rem] overflow-hidden rounded-[20px] bg-[#d9e5ea] min-[1025px]:h-[20.5625rem]">
+    <article className="relative h-[188px] overflow-hidden rounded-[20px] bg-[#d9e5ea]">
       <Image
         alt={desktopTitleLines.join(" ")}
         className="object-cover"
@@ -62,7 +62,7 @@ function MobileWorkProcessCard({
   imageSrc: `/images/${string}`;
 }) {
   return (
-    <article className="landing-mobile-card relative mx-auto h-[151px] overflow-hidden rounded-[10px] bg-[#d9e5ea]">
+    <article className="landing-mobile-card relative mx-auto h-[188px] overflow-hidden rounded-[10px] bg-[#d9e5ea]">
       <Image
         alt={titleLines.join(" ")}
         className="object-cover"
