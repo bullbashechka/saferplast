@@ -18,7 +18,7 @@ function DesktopWorkProcessCard({
   const desktopImageSrc = id === "installation" ? "/images/original/kidsrun.jpg" : imageSrc;
 
   return (
-    <article className="relative h-[188px] overflow-hidden rounded-[20px] bg-[#d9e5ea]">
+    <article className="relative h-[188px] overflow-hidden rounded-[20px] bg-[#d9e5ea] min-[1025px]:h-[329px]">
       <Image
         alt={desktopTitleLines.join(" ")}
         className="object-cover"
