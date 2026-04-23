@@ -3,16 +3,19 @@ import { Image } from "@/components/ui/image";
 import { workProcessContent } from "@/features/landing/work-process-content";
 
 function DesktopWorkProcessCard({
+  id,
   step,
   titleLines,
   imageSrc,
 }: {
+  id: "consultation" | "calculation" | "installation";
   step: string;
   titleLines: readonly string[];
   imageSrc: `/images/${string}`;
 }) {
   const desktopTitleLines =
     step === "2" ? (["Расчет", "Подбор решения"] as const) : titleLines;
+  const desktopImageSrc = id === "installation" ? "/images/original/kidsrun.jpg" : imageSrc;
 
   return (
     <article className="relative h-[18.75rem] overflow-hidden rounded-[20px] bg-[#d9e5ea] min-[1025px]:h-[20.5625rem]">
@@ -21,7 +24,7 @@ function DesktopWorkProcessCard({
         className="object-cover"
         fill
         sizes="(max-width: 767px) 100vw, (max-width: 1024px) 33vw, 387px"
-        src={imageSrc}
+        src={desktopImageSrc}
       />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,75,98,0.12)_0%,rgba(0,0,0,0.18)_100%)]" />
 
@@ -122,6 +125,7 @@ export function WorkProcessSection() {
         <div className="hidden md:mt-8 md:grid md:grid-cols-3 md:gap-4 min-[1025px]:mt-10 min-[1025px]:gap-[19px]">
           {workProcessContent.cards.map((card) => (
             <DesktopWorkProcessCard
+              id={card.id}
               imageSrc={card.imageSrc}
               key={card.id}
               step={card.step}
