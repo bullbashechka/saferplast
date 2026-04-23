@@ -403,11 +403,11 @@ a {
 }
 
 .decorative-chip-reveal--left {
-  transform: translate3d(calc(-100vw - 140px), 0, 0);
+  transform: translate3d(calc(-100% - 140px), 0, 0);
 }
 
 .decorative-chip-reveal--right {
-  transform: translate3d(calc(100vw + 140px), 0, 0);
+  transform: translate3d(calc(100% + 140px), 0, 0);
 }
 
 .decorative-chip-reveal.is-visible {

@@ -331,11 +331,11 @@ export function LeadFormSection() {
 
   return (
     <section
-      className="bg-[rgba(250,254,255,1)] pb-16 pt-[60px] md:mt-[120px] md:pt-0"
+      className="overflow-x-clip bg-[rgba(250,254,255,1)] pb-16 pt-[60px] md:mt-[120px] md:pt-0"
       id="lead-form"
       ref={leadFormSectionRef}
     >
-      <div className="mx-auto w-full max-w-[1440px] px-[10px] md:px-4 min-[1025px]:px-[20px] min-[1025px]:pl-[21px]">
+      <div className="mx-auto w-full max-w-[1440px] overflow-x-clip px-[10px] md:px-4 min-[1025px]:px-[20px] min-[1025px]:pl-[21px]">
         <h2 className="mx-auto w-full max-w-[300px] text-center font-display text-[20px] font-normal leading-[1] text-[#004B62] md:max-w-[61rem] md:text-[43px] min-[1025px]:text-[44px]">
           {title}
         </h2>
