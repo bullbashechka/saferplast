@@ -35,7 +35,7 @@ export const homeSeo: RouteSeoConfig = {
   title: "Окна ПВХ в Караганде и области - замер, установка, ремонт | Saferplast",
 };
 
-export const legalSeoByPath: Record<"/privacy" | "/data-processing-policy" | "/public-offer", RouteSeoConfig> = {
+export const legalSeoByPath: Record<"/privacy" | "/data-processing-policy", RouteSeoConfig> = {
   "/data-processing-policy": {
     canonicalPath: "/data-processing-policy",
     description:
@@ -59,18 +59,6 @@ export const legalSeoByPath: Record<"/privacy" | "/data-processing-policy" | "/p
       url: `${SITE_URL}/privacy`,
     },
     title: "Политика конфиденциальности | Saferplast",
-  },
-  "/public-offer": {
-    canonicalPath: "/public-offer",
-    description:
-      "Публичная оферта Saferplast на оказание услуг по изготовлению, монтажу и ремонту оконных и балконных конструкций.",
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: "Публичная оферта | Saferplast",
-      url: `${SITE_URL}/public-offer`,
-    },
-    title: "Публичная оферта | Saferplast",
   },
 };
 

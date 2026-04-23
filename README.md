@@ -56,7 +56,6 @@ Worker secrets:
 
 - Privacy Policy: `/privacy`
 - Data Processing Policy: `/data-processing-policy`
-- Public Offer: `/public-offer`
 
 ## Notes
 

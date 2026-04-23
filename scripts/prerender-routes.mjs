@@ -103,18 +103,6 @@ const routes = [
       url: `${siteUrl}/data-processing-policy`,
     },
   },
-  {
-    path: "/public-offer",
-    title: "Публичная оферта | Saferplast",
-    description:
-      "Публичная оферта Saferplast на оказание услуг по изготовлению, монтажу и ремонту оконных и балконных конструкций.",
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: "Публичная оферта | Saferplast",
-      url: `${siteUrl}/public-offer`,
-    },
-  },
 ];
 
 function replaceMetaByName(html, name, value) {
