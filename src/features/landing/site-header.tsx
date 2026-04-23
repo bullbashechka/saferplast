@@ -89,7 +89,7 @@ export function DesktopHeaderBrandNav({ navigationLinks }: DesktopHeaderBrandNav
         aria-label="Основная навигация"
         className="ml-auto mr-4 w-[10.25rem] shrink-0 pt-1 md:mr-0 md:w-[16rem] md:pt-[0.5rem] min-[1025px]:w-[19.8125rem] min-[1025px]:pt-[0.75rem]"
       >
-        <ul className="grid h-auto w-full grid-cols-2 grid-rows-2 gap-x-2.5 gap-y-2.5 md:gap-x-4 md:gap-y-4 min-[1025px]:h-[3.5rem] min-[1025px]:gap-x-6 min-[1025px]:gap-y-6">
+        <ul className="grid h-auto w-full grid-cols-2 grid-rows-2 gap-x-2.5 gap-y-2.5 md:gap-x-4 md:gap-y-4 min-[1025px]:h-[3.5rem] min-[1025px]:gap-x-16 min-[1025px]:gap-y-6">
           {navigationLinks.map((link) => (
             <li key={link.href}>
               <a
@@ -222,7 +222,7 @@ export function StickyDesktopHeader({
           </a>
 
           <nav aria-label="Основная навигация" className="mx-2 min-w-0 flex-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <ul className="flex min-w-max items-center justify-start gap-3 pr-1 min-[1025px]:justify-center min-[1025px]:gap-8">
+            <ul className="flex min-w-max items-center justify-start gap-3 pr-1 min-[1025px]:justify-center min-[1025px]:gap-16">
               {navigationLinks.map((link) => (
                 <li key={link.href}>
                   <a
