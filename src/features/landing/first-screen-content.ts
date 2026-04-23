@@ -57,8 +57,8 @@ export const firstScreenContent: FirstScreenContent = {
   whatsappHref: "https://wa.me/77478041022",
   telegramHref: "https://t.me/+77478041022",
   headerNavigationLinks: [
-    { href: "#projects", label: "Наши работы" },
     { href: "#solution-matching", label: "Подобрать решение" },
+    { href: "#projects", label: "Наши работы" },
     { href: "#testimonials", label: "Отзывы" },
     { href: "#contacts", label: "Контакты" },
   ],
