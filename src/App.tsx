@@ -49,10 +49,10 @@ export default function App() {
         <FaqSection />
       </ScrollReveal>
       <ScrollReveal>
-        <LeadFormSection />
-      </ScrollReveal>
-      <ScrollReveal>
-        <SiteFooter />
+        <div>
+          <LeadFormSection />
+          <SiteFooter />
+        </div>
       </ScrollReveal>
     </main>
   );
