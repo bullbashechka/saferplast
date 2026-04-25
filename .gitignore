@@ -13,5 +13,4 @@ dist
 .dev.vars
 .wrangler
 .DS_Store
-.codex
 tsconfig.tsbuildinfo
