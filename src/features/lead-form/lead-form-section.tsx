@@ -76,7 +76,7 @@ export function LeadFormSection() {
   const { consents, decorativeLabels, fields, messengersLabel, submitLabel, subtitle, taskMaxLength, title } =
     leadFormContent;
   const { instagramHref, telegramHref, whatsappHref } = firstScreenContent;
-  const leadApiUrl = import.meta.env.VITE_LEAD_API_URL ?? "";
+  const leadApiUrl = (import.meta.env.VITE_LEAD_API_URL ?? "/api/lead").trim() || "/api/lead";
 
   const leadFormSectionRef = useRef<HTMLElement | null>(null);
   const revealTimerRef = useRef<number | null>(null);

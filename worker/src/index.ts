@@ -39,7 +39,7 @@ const NO_STORE_HEADERS = {
   "Cache-Control": "no-store",
 };
 
-function getAllowedOrigin(origin: string | null) {
+function getAllowedOrigin(origin: string | null, requestUrl: URL) {
   if (!origin) {
     return "*";
   }
@@ -50,6 +50,9 @@ function getAllowedOrigin(origin: string | null) {
 
   try {
     const url = new URL(origin);
+    if (url.origin === requestUrl.origin) {
+      return origin;
+    }
     if (url.hostname.endsWith(".pages.dev")) {
       return origin;
     }
@@ -60,8 +63,8 @@ function getAllowedOrigin(origin: string | null) {
   return null;
 }
 
-function buildCorsHeaders(origin: string | null) {
-  const allowedOrigin = getAllowedOrigin(origin);
+function buildCorsHeaders(origin: string | null, requestUrl: URL) {
+  const allowedOrigin = getAllowedOrigin(origin, requestUrl);
 
   if (!allowedOrigin) {
     return null;
@@ -210,7 +213,8 @@ function jsonResponse(
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const origin = request.headers.get("Origin");
-    const corsHeaders = buildCorsHeaders(origin);
+    const requestUrl = new URL(request.url);
+    const corsHeaders = buildCorsHeaders(origin, requestUrl);
 
     if (!corsHeaders) {
       return new Response("Origin is not allowed.", { status: 403, headers: NO_STORE_HEADERS });
@@ -226,9 +230,7 @@ export default {
       });
     }
 
-    const url = new URL(request.url);
-
-    if (request.method !== "POST" || url.pathname !== "/api/lead") {
+    if (request.method !== "POST" || requestUrl.pathname !== "/api/lead") {
       return new Response("Not found", {
         status: 404,
         headers: {

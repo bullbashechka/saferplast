@@ -11,7 +11,7 @@ This project uses:
 
 Pages project:
 
-- `VITE_LEAD_API_URL`
+- `VITE_LEAD_API_URL` (optional; defaults to `/api/lead` when the Worker is routed on the same origin)
 
 Worker secrets:
 
