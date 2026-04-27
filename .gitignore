@@ -4,6 +4,7 @@ node_modules
 .open-next
 .cloudflare
 .vercel
+.astro
 coverage
 dist
 *.log
