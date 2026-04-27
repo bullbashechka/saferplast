@@ -1,6 +1,7 @@
 ﻿# Repository Guidelines
 
 ## Project Structure & Module Organization
+
 This is a `React 19 + Vite` landing-page app with `TypeScript`, `Tailwind CSS`, and a Cloudflare Worker backend.
 
 - `src/main.tsx`, `src/App.tsx`: SPA entrypoints.
@@ -13,6 +14,7 @@ This is a `React 19 + Vite` landing-page app with `TypeScript`, `Tailwind CSS`, 
 - `docs`: architecture/notes; `scripts`: automation helpers.
 
 ## Build, Test, and Development Commands
+
 Run from repository root:
 
 - `npm run dev`: start frontend dev server (Vite).
@@ -27,6 +29,7 @@ Run from repository root:
 On restricted PowerShell setups, use `npm.cmd run <script>`.
 
 ## Coding Style & Naming Conventions
+
 - Use TypeScript and functional React components.
 - Keep feature content colocated (`*-content.ts`, `*-types.ts`, `*-section.tsx`).
 - Use `kebab-case` for filenames (e.g., `first-screen.tsx`), `PascalCase` for component/type names.
@@ -37,6 +40,7 @@ On restricted PowerShell setups, use `npm.cmd run <script>`.
 - Follow project ESLint/TS config and import aliases like `@/features/...`.
 
 ## Testing Guidelines
+
 There is no dedicated automated test suite yet. Every change must pass:
 
 - `npm run lint`
@@ -45,21 +49,13 @@ There is no dedicated automated test suite yet. Every change must pass:
 If behavior changes, also validate in `npm run dev`. When adding tests, place them near the feature and use names like `hero-section.test.tsx`.
 
 ## Commit & Pull Request Guidelines
+
 - Use short, imperative commit messages (example: `Refine lead form layout`).
 - Keep commits focused; avoid unrelated edits.
 - PRs should include a concise summary, affected paths, screenshots for UI changes, and related references/issues.
 
 ## Security & Configuration Tips
+
 - Never commit secrets.
 - Use `.env.example` as the local env template.
 - Do not commit generated outputs (`dist/`, `node_modules/`, `tsconfig.tsbuildinfo`).
-
-## graphify
-
-This project has a graphify knowledge graph at graphify-out/.
-
-Rules:
-- Before answering architecture or codebase questions, read graphify-out/GRAPH_REPORT.md for god nodes and community structure
-- If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
-- For cross-module "how does X relate to Y" questions, prefer `graphify query "<question>"`, `graphify path "<A>" "<B>"`, or `graphify explain "<concept>"` over grep — these traverse the graph's EXTRACTED + INFERRED edges instead of scanning files
-- After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost)
