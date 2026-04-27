@@ -1,15 +1,15 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { AdvantagesSection } from "@/features/landing/advantages-section";
+import AdvantagesSection from "@/features/landing/advantages-section.astro";
 import { FaqSection } from "@/features/landing/faq-section";
 import { FirstScreen } from "@/features/landing/first-screen";
-import { ProofSection } from "@/features/landing/proof-section";
+import ProofSection from "@/features/landing/proof-section.astro";
 import { ProjectsSection } from "@/features/landing/projects-section";
-import { SiteFooter } from "@/features/landing/site-footer";
+import SiteFooter from "@/features/landing/site-footer.astro";
 import { StickyDesktopHeader } from "@/features/landing/site-header";
-import { SolutionMatchingSection } from "@/features/landing/solution-matching-section";
+import SolutionMatchingSection from "@/features/landing/solution-matching-section.astro";
 import { TestimonialsSection } from "@/features/landing/testimonials-section";
-import { WorkProcessSection } from "@/features/landing/work-process-section";
+import WorkProcessSection from "@/features/landing/work-process-section.astro";
 import { firstScreenContent } from "@/features/landing/first-screen-content";
 import { LeadFormSection } from "@/features/lead-form/lead-form-section";
 import { homeSeo } from "@/lib/seo/route-seo";
@@ -25,21 +25,11 @@ import { homeSeo } from "@/lib/seo/route-seo";
     />
     <FirstScreen />
     <AdvantagesSection />
-    <div class="scroll-reveal">
-      <ProofSection />
-    </div>
-    <div class="scroll-reveal">
-      <SolutionMatchingSection />
-    </div>
-    <div class="scroll-reveal">
-      <WorkProcessSection />
-    </div>
-    <div class="scroll-reveal">
-      <ProjectsSection client:visible />
-    </div>
-    <div class="scroll-reveal">
-      <TestimonialsSection client:visible />
-    </div>
+    <ProofSection />
+    <SolutionMatchingSection />
+    <WorkProcessSection />
+    <ProjectsSection client:load />
+    <TestimonialsSection client:load />
     <div class="scroll-reveal">
       <FaqSection client:visible />
     </div>

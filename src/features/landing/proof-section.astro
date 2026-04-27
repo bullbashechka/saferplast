@@ -1,0 +1,83 @@
+---
+const rightProofImageSrc = encodeURI("/images/webp/glass-broken-from- house-by-accident- man-checking- repair.webp");
+const proofSectionCtaCopy = "Бесплатно подскажем, что вам выгоднее: ремонт, замена или новое изготовление";
+const desktopProofSectionCtaLines = [
+  "Бесплатно подскажем, что,",
+  "вам выгоднее: ремонт, замена",
+  "или новое изготовление",
+] as const;
+---
+
+<section aria-labelledby="proof-title" class="scroll-reveal mt-[50px] bg-[rgba(250,254,255,1)] pb-10 md:mt-[77px] md:pb-14">
+  <div class="mx-auto max-w-[90rem] px-[var(--landing-mobile-shell-x)] md:px-5 min-[1025px]:px-8 min-[1440px]:w-[90rem] min-[1440px]:max-w-none min-[1440px]:px-[7.5rem]">
+    <h2 id="proof-title" class="sr-only">Опыт, аккуратность и контроль</h2>
+
+    <div class="mx-auto md:hidden">
+      <article class="landing-mobile-card relative h-[369px] overflow-hidden rounded-[20px] bg-[#d9e5ea]">
+        <img
+          alt="Сотрудник Saferplast на производстве"
+          class="absolute inset-0 block h-full w-full rounded-[20px] object-cover"
+          loading="lazy"
+          src="/images/webp/male-worker-factory.webp"
+        />
+        <div class="absolute inset-0 bg-[hsla(0,0%,0%,0.2)]" />
+
+        <div
+          class="liquid-glass-strong liquid-glass-soft absolute left-1/2 top-[200px] flex h-[159px] -translate-x-1/2 flex-col items-start rounded-[10px] p-[15px]"
+          style="width: clamp(280px, calc(100vw - 40px), 420px);"
+        >
+          <div class="relative z-10 flex h-full w-full flex-col justify-between">
+            <p class="landing-mobile-tight mx-auto h-20 max-w-full font-display text-[20px] font-normal leading-[1] tracking-[0] text-white">
+              {proofSectionCtaCopy}
+            </p>
+
+            <a
+              class="landing-mobile-cta mx-auto inline-flex h-[38px] shrink-0 items-center justify-center gap-[14px] rounded-[10px] bg-[#004B62] px-[39px] py-3 text-center font-body text-[14px] font-medium leading-[1] text-white transition-colors hover:bg-[#00384a]"
+              href="#lead-form"
+            >
+              Получить консультацию
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="hidden md:grid md:grid-cols-[0.85fr_1.35fr] md:gap-4 min-[1025px]:grid-cols-[387px_793px] min-[1025px]:gap-5">
+      <article class="relative h-[340px] overflow-hidden rounded-[20px] bg-[#d9e5ea] min-[1025px]:h-[360px]">
+        <img
+          alt="Сотрудник Saferplast на производстве"
+          class="absolute inset-0 block h-full w-full object-cover"
+          loading="lazy"
+          src="/images/webp/male-worker-factory.webp"
+        />
+      </article>
+
+      <article class="relative h-[340px] overflow-hidden rounded-[20px] bg-[#cfdbe0] min-[1025px]:h-[360px]">
+        <img
+          alt="Проверка стекла на объекте"
+          class="absolute inset-0 block h-full w-full object-cover"
+          loading="lazy"
+          src={rightProofImageSrc}
+        />
+        <div class="absolute inset-0 bg-[linear-gradient(180deg,hsla(0,0%,0%,0.37)_0%,hsla(0,0%,0%,0.37)_100%)]" />
+
+        <div class="liquid-glass-strong liquid-glass-soft absolute left-[24px] right-[24px] top-[24px] flex min-h-[236px] flex-col rounded-[15px] p-[15px] min-[1025px]:left-1/2 min-[1025px]:right-auto min-[1025px]:top-[45px] min-[1025px]:h-[269px] min-[1025px]:w-[678px] min-[1025px]:-translate-x-1/2">
+          <div class="relative z-10 h-full w-full">
+            <p class="max-w-[648px] font-display text-[43px] font-normal leading-[1] tracking-[0] text-white min-[1025px]:text-[44px]">
+              {desktopProofSectionCtaLines.map((line, index) => (
+                <span class={index === 1 ? "block whitespace-nowrap" : "block"}>{line}</span>
+              ))}
+            </p>
+
+            <a
+              class="mt-5 inline-flex h-[48px] w-full max-w-[280px] shrink-0 items-center justify-center whitespace-nowrap rounded-[10px] bg-[#004B62] px-4 py-3 text-center font-body text-[1rem] font-medium leading-[1] text-white transition-colors hover:bg-[#00384a] md:absolute md:bottom-0 md:left-0 md:mt-0 md:h-[66px] md:max-w-[340px] md:px-[44px] md:py-[24px] md:text-[19px] min-[1025px]:h-[68px] min-[1025px]:max-w-[355px] min-[1025px]:px-[49px] min-[1025px]:text-[20px]"
+              href="#lead-form"
+            >
+              Получить консультацию
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

@@ -1,6 +1,6 @@
 ---
 import { DesktopHeaderBrandNav, DesktopHeaderContactActions, SiteHeader, StickyDesktopHeader } from "@/features/landing/site-header";
-import { SiteFooter } from "@/features/landing/site-footer";
+import SiteFooter from "@/features/landing/site-footer.astro";
 import { TestimonialsSection } from "@/features/landing/testimonials-section";
 import { firstScreenContent } from "@/features/landing/first-screen-content";
 import { testimonialsByCity } from "@/features/landing/testimonials-content";
@@ -68,13 +68,11 @@ const geoNavigationLinks: NavigationLink[] = [
 
     <GeoServicePage page={page} />
 
-    <div class="scroll-reveal">
-      <TestimonialsSection
-        items={testimonialsByCity[page.cityKey]}
-        title={page.testimonialsTitle}
-        client:visible
-      />
-    </div>
+    <TestimonialsSection
+      items={testimonialsByCity[page.cityKey]}
+      title={page.testimonialsTitle}
+      client:load
+    />
 
     <div class="scroll-reveal">
       <LeadFormSection client:visible />

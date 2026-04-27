@@ -1,0 +1,141 @@
+---
+import { solutionMatchingContent } from "@/features/landing/solution-matching-content";
+import type { SolutionMatchingBottomCard, SolutionMatchingTopCard } from "@/features/landing/solution-matching-types";
+
+type SolutionMatchingCard = SolutionMatchingTopCard | SolutionMatchingBottomCard;
+
+const TOP_OVERLAY_CLASS = "bg-[linear-gradient(360deg,rgba(255,255,255,0.69)_0%,rgba(255,255,255,0)_100%)]";
+const SECOND_TOP_OVERLAY_CLASS = "bg-[linear-gradient(360deg,rgba(255,255,255,0.68)_0%,rgba(255,255,255,0)_100%)]";
+const BOTTOM_LEFT_OVERLAY_CLASS =
+  "bg-[linear-gradient(0deg,rgba(0,0,0,0.2),rgba(0,0,0,0.2)),linear-gradient(360deg,rgba(255,255,255,0.69)_0%,rgba(255,255,255,0)_100%)]";
+
+function getOverlayClassName(card: SolutionMatchingCard, isBottomLeft: boolean) {
+  if (card.row === "top") {
+    if (card.id === "balcony-turnkey") return SECOND_TOP_OVERLAY_CLASS;
+    if (card.id === "cold-noise" || card.id === "broken-window-door") return TOP_OVERLAY_CLASS;
+    return "";
+  }
+
+  if (card.id === "office-commercial") return BOTTOM_LEFT_OVERLAY_CLASS;
+  return isBottomLeft ? BOTTOM_LEFT_OVERLAY_CLASS : TOP_OVERLAY_CLASS;
+}
+
+const { section, rows } = solutionMatchingContent;
+const mobileCards = [...rows.topCards, ...rows.bottomCards];
+---
+
+<section id="solution-matching" aria-labelledby="solution-matching-title" class="scroll-reveal mt-[20px] bg-[rgba(250,254,255,1)] px-[var(--landing-mobile-shell-x)] pb-0 pt-0 md:mt-[120px] md:px-5 min-[1025px]:px-8">
+  <div class="landing-mobile-shell mx-auto md:max-w-content">
+    <h2 id="solution-matching-title" class="font-['Sansation'] text-center text-[20px] font-normal leading-[1] tracking-[0] text-[hsla(194,100%,19%,1)] md:font-display md:text-[43px] min-[1025px]:text-[44px]">
+      {section.heading}
+    </h2>
+    <p class="mx-auto mt-[10px] max-w-full text-center font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[hsla(0,0%,14%,1)] md:mt-4 md:max-w-[51rem] md:font-body md:text-[15px] min-[1025px]:text-[16px]">
+      {section.subtitle}
+    </p>
+
+    <div class="mt-[20px] space-y-[10px] md:hidden">
+      {mobileCards.map((card) => (
+        <article class="landing-mobile-card relative mx-auto flex h-[96px] gap-[12px] rounded-[10px] bg-[#E6F0F2] p-[5px]">
+          <div class="relative h-[86px] w-[80px] shrink-0 overflow-hidden rounded-[5px]">
+            <img
+              alt={card.title}
+              class={card.id === "cold-noise" ? "absolute inset-0 block h-full w-full object-cover opacity-[0.82]" : "absolute inset-0 block h-full w-full object-cover"}
+              loading="lazy"
+              src={card.imageSrc}
+            />
+          </div>
+
+          <div class="flex min-w-0 flex-1 flex-col justify-center gap-[6px]">
+            <h3 class="font-['Sansation'] text-[18px] font-normal leading-[1] tracking-[0] text-[#004B62]">
+              {card.title}
+            </h3>
+            <p class="font-['Montserrat'] text-[12px] font-normal leading-[1] tracking-[0] text-[#242424]">
+              {card.subtitle}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <a
+      class="landing-mobile-cta mx-auto mt-[26px] flex h-[38px] items-center justify-center gap-[14px] rounded-[10px] bg-[#004B62] px-[39px] py-[12px] text-center font-['Montserrat'] text-[14px] font-medium leading-[1] tracking-[0] text-white transition-colors hover:bg-[#00384a] md:hidden"
+      href="#lead-form"
+    >
+      Узнать подробнее
+    </a>
+
+    <div class="hidden md:mt-8 md:block md:space-y-4 min-[1025px]:space-y-5">
+      <div class="grid md:grid-cols-3 md:gap-4 min-[1025px]:gap-5">
+        {rows.topCards.map((card) => (
+          <article class="relative h-[300px] overflow-hidden rounded-[20px] bg-[#d9e5ea] p-[10px] md:h-[350px] md:p-[11px] min-[1025px]:h-[368px] min-[1025px]:p-[12px]">
+            <img
+              alt={card.title}
+              class={`absolute inset-0 block h-full w-full rounded-[20px] object-cover ${card.id === "cold-noise" ? "opacity-[0.82]" : card.id === "broken-window-door" ? "opacity-[0.7]" : ""}`}
+              loading="lazy"
+              src={card.imageSrc}
+            />
+            <div class={`absolute inset-0 rounded-[20px] ${getOverlayClassName(card, false)}`} />
+
+            <div class="relative z-10 flex h-full flex-col">
+              <div class="liquid-glass-strong h-[100px] rounded-[10px] p-[8px] md:h-[118px] md:p-[9px] min-[1025px]:h-[123px] min-[1025px]:p-[10px]">
+                <div class={`flex min-h-[48px] md:min-h-[56px] min-[1025px]:min-h-[60px] ${card.id === "cold-noise" ? "items-start" : "items-end"}`}>
+                  <h3 class="font-['Sansation'] text-[1.375rem] font-normal leading-[1] tracking-[0] text-[hsla(194,100%,19%,1)] md:text-[29px] min-[1025px]:text-[30px]">
+                    {card.title}
+                  </h3>
+                </div>
+                <p class="mt-2 font-body text-[0.8125rem] font-normal leading-[1] tracking-[0] text-[hsla(0,0%,14%,1)] md:mt-3 md:text-[15px] min-[1025px]:text-[16px]">
+                  {card.subtitle}
+                </p>
+              </div>
+
+              <a
+                class={`${card.typography.ctaClassName} absolute bottom-4 left-4 right-4 inline-flex w-max whitespace-nowrap text-[#004B62] md:bottom-[30px] md:left-[24px] md:right-auto min-[1025px]:bottom-[38px] min-[1025px]:left-[30px] min-[1025px]:right-auto xl:right-auto`}
+                href={card.ctaHref}
+              >
+                {card.ctaLabel}
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="grid md:grid-cols-2 md:gap-4 min-[1025px]:gap-5">
+        {rows.bottomCards.map((card, index) => (
+          <article class="relative h-[240px] overflow-hidden rounded-[20px] bg-[#d9e5ea] p-[10px] md:h-[276px] md:p-[11px] min-[1025px]:h-[290px] min-[1025px]:p-[12px]">
+            <img
+              alt={card.title}
+              class="absolute inset-0 block h-full w-full rounded-[20px] object-cover"
+              loading="lazy"
+              src={card.imageSrc}
+            />
+
+            <div
+              class={`absolute inset-0 rounded-[20px] ${getOverlayClassName(card, index === 0)}`}
+              style={card.id === "office-commercial" ? "background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(360deg, rgba(255, 255, 255, 0.69) 0%, rgba(255, 255, 255, 0) 100%);" : undefined}
+            />
+
+            <div class="relative z-10 flex h-full flex-col">
+              <div class="liquid-glass-strong h-[92px] rounded-[10px] p-[8px] md:h-[100px] md:p-[9px] min-[1025px]:h-[106px] min-[1025px]:p-[10px]">
+                <div class="flex min-h-[48px] md:min-h-[56px] min-[1025px]:min-h-[60px] items-end">
+                  <h3 class="font-['Sansation'] text-[1.375rem] font-normal leading-[1] tracking-[0] text-[hsla(194,100%,19%,1)] md:text-[29px] min-[1025px]:text-[30px]">
+                    {card.title}
+                  </h3>
+                </div>
+                <p class="mt-2 font-body text-[0.8125rem] font-normal leading-[1] tracking-[0] text-[hsla(0,0%,14%,1)] md:mt-3 md:text-[15px] min-[1025px]:text-[16px]">
+                  {card.subtitle}
+                </p>
+              </div>
+
+              <a
+                class={`${card.typography.ctaClassName} absolute bottom-4 left-4 right-4 inline-flex w-max whitespace-nowrap text-[#004B62] md:bottom-[24px] md:left-[24px] md:right-auto min-[1025px]:bottom-[32px] min-[1025px]:left-[30px] min-[1025px]:right-auto xl:right-auto`}
+                href={card.ctaHref}
+              >
+                {card.ctaLabel}
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
