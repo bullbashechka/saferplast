@@ -12,15 +12,38 @@ Landing page project on `Astro 5 + React islands + TypeScript + Tailwind CSS` wi
   - frontend to `Cloudflare Pages`
   - API to `Cloudflare Workers`
 
+## Frontend Split
+
+Astro sections:
+
+- `advantages-section.astro`
+- `proof-section.astro`
+- `solution-matching-section.astro`
+- `work-process-section.astro`
+- `site-footer.astro`
+
+React islands:
+
+- `projects-section.tsx` - Embla carousel, horizontal scroll, mobile snap
+- `testimonials-section.tsx` - Embla carousel and modal interaction
+- `faq-section.tsx` - accordion state
+- `lead-form-section.tsx` - form state, validation, Turnstile, submit flow
+
+Rule of thumb:
+
+- keep static content in Astro
+- keep stateful or carousel-driven blocks in React
+- if a section needs `useState`, hydration, or Embla, keep it as an island
+
 ## Project Structure
 
-- `src/pages` — Astro routes
-- `src/layouts` — Astro layouts
-- `src/features` — landing sections, legal pages, geo pages, lead form
-- `src/components` — reusable React/UI components
-- `src/lib` — utilities and SEO config
-- `public` — static files, redirects, robots, sitemap
-- `worker/src` — Worker API for `POST /api/lead`
+- `src/pages` - Astro routes
+- `src/layouts` - Astro layouts
+- `src/features` - landing sections, legal pages, geo pages, lead form
+- `src/components` - reusable React/UI components
+- `src/lib` - utilities and SEO config
+- `public` - static files, redirects, robots, sitemap
+- `worker/src` - Worker API for `POST /api/lead`
 
 ## Local Development
 
@@ -42,14 +65,14 @@ Astro dev server usually starts on `http://localhost:4321`.
 
 ## Scripts
 
-- `npm run dev` — start Astro dev server
-- `npm run build` — build static frontend into `dist`
-- `npm run preview` — preview Astro build locally
-- `npm run lint` — run ESLint
-- `npm run typecheck` — run `astro check` and `tsc --noEmit`
-- `npm run deploy:pages` — deploy `dist` to Cloudflare Pages
-- `npm run worker:dev` — run Worker locally with Wrangler
-- `npm run worker:deploy` — deploy Worker
+- `npm run dev` - start Astro dev server
+- `npm run build` - build static frontend into `dist`
+- `npm run preview` - preview Astro build locally
+- `npm run lint` - run ESLint
+- `npm run typecheck` - run `astro check` and `tsc --noEmit`
+- `npm run deploy:pages` - deploy `dist` to Cloudflare Pages
+- `npm run worker:dev` - run Worker locally with Wrangler
+- `npm run worker:deploy` - deploy Worker
 
 ## Environment
 
@@ -120,3 +143,5 @@ npm run build
 ## Deployment Docs
 
 See [docs/cloudflare-deploy.md](/C:/Users/fm/Documents/Business/saferplast_DONTDELETE/docs/cloudflare-deploy.md) for the full Pages + Worker deployment flow.
+
+See [docs/frontend-architecture.md](/C:/Users/fm/Documents/Business/saferplast_DONTDELETE/docs/frontend-architecture.md) for the current Astro/React split.
