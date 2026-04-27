@@ -30,6 +30,10 @@ React islands:
 - `faq-section.tsx` - accordion state
 - `lead-form-section.tsx` - form state, validation, Turnstile, submit flow
 
+Public frontend config:
+
+- `src/lib/public-config.ts` - checked-in public values like the Turnstile site key
+
 Rule of thumb:
 
 - keep static content in Astro
@@ -81,7 +85,6 @@ Frontend `.env`:
 
 ```env
 VITE_LEAD_API_URL=
-VITE_TURNSTILE_SITE_KEY=
 ```
 
 Worker secrets:
@@ -116,6 +119,7 @@ For local Worker development you can also use:
 ## Lead Form Flow
 
 - client form submits to `POST /api/lead`
+- Turnstile site key is a public constant in `src/lib/public-config.ts`
 - Worker validates payload
 - Turnstile token is verified in Worker
 - request is rate-limited via Worker KV

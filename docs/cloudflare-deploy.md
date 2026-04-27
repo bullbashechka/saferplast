@@ -39,7 +39,7 @@ API:
    - `TURNSTILE_SECRET_KEY`
 7. Frontend env:
    - `VITE_LEAD_API_URL`
-   - `VITE_TURNSTILE_SITE_KEY`
+   - `src/lib/public-config.ts` contains the public Turnstile site key
 
 ## Первый деплой заново
 
@@ -55,7 +55,6 @@ npm install
 
 ```env
 VITE_LEAD_API_URL=https://saferplast-api.<your-subdomain>.workers.dev/api/lead
-VITE_TURNSTILE_SITE_KEY=<your-turnstile-site-key>
 ```
 
 ### 3. Проверить Worker secrets
@@ -158,7 +157,7 @@ wrangler pages deploy dist --project-name saferplast
 Для Git-based деплоя также задай environment variables в Pages project:
 
 - `VITE_LEAD_API_URL`
-- `VITE_TURNSTILE_SITE_KEY`
+- public Turnstile site key lives in `src/lib/public-config.ts`
 
 ## Если Worker создаётся с нуля
 

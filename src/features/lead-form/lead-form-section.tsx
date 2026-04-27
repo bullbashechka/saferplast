@@ -9,6 +9,7 @@ import { firstScreenContent } from "@/features/landing/first-screen-content";
 import type { DecorativeLabel } from "@/features/lead-form/lead-form-content";
 import { leadFormContent } from "@/features/lead-form/lead-form-content";
 import type { LeadFormPayload } from "@/features/lead-form/lead-form-types";
+import { TURNSTILE_SITE_KEY } from "@/lib/public-config";
 
 const PHONE_PREFIX = "+7";
 const EMPTY_CONSENTS = [false, false];
@@ -110,7 +111,7 @@ export function LeadFormSection() {
     leadFormContent;
   const { instagramHref, telegramHref, whatsappHref } = firstScreenContent;
   const leadApiUrl = import.meta.env.VITE_LEAD_API_URL ?? "";
-  const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY ?? "";
+  const turnstileSiteKey = TURNSTILE_SITE_KEY;
 
   const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
   const turnstileWrapperRef = useRef<HTMLDivElement | null>(null);
