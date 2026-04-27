@@ -1,0 +1,9 @@
+---
+import { PrivacyPolicyPage } from "@/features/legal/privacy-policy-page";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { legalSeoByPath } from "@/lib/seo/route-seo";
+---
+
+<BaseLayout seo={legalSeoByPath["/privacy"]}>
+  <PrivacyPolicyPage />
+</BaseLayout>

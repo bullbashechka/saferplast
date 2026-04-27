@@ -1,6 +1,3 @@
-import { SeoMeta } from "@/components/seo/seo-meta";
-import { legalSeoByPath } from "@/lib/seo/route-seo";
-
 const companyDetails = {
   companyName: "ИП АБДИКАРИМОВ К.К.",
   binOrIin: "860713350477",
@@ -12,12 +9,8 @@ const companyDetails = {
 };
 
 export function DataProcessingPolicyPage() {
-  const seo = legalSeoByPath["/data-processing-policy"];
-
   return (
     <main className="min-h-screen bg-[rgba(250,254,255,1)] px-4 pb-12 pt-8 text-[#242424] md:px-8 md:pb-16 md:pt-10">
-      <SeoMeta canonicalPath={seo.canonicalPath} description={seo.description} jsonLd={seo.jsonLd} title={seo.title} />
-
       <div className="mx-auto w-full max-w-[900px]">
         <a
           className="inline-flex items-center rounded-[10px] border border-[#004B62] px-4 py-2 text-[14px] font-medium text-[#004B62] transition-colors hover:bg-[#004B62] hover:text-white md:text-[15px]"
@@ -71,7 +64,7 @@ export function DataProcessingPolicyPage() {
           <div>
             <h2 className="font-semibold text-[#004B62]">5. Порядок обработки и передача</h2>
             <p className="mt-2">
-              Заявки обрабатываются оператором и передаются только в Telegram-бота оператора, который используется для
+              Заявки обрабатываются оператором и передаются только в Telegram-бот оператора, который используется для
               обратной связи с клиентом.
             </p>
           </div>

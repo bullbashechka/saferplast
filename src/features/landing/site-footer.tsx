@@ -1,5 +1,6 @@
 import { Image } from "@/components/ui/image";
 
+import type { SiteFooterLink } from "@/features/landing/site-footer-content";
 import { siteFooterContent } from "@/features/landing/site-footer-content";
 
 const legalLinkHrefs = ["/privacy", "/data-processing-policy"] as const;
@@ -18,13 +19,12 @@ function LegalItem({ item, index }: { item: string; index: number }) {
   );
 }
 
-export function SiteFooter() {
+export function SiteFooter({ navigationLinks = siteFooterContent.navigationLinks }: { navigationLinks?: readonly SiteFooterLink[] }) {
   const {
     contactsDescription,
     contactsTitle,
     instagramHref,
     legalItems,
-    navigationLinks,
     phoneHref,
     phoneLabel,
     telegramHref,

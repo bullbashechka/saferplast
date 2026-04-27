@@ -1,0 +1,101 @@
+---
+import "@/styles/globals.css";
+import {
+  DEFAULT_OG_IMAGE_PATH,
+  SEO_VERIFICATION,
+  SITE_NAME,
+  withSiteUrl,
+  type RouteSeoConfig,
+} from "@/lib/seo/route-seo";
+
+interface Props {
+  seo: RouteSeoConfig;
+  criticalImageHrefs?: string[];
+  ogImageAlt?: string;
+  ogImagePath?: string;
+  ogType?: "website" | "article";
+}
+
+const {
+  seo,
+  criticalImageHrefs = ["/images/versioned/fontherorightside.v2.webp"],
+  ogImageAlt = SITE_NAME,
+  ogImagePath = DEFAULT_OG_IMAGE_PATH,
+  ogType = "website",
+} = Astro.props;
+
+const canonicalUrl = withSiteUrl(seo.path);
+const ogImageUrl = withSiteUrl(ogImagePath);
+const robots = seo.robots ?? "index,follow";
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>{seo.title}</title>
+    <meta content={seo.description} name="description" />
+    <meta content={robots} name="robots" />
+    <link href={canonicalUrl} rel="canonical" />
+
+    <meta content={ogType} property="og:type" />
+    <meta content={seo.title} property="og:title" />
+    <meta content={seo.description} property="og:description" />
+    <meta content={canonicalUrl} property="og:url" />
+    <meta content={SITE_NAME} property="og:site_name" />
+    <meta content="ru_RU" property="og:locale" />
+    <meta content={ogImageUrl} property="og:image" />
+    <meta content={ogImageAlt} property="og:image:alt" />
+
+    <meta content="summary" name="twitter:card" />
+    <meta content={seo.title} name="twitter:title" />
+    <meta content={seo.description} name="twitter:description" />
+    <meta content={ogImageUrl} name="twitter:image" />
+
+    <meta content={SEO_VERIFICATION.google} name="google-site-verification" />
+    <meta content={SEO_VERIFICATION.yandex} name="yandex-verification" />
+
+    <link href="/images/versioned/logo.v2.webp" rel="icon" type="image/webp" />
+    <link href="/images/versioned/logo.v2.webp" rel="apple-touch-icon" />
+    {
+      criticalImageHrefs.map((href) => (
+        <link as="image" href={href} rel="preload" />
+      ))
+    }
+
+    {
+      seo.jsonLd.map((item) => (
+        <script is:inline set:html={JSON.stringify(item)} type="application/ld+json" />
+      ))
+    }
+  </head>
+  <body class="font-body">
+    <slot />
+
+    <script is:inline>
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const revealNodes = document.querySelectorAll(".scroll-reveal");
+
+      if (prefersReducedMotion) {
+        revealNodes.forEach((node) => node.classList.add("is-visible"));
+      } else if (revealNodes.length) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            });
+          },
+          {
+            threshold: 0.15,
+            rootMargin: "0px 0px -10% 0px",
+          },
+        );
+
+        revealNodes.forEach((node) => observer.observe(node));
+      }
+    </script>
+  </body>
+</html>

@@ -1,27 +1,75 @@
-import type { GeoPage } from "@/features/seo/geo-pages-content";
+import { faqContent } from "@/features/landing/faq-content";
+import { geoPages, type GeoPage } from "@/features/seo/geo-pages-content";
 
-export type RouteSeoConfig = {
-  canonicalPath: string;
-  description: string;
-  jsonLd?: Record<string, unknown> | null;
-  robots?: string;
-  title: string;
+export type BreadcrumbItem = {
+  name: string;
+  path: string;
 };
 
-const SITE_URL = (import.meta.env.VITE_SITE_URL ?? "https://saferplast-main.pages.dev").replace(/\/$/, "");
+export type RouteSeoConfig = {
+  path: string;
+  title: string;
+  description: string;
+  robots?: string;
+  changefreq: "weekly" | "monthly";
+  priority: number;
+  breadcrumbs?: readonly BreadcrumbItem[];
+  jsonLd: readonly Record<string, unknown>[];
+};
 
-export const defaultOgImagePath = "/images/original/logo.png";
+export const SITE_NAME = "Saferplast";
+export const SITE_URL = "https://saferplast-main.pages.dev";
+export const DEFAULT_OG_IMAGE_PATH = "/images/original/logo.png";
+export const SEO_VERIFICATION = {
+  google: "tdG4QVHfcG2jHfIgsfShdmo1RoTkNOquHik4yUl64gU",
+  yandex: "2a81e26be875de69",
+} as const;
 
-export const homeSeo: RouteSeoConfig = {
-  canonicalPath: "/",
-  description:
-    "Окна ПВХ, остекление балконов и ремонт окон в Караганде и Карагандинской области. Замер, установка и сервис от Saferplast.",
-  jsonLd: {
+export function withSiteUrl(path: string) {
+  return path === "/" ? `${SITE_URL}/` : `${SITE_URL}${path}`;
+}
+
+function createBreadcrumbList(items: readonly BreadcrumbItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: withSiteUrl(item.path),
+    })),
+  };
+}
+
+function createServiceJsonLd(areaServed: readonly string[], url: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Окна ПВХ, балконы и ремонт окон",
+    serviceType: "Изготовление, монтаж и ремонт оконных и балконных конструкций",
+    provider: {
+      "@type": "LocalBusiness",
+      name: SITE_NAME,
+      telephone: "+77478041022",
+      url: `${SITE_URL}/`,
+    },
+    areaServed: areaServed.map((area) => ({
+      "@type": "City",
+      name: area,
+    })),
+    url,
+  };
+}
+
+function createLocalBusinessJsonLd(url: string, areaServed: readonly string[]) {
+  return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "Saferplast",
-    url: `${SITE_URL}/`,
+    name: SITE_NAME,
+    url,
     telephone: "+77478041022",
+    image: withSiteUrl(DEFAULT_OG_IMAGE_PATH),
     address: {
       "@type": "PostalAddress",
       addressCountry: "KZ",
@@ -29,61 +77,139 @@ export const homeSeo: RouteSeoConfig = {
       addressLocality: "Караганда",
       streetAddress: "мкр. Голубые пруды, 21",
     },
-    areaServed: ["Караганда", "Темиртау", "Шахтинск", "Сарань", "Абай", "Майкудук", "Пришахтинск"],
+    areaServed: areaServed.map((area) => ({
+      "@type": "City",
+      name: area,
+    })),
     serviceType: ["Окна ПВХ", "Остекление балконов", "Ремонт окон"],
-  },
+  };
+}
+
+export const homeSeo: RouteSeoConfig = {
+  path: "/",
   title: "Окна ПВХ в Караганде и области - замер, установка, ремонт | Saferplast",
+  description:
+    "Окна ПВХ, остекление балконов и ремонт окон в Караганде и Карагандинской области. Замер, установка и сервис от Saferplast.",
+  changefreq: "weekly",
+  priority: 1,
+  jsonLd: [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: withSiteUrl("/"),
+      logo: withSiteUrl("/images/versioned/logo.v2.webp"),
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+77478041022",
+        contactType: "customer service",
+        areaServed: "KZ",
+        availableLanguage: ["ru", "kk"],
+      },
+    },
+    createLocalBusinessJsonLd(withSiteUrl("/"), [
+      "Караганда",
+      "Темиртау",
+      "Шахтинск",
+      "Сарань",
+      "Абай",
+      "Майкудук",
+      "Пришахтинск",
+    ]),
+    createServiceJsonLd(
+      ["Караганда", "Темиртау", "Шахтинск", "Сарань", "Абай", "Майкудук", "Пришахтинск"],
+      withSiteUrl("/"),
+    ),
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqContent.items.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    },
+  ],
 };
 
 export const legalSeoByPath: Record<"/privacy" | "/data-processing-policy", RouteSeoConfig> = {
   "/data-processing-policy": {
-    canonicalPath: "/data-processing-policy",
+    path: "/data-processing-policy",
+    title: "Политика обработки персональных данных | Saferplast",
     description:
       "Политика обработки персональных данных Saferplast: какие данные собираются, цели, сроки хранения и порядок удаления.",
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: "Политика обработки персональных данных | Saferplast",
-      url: `${SITE_URL}/data-processing-policy`,
-    },
-    title: "Политика обработки персональных данных | Saferplast",
+    changefreq: "monthly",
+    priority: 0.5,
+    breadcrumbs: [
+      { name: "Главная", path: "/" },
+      { name: "Политика обработки персональных данных", path: "/data-processing-policy" },
+    ],
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: "Политика обработки персональных данных | Saferplast",
+        url: withSiteUrl("/data-processing-policy"),
+      },
+      createBreadcrumbList([
+        { name: "Главная", path: "/" },
+        { name: "Политика обработки персональных данных", path: "/data-processing-policy" },
+      ]),
+    ],
   },
   "/privacy": {
-    canonicalPath: "/privacy",
+    path: "/privacy",
+    title: "Политика конфиденциальности | Saferplast",
     description:
       "Политика конфиденциальности Saferplast: обработка персональных данных, правовые основания и контакты оператора.",
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: "Политика конфиденциальности | Saferplast",
-      url: `${SITE_URL}/privacy`,
-    },
-    title: "Политика конфиденциальности | Saferplast",
+    changefreq: "monthly",
+    priority: 0.5,
+    breadcrumbs: [
+      { name: "Главная", path: "/" },
+      { name: "Политика конфиденциальности", path: "/privacy" },
+    ],
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: "Политика конфиденциальности | Saferplast",
+        url: withSiteUrl("/privacy"),
+      },
+      createBreadcrumbList([
+        { name: "Главная", path: "/" },
+        { name: "Политика конфиденциальности", path: "/privacy" },
+      ]),
+    ],
   },
 };
 
 export function getGeoPageSeo(page: GeoPage): RouteSeoConfig {
+  const breadcrumbs = [
+    { name: "Главная", path: "/" },
+    { name: page.cityLabel, path: page.path },
+  ] as const;
+
   return {
-    canonicalPath: page.path,
-    description: page.seoDescription,
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      name: "Saferplast",
-      url: `${SITE_URL}${page.path}`,
-      telephone: "+77478041022",
-      address: {
-        "@type": "PostalAddress",
-        addressCountry: "KZ",
-        addressLocality: "Караганда",
-        streetAddress: "мкр. Голубые пруды, 21",
-      },
-      areaServed: page.areaServed.map((area) => ({
-        "@type": "City",
-        name: area,
-      })),
-      serviceType: ["Установка окон ПВХ", "Остекление балконов", "Ремонт окон"],
-    },
+    path: page.path,
     title: page.seoTitle,
+    description: page.seoDescription,
+    changefreq: "weekly",
+    priority: page.path === "/karaganda" ? 0.9 : 0.8,
+    breadcrumbs,
+    jsonLd: [
+      createLocalBusinessJsonLd(withSiteUrl(page.path), page.areaServed),
+      createServiceJsonLd(page.areaServed, withSiteUrl(page.path)),
+      createBreadcrumbList(breadcrumbs),
+    ],
   };
 }
+
+export const allRouteSeo: readonly RouteSeoConfig[] = [
+  homeSeo,
+  ...geoPages.map((page) => getGeoPageSeo(page)),
+  legalSeoByPath["/privacy"],
+  legalSeoByPath["/data-processing-policy"],
+];

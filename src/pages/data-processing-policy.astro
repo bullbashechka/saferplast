@@ -1,0 +1,9 @@
+---
+import { DataProcessingPolicyPage } from "@/features/legal/data-processing-policy-page";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { legalSeoByPath } from "@/lib/seo/route-seo";
+---
+
+<BaseLayout seo={legalSeoByPath["/data-processing-policy"]}>
+  <DataProcessingPolicyPage />
+</BaseLayout>

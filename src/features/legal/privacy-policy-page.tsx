@@ -1,6 +1,3 @@
-import { SeoMeta } from "@/components/seo/seo-meta";
-import { legalSeoByPath } from "@/lib/seo/route-seo";
-
 const companyDetails = {
   companyName: "ИП АБДИКАРИМОВ К.К.",
   binOrIin: "860713350477",
@@ -12,12 +9,8 @@ const companyDetails = {
 };
 
 export function PrivacyPolicyPage() {
-  const seo = legalSeoByPath["/privacy"];
-
   return (
     <main className="min-h-screen bg-[rgba(250,254,255,1)] px-4 pb-12 pt-8 text-[#242424] md:px-8 md:pb-16 md:pt-10">
-      <SeoMeta canonicalPath={seo.canonicalPath} description={seo.description} jsonLd={seo.jsonLd} title={seo.title} />
-
       <div className="mx-auto w-full max-w-[900px]">
         <a
           className="inline-flex items-center rounded-[10px] border border-[#004B62] px-4 py-2 text-[14px] font-medium text-[#004B62] transition-colors hover:bg-[#004B62] hover:text-white md:text-[15px]"
@@ -65,7 +58,7 @@ export function PrivacyPolicyPage() {
           <div>
             <h2 className="font-semibold text-[#004B62]">4. Правовое основание</h2>
             <p className="mt-2">
-              Основание обработки - ваше согласие, которое вы даете при отправке формы и установке обязательных отметок
+              Основание обработки - ваше согласие, которое вы даёте при отправке формы и установке обязательных отметок
               согласия.
             </p>
           </div>
@@ -73,7 +66,7 @@ export function PrivacyPolicyPage() {
           <div>
             <h2 className="font-semibold text-[#004B62]">5. Куда передаются данные из формы</h2>
             <p className="mt-2">
-              Заявка с сайта передается только в Telegram-бота оператора, который используется как рабочий канал для
+              Заявка с сайта передаётся только в Telegram-бот оператора, который используется как рабочий канал для
               оперативной связи с клиентом.
             </p>
           </div>
@@ -81,16 +74,16 @@ export function PrivacyPolicyPage() {
           <div>
             <h2 className="font-semibold text-[#004B62]">6. Срок хранения</h2>
             <p className="mt-2">
-              Если договор не заключен, данные заявки хранятся не дольше 90 дней с даты отправки. После истечения
-              срока данные подлежат удалению.
+              Если договор не заключен, данные заявки хранятся не дольше 90 дней с даты отправки. После истечения срока
+              данные подлежат удалению.
             </p>
           </div>
 
           <div>
             <h2 className="font-semibold text-[#004B62]">7. Порядок удаления</h2>
             <p className="mt-2">
-              Уполномоченный сотрудник проводит ручную очистку рабочих сообщений и заявок старше 90 дней не реже
-              одного раза в неделю.
+              Уполномоченный сотрудник проводит ручную очистку рабочих сообщений и заявок старше 90 дней не реже одного
+              раза в неделю.
             </p>
           </div>
 
@@ -106,8 +99,7 @@ export function PrivacyPolicyPage() {
           <div>
             <h2 className="font-semibold text-[#004B62]">9. Контакты и отзыв согласия</h2>
             <p className="mt-2">
-              По вопросам обработки данных и для отзыва согласия вы можете обратиться по телефону:{" "}
-              {companyDetails.phone}.
+              По вопросам обработки данных и для отзыва согласия вы можете обратиться по телефону: {companyDetails.phone}.
             </p>
           </div>
         </section>

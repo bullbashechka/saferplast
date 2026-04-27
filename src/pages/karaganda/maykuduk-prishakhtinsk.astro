@@ -1,0 +1,71 @@
+---
+import { DesktopHeaderBrandNav, DesktopHeaderContactActions, SiteHeader, StickyDesktopHeader } from "@/features/landing/site-header";
+import { SiteFooter } from "@/features/landing/site-footer";
+import { TestimonialsSection } from "@/features/landing/testimonials-section";
+import { firstScreenContent } from "@/features/landing/first-screen-content";
+import { testimonialsByCity } from "@/features/landing/testimonials-content";
+import { LeadFormSection } from "@/features/lead-form/lead-form-section";
+import { geoPagesByKey } from "@/features/seo/geo-pages-content";
+import { GeoServicePage } from "@/features/seo/geo-service-page";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getGeoPageSeo } from "@/lib/seo/route-seo";
+import type { NavigationLink } from "@/features/landing/site-header";
+
+const page = geoPagesByKey["karaganda-districts"];
+const seo = getGeoPageSeo(page);
+const geoNavigationLinks: NavigationLink[] = [
+  { href: "#geo-services", label: "Услуги" },
+  { href: "#testimonials", label: "Отзывы" },
+  { href: "#lead-form", label: "Заявка" },
+  { href: "#contacts", label: "Контакты" },
+];
+---
+
+<BaseLayout seo={seo}>
+  <main class="min-h-screen bg-[rgba(250,254,255,1)] text-slate-900">
+    <StickyDesktopHeader
+      cityLabel={firstScreenContent.cityLabel}
+      navigationLinks={geoNavigationLinks}
+      phoneHref={firstScreenContent.phoneHref}
+      client:load
+    />
+
+    <section class="bg-[rgba(250,254,255,1)] px-4 pt-4 md:px-8 md:pt-6">
+      <div class="mx-auto w-full max-w-[1200px]">
+        <div class="md:hidden">
+          <SiteHeader
+            cityLabel={firstScreenContent.cityLabel}
+            navigationLinks={geoNavigationLinks}
+            phoneHref={firstScreenContent.phoneHref}
+            phoneLabel={firstScreenContent.phoneLabel}
+            client:load
+          />
+        </div>
+
+        <div class="hidden rounded-[24px] border border-[#d8e6eb] bg-[rgba(164,194,205,0.35)] p-5 md:flex md:items-center md:justify-between">
+          <DesktopHeaderBrandNav navigationLinks={geoNavigationLinks} />
+          <DesktopHeaderContactActions
+            cityLabel={firstScreenContent.cityLabel}
+            phoneHref={firstScreenContent.phoneHref}
+            phoneLabel={firstScreenContent.phoneLabel}
+          />
+        </div>
+      </div>
+    </section>
+
+    <GeoServicePage page={page} />
+
+    <div class="scroll-reveal">
+      <TestimonialsSection
+        items={testimonialsByCity[page.cityKey]}
+        title={page.testimonialsTitle}
+        client:visible
+      />
+    </div>
+
+    <div class="scroll-reveal">
+      <LeadFormSection client:visible />
+      <SiteFooter navigationLinks={geoNavigationLinks} />
+    </div>
+  </main>
+</BaseLayout>

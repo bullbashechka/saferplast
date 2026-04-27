@@ -4,13 +4,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { useEffect, useState } from "react";
 
 import { Card } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { TestimonialModal } from "@/features/landing/testimonial-modal";
 import type { Testimonial } from "@/features/landing/testimonials-content";
 import { testimonialsContent } from "@/features/landing/testimonials-content";
@@ -24,11 +18,6 @@ function createMobileTestimonialSlides(items: readonly Testimonial[], size: numb
 
   return slides;
 }
-
-const mobileTestimonialSlides = createMobileTestimonialSlides(
-  testimonialsContent.items,
-  1,
-);
 
 function MobileTestimonialCard({
   testimonial,
@@ -92,13 +81,20 @@ function DesktopTestimonialCard({
   );
 }
 
-export function TestimonialsSection() {
+export function TestimonialsSection({
+  items = testimonialsContent.items,
+  title = testimonialsContent.title,
+}: {
+  items?: readonly Testimonial[];
+  title?: string;
+}) {
   const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
   const [mobileEmblaRef, mobileEmblaApi] = useEmblaCarousel({
     align: "start",
     loop: false,
   });
   const [selectedMobileSlideIndex, setSelectedMobileSlideIndex] = useState(0);
+  const mobileTestimonialSlides = createMobileTestimonialSlides(items, 1);
 
   useEffect(() => {
     if (!mobileEmblaApi) {
@@ -130,7 +126,7 @@ export function TestimonialsSection() {
           id="testimonials-title"
           className="text-center font-['Sansation'] text-[20px] font-normal leading-[1] tracking-[0] text-[#004B62] md:font-display md:text-[43px] min-[1025px]:text-[44px]"
         >
-          {testimonialsContent.title}
+          {title}
         </h2>
 
         <div className="mt-[20px] md:hidden">
@@ -144,11 +140,7 @@ export function TestimonialsSection() {
                 >
                   <div className="grid grid-cols-1 gap-[10px]">
                     {slide.map((testimonial) => (
-                      <MobileTestimonialCard
-                        key={`${testimonial.name}-${testimonial.service}`}
-                        onOpen={setSelectedTestimonial}
-                        testimonial={testimonial}
-                      />
+                      <MobileTestimonialCard key={testimonial.id} onOpen={setSelectedTestimonial} testimonial={testimonial} />
                     ))}
                   </div>
                 </div>
@@ -185,16 +177,10 @@ export function TestimonialsSection() {
           >
             <div className="relative">
               <CarouselContent className="md:-ml-0 md:gap-4 min-[1025px]:gap-5">
-                {testimonialsContent.items.map((testimonial) => (
-                  <CarouselItem
-                    key={`${testimonial.name}-${testimonial.service}`}
-                    className="select-none md:basis-[340px] md:pl-0 min-[1025px]:basis-[387px]"
-                  >
+                {items.map((testimonial) => (
+                  <CarouselItem key={testimonial.id} className="select-none md:basis-[340px] md:pl-0 min-[1025px]:basis-[387px]">
                     <div className="h-full">
-                      <DesktopTestimonialCard
-                        onOpen={setSelectedTestimonial}
-                        testimonial={testimonial}
-                      />
+                      <DesktopTestimonialCard onOpen={setSelectedTestimonial} testimonial={testimonial} />
                     </div>
                   </CarouselItem>
                 ))}
