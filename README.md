@@ -1,5 +1,6 @@
 # Saferplast Main
 
+1
 Landing page project on `Astro 5 + React islands + TypeScript + Tailwind CSS` with a Cloudflare Worker backend for lead submissions.
 
 ## Current Stack
