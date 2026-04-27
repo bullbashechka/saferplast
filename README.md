@@ -28,11 +28,7 @@ React islands:
 - `projects-section.tsx` - Embla carousel, horizontal scroll, mobile snap
 - `testimonials-section.tsx` - Embla carousel and modal interaction
 - `faq-section.tsx` - accordion state
-- `lead-form-section.tsx` - form state, validation, Turnstile, submit flow
-
-Public frontend config:
-
-- `src/lib/public-config.ts` - checked-in public values like the Turnstile site key
+- `lead-form-section.tsx` - form state, validation, submit flow
 
 Rule of thumb:
 
@@ -91,7 +87,6 @@ Worker secrets:
 
 - `TELEGRAM_BOT_TOKEN`
 - `TELEGRAM_CHAT_ID`
-- `TURNSTILE_SECRET_KEY`
 
 For local Worker development you can also use:
 
@@ -119,9 +114,7 @@ For local Worker development you can also use:
 ## Lead Form Flow
 
 - client form submits to `POST /api/lead`
-- Turnstile site key is a public constant in `src/lib/public-config.ts`
 - Worker validates payload
-- Turnstile token is verified in Worker
 - request is rate-limited via Worker KV
 - successful leads are delivered to Telegram
 

@@ -1,227 +1,53 @@
-# Деплой Astro-проекта в Cloudflare Pages + Worker
+# Cloudflare Deploy
 
-Этот репозиторий теперь использует:
+This project uses:
 
-- `Astro 5` для статической сборки фронтенда
-- `React islands` только для интерактивных зон
-- `Cloudflare Pages` для сайта
-- `Cloudflare Worker` для `POST /api/lead`
+- Astro 5 for the frontend
+- React islands only where interactivity is needed
+- Cloudflare Pages for the site
+- Cloudflare Worker for `POST /api/lead`
 
-## Что деплоится
+## Runtime Setup
 
-Фронтенд:
+Pages project:
 
-- статический билд из `dist`
-- собирается командой `npm run build`
-- публикуется в `Cloudflare Pages`
+- `VITE_LEAD_API_URL`
 
-API:
+Worker secrets:
 
-- Worker из `worker/src/index.ts`
-- публикуется отдельной командой через Wrangler
+- `TELEGRAM_BOT_TOKEN`
+- `TELEGRAM_CHAT_ID`
 
-## Текущие проекты
+Worker binding:
 
-- Pages project: `saferplast`
-- Worker name: `saferplast-api`
-- canonical host: `https://saferplast-main.pages.dev`
+- `RATE_LIMIT_KV` -> KV namespace
 
-## Что должно быть подготовлено заранее
-
-1. Аккаунт Cloudflare
-2. Установленный и авторизованный Wrangler
-3. Созданный Pages project `saferplast`
-4. Созданный Worker project `saferplast-api`
-5. KV namespace для rate limiting
-6. Секреты Worker:
-   - `TELEGRAM_BOT_TOKEN`
-   - `TELEGRAM_CHAT_ID`
-   - `TURNSTILE_SECRET_KEY`
-7. Frontend env:
-   - `VITE_LEAD_API_URL`
-   - `src/lib/public-config.ts` contains the public Turnstile site key
-
-## Первый деплой заново
-
-### 1. Установить зависимости
+## Local Checks
 
 ```bash
 npm install
-```
-
-### 2. Проверить frontend env
-
-Создай `.env` на основе `.env.example`:
-
-```env
-VITE_LEAD_API_URL=https://saferplast-api.<your-subdomain>.workers.dev/api/lead
-```
-
-### 3. Проверить Worker secrets
-
-Установи секреты:
-
-```bash
-wrangler secret put TELEGRAM_BOT_TOKEN --config worker/wrangler.jsonc
-wrangler secret put TELEGRAM_CHAT_ID --config worker/wrangler.jsonc
-wrangler secret put TURNSTILE_SECRET_KEY --config worker/wrangler.jsonc
-```
-
-### 4. Проверить KV binding
-
-В [worker/wrangler.jsonc](/C:/Users/fm/Documents/Business/saferplast_DONTDELETE/worker/wrangler.jsonc) уже указан binding:
-
-- `RATE_LIMIT_KV`
-
-Если деплой идёт в новый аккаунт Cloudflare, нужно:
-
-1. создать новый KV namespace
-2. подставить его `id` в `worker/wrangler.jsonc`
-
-### 5. Прогнать локальные проверки
-
-```bash
 npm run lint
 npm run typecheck
 npm run build
 ```
 
-Если в PowerShell есть ограничения:
+## Deploy
 
-```powershell
-npm.cmd run lint
-npm.cmd run typecheck
-npm.cmd run build
-```
-
-## Локальная проверка перед продом
-
-Фронтенд:
+Frontend:
 
 ```bash
-npm run dev
+npm run build
+npm run deploy:pages
 ```
 
 Worker:
 
 ```bash
-npm run worker:dev
-```
-
-Примечание:
-Astro dev по умолчанию запускается на `http://localhost:4321`, а Worker CORS сейчас разрешает `http://localhost:5173`. Если нужно тестировать реальную отправку формы локально через Astro dev, обнови allowlist в `worker/src/index.ts`.
-
-## Деплой Worker
-
-```bash
 npm run worker:deploy
 ```
 
-После этого проверь публичный endpoint:
+## Notes
 
-```text
-https://saferplast-api.<your-subdomain>.workers.dev/api/lead
-```
-
-## Деплой Pages
-
-Сначала собери фронтенд:
-
-```bash
-npm run build
-```
-
-Потом задеплой `dist`:
-
-```bash
-npm run deploy:pages
-```
-
-Текущий script:
-
-```bash
-wrangler pages deploy dist --project-name saferplast
-```
-
-## Если Pages проект создаётся с нуля
-
-Вариант через Cloudflare UI:
-
-1. Create application
-2. Pages
-3. Connect to Git или manual upload
-4. Project name: `saferplast`
-5. Build command: `npm run build`
-6. Build output directory: `dist`
-
-Для Git-based деплоя также задай environment variables в Pages project:
-
-- `VITE_LEAD_API_URL`
-- public Turnstile site key lives in `src/lib/public-config.ts`
-
-## Если Worker создаётся с нуля
-
-1. Создай Worker project в Cloudflare
-2. Привяжи KV namespace
-3. Установи secrets
-4. Проверь `worker/wrangler.jsonc`
-5. Запусти:
-
-```bash
-npm run worker:deploy
-```
-
-## Что проверить после деплоя
-
-### Фронтенд
-
-1. Открывается главная страница
-2. Открываются legal pages:
-   - `/privacy`
-   - `/data-processing-policy`
-3. Открываются geo pages:
-   - `/karaganda`
-   - `/temirtau`
-   - `/shakhtinsk`
-   - `/saran`
-   - `/abay`
-   - `/karaganda/maykuduk-prishakhtinsk`
-4. Работают in-page anchors на geo pages
-5. В исходном HTML есть:
-   - canonical
-   - `og:url`
-   - description
-   - JSON-LD
-
-### SEO и служебные файлы
-
-1. Доступен `/robots.txt`
-2. Доступен `/sitemap.xml`
-3. `public/_redirects` попал в Pages deploy
-4. trailing slash и uppercase URL нормализуются как ожидается
-
-### Форма
-
-1. Загружается Turnstile
-2. Запрос уходит в Worker
-3. Worker возвращает `200`
-4. Лид приходит в Telegram
-
-## Полный порядок ручного релиза
-
-```bash
-npm install
-npm run lint
-npm run typecheck
-npm run build
-npm run worker:deploy
-npm run deploy:pages
-```
-
-## Где менять настройки
-
-- frontend routes/layout/SEO: `src/pages`, `src/layouts`, `src/lib/seo`
-- redirects: `public/_redirects`
-- static robots/sitemap: `public/robots.txt`, `public/sitemap.xml`
-- Worker config: `worker/wrangler.jsonc`
-- Worker logic: `worker/src/index.ts`
+- `public/_redirects` is deployed with the Pages build.
+- `public/robots.txt` and `public/sitemap.xml` are static files.
+- The worker validates payloads, rate-limits by KV, and sends leads to Telegram.

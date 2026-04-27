@@ -27,7 +27,7 @@ These stay in React because they need client-side behavior:
 - `src/features/lead-form/lead-form-section.tsx`
   - form state
   - validation
-  - Turnstile and submit flow
+  - submit flow
 
 ## Rule Of Thumb
 

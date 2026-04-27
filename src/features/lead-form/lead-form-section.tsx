@@ -9,45 +9,11 @@ import { firstScreenContent } from "@/features/landing/first-screen-content";
 import type { DecorativeLabel } from "@/features/lead-form/lead-form-content";
 import { leadFormContent } from "@/features/lead-form/lead-form-content";
 import type { LeadFormPayload } from "@/features/lead-form/lead-form-types";
-import { TURNSTILE_SITE_KEY } from "@/lib/public-config";
 
 const PHONE_PREFIX = "+7";
 const EMPTY_CONSENTS = [false, false];
 const SUCCESS_MESSAGE = "Заявка отправлена. Мы свяжемся с вами в ближайшее время.";
 const ERROR_MESSAGE = "Не удалось отправить заявку. Попробуйте еще раз.";
-const TURNSTILE_SCRIPT_ID = "cf-turnstile-script";
-const TURNSTILE_NOT_READY_ERROR = "Подтвердите, что вы не робот.";
-const TURNSTILE_BASE_WIDTH = 300;
-const TURNSTILE_BASE_HEIGHT = 65;
-
-function ensureTurnstileScript() {
-  return new Promise<void>((resolve, reject) => {
-    if (window.turnstile) {
-      resolve();
-      return;
-    }
-
-    const existingScript = document.getElementById(TURNSTILE_SCRIPT_ID) as HTMLScriptElement | null;
-
-    if (existingScript) {
-      existingScript.addEventListener("load", () => resolve(), { once: true });
-      existingScript.addEventListener("error", () => reject(new Error("Turnstile script failed to load.")), {
-        once: true,
-      });
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.id = TURNSTILE_SCRIPT_ID;
-    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
-    script.async = true;
-    script.defer = true;
-    script.addEventListener("load", () => resolve(), { once: true });
-    script.addEventListener("error", () => reject(new Error("Turnstile script failed to load.")), { once: true });
-    document.head.appendChild(script);
-  });
-}
-
 function formatPhoneValue(rawValue: string) {
   const digits = rawValue.replace(/\D/g, "");
   const normalizedDigits = digits.startsWith("7") && digits.length > 1 ? digits.slice(1) : digits;
@@ -111,11 +77,7 @@ export function LeadFormSection() {
     leadFormContent;
   const { instagramHref, telegramHref, whatsappHref } = firstScreenContent;
   const leadApiUrl = import.meta.env.VITE_LEAD_API_URL ?? "";
-  const turnstileSiteKey = TURNSTILE_SITE_KEY;
 
-  const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
-  const turnstileWrapperRef = useRef<HTMLDivElement | null>(null);
-  const turnstileWidgetIdRef = useRef<string | null>(null);
   const leadFormSectionRef = useRef<HTMLElement | null>(null);
   const revealTimerRef = useRef<number | null>(null);
 
@@ -124,62 +86,15 @@ export function LeadFormSection() {
   const [phoneValue, setPhoneValue] = useState("");
   const [consentValues, setConsentValues] = useState<boolean[]>(EMPTY_CONSENTS);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [retryAfterSeconds, setRetryAfterSeconds] = useState(0);
   const [submitMessage, setSubmitMessage] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [turnstileScale, setTurnstileScale] = useState(1);
   const [decorativeBlocksRevealed, setDecorativeBlocksRevealed] = useState(false);
 
   const remainingTaskSymbols = taskMaxLength - taskValue.length;
   const allConsentsAccepted = consentValues.every(Boolean);
   const isRateLimited = retryAfterSeconds > 0;
-  const isSubmitDisabled = isSubmitting || isRateLimited || !turnstileToken || !turnstileSiteKey;
-
-  useEffect(() => {
-    if (!turnstileSiteKey || !turnstileContainerRef.current || turnstileWidgetIdRef.current) {
-      return;
-    }
-
-    let isMounted = true;
-
-    ensureTurnstileScript()
-      .then(() => {
-        if (!isMounted || !window.turnstile || !turnstileContainerRef.current) {
-          return;
-        }
-
-        turnstileWidgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
-          callback: (token) => {
-            setSubmitError(null);
-            setTurnstileToken(token);
-          },
-          "error-callback": () => {
-            setTurnstileToken(null);
-            setSubmitError("Проверка безопасности временно недоступна. Попробуйте еще раз.");
-          },
-          "expired-callback": () => {
-            setTurnstileToken(null);
-          },
-          sitekey: turnstileSiteKey,
-          size: "normal",
-          theme: "light",
-        });
-      })
-      .catch(() => {
-        if (isMounted) {
-          setSubmitError("Не удалось загрузить проверку безопасности. Обновите страницу и попробуйте снова.");
-        }
-      });
-
-    return () => {
-      isMounted = false;
-      if (turnstileWidgetIdRef.current && window.turnstile) {
-        window.turnstile.remove(turnstileWidgetIdRef.current);
-        turnstileWidgetIdRef.current = null;
-      }
-    };
-  }, [turnstileSiteKey]);
+  const isSubmitDisabled = isSubmitting || isRateLimited;
 
   useEffect(() => {
     if (!isRateLimited) {
@@ -192,26 +107,6 @@ export function LeadFormSection() {
 
     return () => window.clearInterval(timer);
   }, [isRateLimited]);
-  useEffect(() => {
-    const wrapper = turnstileWrapperRef.current;
-
-    if (!wrapper) {
-      return;
-    }
-
-    const updateTurnstileScale = () => {
-      const availableWidth = wrapper.clientWidth;
-      const nextScale = Math.min(1, availableWidth / TURNSTILE_BASE_WIDTH);
-      setTurnstileScale(nextScale);
-    };
-
-    updateTurnstileScale();
-    window.addEventListener("resize", updateTurnstileScale);
-
-    return () => {
-      window.removeEventListener("resize", updateTurnstileScale);
-    };
-  }, []);
 
   useEffect(() => {
     const section = leadFormSectionRef.current;
@@ -275,17 +170,11 @@ export function LeadFormSection() {
       return;
     }
 
-    if (!turnstileSiteKey || !turnstileToken) {
-      setSubmitError(TURNSTILE_NOT_READY_ERROR);
-      return;
-    }
-
     const payload: LeadFormPayload = {
       name: nameValue.trim(),
       phone: phoneValue.trim(),
       task: taskValue.trim(),
       consentsAccepted: allConsentsAccepted,
-      turnstileToken,
       source: typeof window !== "undefined" ? window.location.href : undefined,
     };
 
@@ -313,10 +202,6 @@ export function LeadFormSection() {
       setTaskValue("");
       setConsentValues([...EMPTY_CONSENTS]);
       setRetryAfterSeconds(0);
-      setTurnstileToken(null);
-      if (turnstileWidgetIdRef.current && window.turnstile) {
-        window.turnstile.reset(turnstileWidgetIdRef.current);
-      }
       setSubmitMessage(SUCCESS_MESSAGE);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : ERROR_MESSAGE;
@@ -439,31 +324,6 @@ export function LeadFormSection() {
                     </Field>
                   ))}
                 </FieldGroup>
-
-                {turnstileSiteKey ? (
-                  <div className="w-full overflow-hidden rounded-[10px] bg-white/5 p-0 md:p-1.5">
-                    <div
-                      className="mx-auto"
-                      ref={turnstileWrapperRef}
-                      style={{ height: `${TURNSTILE_BASE_HEIGHT * turnstileScale}px`, maxWidth: TURNSTILE_BASE_WIDTH }}
-                    >
-                      <div
-                        style={{
-                          height: TURNSTILE_BASE_HEIGHT,
-                          transform: `scale(${turnstileScale})`,
-                          transformOrigin: "left top",
-                          width: TURNSTILE_BASE_WIDTH,
-                        }}
-                      >
-                        <div ref={turnstileContainerRef} />
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <p className="text-center font-body text-[11px] leading-[1.2] text-[#ffd7d7] md:text-[12px] min-[1025px]:text-[13px]">
-                    Не настроен Turnstile Site Key.
-                  </p>
-                )}
 
                 <button
                   className="flex h-[42px] items-center justify-center gap-[10px] rounded-[10px] bg-[#1E1E1E] px-[20px] py-[12px] font-body text-[14px] font-medium leading-[1] text-white transition-colors hover:bg-[#111111] disabled:cursor-not-allowed disabled:opacity-70 md:h-[52px] md:gap-4 md:rounded-[15px] md:px-[54px] md:py-[16px] md:text-[19px] min-[1025px]:h-[54px] min-[1025px]:gap-5 min-[1025px]:px-[62px] min-[1025px]:py-[17px] min-[1025px]:text-[20px]"
