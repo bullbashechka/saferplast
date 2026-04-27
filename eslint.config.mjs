@@ -8,6 +8,7 @@ import { defineConfig } from "eslint/config";
 export default defineConfig([
   {
     ignores: [
+      ".astro/**",
       "dist/**",
       "out/**",
       "coverage/**",

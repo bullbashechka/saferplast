@@ -1,8 +1,28 @@
 # Saferplast Main
 
-Landing-page project on `React 19 + Vite + TypeScript + Tailwind CSS`.
+Landing page project on `Astro 5 + React islands + TypeScript + Tailwind CSS` with a Cloudflare Worker backend for lead submissions.
 
-## Quick Start
+## Current Stack
+
+- Frontend: `Astro` static site generation
+- Interactive UI: `React 19` islands only where needed
+- Styling: `Tailwind CSS`
+- API: `Cloudflare Worker`
+- Deployment:
+  - frontend to `Cloudflare Pages`
+  - API to `Cloudflare Workers`
+
+## Project Structure
+
+- `src/pages` — Astro routes
+- `src/layouts` — Astro layouts
+- `src/features` — landing sections, legal pages, geo pages, lead form
+- `src/components` — reusable React/UI components
+- `src/lib` — utilities and SEO config
+- `public` — static files, redirects, robots, sitemap
+- `worker/src` — Worker API for `POST /api/lead`
+
+## Local Development
 
 Run from the project root:
 
@@ -11,40 +31,34 @@ npm install
 npm run dev
 ```
 
-If your PowerShell profile restricts `npm` command execution, use:
+If PowerShell blocks `npm`, use:
 
 ```powershell
 npm.cmd install
 npm.cmd run dev
 ```
 
-Then open the local URL from terminal output (usually `http://localhost:5173`).
-
-## Architecture
-
-- Frontend: Cloudflare Pages (`*.pages.dev`)
-- API (lead form): Cloudflare Worker (`*.workers.dev`)
-- Lead endpoint: `POST /api/lead`
-- Lead delivery: Telegram bot (`sendMessage` to configured chat)
-- Data storage: no dedicated DB in current setup (leads are delivered to Telegram channel/chat)
+Astro dev server usually starts on `http://localhost:4321`.
 
 ## Scripts
 
-- `npm run dev` - Vite dev server
-- `npm run build` - production build
-- `npm run preview` - preview built frontend
-- `npm run lint` - ESLint
-- `npm run typecheck` - TypeScript no-emit check
-- `npm run deploy:pages` - deploy frontend `dist` to Cloudflare Pages
-- `npm run worker:dev` - run API worker locally
-- `npm run worker:deploy` - deploy API worker
+- `npm run dev` — start Astro dev server
+- `npm run build` — build static frontend into `dist`
+- `npm run preview` — preview Astro build locally
+- `npm run lint` — run ESLint
+- `npm run typecheck` — run `astro check` and `tsc --noEmit`
+- `npm run deploy:pages` — deploy `dist` to Cloudflare Pages
+- `npm run worker:dev` — run Worker locally with Wrangler
+- `npm run worker:deploy` — deploy Worker
 
 ## Environment
 
-Frontend (`.env`):
+Frontend `.env`:
 
-- `VITE_LEAD_API_URL` - full worker endpoint URL, e.g. `https://saferplast-api.workers.dev/api/lead`
-- `VITE_TURNSTILE_SITE_KEY` - Cloudflare Turnstile site key for the lead form
+```env
+VITE_LEAD_API_URL=
+VITE_TURNSTILE_SITE_KEY=
+```
 
 Worker secrets:
 
@@ -52,13 +66,57 @@ Worker secrets:
 - `TELEGRAM_CHAT_ID`
 - `TURNSTILE_SECRET_KEY`
 
-## Legal Pages
+For local Worker development you can also use:
 
-- Privacy Policy: `/privacy`
-- Data Processing Policy: `/data-processing-policy`
+- `.dev.vars`
+- `.dev.vars.example`
 
-## Notes
+## Routing and SEO
 
-- `public/robots.txt` and `public/sitemap.xml` are static and should be updated when production domain changes.
-- API CORS allows `localhost:5173` and `*.pages.dev`.
-- Lead form submissions are validated with Turnstile and rate-limited by IP in Worker KV.
+- Astro pages are generated statically from `src/pages`
+- canonical host is `https://saferplast-main.pages.dev`
+- legal pages:
+  - `/privacy`
+  - `/data-processing-policy`
+- geo pages:
+  - `/karaganda`
+  - `/temirtau`
+  - `/shakhtinsk`
+  - `/saran`
+  - `/abay`
+  - `/karaganda/maykuduk-prishakhtinsk`
+- metadata and JSON-LD are rendered server-side
+- `public/_redirects` contains URL normalization rules
+- `public/robots.txt` and `public/sitemap.xml` are shipped as static files
+
+## Lead Form Flow
+
+- client form submits to `POST /api/lead`
+- Worker validates payload
+- Turnstile token is verified in Worker
+- request is rate-limited via Worker KV
+- successful leads are delivered to Telegram
+
+## Cloudflare Overview
+
+- Pages project serves static Astro output from `dist`
+- Worker project serves `/api/lead`
+- frontend must point `VITE_LEAD_API_URL` to the deployed Worker URL
+- Worker CORS currently allows:
+  - `http://localhost:5173`
+  - any `*.pages.dev` origin
+
+Note:
+The localhost CORS allowlist still uses `5173` in Worker code. If you rely on local form submission from Astro dev on `4321`, update Worker CORS accordingly.
+
+## Verification Before Deploy
+
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```
+
+## Deployment Docs
+
+See [docs/cloudflare-deploy.md](/C:/Users/fm/Documents/Business/saferplast_DONTDELETE/docs/cloudflare-deploy.md) for the full Pages + Worker deployment flow.
