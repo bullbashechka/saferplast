@@ -11,12 +11,19 @@ This project uses:
 
 Pages project:
 
-- `VITE_LEAD_API_URL` (required; set to the deployed Worker URL, for example `https://saferplast-api.example.workers.dev/api/lead`)
+- `VITE_LEAD_API_URL=https://saferplast-api.saidashev-kirill2004.workers.dev/api/lead`
+- `PUBLIC_TURNSTILE_SITE_KEY=<Cloudflare Turnstile site key>`
 
 Worker secrets:
 
 - `TELEGRAM_BOT_TOKEN`
 - `TELEGRAM_CHAT_ID`
+- `TURNSTILE_SECRET_KEY`
+
+Worker vars:
+
+- `ALLOWED_ORIGINS=https://saferplast.pages.dev`
+- `TURNSTILE_EXPECTED_HOSTNAME=saferplast.pages.dev`
 
 Worker binding:
 
@@ -25,7 +32,7 @@ Worker binding:
 ## Local Checks
 
 ```bash
-npm install
+npm ci
 npm run lint
 npm run typecheck
 npm run build
@@ -48,7 +55,7 @@ npm run worker:deploy
 
 ## Notes
 
-- `public/_redirects` is deployed with the Pages build.
-- `public/robots.txt` and `public/sitemap.xml` are static files.
-- The worker validates payloads, rate-limits by KV, and sends leads to Telegram.
-- The frontend does not fall back to a same-origin `/api/lead`; it must be configured with the Worker endpoint explicitly.
+- `npm run deploy:pages` now runs `lint`, `typecheck`, `build`, and Pages env preflight before deployment.
+- `npm run worker:deploy` now validates Worker env and the KV binding before deployment.
+- `public/_redirects`, `public/robots.txt`, and `public/sitemap.xml` are generated from the canonical site config.
+- The worker validates payloads, verifies Turnstile, rate-limits by KV time buckets, and sends leads to Telegram.

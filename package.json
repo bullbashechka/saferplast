@@ -2,13 +2,25 @@
   "name": "saferplast-main",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "npm@11.6.2",
+  "engines": {
+    "node": ">=22 <25",
+    "npm": ">=10 <12"
+  },
   "scripts": {
-    "dev": "astro dev",
+    "generate:public": "node scripts/generate-public-files.mjs",
+    "check:env": "node scripts/validate-frontend-env.mjs",
+    "check:release": "npm run lint && npm run typecheck && npm run build",
+    "preflight:pages": "node scripts/preflight-deploy.mjs pages",
+    "preflight:worker": "node scripts/preflight-deploy.mjs worker",
+    "predev": "npm run generate:public",
+    "prebuild": "npm run generate:public && npm run check:env",
+    "dev": "astro dev --host 127.0.0.1 --port 4321",
     "build": "astro build",
     "preview": "astro preview",
-    "deploy:pages": "wrangler pages deploy dist --project-name saferplast",
+    "deploy:pages": "npm run check:release && npm run preflight:pages && wrangler pages deploy dist --project-name saferplast",
     "worker:dev": "wrangler dev --config worker/wrangler.jsonc",
-    "worker:deploy": "wrangler deploy --config worker/wrangler.jsonc",
+    "worker:deploy": "npm run preflight:worker && wrangler deploy --config worker/wrangler.jsonc",
     "lint": "eslint . --ext .js,.mjs,.cjs,.ts,.tsx",
     "typecheck": "astro check && tsc --noEmit"
   },

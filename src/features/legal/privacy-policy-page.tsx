@@ -1,10 +1,12 @@
+import { withSiteUrl } from "@/lib/site-config";
+
 const companyDetails = {
   companyName: "ИП АБДИКАРИМОВ К.К.",
   binOrIin: "860713350477",
   legalAddress: "г. Темиртау, мкр. Горка Дружбы, д. 32, кв 45",
   actualAddress: "г. Караганда, мкр. Голубые пруды, 21",
   phone: "+77478041022 (Telegram, WhatsApp)",
-  website: "https://saferplast-main.pages.dev/",
+  website: withSiteUrl("/"),
   effectiveDate: "7 апреля 2026",
 };
 

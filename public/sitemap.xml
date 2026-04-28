@@ -1,48 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://saferplast-main.pages.dev/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://saferplast.pages.dev/</loc>
   </url>
   <url>
-    <loc>https://saferplast-main.pages.dev/karaganda</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://saferplast.pages.dev/karaganda</loc>
   </url>
   <url>
-    <loc>https://saferplast-main.pages.dev/temirtau</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://saferplast.pages.dev/temirtau</loc>
   </url>
   <url>
-    <loc>https://saferplast-main.pages.dev/shakhtinsk</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://saferplast.pages.dev/shakhtinsk</loc>
   </url>
   <url>
-    <loc>https://saferplast-main.pages.dev/saran</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://saferplast.pages.dev/saran</loc>
   </url>
   <url>
-    <loc>https://saferplast-main.pages.dev/abay</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://saferplast.pages.dev/abay</loc>
   </url>
   <url>
-    <loc>https://saferplast-main.pages.dev/karaganda/maykuduk-prishakhtinsk</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://saferplast.pages.dev/karaganda/maykuduk-prishakhtinsk</loc>
   </url>
   <url>
-    <loc>https://saferplast-main.pages.dev/privacy</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://saferplast.pages.dev/privacy</loc>
   </url>
   <url>
-    <loc>https://saferplast-main.pages.dev/data-processing-policy</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://saferplast.pages.dev/data-processing-policy</loc>
   </url>
 </urlset>

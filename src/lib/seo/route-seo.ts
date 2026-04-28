@@ -1,5 +1,6 @@
 import { faqContent } from "@/features/landing/faq-content";
 import { geoPages, type GeoPage } from "@/features/seo/geo-pages-content";
+import { SITE_NAME, SITE_URL, withSiteUrl } from "@/lib/site-config";
 
 export type BreadcrumbItem = {
   name: string;
@@ -17,17 +18,11 @@ export type RouteSeoConfig = {
   jsonLd: readonly Record<string, unknown>[];
 };
 
-export const SITE_NAME = "Saferplast";
-export const SITE_URL = "https://saferplast-main.pages.dev";
-export const DEFAULT_OG_IMAGE_PATH = "/images/original/logo.png";
+export const DEFAULT_OG_IMAGE_PATH = "/images/versioned/logo.v2.webp";
 export const SEO_VERIFICATION = {
   google: "tdG4QVHfcG2jHfIgsfShdmo1RoTkNOquHik4yUl64gU",
   yandex: "2a81e26be875de69",
 } as const;
-
-export function withSiteUrl(path: string) {
-  return path === "/" ? `${SITE_URL}/` : `${SITE_URL}${path}`;
-}
 
 function createBreadcrumbList(items: readonly BreadcrumbItem[]) {
   return {

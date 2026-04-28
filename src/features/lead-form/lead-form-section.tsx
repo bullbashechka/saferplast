@@ -9,17 +9,32 @@ import { firstScreenContent } from "@/features/landing/first-screen-content";
 import type { DecorativeLabel } from "@/features/lead-form/lead-form-content";
 import { leadFormContent } from "@/features/lead-form/lead-form-content";
 import type { LeadFormPayload } from "@/features/lead-form/lead-form-types";
+import { DEFAULT_WORKER_LEAD_API_URL } from "@/lib/site-config";
 
 const PHONE_PREFIX = "+7";
 const EMPTY_CONSENTS = [false, false];
 const SUCCESS_MESSAGE = "Заявка отправлена. Мы свяжемся с вами в ближайшее время.";
 const ERROR_MESSAGE = "Не удалось отправить заявку. Попробуйте еще раз.";
+const TURNSTILE_RESPONSE_FIELD = "cf-turnstile-response";
+
+declare global {
+  interface Window {
+    turnstile?: {
+      reset: () => void;
+    };
+  }
+}
+
 function getLeadApiConfig(rawValue: string | undefined) {
   const value = rawValue?.trim();
 
   if (!value) {
+    if (import.meta.env.PROD) {
+      throw new Error("VITE_LEAD_API_URL is required for production builds.");
+    }
+
     return {
-      error: "Lead API is not configured. Set VITE_LEAD_API_URL to the deployed Worker URL.",
+      error: `Lead API is not configured. Set VITE_LEAD_API_URL to ${DEFAULT_WORKER_LEAD_API_URL}.`,
       url: null,
     };
   }
@@ -27,8 +42,11 @@ function getLeadApiConfig(rawValue: string | undefined) {
   try {
     const url = new URL(value);
 
-    if (url.protocol !== "http:" && url.protocol !== "https:") {
-      throw new Error("Lead API URL must use http or https.");
+    const hasPlaceholderHost = /(example|placeholder)/i.test(url.hostname);
+    const isLeadRoute = url.pathname.endsWith("/api/lead");
+
+    if (url.protocol !== "https:" || hasPlaceholderHost || !isLeadRoute) {
+      throw new Error("Lead API URL must use https and point to /api/lead.");
     }
 
     return {
@@ -43,9 +61,43 @@ function getLeadApiConfig(rawValue: string | undefined) {
   }
 }
 
+function getTurnstileSiteKey(rawValue: string | undefined) {
+  const value = rawValue?.trim();
+
+  if (!value) {
+    if (import.meta.env.PROD) {
+      throw new Error("PUBLIC_TURNSTILE_SITE_KEY is required for production builds.");
+    }
+
+    return {
+      error: "Turnstile is not configured. Set PUBLIC_TURNSTILE_SITE_KEY before launch.",
+      siteKey: null,
+    };
+  }
+
+  if (/example|placeholder/i.test(value)) {
+    throw new Error("PUBLIC_TURNSTILE_SITE_KEY must not use a placeholder value.");
+  }
+
+  return {
+    error: null,
+    siteKey: value,
+  };
+}
+
 function formatPhoneValue(rawValue: string) {
   const digits = rawValue.replace(/\D/g, "");
-  const normalizedDigits = digits.startsWith("7") && digits.length > 1 ? digits.slice(1) : digits;
+  const normalizedDigits = (() => {
+    if (digits.startsWith("8") && digits.length >= 11) {
+      return digits.slice(1);
+    }
+
+    if (digits.startsWith("7") && digits.length >= 11) {
+      return digits.slice(1);
+    }
+
+    return digits;
+  })();
   const limitedDigits = normalizedDigits.slice(0, 10);
 
   if (!limitedDigits) {
@@ -106,6 +158,7 @@ export function LeadFormSection() {
     leadFormContent;
   const { instagramHref, telegramHref, whatsappHref } = firstScreenContent;
   const leadApiConfig = getLeadApiConfig(import.meta.env.VITE_LEAD_API_URL);
+  const turnstileConfig = getTurnstileSiteKey(import.meta.env.PUBLIC_TURNSTILE_SITE_KEY);
 
   const leadFormSectionRef = useRef<HTMLElement | null>(null);
   const revealTimerRef = useRef<number | null>(null);
@@ -123,7 +176,7 @@ export function LeadFormSection() {
   const remainingTaskSymbols = taskMaxLength - taskValue.length;
   const allConsentsAccepted = consentValues.every(Boolean);
   const isRateLimited = retryAfterSeconds > 0;
-  const isSubmitDisabled = isSubmitting || isRateLimited || !leadApiConfig.url;
+  const isSubmitDisabled = isSubmitting || isRateLimited || !leadApiConfig.url || !turnstileConfig.siteKey;
 
   useEffect(() => {
     if (!isRateLimited) {
@@ -199,12 +252,26 @@ export function LeadFormSection() {
       return;
     }
 
+    if (!turnstileConfig.siteKey) {
+      setSubmitError(turnstileConfig.error);
+      return;
+    }
+
+    const formData = new FormData(event.currentTarget);
+    const turnstileToken = formData.get(TURNSTILE_RESPONSE_FIELD)?.toString().trim() ?? "";
+
+    if (!turnstileToken) {
+      setSubmitError("Подтвердите, что вы не робот.");
+      return;
+    }
+
     const payload: LeadFormPayload = {
       name: nameValue.trim(),
       phone: phoneValue.trim(),
       task: taskValue.trim(),
       consentsAccepted: allConsentsAccepted,
-      source: typeof window !== "undefined" ? window.location.href : undefined,
+      source: typeof window !== "undefined" ? `${window.location.origin}${window.location.pathname}` : undefined,
+      turnstileToken,
     };
 
     setIsSubmitting(true);
@@ -232,9 +299,11 @@ export function LeadFormSection() {
       setConsentValues([...EMPTY_CONSENTS]);
       setRetryAfterSeconds(0);
       setSubmitMessage(SUCCESS_MESSAGE);
+      window.turnstile?.reset();
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : ERROR_MESSAGE;
       setSubmitError(errorMessage);
+      window.turnstile?.reset();
     } finally {
       setIsSubmitting(false);
     }
@@ -263,7 +332,7 @@ export function LeadFormSection() {
 
           <div className="mx-auto w-full max-w-[350px] md:max-w-[360px] min-[1025px]:max-w-[387px]">
             <div className="min-h-[337px] rounded-[20px] bg-[#004B62] p-[15px] shadow-[0_0_16.3px_rgba(0,75,98,0.62)] md:p-8 min-[1025px]:p-10">
-              <form className="grid gap-[10px] md:gap-5 min-[1025px]:gap-[26px]" onSubmit={handleSubmit}>
+              <form className="grid gap-[10px] md:gap-5 min-[1025px]:gap-[26px]" method="post" onSubmit={handleSubmit}>
                 <input
                   className="h-[42px] rounded-[10px] bg-white px-[14px] py-[12px] font-body text-[12px] font-normal leading-[1] text-[#242424] outline-none placeholder:text-[#6a6a6a] md:h-[50px] md:px-[20px] md:py-[16px] md:text-[0.9375rem] min-[1025px]:h-[52px] min-[1025px]:px-[22px] min-[1025px]:py-[18px] min-[1025px]:text-[1rem]"
                   name="name"
@@ -354,6 +423,24 @@ export function LeadFormSection() {
                   ))}
                 </FieldGroup>
 
+                {turnstileConfig.siteKey && (
+                  <div
+                    className="mx-auto overflow-hidden rounded-[10px] bg-white/95 p-1"
+                    data-language="ru"
+                    data-response-field-name={TURNSTILE_RESPONSE_FIELD}
+                    data-sitekey={turnstileConfig.siteKey}
+                    data-theme="light"
+                  >
+                    <div
+                      className="cf-turnstile"
+                      data-language="ru"
+                      data-response-field-name={TURNSTILE_RESPONSE_FIELD}
+                      data-sitekey={turnstileConfig.siteKey}
+                      data-theme="light"
+                    />
+                  </div>
+                )}
+
                 <button
                   className="flex h-[42px] items-center justify-center gap-[10px] rounded-[10px] bg-[#1E1E1E] px-[20px] py-[12px] font-body text-[14px] font-medium leading-[1] text-white transition-colors hover:bg-[#111111] disabled:cursor-not-allowed disabled:opacity-70 md:h-[52px] md:gap-4 md:rounded-[15px] md:px-[54px] md:py-[16px] md:text-[19px] min-[1025px]:h-[54px] min-[1025px]:gap-5 min-[1025px]:px-[62px] min-[1025px]:py-[17px] min-[1025px]:text-[20px]"
                   disabled={isSubmitDisabled}
@@ -381,6 +468,12 @@ export function LeadFormSection() {
                 {!leadApiConfig.url && leadApiConfig.error && (
                   <p className="text-center font-body text-[11px] leading-[1.2] text-[#ffd7d7] md:text-[12px] min-[1025px]:text-[13px]">
                     {leadApiConfig.error}
+                  </p>
+                )}
+
+                {!turnstileConfig.siteKey && turnstileConfig.error && (
+                  <p className="text-center font-body text-[11px] leading-[1.2] text-[#ffd7d7] md:text-[12px] min-[1025px]:text-[13px]">
+                    {turnstileConfig.error}
                   </p>
                 )}
 
@@ -458,5 +551,4 @@ export function LeadFormSection() {
     </section>
   );
 }
-
 

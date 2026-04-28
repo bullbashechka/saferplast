@@ -1,12 +1,22 @@
+type KvListResult = {
+  keys: Array<{ name: string }>;
+  cursor?: string;
+  list_complete: boolean;
+};
+
 type RateLimitStore = {
   get: <T>(key: string, options: { type: "json" }) => Promise<T | null>;
+  list: (options: { prefix: string; cursor?: string; limit?: number }) => Promise<KvListResult>;
   put: (key: string, value: string, options: { expirationTtl: number }) => Promise<void>;
 };
 
 type Env = {
+  ALLOWED_ORIGINS?: string;
   RATE_LIMIT_KV: RateLimitStore;
   TELEGRAM_BOT_TOKEN: string;
   TELEGRAM_CHAT_ID: string;
+  TURNSTILE_EXPECTED_HOSTNAME?: string;
+  TURNSTILE_SECRET_KEY: string;
 };
 
 type LeadFormPayload = {
@@ -15,11 +25,11 @@ type LeadFormPayload = {
   task: string;
   consentsAccepted: boolean;
   source?: string;
+  turnstileToken: string;
 };
 
-type RateLimitEntry = {
-  count: number;
-  resetAtMs: number;
+type SanitizedLeadPayload = Omit<LeadFormPayload, "turnstileToken"> & {
+  source: string | null;
 };
 
 type RateLimitResult =
@@ -29,76 +39,132 @@ type RateLimitResult =
       retryAfterSec: number;
     };
 
+type TurnstileVerificationResult = {
+  success: boolean;
+  hostname?: string;
+};
+
+const DEFAULT_ALLOWED_ORIGINS = ["https://saferplast.pages.dev"];
 const TELEGRAM_API_URL = "https://api.telegram.org";
+const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 const MAX_NAME_LENGTH = 100;
 const MAX_TASK_LENGTH = 300;
+const MAX_PHONE_LENGTH = 20;
+const MAX_SOURCE_LENGTH = 200;
 const MIN_PHONE_DIGITS = 11;
 const RATE_LIMIT_MAX_ATTEMPTS = 3;
 const RATE_LIMIT_WINDOW_SEC = 10 * 60;
+const RATE_LIMIT_BUCKET_SEC = 2 * 60;
+const KV_TIMEOUT_MS = 1500;
+const TELEGRAM_TIMEOUT_MS = 8000;
+const TURNSTILE_TIMEOUT_MS = 5000;
 const NO_STORE_HEADERS = {
   "Cache-Control": "no-store",
 };
 
-function getAllowedOrigin(origin: string | null, requestUrl: URL) {
-  if (!origin) {
-    return "*";
+function isLeadFormPayload(value: unknown): value is LeadFormPayload {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return false;
   }
 
+  const payload = value as Record<string, unknown>;
+
+  return (
+    typeof payload.name === "string" &&
+    typeof payload.phone === "string" &&
+    typeof payload.task === "string" &&
+    typeof payload.consentsAccepted === "boolean" &&
+    typeof payload.turnstileToken === "string" &&
+    (payload.source === undefined || typeof payload.source === "string")
+  );
+}
+
+function sanitizeLine(value: string) {
+  return value.replace(/[\r\n]+/g, " ").replace(/\s{2,}/g, " ").trim();
+}
+
+function normalizePhone(rawValue: string) {
+  const digits = rawValue.replace(/\D/g, "");
+
+  let normalizedDigits = digits;
+
+  if (digits.length === 10) {
+    normalizedDigits = `7${digits}`;
+  } else if (digits.length === 11 && digits.startsWith("8")) {
+    normalizedDigits = `7${digits.slice(1)}`;
+  }
+
+  if (normalizedDigits.length !== 11 || !normalizedDigits.startsWith("7")) {
+    return null;
+  }
+
+  return `+7-${normalizedDigits.slice(1, 4)}-${normalizedDigits.slice(4, 7)}-${normalizedDigits.slice(7, 9)}-${normalizedDigits.slice(9)}`;
+}
+
+function normalizeSource(rawValue: string | undefined) {
+  if (!rawValue) {
+    return null;
+  }
+
+  if (rawValue.length > MAX_SOURCE_LENGTH) {
+    return null;
+  }
+
+  let url: URL;
+
   try {
-    const url = new URL(origin);
-    if (url.origin === requestUrl.origin) {
-      return origin;
-    }
-    if (url.hostname === "localhost" || url.hostname === "127.0.0.1") {
-      return origin;
-    }
-    if (url.hostname.endsWith(".pages.dev")) {
-      return origin;
-    }
+    url = new URL(rawValue);
   } catch {
     return null;
   }
 
-  return null;
+  if (url.protocol !== "https:" && !(url.protocol === "http:" && isLocalDevelopmentOrigin(url.origin))) {
+    return null;
+  }
+
+  return `${url.origin}${url.pathname}`;
 }
 
-function buildCorsHeaders(origin: string | null, requestUrl: URL) {
-  const allowedOrigin = getAllowedOrigin(origin, requestUrl);
+function normalizeLeadPayload(payload: LeadFormPayload): SanitizedLeadPayload | null {
+  const normalizedPhone = normalizePhone(payload.phone);
+  const normalizedSource = normalizeSource(payload.source);
 
-  if (!allowedOrigin) {
+  if (!normalizedPhone) {
+    return null;
+  }
+
+  if (payload.source && !normalizedSource) {
     return null;
   }
 
   return {
-    "Access-Control-Allow-Origin": allowedOrigin,
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-    Vary: "Origin",
-  };
-}
-
-function normalizeLeadPayload(payload: LeadFormPayload): LeadFormPayload {
-  return {
-    name: payload.name.trim(),
-    phone: payload.phone.trim(),
-    task: payload.task.trim(),
+    name: sanitizeLine(payload.name),
+    phone: normalizedPhone,
+    task: sanitizeLine(payload.task),
     consentsAccepted: payload.consentsAccepted,
-    source: payload.source?.trim(),
+    source: normalizedSource,
   };
 }
 
-function validateLeadPayload(payload: LeadFormPayload) {
-  const phoneDigits = payload.phone.replace(/\D/g, "");
+function validateLeadPayload(payload: LeadFormPayload, normalizedPayload: SanitizedLeadPayload | null) {
+  if (!normalizedPayload) {
+    return "Некорректно указан номер телефона или источник заявки.";
+  }
 
-  if (!payload.name || payload.name.length > MAX_NAME_LENGTH) {
+  if (!normalizedPayload.name || normalizedPayload.name.length > MAX_NAME_LENGTH) {
     return "Некорректно указано имя.";
   }
 
+  if (payload.phone.trim().length > MAX_PHONE_LENGTH) {
+    return "Некорректно указан номер телефона.";
+  }
+
+  const phoneDigits = normalizedPayload.phone.replace(/\D/g, "");
   if (phoneDigits.length < MIN_PHONE_DIGITS) {
     return "Некорректно указан номер телефона.";
   }
 
-  if (payload.task.length > MAX_TASK_LENGTH) {
+  if (normalizedPayload.task.length > MAX_TASK_LENGTH) {
     return "Описание задачи слишком длинное.";
   }
 
@@ -106,17 +172,21 @@ function validateLeadPayload(payload: LeadFormPayload) {
     return "Необходимо подтвердить согласие на обработку данных.";
   }
 
+  if (!payload.turnstileToken || payload.turnstileToken.length > 2048) {
+    return "Не удалось проверить защиту формы. Попробуйте еще раз.";
+  }
+
   return null;
 }
 
-function formatTelegramMessage(payload: LeadFormPayload) {
+function formatTelegramMessage(payload: SanitizedLeadPayload) {
   const lines = [
     "Новая заявка с сайта Saferplast",
     `Имя: ${payload.name}`,
     `Телефон: ${payload.phone}`,
     `Задача: ${payload.task || "Не указана"}`,
     `Источник: ${payload.source || "Не указан"}`,
-    `Дата: ${new Date().toLocaleString("ru-RU", { timeZone: "Asia/Qyzylorda" })}`,
+    `Дата: ${new Date().toLocaleString("ru-RU", { timeZone: "Asia/Almaty" })}`,
   ];
 
   return lines.join("\n");
@@ -137,59 +207,50 @@ function getClientIp(request: Request) {
   return firstIp || null;
 }
 
-async function checkAndConsumeRateLimit(env: Env, ip: string): Promise<RateLimitResult> {
-  const nowMs = Date.now();
-  const windowMs = RATE_LIMIT_WINDOW_SEC * 1000;
-  const key = `lead-rate-limit:${ip}`;
-  const existing = await env.RATE_LIMIT_KV.get<RateLimitEntry>(key, { type: "json" });
-
-  if (!existing || nowMs >= existing.resetAtMs) {
-    const next: RateLimitEntry = {
-      count: 1,
-      resetAtMs: nowMs + windowMs,
-    };
-
-    await env.RATE_LIMIT_KV.put(key, JSON.stringify(next), {
-      expirationTtl: RATE_LIMIT_WINDOW_SEC,
-    });
-
-    return { allowed: true };
+function isLocalDevelopmentOrigin(origin: string) {
+  try {
+    const url = new URL(origin);
+    return (
+      (url.hostname === "localhost" || url.hostname === "127.0.0.1") &&
+      (url.protocol === "http:" || url.protocol === "https:")
+    );
+  } catch {
+    return false;
   }
-
-  if (existing.count >= RATE_LIMIT_MAX_ATTEMPTS) {
-    const retryAfterSec = Math.max(1, Math.ceil((existing.resetAtMs - nowMs) / 1000));
-    return { allowed: false, retryAfterSec };
-  }
-
-  const updated: RateLimitEntry = {
-    count: existing.count + 1,
-    resetAtMs: existing.resetAtMs,
-  };
-  const ttlSec = Math.max(1, Math.ceil((existing.resetAtMs - nowMs) / 1000));
-
-  await env.RATE_LIMIT_KV.put(key, JSON.stringify(updated), {
-    expirationTtl: ttlSec,
-  });
-
-  return { allowed: true };
 }
 
-async function sendTelegramMessage(env: Env, text: string) {
-  const response = await fetch(`${TELEGRAM_API_URL}/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      chat_id: env.TELEGRAM_CHAT_ID,
-      text,
-    }),
-  });
+function getAllowedOrigins(env: Env) {
+  return (env.ALLOWED_ORIGINS ?? DEFAULT_ALLOWED_ORIGINS.join(","))
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean);
+}
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`Telegram API request failed: ${response.status} ${errorText}`);
+function buildCorsHeaders(origin: string | null, env: Env) {
+  if (!origin) {
+    return null;
   }
+
+  if (isLocalDevelopmentOrigin(origin)) {
+    return {
+      "Access-Control-Allow-Origin": origin,
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+      Vary: "Origin",
+    };
+  }
+
+  const allowedOrigins = getAllowedOrigins(env);
+  if (!allowedOrigins.includes(origin)) {
+    return null;
+  }
+
+  return {
+    "Access-Control-Allow-Origin": origin,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    Vary: "Origin",
+  };
 }
 
 function validateRuntimeEnv(env: Env) {
@@ -199,6 +260,15 @@ function validateRuntimeEnv(env: Env) {
 
   if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) {
     return "Telegram integration is not configured.";
+  }
+
+  if (!env.TURNSTILE_SECRET_KEY) {
+    return "Turnstile integration is not configured.";
+  }
+
+  const allowedOrigins = getAllowedOrigins(env);
+  if (allowedOrigins.length === 0) {
+    return "Allowed origins are not configured.";
   }
 
   return null;
@@ -221,22 +291,159 @@ function jsonResponse(
   });
 }
 
+async function withTimeout<T>(label: string, timeoutMs: number, operation: Promise<T>) {
+  const timeoutPromise = new Promise<never>((_, reject) => {
+    setTimeout(() => reject(new Error(`${label} timed out.`)), timeoutMs);
+  });
+
+  return Promise.race([operation, timeoutPromise]);
+}
+
+async function listKeysWithPrefix(env: Env, prefix: string, limit: number) {
+  const keys: string[] = [];
+  let cursor: string | undefined;
+
+  do {
+    const page = await withTimeout(
+      "KV list",
+      KV_TIMEOUT_MS,
+      env.RATE_LIMIT_KV.list({ prefix, cursor, limit: Math.max(1, limit - keys.length) }),
+    );
+
+    for (const entry of page.keys) {
+      keys.push(entry.name);
+      if (keys.length >= limit) {
+        return keys;
+      }
+    }
+
+    cursor = page.cursor;
+    if (page.list_complete) {
+      break;
+    }
+  } while (cursor);
+
+  return keys;
+}
+
+async function checkAndConsumeRateLimit(env: Env, ip: string): Promise<RateLimitResult> {
+  const nowSec = Math.floor(Date.now() / 1000);
+  const currentBucket = Math.floor(nowSec / RATE_LIMIT_BUCKET_SEC);
+  const windowBuckets = Math.ceil(RATE_LIMIT_WINDOW_SEC / RATE_LIMIT_BUCKET_SEC);
+  const ipKey = encodeURIComponent(ip);
+  const attemptKey = `lead-rate-limit:${ipKey}:${currentBucket}:${nowSec}:${crypto.randomUUID()}`;
+
+  await withTimeout(
+    "KV put",
+    KV_TIMEOUT_MS,
+    env.RATE_LIMIT_KV.put(attemptKey, "", {
+      expirationTtl: RATE_LIMIT_WINDOW_SEC + RATE_LIMIT_BUCKET_SEC,
+    }),
+  );
+
+  let count = 0;
+  let oldestAttemptSec = nowSec;
+
+  for (let bucketOffset = 0; bucketOffset < windowBuckets; bucketOffset += 1) {
+    const bucketId = currentBucket - bucketOffset;
+    const prefix = `lead-rate-limit:${ipKey}:${bucketId}:`;
+    const keys = await listKeysWithPrefix(env, prefix, RATE_LIMIT_MAX_ATTEMPTS + 1 - count);
+
+    count += keys.length;
+
+    for (const key of keys) {
+      const attemptSec = Number(key.split(":")[3] ?? nowSec);
+      if (Number.isFinite(attemptSec)) {
+        oldestAttemptSec = Math.min(oldestAttemptSec, attemptSec);
+      }
+    }
+
+    if (count > RATE_LIMIT_MAX_ATTEMPTS) {
+      const retryAfterSec = Math.max(1, RATE_LIMIT_WINDOW_SEC - (nowSec - oldestAttemptSec));
+      return {
+        allowed: false,
+        retryAfterSec,
+      };
+    }
+  }
+
+  return { allowed: true };
+}
+
+async function verifyTurnstileToken(env: Env, token: string, clientIp: string, origin: string) {
+  const requestBody = new URLSearchParams({
+    secret: env.TURNSTILE_SECRET_KEY,
+    response: token,
+    remoteip: clientIp,
+  });
+
+  const response = await fetch(TURNSTILE_VERIFY_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: requestBody.toString(),
+    signal: AbortSignal.timeout(TURNSTILE_TIMEOUT_MS),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Turnstile verification failed with status ${response.status}.`);
+  }
+
+  const result = (await response.json()) as TurnstileVerificationResult;
+  if (!result.success) {
+    return false;
+  }
+
+  const originUrl = new URL(origin);
+  const expectedHostname = env.TURNSTILE_EXPECTED_HOSTNAME?.trim();
+
+  if (expectedHostname && !isLocalDevelopmentOrigin(origin) && result.hostname !== expectedHostname) {
+    return false;
+  }
+
+  if (isLocalDevelopmentOrigin(originUrl.origin)) {
+    return true;
+  }
+
+  return result.hostname === originUrl.hostname;
+}
+
+async function sendTelegramMessage(env: Env, text: string) {
+  const response = await fetch(`${TELEGRAM_API_URL}/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      chat_id: env.TELEGRAM_CHAT_ID,
+      text,
+    }),
+    signal: AbortSignal.timeout(TELEGRAM_TIMEOUT_MS),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Telegram API request failed: ${response.status} ${errorText}`);
+  }
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
-    const origin = request.headers.get("Origin");
     const requestUrl = new URL(request.url);
-    const corsHeaders = buildCorsHeaders(origin, requestUrl);
+
+    if (requestUrl.pathname !== "/api/lead") {
+      return new Response("Not found", {
+        status: 404,
+        headers: NO_STORE_HEADERS,
+      });
+    }
+
+    const origin = request.headers.get("Origin");
+    const corsHeaders = buildCorsHeaders(origin, env);
 
     if (!corsHeaders) {
-      return jsonResponse(
-        {
-          error: "Origin is not allowed.",
-          origin,
-          allowedOrigins: ["http://localhost:*", "http://127.0.0.1:*", "*.pages.dev", requestUrl.origin],
-        },
-        403,
-        {},
-      );
+      return jsonResponse({ error: "Origin is not allowed." }, 403, {});
     }
 
     if (request.method === "OPTIONS") {
@@ -249,59 +456,73 @@ export default {
       });
     }
 
-    const runtimeConfigError = validateRuntimeEnv(env);
-
-    if (runtimeConfigError) {
-      return jsonResponse({ error: runtimeConfigError }, 500, corsHeaders);
+    if (request.method !== "POST") {
+      return jsonResponse({ error: "Method not allowed." }, 405, corsHeaders, { Allow: "POST, OPTIONS" });
     }
 
-    if (request.method !== "POST" || requestUrl.pathname !== "/api/lead") {
-      return new Response("Not found", {
-        status: 404,
-        headers: {
-          ...NO_STORE_HEADERS,
-          ...corsHeaders,
-        },
-      });
+    const runtimeConfigError = validateRuntimeEnv(env);
+    if (runtimeConfigError) {
+      console.error(runtimeConfigError);
+      return jsonResponse({ error: "Service is temporarily unavailable." }, 500, corsHeaders);
     }
 
     const clientIp = getClientIp(request);
     if (!clientIp) {
-      return jsonResponse({ error: "Unable to identify client IP." }, 400, corsHeaders);
+      return jsonResponse({ error: "Unable to process the request." }, 400, corsHeaders);
     }
 
-    const rateLimit = await checkAndConsumeRateLimit(env, clientIp);
-    if (!rateLimit.allowed) {
-      return jsonResponse(
-        {
-          error: "Too many requests. Please try again later.",
-          retryAfterSec: rateLimit.retryAfterSec,
-        },
-        429,
-        corsHeaders,
-        { "Retry-After": String(rateLimit.retryAfterSec) },
-      );
-    }
-
-    let payload: LeadFormPayload;
+    let payload: unknown;
 
     try {
-      payload = normalizeLeadPayload((await request.json()) as LeadFormPayload);
+      payload = await request.json();
     } catch {
       return jsonResponse({ error: "Invalid request body." }, 400, corsHeaders);
     }
 
-    const validationError = validateLeadPayload(payload);
+    if (!isLeadFormPayload(payload)) {
+      return jsonResponse({ error: "Некорректный формат заявки." }, 400, corsHeaders);
+    }
+
+    const normalizedPayload = normalizeLeadPayload(payload);
+    const validationError = validateLeadPayload(payload, normalizedPayload);
     if (validationError) {
       return jsonResponse({ error: validationError }, 400, corsHeaders);
     }
 
     try {
-      await sendTelegramMessage(env, formatTelegramMessage(payload));
+      const turnstilePassed = await verifyTurnstileToken(env, payload.turnstileToken, clientIp, origin);
+      if (!turnstilePassed) {
+        return jsonResponse({ error: "Не удалось проверить защиту формы. Попробуйте еще раз." }, 403, corsHeaders);
+      }
+    } catch (error) {
+      console.error("Turnstile verification failed", error);
+      return jsonResponse({ error: "Не удалось проверить защиту формы. Попробуйте еще раз." }, 502, corsHeaders);
+    }
+
+    try {
+      const rateLimit = await checkAndConsumeRateLimit(env, clientIp);
+      if (!rateLimit.allowed) {
+        return jsonResponse(
+          {
+            error: "Слишком много попыток. Попробуйте позже.",
+            retryAfterSec: rateLimit.retryAfterSec,
+          },
+          429,
+          corsHeaders,
+          { "Retry-After": String(rateLimit.retryAfterSec) },
+        );
+      }
+    } catch (error) {
+      console.error("Rate limit check failed", error);
+      return jsonResponse({ error: "Service is temporarily unavailable." }, 503, corsHeaders);
+    }
+
+    try {
+      await sendTelegramMessage(env, formatTelegramMessage(normalizedPayload));
       return jsonResponse({ ok: true }, 200, corsHeaders);
     } catch (error) {
       console.error("Failed to send lead to Telegram", error);
-      return jsonResponse({ error: "Failed to deliver lead." }, 502, corsHeaders);
+      return jsonResponse({ error: "Не удалось отправить заявку. Попробуйте еще раз позже." }, 502, corsHeaders);
     }
   },
 };

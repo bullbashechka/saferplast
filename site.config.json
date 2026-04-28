@@ -1,0 +1,8 @@
+{
+  "siteName": "Saferplast",
+  "siteUrl": "https://saferplast.pages.dev",
+  "pagesProjectName": "saferplast",
+  "workerLeadApiUrl": "https://saferplast-api.saidashev-kirill2004.workers.dev/api/lead",
+  "workerAllowedOrigins": ["https://saferplast.pages.dev"],
+  "turnstileExpectedHostname": "saferplast.pages.dev"
+}

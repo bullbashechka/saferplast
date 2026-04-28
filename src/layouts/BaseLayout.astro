@@ -4,9 +4,9 @@ import {
   DEFAULT_OG_IMAGE_PATH,
   SEO_VERIFICATION,
   SITE_NAME,
-  withSiteUrl,
   type RouteSeoConfig,
 } from "@/lib/seo/route-seo";
+import { withSiteUrl } from "@/lib/site-config";
 
 interface Props {
   seo: RouteSeoConfig;
@@ -27,6 +27,7 @@ const {
 const canonicalUrl = withSiteUrl(seo.path);
 const ogImageUrl = withSiteUrl(ogImagePath);
 const robots = seo.robots ?? "index,follow";
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY?.trim();
 ---
 
 <!doctype html>
@@ -69,6 +70,7 @@ const robots = seo.robots ?? "index,follow";
         <script is:inline set:html={JSON.stringify(item)} type="application/ld+json" />
       ))
     }
+    {turnstileSiteKey && <script async defer src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>}
   </head>
   <body class="font-body">
     <slot />

@@ -79,15 +79,22 @@ Astro dev server usually starts on `http://localhost:4321`.
 Frontend `.env`:
 
 ```env
-VITE_LEAD_API_URL=https://example.workers.dev/api/lead
+VITE_LEAD_API_URL=https://saferplast-api.saidashev-kirill2004.workers.dev/api/lead
+PUBLIC_TURNSTILE_SITE_KEY=your_turnstile_site_key
 ```
 
-`VITE_LEAD_API_URL` is required. Point it at the deployed Cloudflare Worker endpoint that serves `POST /api/lead`.
+`VITE_LEAD_API_URL` and `PUBLIC_TURNSTILE_SITE_KEY` are required for production builds.
 
 Worker secrets:
 
 - `TELEGRAM_BOT_TOKEN`
 - `TELEGRAM_CHAT_ID`
+- `TURNSTILE_SECRET_KEY`
+
+Worker vars:
+
+- `ALLOWED_ORIGINS=https://saferplast.pages.dev`
+- `TURNSTILE_EXPECTED_HOSTNAME=saferplast.pages.dev`
 
 For local Worker development you can also use:
 
@@ -97,7 +104,7 @@ For local Worker development you can also use:
 ## Routing and SEO
 
 - Astro pages are generated statically from `src/pages`
-- canonical host is `https://saferplast-main.pages.dev`
+- canonical host is `https://saferplast.pages.dev`
 - legal pages:
   - `/privacy`
   - `/data-processing-policy`
@@ -115,8 +122,8 @@ For local Worker development you can also use:
 ## Lead Form Flow
 
 - client form submits to `POST /api/lead`
-- Worker validates payload
-- request is rate-limited via Worker KV
+- Worker validates payload and verifies Turnstile
+- request is rate-limited via Worker KV time buckets
 - successful leads are delivered to Telegram
 
 ## Cloudflare Overview
@@ -124,10 +131,8 @@ For local Worker development you can also use:
 - Pages project serves static Astro output from `dist`
 - Worker project serves `/api/lead`
 - frontend must point `VITE_LEAD_API_URL` to the deployed Worker URL
-- Worker CORS allows:
-  - same-origin requests
-  - `localhost` and `127.0.0.1` on any port
-  - any `*.pages.dev` origin
+- Worker accepts only the configured production Pages origin plus local `localhost` / `127.0.0.1` origins
+- deploy commands run release checks and env preflight validation before publishing
 
 ## Verification Before Deploy
 
