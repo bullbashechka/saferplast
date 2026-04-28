@@ -11,7 +11,7 @@ This project uses:
 
 Pages project:
 
-- `VITE_LEAD_API_URL` (optional; defaults to `/api/lead` when the Worker is routed on the same origin)
+- `VITE_LEAD_API_URL` (required; set to the deployed Worker URL, for example `https://saferplast-api.example.workers.dev/api/lead`)
 
 Worker secrets:
 
@@ -51,3 +51,4 @@ npm run worker:deploy
 - `public/_redirects` is deployed with the Pages build.
 - `public/robots.txt` and `public/sitemap.xml` are static files.
 - The worker validates payloads, rate-limits by KV, and sends leads to Telegram.
+- The frontend does not fall back to a same-origin `/api/lead`; it must be configured with the Worker endpoint explicitly.

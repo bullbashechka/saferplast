@@ -44,13 +44,12 @@ function getAllowedOrigin(origin: string | null, requestUrl: URL) {
     return "*";
   }
 
-  if (origin === "http://localhost:5173") {
-    return origin;
-  }
-
   try {
     const url = new URL(origin);
     if (url.origin === requestUrl.origin) {
+      return origin;
+    }
+    if (url.hostname === "localhost" || url.hostname === "127.0.0.1") {
       return origin;
     }
     if (url.hostname.endsWith(".pages.dev")) {
@@ -193,6 +192,18 @@ async function sendTelegramMessage(env: Env, text: string) {
   }
 }
 
+function validateRuntimeEnv(env: Env) {
+  if (!env.RATE_LIMIT_KV) {
+    return "Rate limit storage is not configured.";
+  }
+
+  if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) {
+    return "Telegram integration is not configured.";
+  }
+
+  return null;
+}
+
 function jsonResponse(
   body: unknown,
   status: number,
@@ -217,7 +228,15 @@ export default {
     const corsHeaders = buildCorsHeaders(origin, requestUrl);
 
     if (!corsHeaders) {
-      return new Response("Origin is not allowed.", { status: 403, headers: NO_STORE_HEADERS });
+      return jsonResponse(
+        {
+          error: "Origin is not allowed.",
+          origin,
+          allowedOrigins: ["http://localhost:*", "http://127.0.0.1:*", "*.pages.dev", requestUrl.origin],
+        },
+        403,
+        {},
+      );
     }
 
     if (request.method === "OPTIONS") {
@@ -230,6 +249,12 @@ export default {
       });
     }
 
+    const runtimeConfigError = validateRuntimeEnv(env);
+
+    if (runtimeConfigError) {
+      return jsonResponse({ error: runtimeConfigError }, 500, corsHeaders);
+    }
+
     if (request.method !== "POST" || requestUrl.pathname !== "/api/lead") {
       return new Response("Not found", {
         status: 404,
@@ -238,10 +263,6 @@ export default {
           ...corsHeaders,
         },
       });
-    }
-
-    if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) {
-      return jsonResponse({ error: "Telegram integration is not configured." }, 500, corsHeaders);
     }
 
     const clientIp = getClientIp(request);

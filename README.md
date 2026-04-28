@@ -79,8 +79,10 @@ Astro dev server usually starts on `http://localhost:4321`.
 Frontend `.env`:
 
 ```env
-VITE_LEAD_API_URL=
+VITE_LEAD_API_URL=https://example.workers.dev/api/lead
 ```
+
+`VITE_LEAD_API_URL` is required. Point it at the deployed Cloudflare Worker endpoint that serves `POST /api/lead`.
 
 Worker secrets:
 
@@ -122,12 +124,10 @@ For local Worker development you can also use:
 - Pages project serves static Astro output from `dist`
 - Worker project serves `/api/lead`
 - frontend must point `VITE_LEAD_API_URL` to the deployed Worker URL
-- Worker CORS currently allows:
-  - `http://localhost:5173`
+- Worker CORS allows:
+  - same-origin requests
+  - `localhost` and `127.0.0.1` on any port
   - any `*.pages.dev` origin
-
-Note:
-The localhost CORS allowlist still uses `5173` in Worker code. If you rely on local form submission from Astro dev on `4321`, update Worker CORS accordingly.
 
 ## Verification Before Deploy
 

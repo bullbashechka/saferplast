@@ -14,6 +14,35 @@ const PHONE_PREFIX = "+7";
 const EMPTY_CONSENTS = [false, false];
 const SUCCESS_MESSAGE = "Заявка отправлена. Мы свяжемся с вами в ближайшее время.";
 const ERROR_MESSAGE = "Не удалось отправить заявку. Попробуйте еще раз.";
+function getLeadApiConfig(rawValue: string | undefined) {
+  const value = rawValue?.trim();
+
+  if (!value) {
+    return {
+      error: "Lead API is not configured. Set VITE_LEAD_API_URL to the deployed Worker URL.",
+      url: null,
+    };
+  }
+
+  try {
+    const url = new URL(value);
+
+    if (url.protocol !== "http:" && url.protocol !== "https:") {
+      throw new Error("Lead API URL must use http or https.");
+    }
+
+    return {
+      error: null,
+      url: url.toString(),
+    };
+  } catch {
+    return {
+      error: "VITE_LEAD_API_URL must be a valid absolute URL, for example https://api.example.com/api/lead.",
+      url: null,
+    };
+  }
+}
+
 function formatPhoneValue(rawValue: string) {
   const digits = rawValue.replace(/\D/g, "");
   const normalizedDigits = digits.startsWith("7") && digits.length > 1 ? digits.slice(1) : digits;
@@ -76,7 +105,7 @@ export function LeadFormSection() {
   const { consents, decorativeLabels, fields, messengersLabel, submitLabel, subtitle, taskMaxLength, title } =
     leadFormContent;
   const { instagramHref, telegramHref, whatsappHref } = firstScreenContent;
-  const leadApiUrl = (import.meta.env.VITE_LEAD_API_URL ?? "/api/lead").trim() || "/api/lead";
+  const leadApiConfig = getLeadApiConfig(import.meta.env.VITE_LEAD_API_URL);
 
   const leadFormSectionRef = useRef<HTMLElement | null>(null);
   const revealTimerRef = useRef<number | null>(null);
@@ -94,7 +123,7 @@ export function LeadFormSection() {
   const remainingTaskSymbols = taskMaxLength - taskValue.length;
   const allConsentsAccepted = consentValues.every(Boolean);
   const isRateLimited = retryAfterSeconds > 0;
-  const isSubmitDisabled = isSubmitting || isRateLimited;
+  const isSubmitDisabled = isSubmitting || isRateLimited || !leadApiConfig.url;
 
   useEffect(() => {
     if (!isRateLimited) {
@@ -165,8 +194,8 @@ export function LeadFormSection() {
     setSubmitMessage(null);
     setSubmitError(null);
 
-    if (!leadApiUrl) {
-      setSubmitError("Не настроен адрес API для отправки заявки.");
+    if (!leadApiConfig.url) {
+      setSubmitError(leadApiConfig.error);
       return;
     }
 
@@ -181,7 +210,7 @@ export function LeadFormSection() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(leadApiUrl, {
+      const response = await fetch(leadApiConfig.url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -330,7 +359,15 @@ export function LeadFormSection() {
                   disabled={isSubmitDisabled}
                   type="submit"
                 >
-                  <span>{isSubmitting ? "Отправляем..." : isRateLimited ? `Повторите через ${retryAfterSeconds} сек.` : submitLabel}</span>
+                  <span>
+                    {isSubmitting
+                      ? "Отправляем..."
+                      : !leadApiConfig.url
+                        ? "API URL not configured"
+                        : isRateLimited
+                          ? `Повторите через ${retryAfterSeconds} сек.`
+                          : submitLabel}
+                  </span>
                   <Image
                     alt=""
                     aria-hidden="true"
@@ -340,6 +377,12 @@ export function LeadFormSection() {
                     width={20}
                   />
                 </button>
+
+                {!leadApiConfig.url && leadApiConfig.error && (
+                  <p className="text-center font-body text-[11px] leading-[1.2] text-[#ffd7d7] md:text-[12px] min-[1025px]:text-[13px]">
+                    {leadApiConfig.error}
+                  </p>
+                )}
 
                 {(submitMessage || submitError) && (
                   <p
