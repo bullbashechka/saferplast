@@ -29,10 +29,6 @@ function getLeadApiConfig(rawValue: string | undefined) {
   const value = rawValue?.trim();
 
   if (!value) {
-    if (import.meta.env.PROD) {
-      throw new Error("VITE_LEAD_API_URL is required for production builds.");
-    }
-
     return {
       error: `Lead API is not configured. Set VITE_LEAD_API_URL to ${DEFAULT_WORKER_LEAD_API_URL}.`,
       url: null,
@@ -65,10 +61,6 @@ function getTurnstileSiteKey(rawValue: string | undefined) {
   const value = rawValue?.trim();
 
   if (!value) {
-    if (import.meta.env.PROD) {
-      throw new Error("PUBLIC_TURNSTILE_SITE_KEY is required for production builds.");
-    }
-
     return {
       error: "Turnstile is not configured. Set PUBLIC_TURNSTILE_SITE_KEY before launch.",
       siteKey: null,
@@ -76,7 +68,10 @@ function getTurnstileSiteKey(rawValue: string | undefined) {
   }
 
   if (/example|placeholder/i.test(value)) {
-    throw new Error("PUBLIC_TURNSTILE_SITE_KEY must not use a placeholder value.");
+    return {
+      error: "PUBLIC_TURNSTILE_SITE_KEY must not use a placeholder value.",
+      siteKey: null,
+    };
   }
 
   return {
@@ -551,4 +546,3 @@ export function LeadFormSection() {
     </section>
   );
 }
-

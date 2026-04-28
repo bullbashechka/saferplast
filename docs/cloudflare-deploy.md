@@ -74,3 +74,8 @@ This command runs the Worker preflight and deploys the Worker with Wrangler.
 - The Worker validates the payload and verifies Turnstile.
 - Requests are rate-limited with Worker KV time buckets.
 - Successful leads are forwarded to Telegram.
+
+## Troubleshooting
+
+- If the lead form is missing on the rendered page, verify `VITE_LEAD_API_URL` and `PUBLIC_TURNSTILE_SITE_KEY` in the Pages environment.
+- If the form is visible but submit is disabled, check the same variables first, then redeploy with `npm run deploy:pages`.
