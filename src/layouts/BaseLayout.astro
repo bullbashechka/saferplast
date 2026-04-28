@@ -69,6 +69,9 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY?.trim();
         <script is:inline set:html={JSON.stringify(item)} type="application/ld+json" />
       ))
     }
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
     {turnstileSiteKey && <script async defer src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>}
   </head>
   <body class="font-body">

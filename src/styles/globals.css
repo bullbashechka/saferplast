@@ -383,6 +383,11 @@ a {
 }
 
 .scroll-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+html.js .scroll-reveal {
   opacity: 0;
   transform: translate3d(0, 32px, 0);
   transition:
@@ -390,27 +395,33 @@ a {
     opacity 700ms ease;
 }
 
-.scroll-reveal.is-visible {
+html.js .scroll-reveal.is-visible {
   opacity: 1;
   transform: none;
 }
 
 .decorative-chip-reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+html.js .decorative-chip-reveal--left {
+  transform: translate3d(calc(-100% - 140px), 0, 0);
+}
+
+html.js .decorative-chip-reveal--right {
+  transform: translate3d(calc(100% + 140px), 0, 0);
+}
+
+html.js .decorative-chip-reveal {
   opacity: 0;
   transition:
     transform 580ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 580ms ease;
 }
 
-.decorative-chip-reveal--left {
-  transform: translate3d(calc(-100% - 140px), 0, 0);
-}
-
-.decorative-chip-reveal--right {
-  transform: translate3d(calc(100% + 140px), 0, 0);
-}
-
-.decorative-chip-reveal.is-visible {
+html.js .decorative-chip-reveal.is-visible {
   opacity: 1;
   transform: none;
 }
