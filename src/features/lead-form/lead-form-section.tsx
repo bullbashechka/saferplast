@@ -15,12 +15,20 @@ const PHONE_PREFIX = "+7";
 const EMPTY_CONSENTS = [false, false];
 const SUCCESS_MESSAGE = "Заявка отправлена. Мы свяжемся с вами в ближайшее время.";
 const ERROR_MESSAGE = "Не удалось отправить заявку. Попробуйте еще раз.";
-const TURNSTILE_RESPONSE_FIELD = "cf-turnstile-response";
-
 declare global {
   interface Window {
     turnstile?: {
-      reset: () => void;
+      render: (
+        container: HTMLElement | string,
+        options: {
+          callback: (token: string) => void;
+          language: string;
+          sitekey: string;
+          theme: "light" | "dark" | "auto";
+        },
+      ) => string;
+      reset: (widgetId?: string) => void;
+      remove?: (widgetId: string) => void;
     };
   }
 }
@@ -157,10 +165,13 @@ export function LeadFormSection() {
 
   const leadFormSectionRef = useRef<HTMLElement | null>(null);
   const revealTimerRef = useRef<number | null>(null);
+  const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
+  const turnstileWidgetIdRef = useRef<string | null>(null);
 
   const [nameValue, setNameValue] = useState("");
   const [taskValue, setTaskValue] = useState("");
   const [phoneValue, setPhoneValue] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [consentValues, setConsentValues] = useState<boolean[]>(EMPTY_CONSENTS);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [retryAfterSeconds, setRetryAfterSeconds] = useState(0);
@@ -236,6 +247,67 @@ export function LeadFormSection() {
     };
   }, [decorativeBlocksRevealed]);
 
+  useEffect(() => {
+    if (!turnstileConfig.siteKey) {
+      setTurnstileToken("");
+      return;
+    }
+
+    const container = turnstileContainerRef.current;
+    if (!container) {
+      return;
+    }
+
+    let disposed = false;
+    let retryTimer: number | null = null;
+
+    const renderWidget = () => {
+      if (disposed || turnstileWidgetIdRef.current || !window.turnstile || !turnstileContainerRef.current) {
+        return;
+      }
+
+      turnstileContainerRef.current.innerHTML = "";
+      turnstileWidgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
+        callback: (token) => {
+          if (!disposed) {
+            setTurnstileToken(token);
+            setSubmitError(null);
+          }
+        },
+        language: "ru",
+        sitekey: turnstileConfig.siteKey,
+        theme: "light",
+      });
+    };
+
+    renderWidget();
+
+    if (!turnstileWidgetIdRef.current) {
+      retryTimer = window.setInterval(() => {
+        renderWidget();
+        if (turnstileWidgetIdRef.current && retryTimer !== null) {
+          window.clearInterval(retryTimer);
+          retryTimer = null;
+        }
+      }, 250);
+    }
+
+    return () => {
+      disposed = true;
+      if (retryTimer !== null) {
+        window.clearInterval(retryTimer);
+      }
+      if (turnstileWidgetIdRef.current && window.turnstile?.remove) {
+        window.turnstile.remove(turnstileWidgetIdRef.current);
+      }
+      turnstileWidgetIdRef.current = null;
+      setTurnstileToken("");
+      if (turnstileContainerRef.current) {
+        turnstileContainerRef.current.innerHTML = "";
+      }
+    };
+  }, [turnstileConfig.siteKey]);
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -252,8 +324,6 @@ export function LeadFormSection() {
       return;
     }
 
-    const formData = new FormData(event.currentTarget);
-    const turnstileToken = formData.get(TURNSTILE_RESPONSE_FIELD)?.toString().trim() ?? "";
 
     if (!turnstileToken) {
       setSubmitError("Подтвердите, что вы не робот.");
@@ -291,14 +361,16 @@ export function LeadFormSection() {
       setNameValue("");
       setPhoneValue("");
       setTaskValue("");
+      setTurnstileToken("");
       setConsentValues([...EMPTY_CONSENTS]);
       setRetryAfterSeconds(0);
       setSubmitMessage(SUCCESS_MESSAGE);
-      window.turnstile?.reset();
+      window.turnstile?.reset(turnstileWidgetIdRef.current ?? undefined);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : ERROR_MESSAGE;
       setSubmitError(errorMessage);
-      window.turnstile?.reset();
+      setTurnstileToken("");
+      window.turnstile?.reset(turnstileWidgetIdRef.current ?? undefined);
     } finally {
       setIsSubmitting(false);
     }
@@ -419,20 +491,8 @@ export function LeadFormSection() {
                 </FieldGroup>
 
                 {turnstileConfig.siteKey && (
-                  <div
-                    className="mx-auto overflow-hidden rounded-[10px] bg-white/95 p-1"
-                    data-language="ru"
-                    data-response-field-name={TURNSTILE_RESPONSE_FIELD}
-                    data-sitekey={turnstileConfig.siteKey}
-                    data-theme="light"
-                  >
-                    <div
-                      className="cf-turnstile"
-                      data-language="ru"
-                      data-response-field-name={TURNSTILE_RESPONSE_FIELD}
-                      data-sitekey={turnstileConfig.siteKey}
-                      data-theme="light"
-                    />
+                  <div className="mx-auto overflow-hidden rounded-[10px] bg-white/95 p-1">
+                    <div className="min-h-[65px]" ref={turnstileContainerRef} />
                   </div>
                 )}
 
