@@ -50,7 +50,7 @@ function requireValue(label, value, errors) {
 }
 
 function validatePages(errors) {
-  requireValue("VITE_LEAD_API_URL", readEnv("VITE_LEAD_API_URL", [".env", ".env.local"]), errors);
+  requireValue("PUBLIC_LEAD_API_URL", readEnv("PUBLIC_LEAD_API_URL", [".env", ".env.local"]), errors);
   requireValue("PUBLIC_TURNSTILE_SITE_KEY", readEnv("PUBLIC_TURNSTILE_SITE_KEY", [".env", ".env.local"]), errors);
 }
 

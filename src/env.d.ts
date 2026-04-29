@@ -2,7 +2,7 @@
 
 interface ImportMetaEnv {
   readonly PUBLIC_TURNSTILE_SITE_KEY?: string;
-  readonly VITE_LEAD_API_URL?: string;
+  readonly PUBLIC_LEAD_API_URL?: string;
 }
 
 interface ImportMeta {

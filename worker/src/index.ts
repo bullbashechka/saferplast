@@ -28,7 +28,11 @@ type LeadFormPayload = {
   turnstileToken: string;
 };
 
-type SanitizedLeadPayload = Omit<LeadFormPayload, "turnstileToken"> & {
+type SanitizedLeadPayload = {
+  name: string;
+  phone: string;
+  task: string;
+  consentsAccepted: boolean;
   source: string | null;
 };
 
@@ -446,6 +450,10 @@ export default {
       return jsonResponse({ error: "Origin is not allowed." }, 403, {});
     }
 
+    if (!origin) {
+      return jsonResponse({ error: "Origin header is required." }, 400, corsHeaders);
+    }
+
     if (request.method === "OPTIONS") {
       return new Response(null, {
         status: 204,
@@ -485,7 +493,7 @@ export default {
 
     const normalizedPayload = normalizeLeadPayload(payload);
     const validationError = validateLeadPayload(payload, normalizedPayload);
-    if (validationError) {
+    if (validationError || !normalizedPayload) {
       return jsonResponse({ error: validationError }, 400, corsHeaders);
     }
 

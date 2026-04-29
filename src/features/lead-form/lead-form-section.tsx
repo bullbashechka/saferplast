@@ -30,7 +30,7 @@ function getLeadApiConfig(rawValue: string | undefined) {
 
   if (!value) {
     return {
-      error: `Lead API is not configured. Set VITE_LEAD_API_URL to ${DEFAULT_WORKER_LEAD_API_URL}.`,
+      error: `Lead API is not configured. Set PUBLIC_LEAD_API_URL to ${DEFAULT_WORKER_LEAD_API_URL}.`,
       url: null,
     };
   }
@@ -51,7 +51,7 @@ function getLeadApiConfig(rawValue: string | undefined) {
     };
   } catch {
     return {
-      error: "VITE_LEAD_API_URL must be a valid absolute URL, for example https://api.example.com/api/lead.",
+      error: "PUBLIC_LEAD_API_URL must be a valid absolute URL, for example https://api.example.com/api/lead.",
       url: null,
     };
   }
@@ -152,7 +152,7 @@ export function LeadFormSection() {
   const { consents, decorativeLabels, fields, messengersLabel, submitLabel, subtitle, taskMaxLength, title } =
     leadFormContent;
   const { instagramHref, telegramHref, whatsappHref } = firstScreenContent;
-  const leadApiConfig = getLeadApiConfig(import.meta.env.VITE_LEAD_API_URL);
+  const leadApiConfig = getLeadApiConfig(import.meta.env.PUBLIC_LEAD_API_URL);
   const turnstileConfig = getTurnstileSiteKey(import.meta.env.PUBLIC_TURNSTILE_SITE_KEY);
 
   const leadFormSectionRef = useRef<HTMLElement | null>(null);

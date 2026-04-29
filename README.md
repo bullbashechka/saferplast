@@ -69,7 +69,7 @@ npm run worker:dev
 Frontend `.env`:
 
 ```env
-VITE_LEAD_API_URL=http://127.0.0.1:8787/api/lead
+PUBLIC_LEAD_API_URL=http://127.0.0.1:8787/api/lead
 PUBLIC_TURNSTILE_SITE_KEY=your_turnstile_site_key
 ```
 
@@ -87,7 +87,7 @@ TURNSTILE_EXPECTED_HOSTNAME=localhost
 
 Важно:
 
-- `VITE_LEAD_API_URL` и `PUBLIC_TURNSTILE_SITE_KEY` нужны для production build.
+- `PUBLIC_LEAD_API_URL` и `PUBLIC_TURNSTILE_SITE_KEY` нужны для production build.
 - Worker принимает только разрешённые origins из `ALLOWED_ORIGINS`.
 - Для локальной разработки разрешены `localhost` и `127.0.0.1`.
 
@@ -140,7 +140,7 @@ npm run worker:deploy
 Что нужно указать в Cloudflare:
 
 - Pages env:
-  - `VITE_LEAD_API_URL`
+  - `PUBLIC_LEAD_API_URL`
   - `PUBLIC_TURNSTILE_SITE_KEY`
 - Worker secrets:
   - `TELEGRAM_BOT_TOKEN`
@@ -248,7 +248,7 @@ npm run worker:dev
 Frontend `.env`:
 
 ```env
-VITE_LEAD_API_URL=http://127.0.0.1:8787/api/lead
+PUBLIC_LEAD_API_URL=http://127.0.0.1:8787/api/lead
 PUBLIC_TURNSTILE_SITE_KEY=your_turnstile_site_key
 ```
 
@@ -262,7 +262,7 @@ ALLOWED_ORIGINS=http://127.0.0.1:4321,http://localhost:4321,https://saferplast.p
 TURNSTILE_EXPECTED_HOSTNAME=localhost
 ```
 
-`VITE_LEAD_API_URL` and `PUBLIC_TURNSTILE_SITE_KEY` are required for production builds.
+`PUBLIC_LEAD_API_URL` and `PUBLIC_TURNSTILE_SITE_KEY` are required for production builds.
 
 `ALLOWED_ORIGINS` must include the deployed Pages origin, plus local dev origins if you want to test locally.
 
@@ -315,7 +315,7 @@ npm run worker:deploy
 Cloudflare configuration:
 
 - Pages env:
-  - `VITE_LEAD_API_URL`
+  - `PUBLIC_LEAD_API_URL`
   - `PUBLIC_TURNSTILE_SITE_KEY`
 - Worker secrets:
   - `TELEGRAM_BOT_TOKEN`

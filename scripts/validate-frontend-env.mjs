@@ -85,7 +85,7 @@ function validateTurnstileSiteKey(name, value) {
 }
 
 const errors = [
-  validatePublicUrl("VITE_LEAD_API_URL", getEnvValue("VITE_LEAD_API_URL")),
+  validatePublicUrl("PUBLIC_LEAD_API_URL", getEnvValue("PUBLIC_LEAD_API_URL")),
   validateTurnstileSiteKey("PUBLIC_TURNSTILE_SITE_KEY", getEnvValue("PUBLIC_TURNSTILE_SITE_KEY")),
 ].filter(Boolean);
 

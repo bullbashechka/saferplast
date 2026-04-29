@@ -6,7 +6,7 @@ This document describes the production deployment flow for the Astro frontend an
 
 Pages project:
 
-- `VITE_LEAD_API_URL=https://<your-worker-domain>/api/lead`
+- `PUBLIC_LEAD_API_URL=https://<your-worker-domain>/api/lead`
 - `PUBLIC_TURNSTILE_SITE_KEY=<Cloudflare Turnstile site key>`
 
 Worker secrets:
@@ -40,7 +40,7 @@ The release deploy script already runs lint, typecheck, build, and the Pages pre
 ## Deploy Frontend
 
 1. Ensure the Pages environment variables are set in Cloudflare.
-2. Verify `VITE_LEAD_API_URL` points to the deployed Worker endpoint.
+2. Verify `PUBLIC_LEAD_API_URL` points to the deployed Worker endpoint.
 3. Run:
 
 ```bash
@@ -77,5 +77,5 @@ This command runs the Worker preflight and deploys the Worker with Wrangler.
 
 ## Troubleshooting
 
-- If the lead form is missing on the rendered page, verify `VITE_LEAD_API_URL` and `PUBLIC_TURNSTILE_SITE_KEY` in the Pages environment.
+- If the lead form is missing on the rendered page, verify `PUBLIC_LEAD_API_URL` and `PUBLIC_TURNSTILE_SITE_KEY` in the Pages environment.
 - If the form is visible but submit is disabled, check the same variables first, then redeploy with `npm run deploy:pages`.
